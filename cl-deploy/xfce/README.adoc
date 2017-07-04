@@ -1,0 +1,21 @@
+# XFCE Manual
+
+* Start `CompuLab Deployment Tool`
+
+image::https://github.com/compulab-yokneam/Documentation/blob/master/cl-deploy/xfce/images/00.png[GitHub mascot]
+
+* Select an available destination
+
+image::https://github.com/compulab-yokneam/Documentation/blob/master/cl-deploy/xfce/images/01.png[GitHub mascot]
+
+* Be aware of the fact that all the data on the destination will be erased
+
+image::https://github.com/compulab-yokneam/Documentation/blob/master/cl-deploy/xfce/images/02.png[GitHub mascot]
+
+* The process runs: the output screen shows the log and progress
+
+image::https://github.com/compulab-yokneam/Documentation/blob/master/cl-deploy/xfce/images/03.png[GitHub mascot]
+
+* At the end of the process this message shows up
+
+image::https://github.com/compulab-yokneam/Documentation/blob/master/cl-deploy/xfce/images/04.png[GitHub mascot]
