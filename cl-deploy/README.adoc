@@ -1,5 +1,7 @@
 # CompuLab Deployment Tool
 
 ## Available Manuals
-* MatchBox
-https://github.com/compulab-yokneam/Documentation/tree/master/cl-deploy/matchbox#matchbox-manual
+
+* https://github.com/compulab-yokneam/Documentation/tree/master/cl-deploy/matchbox#matchbox-manual[MatchBox]
+
+* https://github.com/compulab-yokneam/Documentation/tree/master/cl-deploy/xfce#xfce-manual[XFCE]
