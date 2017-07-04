@@ -1,21 +1,5 @@
 # CompuLab Deployment Tool
 
-* Start `CompuLab Deployment Tool`
-
-image::https://github.com/compulab-yokneam/Documentation/blob/master/cl-deploy/matchbox/images/00.png[GitHub mascot]
-
-* Select an available destination
-
-image::https://github.com/compulab-yokneam/Documentation/blob/master/cl-deploy/matchbox/images/01.png[GitHub mascot]
-
-* Be aware of the fact that all the data on the destination will be erased
-
-image::https://github.com/compulab-yokneam/Documentation/blob/master/cl-deploy/matchbox/images/03.png[GitHub mascot]
-
-* The process runs: the output screen shows the log and progress
-
-image::https://github.com/compulab-yokneam/Documentation/blob/master/cl-deploy/matchbox/images/04.png[GitHub mascot]
-
-* At the end of the process this message shows up
-
-image::https://github.com/compulab-yokneam/Documentation/blob/master/cl-deploy/matchbox/images/05.png[GitHub mascot]
+## Available Manuals
+* MatchBox
+https://github.com/compulab-yokneam/Documentation/tree/master/cl-deploy/matchbox#matchbox-manual
