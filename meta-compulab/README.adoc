@@ -1,34 +1,34 @@
 # meta-compulab 
 
- Supported CompuLab Machines
-
-* cm-fx6-evk
-* cl-som-imx6ul
-* cl-som-imx7
-* cl-som-imx6
+Supported CompuLab Machines: `cm-fx6-evk, cl-som-imx6ul, cl-som-imx7, cl-som-imx6`
 
 ## How To
 
 ### Prepare BSP Environment
-#### Select an available NXP branch: imx-4.1-krogoth/imx-morty
+#### Select an available NXP branch: `imx-4.1-krogoth/imx-morty`
 [source,console]
 $: export IMX_BRANCH=imx-4.1-krogoth
 or
 $: export IMX_BRANCH=imx-morty
 
-WARNING: In order to evaluate Yocto Morty follow this instructions: https://github.com/compulab-yokneam/compulab-bsp/tree/morthy#compulab-devices-bsp[CompuLab Morty BSP]
+#### `imx-morty` known issue
+
+* The buid fails with an error `imx-gpu-viv-1_5.0.11.p8.7-hfp-r0 do_fetch: Error ...` + 
+https://community.nxp.com/thread/452335
+* Work around: + 
+In order to evaluate Yocto Morty follow this instructions: https://github.com/compulab-yokneam/compulab-bsp/tree/morthy#compulab-devices-bsp[CompuLab Morty BSP]
 
 #### Download the NXP BSP source:
 [source,console]
 $: repo init -u git://git.freescale.com/imx/fsl-arm-yocto-bsp.git -b ${IMX_BRANCH}
 $: repo sync
 
-#### Clone meta-compulab layer:
+#### Clone `meta-compulab` layer:
 [source,console]
 $: git clone -b devel https://github.com/compulab-yokneam/meta-compulab sources/meta-compulab
 
 ### Build Procedure
-#### Select an available machine: cm-fx6-evk/cl-som-imx6ul/cl-som-imx7/cl-som-imx6
+#### Select an available machine: `cm-fx6-evk/cl-som-imx6ul/cl-som-imx7/cl-som-imx6`
 [source,console]
 $: export MACHINE=cm-fx6-evk
 or
@@ -38,7 +38,7 @@ $: export MACHINE=cl-som-imx7
 or
 $: export MACHINE=cl-som-imx6
 
-#### Select an available distro: x11/fb/xwayland/wayland
+#### Select an available distro: `x11/fb/xwayland/wayland`
 [source,console]
 $: export DISTRO=fsl-imx-x11
 or
@@ -71,7 +71,7 @@ WARNING: Stop Here if the warning shows up
 $: [[ -f conf/local.conf ]] && sed -i '/PACKAGE_CLASSES/ a PACKAGE_CLASSES += " package_deb"' conf/local.conf || echo "Warning: Invalid Build Directory"
 
 #### Build Instruction
-##### Select an available image: fsl-image-gui/fsl-image-qt5/compulab-eval-image/compulab-eval-image-xfce
+##### Select an available image: `fsl-image-gui/fsl-image-qt5/compulab-eval-image/compulab-eval-image-xfce`
 [source,console]
 $: export IMAGE=fsl-image-gui
 or
