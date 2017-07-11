@@ -1,9 +1,10 @@
-# meta-compulab post build instructions
+# Post build instructions
 
 ## How to Deploy:
 [%hardbreaks]
-To deploy the image file to an sdcard, issue this command. 
-Assuming the sdcard device file is *_/dev/sdg_*
+This chapter shows how to deploy different sdcard images.
+
+NOTE: Let's assume that the sdcard device file is *`/dev/sdg`*
 
 The created image can be in either: `sdcard/sdcard.xz/sdcard.bz2` format. + 
 
