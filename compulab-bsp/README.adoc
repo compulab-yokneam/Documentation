@@ -9,8 +9,7 @@ $: mkdir ~/bin
 $: curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
 $: chmod a+x ~/bin/repo
 
-## Download the BSP source:
-### Select an available bsp version name: `krogoth/morty/pyro`
+## Select an available bsp version name: `krogoth/morty/pyro`
 [source,console]
 $: export BSP=krogoth
 or
@@ -18,6 +17,7 @@ $: export BSP=morty
 or
 $: export BSP=pyro
 
+## Download the BSP source:
 [source,console]
 $: PATH=${PATH}:~/bin
 $: mkdir compulab-bsp
