@@ -61,7 +61,7 @@ $: [[ -f conf/bblayers.conf ]] && (sed -i '$aBBLAYERS += " ${BSPDIR}/sources/met
 * Add the `meta-xfce` location to the conf/bblayers.conf
 
 [source,console]
-$: [[ -f conf/bblayers.conf ]] && (sed -i '$aBBLAYERS += " ${BSPDIR}/sources/meta-xfce "' conf/bblayers.conf) || echo "Warning: Invalid Build Directory"
+$: [[ -f conf/bblayers.conf ]] && (sed -i '$aBBLAYERS += " ${BSPDIR}/sources/meta-openembedded/meta-xfce "' conf/bblayers.conf) || echo "Warning: Invalid Build Directory"
 
 WARNING: Stop Here if the warning shows up
 
