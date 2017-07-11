@@ -33,6 +33,4 @@ $: sudo dd if=tmp/deploy/images/${MACHINE}/${IMAGE}-${MACHINE}.sdcard of=/dev/sd
 . Let the device boot up
 . Evaluate this Yocto Release
 
-## How to Deploy on an internal media.
-`compulab-eval-image` and `compulab-eval-image-xfce` come with a tool that allows cloning the boot media. +
-Detailed information at: https://github.com/compulab-yokneam/Documentation/blob/master/cl-deploy/README.adoc#compulab-deployment-tool[CompuLab Deployment Tool]
+## https://github.com/compulab-yokneam/Documentation/tree/master/cl-deploy#compulab-deployment-tool[How to Deploy on an internal media]
