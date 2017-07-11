@@ -10,6 +10,13 @@ $: curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/
 $: chmod a+x ~/bin/repo
 
 ## Download the BSP source:
+### Select an available bsp version name: `krogoth/morty/pyro`
+[source,console]
+$: export BSP=krogoth
+or
+$: export BSP=morty
+or
+$: export BSP=pyro
 
 [source,console]
 $: PATH=${PATH}:~/bin
@@ -22,13 +29,13 @@ At the end of the commands you have every metadata you need to start work with.
 You can use any directory to host your build. The source code is checked out at `compulab-bsp/sources`.
 
 ## Build Procedure
-### Select an available machine: cm-fx6-evk/cl-som-imx6
+### Select an available machine: `cm-fx6-evk/cl-som-imx6`
 [source,console]
 $: export MACHINE=cm-fx6-evk
 or
 $: export MACHINE=cl-som-imx6
 
-### Select an available image: compulab-eval-image/compulab-eval-image-xfce
+### Select an available image: `compulab-eval-image/compulab-eval-image-xfce`
 [source,console]
 $: export IMAGE=compulab-eval-image
 or
@@ -57,8 +64,19 @@ $: bitbake u-boot-compulab
 To deploy the image file to an sdcard, issue this command. 
 Assuming the sdcard device file is *_/dev/sdg_*
 
+The created image can be in either: `sdcard/sdcard.xz/sdcard.bz2` format. + 
+
+* for `sdcard.xz` image issue:
 [source,console]
 $: xz -dc tmp/deploy/images/${MACHINE}/${IMAGE}-${MACHINE}.sdcard.xz | sudo dd of=/dev/sdg
+
+* for `sdcard.bz2` image issue:
+[source,console]
+$: bzip2 -dc tmp/deploy/images/${MACHINE}/${IMAGE}-${MACHINE}.sdcard.bz2 | sudo dd of=/dev/sdg
+
+* for `sdcard` image issue:
+[source,console]
+$: sudo dd if=tmp/deploy/images/${MACHINE}/${IMAGE}-${MACHINE}.sdcard of=/dev/sdg
 
 ## How to Evaluate:
 . Insert the sd-card into the SB-FX6 P6 slot
