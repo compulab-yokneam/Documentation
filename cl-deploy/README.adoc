@@ -1,7 +1,9 @@
 # CompuLab Deployment Tool
 
+`compulab-eval-image` and `compulab-eval-image-xfce` come with a tool that allows cloning the boot media.
+
 ## Available Manuals
 
-* https://github.com/compulab-yokneam/Documentation/tree/master/cl-deploy/matchbox#matchbox-manual[MatchBox]
+* https://github.com/compulab-yokneam/Documentation/tree/master/cl-deploy/matchbox#matchbox-manual[compulab-eval-image]
 
-* https://github.com/compulab-yokneam/Documentation/tree/master/cl-deploy/xfce#xfce-manual[XFCE]
+* https://github.com/compulab-yokneam/Documentation/tree/master/cl-deploy/xfce#xfce-manual[compulab-eval-image-xfce]
