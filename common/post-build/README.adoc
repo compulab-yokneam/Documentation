@@ -1,0 +1,37 @@
+# meta-compulab post build instructions
+
+## How to Deploy:
+[%hardbreaks]
+To deploy the image file to an sdcard, issue this command. 
+Assuming the sdcard device file is *_/dev/sdg_*
+
+The created image can be in either: `sdcard/sdcard.xz/sdcard.bz2` format. + 
+
+* for `sdcard.xz` image issue:
+[source,console]
+$: xz -dc tmp/deploy/images/${MACHINE}/${IMAGE}-${MACHINE}.sdcard.xz | sudo dd of=/dev/sdg
+
+* for `sdcard.bz2` image issue:
+[source,console]
+$: bzip2 -dc tmp/deploy/images/${MACHINE}/${IMAGE}-${MACHINE}.sdcard.bz2 | sudo dd of=/dev/sdg
+
+* for `sdcard` image issue:
+[source,console]
+$: sudo dd if=tmp/deploy/images/${MACHINE}/${IMAGE}-${MACHINE}.sdcard of=/dev/sdg
+
+## How to Evaluate:
+. Insert the sd-card into the SB-FX6 P6 slot
+. Power up the device
+. Stop in U-Boot
+. Issue:
+[%hardbreaks]
+[source,console]
+# env default -a
+# savenv
+# reset
+. Let the device boot up
+. Evaluate this Yocto Release
+
+## How to Deploy on an internal media.
+`compulab-eval-image` and `compulab-eval-image-xfce` come with a tool that allows cloning the boot media. +
+Detailed information at: https://github.com/compulab-yokneam/Documentation/blob/master/cl-deploy/README.adoc#compulab-deployment-tool[CompuLab Deployment Tool]
