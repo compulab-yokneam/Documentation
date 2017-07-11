@@ -59,4 +59,4 @@ $: bitbake linux-compulab
 [source,console]
 $: bitbake u-boot-compulab
 
-## https://github.com/compulab-yokneam/Documentation/tree/master/common/post-build#meta-compulab-post-build-instructions[Post Build Instructions]
+## https://github.com/compulab-yokneam/Documentation/tree/master/common/post-build#post-build-instructions[Post Build Instructions]
