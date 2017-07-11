@@ -1,0 +1,130 @@
+# meta-compulab 
+
+ Supported CompuLab Machines
+
+* cm-fx6-evk
+* cl-som-imx6ul
+* cl-som-imx7
+* cl-som-imx6
+
+## How To
+
+### Prepare BSP Environment
+#### Select an available NXP branch: imx-4.1-krogoth/imx-morty
+[source,console]
+$: export IMX_BRANCH=imx-4.1-krogoth
+or
+$: export IMX_BRANCH=imx-morty
+
+WARNING: In order to evaluate Yocto Morty follow this instructions: https://github.com/compulab-yokneam/compulab-bsp/tree/morthy#compulab-devices-bsp[CompuLab Morty BSP]
+
+#### Download the NXP BSP source:
+[source,console]
+$: repo init -u git://git.freescale.com/imx/fsl-arm-yocto-bsp.git -b ${IMX_BRANCH}
+$: repo sync
+
+#### Clone meta-compulab layer:
+[source,console]
+$: git clone -b devel https://github.com/compulab-yokneam/meta-compulab sources/meta-compulab
+
+### Build Procedure
+#### Select an available machine: cm-fx6-evk/cl-som-imx6ul/cl-som-imx7/cl-som-imx6
+[source,console]
+$: export MACHINE=cm-fx6-evk
+or
+$: export MACHINE=cl-som-imx6ul
+or
+$: export MACHINE=cl-som-imx7
+or
+$: export MACHINE=cl-som-imx6
+
+#### Select an available distro: x11/fb/xwayland/wayland
+[source,console]
+$: export DISTRO=fsl-imx-x11
+or
+$: export DISTRO=fsl-imx-fb
+or
+$: export DISTRO=fsl-imx-xwayland
+or
+$: export DISTRO=fsl-imx-wayland
+
+#### Create Build Environment
+[source,console]
+$: source fsl-setup-release.sh -b build-${MACHINE}-${DISTRO}
+
+#### Pre-Build Steps
+* Add the `meta-compulab` location to the conf/bblayers.conf
+
+[source,console]
+$: [[ -f conf/bblayers.conf ]] && (sed -i '$aBBLAYERS += " ${BSPDIR}/sources/meta-compulab "' conf/bblayers.conf) || echo "Warning: Invalid Build Directory"
+
+* Add the `meta-xfce` location to the conf/bblayers.conf
+
+[source,console]
+$: [[ -f conf/bblayers.conf ]] && (sed -i '$aBBLAYERS += " ${BSPDIR}/sources/meta-xfce "' conf/bblayers.conf) || echo "Warning: Invalid Build Directory"
+
+WARNING: Stop Here if the warning shows up
+
+* Add the second packaging option to the conf/local.conf
+
+[source,console]
+$: [[ -f conf/local.conf ]] && sed -i '/PACKAGE_CLASSES/ a PACKAGE_CLASSES += " package_deb"' conf/local.conf || echo "Warning: Invalid Build Directory"
+
+#### Build Instruction
+##### Select an available image: fsl-image-gui/fsl-image-qt5/compulab-eval-image/compulab-eval-image-xfce
+[source,console]
+$: export IMAGE=fsl-image-gui
+or
+$: export IMAGE=fsl-image-qt5
+or
+$: export IMAGE=compulab-eval-image
+or
+$: export IMAGE=compulab-eval-image-xfce
+
+##### Build Evaluation Image
+[source,console]
+$: bitbake ${IMAGE}
+
+##### Build kernel only
+[source,console]
+$: bitbake linux-compulab
+
+##### Build U-Boot only
+[source,console]
+$: bitbake u-boot-compulab
+
+## How to Deploy:
+[%hardbreaks]
+To deploy the image file to an sdcard, issue this command. 
+Assuming the sdcard device file is *_/dev/sdg_*
+
+The created image can be in either: `sdcard/sdcard.xz/sdcard.bz2` format. + 
+
+* for `sdcard.xz` image issue:
+[source,console]
+$: xz -dc tmp/deploy/images/${MACHINE}/${IMAGE}-${MACHINE}.sdcard.xz | sudo dd of=/dev/sdg
+
+* for `sdcard.bz2` image issue:
+[source,console]
+$: bzip2 -dc tmp/deploy/images/${MACHINE}/${IMAGE}-${MACHINE}.sdcard.bz2 | sudo dd of=/dev/sdg
+
+* for `sdcard` image issue:
+[source,console]
+$: sudo dd if=tmp/deploy/images/${MACHINE}/${IMAGE}-${MACHINE}.sdcard of=/dev/sdg
+
+## How to Evaluate:
+. Insert the sd-card into the SB-FX6 P6 slot
+. Power up the device
+. Stop in U-Boot
+. Issue:
+[%hardbreaks]
+[source,console]
+# env default -a
+# savenv
+# reset
+. Let the device boot up
+. Evaluate this Yocto Release
+
+## How to Deploy on an internal media.
+`compulab-eval-image` and `compulab-eval-image-xfce` come with a tool that allows cloning the boot media. +
+Detailed information at: https://github.com/compulab-yokneam/Documentation/blob/master/cl-deploy/README.adoc#compulab-deployment-tool[CompuLab Deployment Tool]
