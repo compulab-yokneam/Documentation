@@ -23,6 +23,10 @@ In order to evaluate Yocto Morty follow this instructions: https://github.com/co
 $: repo init -u git://git.freescale.com/imx/fsl-arm-yocto-bsp.git -b ${IMX_BRANCH}
 $: repo sync
 
+#### `imx-4.1-krogoth` chromium build fix
+[source,console]
+$: git -C sources/meta-browser checkout 5882f0efb19f7428df3e170ffb08d5d654277382
+
 #### Clone `meta-compulab` layer:
 [source,console]
 $: git clone -b devel https://github.com/compulab-yokneam/meta-compulab sources/meta-compulab
