@@ -4,6 +4,8 @@ Supported CompuLab Machines: `cm-fx6-evk, cl-som-imx6ul, cl-som-imx7, cl-som-imx
 
 ## How To
 
+### https://github.com/compulab-yokneam/Documentation/blob/master/yocto-build-environmet/README.adoc#before-the-start[Before The Start]
+
 ### Prepare BSP Environment
 #### Select an available NXP branch: `imx-4.1-krogoth/imx-morty`
 [source,console]
