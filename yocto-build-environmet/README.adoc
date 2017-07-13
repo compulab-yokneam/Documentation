@@ -1,2 +1,3 @@
 # Before the Start
+
 http://www.yoctoproject.org/docs/current/yocto-project-qs/yocto-project-qs.html#[Build Host Requirements]
