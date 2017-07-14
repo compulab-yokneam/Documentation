@@ -29,6 +29,9 @@ $: repo sync
 [source,console]
 $: git -C sources/meta-browser checkout 5882f0efb19f7428df3e170ffb08d5d654277382
 
+#### `imx-4.1-krogoth` lzop gcc-6 patch
+https://github.com/openembedded/openembedded-core/tree/master/meta/recipes-support/lzop[lzop gcc-6 patch]
+
 #### Clone `meta-compulab` layer:
 [source,console]
 $: git clone -b devel https://github.com/compulab-yokneam/meta-compulab sources/meta-compulab
