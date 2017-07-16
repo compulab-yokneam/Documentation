@@ -27,7 +27,7 @@ $: repo sync
 
 #### `imx-4.1-krogoth` chromium build fix
 [source,console]
-$: git -C sources/meta-browser checkout 5882f0efb19f7428df3e170ffb08d5d654277382
+$: git -C sources/meta-browser checkout 393d2aa15da21ffa532c3cd77d8cb91de997cd31
 
 #### `imx-4.1-krogoth` lzop gcc-6 patch
 [source,console]
