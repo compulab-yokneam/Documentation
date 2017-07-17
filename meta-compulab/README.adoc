@@ -35,14 +35,16 @@ $: git clone -b devel https://github.com/compulab-yokneam/meta-compulab sources/
 $: git -C sources/meta-browser checkout 393d2aa15da21ffa532c3cd77d8cb91de997cd31
 
 * `lzop gcc-6` fix
-** https://github.com/openembedded/openembedded-core/tree/master/meta/recipes-support/lzop[patch source/info]
 [source,console]
 $: git -C sources/meta-compulab cherry-pick 8ede5fef9575246480af94808d1f60658aaff6a3
 
+** https://github.com/openembedded/openembedded-core/tree/master/meta/recipes-support/lzop[patch source/info]
+
 * `No real function for mknod` fix
-** https://lists.yoctoproject.org/pipermail/yocto/2016-October/032240.html[patch source/info]
 [source,console]
 $: git -C sources/meta-compulab cherry-pick d44a09a8be848a56c7670c4b416382b41e2542d3
+
+** https://lists.yoctoproject.org/pipermail/yocto/2016-October/032240.html[patch source/info]
 
 * `rootfs build failure` fix/workaround
 ** http://lists.openembedded.org/pipermail/openembedded-core/2017-January/132040.html
