@@ -31,6 +31,7 @@ $: repo sync
 $: git -C sources/meta-browser checkout 393d2aa15da21ffa532c3cd77d8cb91de997cd31
 * https://github.com/openembedded/openembedded-core/tree/master/meta/recipes-support/lzop[oe-core: lzop gcc-6 patch]
 * http://lists.openembedded.org/pipermail/openembedded-core/2017-January/132040.html[oe-core: rootfs build failure]
+* https://lists.yoctoproject.org/pipermail/yocto/2016-October/032240.html[NXP: No real function for mknod]
 
 #### Clone `meta-compulab` layer:
 [source,console]
