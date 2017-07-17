@@ -25,15 +25,12 @@ In order to evaluate Yocto Morty follow this instructions: https://github.com/co
 $: repo init -u git://git.freescale.com/imx/fsl-arm-yocto-bsp.git -b ${IMX_BRANCH}
 $: repo sync
 
-#### `imx-4.1-krogoth` chromium build fix
+#### `imx-4.1-krogoth` issues
+* chromium gcc-6 fix
 [source,console]
 $: git -C sources/meta-browser checkout 393d2aa15da21ffa532c3cd77d8cb91de997cd31
-
-#### `imx-4.1-krogoth` lzop gcc-6 patch
-[source,console]
-$: git -C sources/poky/meta checkout 4515fc952963e233d5f24bb319028e8c68ee7622
-
-https://github.com/openembedded/openembedded-core/tree/master/meta/recipes-support/lzop[lzop gcc-6 patch]
+* https://github.com/openembedded/openembedded-core/tree/master/meta/recipes-support/lzop[oe-core: lzop gcc-6 patch]
+* http://lists.openembedded.org/pipermail/openembedded-core/2017-January/132040.html[oe-core: rootfs build failure]
 
 #### Clone `meta-compulab` layer:
 [source,console]
