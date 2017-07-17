@@ -30,6 +30,8 @@ $: repo sync
 $: git clone -b devel https://github.com/compulab-yokneam/meta-compulab sources/meta-compulab
 
 #### `imx-4.1-krogoth` issues
+NOTE: These fixes must be applied `only` if the build ran into them
+
 * chromium gcc-6 fix
 [source,console]
 $: git -C sources/meta-browser checkout 393d2aa15da21ffa532c3cd77d8cb91de997cd31
