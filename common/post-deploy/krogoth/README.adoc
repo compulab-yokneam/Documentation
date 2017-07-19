@@ -1,0 +1,8 @@
+# Post deploy `krogoth` instructions
+
+* Boot the device
+* Issue these commands:
+
+[source,console]
+$: rpm -e gstreamer1.0-plugins-imx-meta-0.12.2-r0.cl_som_imx6
+$: rpm -e gstreamer1.0-plugins-imx-imxvpu
