@@ -13,13 +13,6 @@ $: export IMX_BRANCH=imx-4.1-krogoth
 or
 $: export IMX_BRANCH=imx-morty
 
-#### `imx-morty` known issue
-
-* The buid fails with an error `imx-gpu-viv-1_5.0.11.p8.7-hfp-r0 do_fetch: Error ...` + 
-https://community.nxp.com/thread/452335
-* Work around: + 
-In order to evaluate Yocto Morty follow this instructions: https://github.com/compulab-yokneam/Documentation/tree/master/compulab-bsp#compulab-devices-bsp[CompuLab Morty BSP]
-
 #### Download the NXP BSP source:
 [source,console]
 $: repo init -u git://git.freescale.com/imx/fsl-arm-yocto-bsp.git -b ${IMX_BRANCH}
