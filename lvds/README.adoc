@@ -3,7 +3,7 @@
 ## Download `DSI Tuner` +
 
 * http://www.ti.com/lit/zip/sllc434[DSI Tuner] +
-* http://www.ti.com/lit/an/slla332b/slla332b.pdf[DSI Tuner Manial] +
+* http://www.ti.com/lit/an/slla332b/slla332b.pdf[DSI Tuner Manual] +
 
 ## Run it `DSI Tuner` and import a DSI file +
 
