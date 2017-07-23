@@ -9,8 +9,16 @@
 
 ### Available DSI files:
 
-** https://github.com/compulab-yokneam/Documentation/blob/master/lvds/dsi/CHIMEI-N116B6-L02.dsi[CHIMEI-N116B6-L02.dsi]
-** https://github.com/compulab-yokneam/Documentation/blob/master/lvds/dsi/Chunghwa-CLAA103WA01XN.dsi[Chunghwa-CLAA103WA01XN.dsi] +
+* https://github.com/compulab-yokneam/Documentation/blob/master/lvds/dsi/CHIMEI-N116B6-L02.dsi[CHIMEI-N116B6: Pixel format1, 18bpp]
+
+`Chunghwa-CLAA103WA01XN` can work in either 18/24 bpp mode. `SELB` pin#55 is in charge of selecting 18/24 bpp mode.
+
+NOTE: `SELB = “0”, LVDS input data is 6bits` +
+`SELB = “1”, LVDS input data is 8bits`
+
+* https://github.com/compulab-yokneam/Documentation/blob/master/lvds/dsi/Chunghwa-CLAA103WA01XN.F2.18.dsi[Chunghwa-CLAA103WA01XN: Pixel format2, 18bpp]
+
+* https://github.com/compulab-yokneam/Documentation/blob/master/lvds/dsi/Chunghwa-CLAA103WA01XN.F2.24.dsi[Chunghwa-CLAA103WA01XN: Pixel format2, 24bpp]
 
 ### Available LVDS displays' datasheets:
 
