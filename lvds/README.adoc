@@ -30,9 +30,9 @@ image::https://github.com/compulab-yokneam/Documentation/blob/master/lvds/images
 
 NOTE: Let's assume that the file saved with `Customer.CSR.txt` name
 
-** Issue this command
+* Issue this command
 [source,console]
 $: sed 's/\r//g' Customer.CSR.txt | awk 'BEGIN { print "static int sn65dsi_configure(void)\n{" } (/^0/)&&($0="\tsn65dsi_write("$1","$2");"); END { print "\treturn 0;\n}" }'
 
-** Add generated code in the `drivers/video/fbdev/mxc/mxcfb_sn65dsi83.c` as a `sn65dsi_configure()` function.
+* Add generated code in the `drivers/video/fbdev/mxc/mxcfb_sn65dsi83.c` file as `sn65dsi_configure()` function.
 
