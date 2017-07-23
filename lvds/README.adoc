@@ -12,6 +12,11 @@
 ** https://github.com/compulab-yokneam/Documentation/blob/master/lvds/dsi/CHIMEI-N116B6-L02.dsi[CHIMEI-N116B6-L02.dsi]
 ** https://github.com/compulab-yokneam/Documentation/blob/master/lvds/dsi/Chunghwa-CLAA103WA01XN.dsi[Chunghwa-CLAA103WA01XN.dsi] +
 
+### Available LVDS displays' datasheets:
+
+** https://github.com/compulab-yokneam/Documentation/blob/master/lvds/manuals/pdf/chimei-n116b6-l02-pre.pdf[CHIMEI-N116B6-L02]
+** https://github.com/compulab-yokneam/Documentation/blob/master/lvds/manuals/pdf/chunghwa-claa103wa01xn.pdf[Chunghwa-CLAA103WA01XN]
+
 Screenshot's below show information from `CHIMEI-N116B6-L02.dsi` file.
 
 ## Panel Inputs
