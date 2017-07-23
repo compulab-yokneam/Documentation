@@ -1,14 +1,18 @@
 # CompuLab LVDS How To
 
 ## Download `DSI Tuner` +
-http://www.ti.com/lit/zip/sllc434
 
-## Run it and Import File +
+* http://www.ti.com/lit/zip/sllc434[DSI Tuner] +
+* http://www.ti.com/lit/an/slla332b/slla332b.pdf[DSI Tuner Manial] +
 
-NOTE: Screen Shorts below are for `CHIMEI-N116B6-L02.dsi` name
+## Run it `DSI Tuner` and import a DSI file +
+
+### Available DSI files:
 
 ** https://github.com/compulab-yokneam/Documentation/blob/master/lvds/dsi/CHIMEI-N116B6-L02.dsi[CHIMEI-N116B6-L02.dsi]
 ** https://github.com/compulab-yokneam/Documentation/blob/master/lvds/dsi/Chunghwa-CLAA103WA01XN.dsi[Chunghwa-CLAA103WA01XN.dsi] +
+
+Screenshot's below show information from `CHIMEI-N116B6-L02.dsi` file.
 
 ## Panel Inputs
 
@@ -17,8 +21,9 @@ image::https://github.com/compulab-yokneam/Documentation/blob/master/lvds/images
 ## DSI Inputs
 
 image::https://github.com/compulab-yokneam/Documentation/blob/master/lvds/images/ti2.png[GitHub mascot]
+Press `Calculator` button and get `Outputs`
 
-## Press `Calculator`
+## Outputs
 
 image::https://github.com/compulab-yokneam/Documentation/blob/master/lvds/images/ti3.png[GitHub mascot]
 
