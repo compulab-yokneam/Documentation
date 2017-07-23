@@ -18,11 +18,7 @@ image::https://github.com/compulab-yokneam/Documentation/blob/master/lvds/images
 
 image::https://github.com/compulab-yokneam/Documentation/blob/master/lvds/images/ti2.png[GitHub mascot]
 
-## Outups `Calculator`
-
-image::https://github.com/compulab-yokneam/Documentation/blob/master/lvds/images/ti3.png[GitHub mascot]
-
-## Outups `Calculator`
+## Press `Calculator`
 
 image::https://github.com/compulab-yokneam/Documentation/blob/master/lvds/images/ti3.png[GitHub mascot]
 
