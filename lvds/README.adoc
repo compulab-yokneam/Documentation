@@ -26,7 +26,7 @@ image::https://github.com/compulab-yokneam/Documentation/blob/master/lvds/images
 
 image::https://github.com/compulab-yokneam/Documentation/blob/master/lvds/images/ti4.png[GitHub mascot]
 
-## Genarate `drivers/video/fbdev/mxc/mxcfb_sn65dsi83.c:sn65dsi_configure()`
+## Genarate `sn65dsi_configure()` function
 
 NOTE: Let's assume that the file saved with `Customer.CSR.txt` name
 
