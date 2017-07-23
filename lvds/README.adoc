@@ -1,38 +1,41 @@
 # CompuLab LVDS How To
 
-* Download `DSI Tuner` +
+## Download `DSI Tuner` +
 http://www.ti.com/lit/zip/sllc434
 
-* Run it and Import File +
-https://github.com/compulab-yokneam/Documentation/blob/master/lvds/dsi/CHIMEI-N116B6-L02.dsi[CHIMEI-N116B6-L02.dsi]
+## Run it and Import File +
 
-* Panel Inputs
+NOTE: Screen Shorts below are for `CHIMEI-N116B6-L02.dsi` name
+
+** https://github.com/compulab-yokneam/Documentation/blob/master/lvds/dsi/CHIMEI-N116B6-L02.dsi[CHIMEI-N116B6-L02.dsi]
+** https://github.com/compulab-yokneam/Documentation/blob/master/lvds/dsi/Chunghwa-CLAA103WA01XN.dsi[Chunghwa-CLAA103WA01XN.dsi] +
+
+## Panel Inputs
 
 image::https://github.com/compulab-yokneam/Documentation/blob/master/lvds/images/ti1.png[GitHub mascot]
 
-* DSI Inputs
+## DSI Inputs
 
 image::https://github.com/compulab-yokneam/Documentation/blob/master/lvds/images/ti2.png[GitHub mascot]
 
-* Outups `Calculator`
+## Outups `Calculator`
 
 image::https://github.com/compulab-yokneam/Documentation/blob/master/lvds/images/ti3.png[GitHub mascot]
 
-* Outups `Calculator`
+## Outups `Calculator`
 
 image::https://github.com/compulab-yokneam/Documentation/blob/master/lvds/images/ti3.png[GitHub mascot]
 
-* Press `CogWheel` and `Generate CSR List`
+## Press `CogWheel` and `Generate CSR List`
 
 image::https://github.com/compulab-yokneam/Documentation/blob/master/lvds/images/ti4.png[GitHub mascot]
 
-* Genarate `drivers/video/fbdev/mxc/mxcfb_sn65dsi83.c:sn65dsi_configure()`
+## Genarate `drivers/video/fbdev/mxc/mxcfb_sn65dsi83.c:sn65dsi_configure()`
 
 NOTE: Let's assume that the file saved with `Customer.CSR.txt` name
 
-* Issue this command
+## Issue this command
 [source,console]
 $: sed 's/\r//g' Customer.CSR.txt | awk 'BEGIN { print "static int sn65dsi_configure(void)\n{" } (/^0/)&&($0="\tsn65dsi_write("$1","$2");"); END { print "\treturn 0;\n}" }'
 
-* Add generated code in the `drivers/video/fbdev/mxc/mxcfb_sn65dsi83.c` file as `sn65dsi_configure()` function.
-
+## Add generated code in the `drivers/video/fbdev/mxc/mxcfb_sn65dsi83.c` file as `sn65dsi_configure()` function.
