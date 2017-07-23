@@ -11,7 +11,7 @@
 
 * https://github.com/compulab-yokneam/Documentation/blob/master/lvds/dsi/CHIMEI-N116B6-L02.dsi[CHIMEI-N116B6: Pixel format1, 18bpp]
 
-`Chunghwa-CLAA103WA01XN` can work in either 18/24 bpp mode. `SELB` pin#55 is in charge of selecting 18/24 bpp mode.
+`Chunghwa-CLAA103WA01XN` can work in either 18/24 bpp mode. Depend on a `SELB` value, the device gets switched between 18/24 modes.
 
 NOTE: `SELB = “0”, LVDS input data is 6bits` +
 `SELB = “1”, LVDS input data is 8bits`
