@@ -1,13 +1,24 @@
-# CompuLab LVDS How To
+# CompuLab LVDS How To 
 
-## Download `DSI Tuner` +
+## Fast Procedure
+### CompuLab patches for `Chunghwa-CLAA103WA01XN`
+
+* https://github.com/compulab-yokneam/Documentation/blob/master/lvds/patch/mxcfb_sn65dsi83.c[sn65dsi83 patch]
+* https://github.com/compulab-yokneam/Documentation/blob/master/lvds/patch/mipi_dsi_samsung.c[mipi dsi patch]
+
+## Detailed Procedure
+Instructions below show how to generate `sn65dsi83 patch` using `DSI Tuner`.
+
+NOTE: `mipi dsi patch` is not described here due to the fact that CompuLab makes use of a prorpitery `NXP` tools for.
+
+### Download `DSI Tuner` +
 
 * http://www.ti.com/lit/zip/sllc434[DSI Tuner] +
 * http://www.ti.com/lit/an/slla332b/slla332b.pdf[DSI Tuner Manual] +
 
-## Run `DSI Tuner` and import a DSI file +
+### Run `DSI Tuner` and import a DSI file +
 
-### Available DSI files:
+#### Available DSI files:
 
 * https://github.com/compulab-yokneam/Documentation/blob/master/lvds/dsi/CHIMEI-N116B6-L02.dsi[CHIMEI-N116B6: Pixel format1, 18bpp]
 
@@ -20,36 +31,36 @@ NOTE: `SELB = “0”, LVDS input data is 6bits` +
 
 * https://github.com/compulab-yokneam/Documentation/blob/master/lvds/dsi/Chunghwa-CLAA103WA01XN.F2.24.24.270.dsi[Chunghwa-CLAA103WA01XN: Pixel format2, 24bpp]
 
-### Available LVDS displays' datasheets:
+#### Available LVDS displays' datasheets:
 
 ** https://github.com/compulab-yokneam/Documentation/blob/master/lvds/manuals/pdf/chimei-n116b6-l02-pre.pdf[CHIMEI-N116B6-L02]
 ** https://github.com/compulab-yokneam/Documentation/blob/master/lvds/manuals/pdf/chunghwa-claa103wa01xn.pdf[Chunghwa-CLAA103WA01XN]
 
 Screenshot's below show information from `CHIMEI-N116B6-L02.dsi` file.
 
-## Panel Inputs
+### Panel Inputs
 
 image::https://github.com/compulab-yokneam/Documentation/blob/master/lvds/images/ti1.png[GitHub mascot]
 
-## DSI Inputs
+### DSI Inputs
 
 image::https://github.com/compulab-yokneam/Documentation/blob/master/lvds/images/ti2.png[GitHub mascot]
 Press `Calculator` button and get `Outputs`
 
-## Outputs
+### Outputs
 
 image::https://github.com/compulab-yokneam/Documentation/blob/master/lvds/images/ti3.png[GitHub mascot]
 
-## Press `CogWheel` and `Generate CSR List`
+### Press `CogWheel` and `Generate CSR List`
 
 image::https://github.com/compulab-yokneam/Documentation/blob/master/lvds/images/ti4.png[GitHub mascot]
 
-## Genarate `sn65dsi_configure()` function
+### Genarate `sn65dsi_configure()` function
 
 NOTE: Let's assume that the file saved with `CSR.txt` name
 
-## Issue this command
+### Issue this command
 [source,console]
 $: sed 's/\r//g' CSR.txt | awk 'BEGIN { print "static int sn65dsi_configure(void)\n{" } (/^0/)&&($0="\tsn65dsi_write("$1","$2");"); END { print "\treturn 0;\n}" }'
 
-## Add generated code in the `drivers/video/fbdev/mxc/mxcfb_sn65dsi83.c` file as `sn65dsi_configure()` function.
+### Add generated code in the `drivers/video/fbdev/mxc/mxcfb_sn65dsi83.c` file as `sn65dsi_configure()` function.
