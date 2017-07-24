@@ -9,7 +9,7 @@
 ## Detailed Procedure
 Instructions below show how to generate `sn65dsi83 patch` using `DSI Tuner`.
 
-NOTE: `mipi dsi patch` is not described here due to the fact that CompuLab makes use of a prorpitery `NXP` tools for.
+NOTE: `mipi dsi patch` is not covered here due to the fact that CompuLab makes use of a prorpitery `NXP` tool for.
 
 ### Download `DSI Tuner` +
 
