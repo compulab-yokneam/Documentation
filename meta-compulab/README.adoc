@@ -67,49 +67,13 @@ or
 $: export DISTRO=fsl-imx-wayland
 
 #### Create Build Environment
+* Issue `IMX Vendor` Setup Script
 [source,console]
 $: source fsl-setup-release.sh -b build-${MACHINE}-${DISTRO}
 
-#### Pre-Build Steps
-* Add the `meta-compulab` location to the conf/bblayers.conf
-
+* Issue `CompuLab` Setup Script
 [source,console]
-$: [[ -f conf/bblayers.conf ]] && (sed -i '$aBBLAYERS += " ${BSPDIR}/sources/meta-compulab "' conf/bblayers.conf) || echo "Warning: Invalid Build Directory"
-
-* Add the `meta-xfce` location to the conf/bblayers.conf
-
-[source,console]
-$: [[ -f conf/bblayers.conf ]] && (sed -i '$aBBLAYERS += " ${BSPDIR}/sources/meta-openembedded/meta-xfce "' conf/bblayers.conf) || echo "Warning: Invalid Build Directory"
-
-WARNING: Stop Here if the warning shows up
-
-* Add `CompuLab Deployment Tool` into the image install list
-
-[source,console]
-$: [[ -f conf/local.conf ]] && sed -i '$ a CORE_IMAGE_EXTRA_INSTALL += " cl-deploy"' conf/local.conf || echo "Warning: Invalid Build Directory"
-
-* Add the second packaging option to the conf/local.conf
-
-[source,console]
-$: [[ -f conf/local.conf ]] && sed -i '/PACKAGE_CLASSES/ a PACKAGE_CLASSES += " package_deb"' conf/local.conf || echo "Warning: Invalid Build Directory"
-
-#### `cl-som-imx6ul` additional Pre-Build Steps
-NOTE: `cl-som-imx6ul` machines make use of a `TI Wilink8` chip.
-This device requires a configuration tool provided by `meta-ti` layer.
-
-* Clone `meta-ti` layer
-[source,console]
-$: git clone git://git.yoctoproject.org/meta-ti ../sources/meta-ti
-
-* Add the `meta-ti` location to the conf/bblayers.conf
-
-[source,console]
-$: [[ -f conf/bblayers.conf ]] && (sed -i '$aBBLAYERS += " ${BSPDIR}/sources/meta-ti "' conf/bblayers.conf) || echo "Warning: Invalid Build Directory"
-
-* Add `User Mode initialisation Manager Daemon` into the image install list
-
-[source,console]
-$: [[ -f conf/local.conf ]] && sed -i '$ a CORE_IMAGE_EXTRA_INSTALL += " uim"' conf/local.conf || echo "Warning: Invalid Build Directory"
+$: source ../sources/meta-compulab/bb-tools/setup-compulab-env
 
 #### Build Instruction
 ##### Select an available image: `fsl-image-gui/fsl-image-qt5/compulab-eval-image/compulab-eval-image-xfce`
