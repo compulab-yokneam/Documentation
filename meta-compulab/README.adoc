@@ -22,14 +22,6 @@ $: repo sync
 [source,console]
 $: git clone -b devel https://github.com/compulab-yokneam/meta-compulab sources/meta-compulab
 
-#### Clone `meta-ti` layer for `cl-som-imx6ul` only:
-NOTE: `cl-som-imx6ul` machines make use of a `TI Wilink8` chip.
-This device requires a configuration tool provided by `meta-ti` layer.
-
-[source,console]
-$: git clone git://git.yoctoproject.org/meta-ti sources/meta-ti
-
-
 #### `imx-4.1-krogoth` issues
 NOTE: These fixes must be applied `only` if the build ran into them
 
@@ -77,7 +69,7 @@ $: export DISTRO=fsl-imx-wayland
 [source,console]
 $: source fsl-setup-release.sh -b build-${MACHINE}-${DISTRO}
 
-#### Pre-Build Steps
+#### Common Pre-Build Steps
 * Add the `meta-compulab` location to the conf/bblayers.conf
 
 [source,console]
@@ -99,6 +91,24 @@ $: [[ -f conf/local.conf ]] && sed -i '$ a CORE_IMAGE_EXTRA_INSTALL += " cl-depl
 
 [source,console]
 $: [[ -f conf/local.conf ]] && sed -i '/PACKAGE_CLASSES/ a PACKAGE_CLASSES += " package_deb"' conf/local.conf || echo "Warning: Invalid Build Directory"
+
+#### `cl-som-imx6ul` Pre-Build Steps
+NOTE: `cl-som-imx6ul` machines make use of a `TI Wilink8` chip.
+This device requires a configuration tool provided by `meta-ti` layer.
+
+* Clone `meta-ti` layer
+[source,console]
+$: git clone git://git.yoctoproject.org/meta-ti ../sources/meta-ti
+
+* Add the `meta-ti` location to the conf/bblayers.conf for `cl-som-imx6ul` only
+
+[source,console]
+$: [[ -f conf/bblayers.conf ]] && (sed -i '$aBBLAYERS += " ${BSPDIR}/sources/meta-ti "' conf/bblayers.conf) || echo "Warning: Invalid Build Directory"
+
+* Add `User Mode initialisation Manager Daemon` into the image install list for `cl-som-imx6ul`
+
+[source,console]
+$: [[ -f conf/local.conf ]] && sed -i '$ a CORE_IMAGE_EXTRA_INSTALL += " uim"' conf/local.conf || echo "Warning: Invalid Build Directory"
 
 #### Build Instruction
 ##### Select an available image: `fsl-image-gui/fsl-image-qt5/compulab-eval-image/compulab-eval-image-xfce`
