@@ -82,6 +82,11 @@ $: [[ -f conf/bblayers.conf ]] && (sed -i '$aBBLAYERS += " ${BSPDIR}/sources/met
 
 WARNING: Stop Here if the warning shows up
 
+* Add `CompuLab Deployment Tool` into the image install list
+
+[source,console]
+$: [[ -f conf/local.conf ]] && sed -i '$ a CORE_IMAGE_EXTRA_INSTALL += " cl-deploy"' conf/local.conf || echo "Warning: Invalid Build Directory"
+
 * Add the second packaging option to the conf/local.conf
 
 [source,console]
