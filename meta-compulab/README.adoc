@@ -100,12 +100,12 @@ This device requires a configuration tool provided by `meta-ti` layer.
 [source,console]
 $: git clone git://git.yoctoproject.org/meta-ti ../sources/meta-ti
 
-* Add the `meta-ti` location to the conf/bblayers.conf for `cl-som-imx6ul` only
+* Add the `meta-ti` location to the conf/bblayers.conf
 
 [source,console]
 $: [[ -f conf/bblayers.conf ]] && (sed -i '$aBBLAYERS += " ${BSPDIR}/sources/meta-ti "' conf/bblayers.conf) || echo "Warning: Invalid Build Directory"
 
-* Add `User Mode initialisation Manager Daemon` into the image install list for `cl-som-imx6ul`
+* Add `User Mode initialisation Manager Daemon` into the image install list
 
 [source,console]
 $: [[ -f conf/local.conf ]] && sed -i '$ a CORE_IMAGE_EXTRA_INSTALL += " uim"' conf/local.conf || echo "Warning: Invalid Build Directory"
