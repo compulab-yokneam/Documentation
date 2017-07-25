@@ -61,6 +61,6 @@ NOTE: Let's assume that the file saved with `CSR.txt` name
 
 ### Issue this command
 [source,console]
-$: sed 's/\r//g' CSR.txt | awk 'BEGIN { print "static int sn65dsi_configure(void)\n{" } (/^0/)&&($0="\tsn65dsi_write("$1","$2");"); END { print "\treturn 0;\n}" }'
+$: awk 'BEGIN { print "static int sn65dsi_configure(void)\n{" } (/^0/)&&(sub(/\r$/,""))&&($0="\tsn65dsi_write("$1","$2");"); END { print "\treturn 0;\n}" }' CSR.txt
 
 ### Add generated code in the `drivers/video/fbdev/mxc/mxcfb_sn65dsi83.c` file as `sn65dsi_configure()` function.
