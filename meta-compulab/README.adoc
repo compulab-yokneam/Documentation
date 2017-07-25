@@ -22,27 +22,28 @@ $: repo sync
 [source,console]
 $: git clone -b devel https://github.com/compulab-yokneam/meta-compulab sources/meta-compulab
 
-#### `imx-4.1-krogoth` issues
+#### `imx-4.1-krogoth` fixes
 NOTE: These fixes must be applied `only` if the build ran into them
 
-* chromium gcc-6 fix
+* `chromium gcc-6`
 [source,console]
 $: git -C sources/meta-browser checkout 393d2aa15da21ffa532c3cd77d8cb91de997cd31
 
-* `lzop gcc-6` fix
+* `lzop gcc-6`
 [source,console]
 $: git -C sources/meta-compulab cherry-pick 8ede5fef9575246480af94808d1f60658aaff6a3
 
-** https://github.com/openembedded/openembedded-core/tree/master/meta/recipes-support/lzop[patch source/info]
-
-* `No real function for mknod` fix
+* `No real function for mknod`
 [source,console]
 $: git -C sources/meta-compulab cherry-pick d44a09a8be848a56c7670c4b416382b41e2542d3
 
-** https://lists.yoctoproject.org/pipermail/yocto/2016-October/032240.html[patch source/info]
+* `mesa fetch issue`
+[source,console]
+$: git -C sources/meta-compulab cherry-pick a999f3c92d8613f5f6c585bf729c46f101beae3f
 
-* `rootfs build failure` fix/workaround
-** http://lists.openembedded.org/pipermail/openembedded-core/2017-January/132040.html
+* `mozjs fetch issue`
+[source,console]
+$: git -C sources/meta-compulab cherry-pick 2087d68cdfe29a0346f20952808145f818730fdb
 
 ### Build Procedure
 #### Select an available machine: `cm-fx6-evk/cl-som-imx6ul/cl-som-imx7/cl-som-imx6`
