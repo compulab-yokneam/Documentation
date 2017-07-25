@@ -67,7 +67,7 @@ or
 $: export DISTRO=fsl-imx-wayland
 
 #### Create Build Environment
-* Issue `IMX Vendor` Setup Script
+* Issue `NXP` Setup Script
 [source,console]
 $: source fsl-setup-release.sh -b build-${MACHINE}-${DISTRO}
 
