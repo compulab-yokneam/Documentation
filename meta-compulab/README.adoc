@@ -22,6 +22,14 @@ $: repo sync
 [source,console]
 $: git clone -b devel https://github.com/compulab-yokneam/meta-compulab sources/meta-compulab
 
+#### Clone `meta-ti` layer for `cl-som-imx6ul` only:
+NOTE: `cl-som-imx6ul` machines make use of a `TI Wilink8` chip.
+This device requires a configuration tool provided by `meta-ti` layer.
+
+[source,console]
+$: git clone git://git.yoctoproject.org/meta-ti sources/meta-ti
+
+
 #### `imx-4.1-krogoth` issues
 NOTE: These fixes must be applied `only` if the build ran into them
 
