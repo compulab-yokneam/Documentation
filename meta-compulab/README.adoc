@@ -69,7 +69,7 @@ $: export DISTRO=fsl-imx-wayland
 [source,console]
 $: source fsl-setup-release.sh -b build-${MACHINE}-${DISTRO}
 
-#### Common Pre-Build Steps
+#### Pre-Build Steps
 * Add the `meta-compulab` location to the conf/bblayers.conf
 
 [source,console]
@@ -92,7 +92,7 @@ $: [[ -f conf/local.conf ]] && sed -i '$ a CORE_IMAGE_EXTRA_INSTALL += " cl-depl
 [source,console]
 $: [[ -f conf/local.conf ]] && sed -i '/PACKAGE_CLASSES/ a PACKAGE_CLASSES += " package_deb"' conf/local.conf || echo "Warning: Invalid Build Directory"
 
-#### `cl-som-imx6ul` Pre-Build Steps
+#### `cl-som-imx6ul` additional Pre-Build Steps
 NOTE: `cl-som-imx6ul` machines make use of a `TI Wilink8` chip.
 This device requires a configuration tool provided by `meta-ti` layer.
 
