@@ -42,9 +42,10 @@ chmod +x /path/to/priv.sh
 
 GPIO_DIR=/sys/class/gpio
 
+NUM=${1}
 [[ -z ${NUM} ]] && exit 1
-DIR=${DIR:-in}
-VAL=${VAL:-0}
+DIR=${2:-in}
+VAL=${3:-0}
 
 [[ -d ${GPIO_DIR}/${NUM} ]] || echo ${NUM} > ${GPIO_DIR}/export
 # Failed at export
@@ -60,5 +61,5 @@ chmod +x /path/to/non-priv.sh
 </pre>
 * Send a message from the the user ctx to the root ctx:
 <pre>
-echo "NUM=128 DIR=out VAL=1 /path/to/non-priv.sh" > /tmp/test.fifo
+echo "/path/to/non-priv.sh 128 out 1" > /tmp/test.fifo
 </pre>
