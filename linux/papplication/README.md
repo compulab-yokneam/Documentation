@@ -47,12 +47,12 @@ NUM=${1}
 DIR=${2:-in}
 VAL=${3:-0}
 
-[[ -d ${GPIO_DIR}/${NUM} ]] || echo ${NUM} > ${GPIO_DIR}/export
+[[ -d ${GPIO_DIR}/gpio${NUM} ]] || echo ${NUM} > ${GPIO_DIR}/export
 # Failed at export
-[[ -d ${GPIO_DIR}/${NUM} ]] || exit 2
+[[ -d ${GPIO_DIR}/gpio${NUM} ]] || exit 2
 
-echo ${DIR} > ${GPIO_DIR}/${NUM}/dirrection
-[[ ${DIR} == 'out' ]] && echo ${VAL} > ${GPIO_DIR}/${NUM}/value
+echo ${DIR} > ${GPIO_DIR}/gpio${NUM}/direction
+[[ ${DIR} == 'out' ]] && echo ${VAL} > ${GPIO_DIR}/gpio${NUM}/value
 
 </pre>
 * Make it executable:
