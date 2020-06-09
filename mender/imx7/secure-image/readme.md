@@ -20,10 +20,22 @@ zImage
 </pre>
 
 ### Kernel
-* Take the `zImage` binary, issue [signing Kernel Image](https://mediawiki.compulab.com/w/index.php?title=IOT-GATE-iMX7_and_SBC-IOT-iMX7:_U-Boot:_Building_Secure_Images#Signing_Kernel_Image). Save the output as `zImage.signed`.
+* Take the `zImage` binary, issue either:
+
+Manual Procedure | [CompuLab manual Kernel image signing procedure](https://mediawiki.compulab.com/w/index.php?title=IOT-GATE-iMX7_and_SBC-IOT-iMX7:_U-Boot:_Building_Secure_Images#Signing_Kernel_Image)|
+--- | --- |
+Automatic Procedure | [CompuLab cst-tools signing procedure](https://github.com/compulab-yokneam/meta-mender-compulab/tree/imx7/hab/recipes/cst-tools#how-to-use)|
+
+* Save the output as `zImage.signed`.
 
 ### U-Boot
-* Take the boot loader input files, issue [signing U-Boot Firmware](https://mediawiki.compulab.com/w/index.php?title=IOT-GATE-iMX7_and_SBC-IOT-iMX7:_U-Boot:_Building_Secure_Images#Signing_U-Boot_Firmware). Save the output as `u-boot.imx.signed`.
+* Take the boot loader input files, issue either:
+
+Manual Procedure | [CompuLab manual U-Boot firmware signing procedure](https://mediawiki.compulab.com/w/index.php?title=IOT-GATE-iMX7_and_SBC-IOT-iMX7:_U-Boot:_Building_Secure_Images#Signing_U-Boot_Firmware)|
+--- | --- |
+Automatic Procedure | [CompuLab cst-tools signing procedure](https://github.com/compulab-yokneam/meta-mender-compulab/tree/imx7/hab/recipes/cst-tools#how-to-use)|
+
+* Save the output as `u-boot.imx.signed`.
 
 ## Mount image file
 * Issue: `sdimage to a plain image file`:
@@ -75,6 +87,7 @@ done
 sudo dd if=/tmp/rootfs1/boot/u-boot.imx.signed of=${loopdevice} bs=1k seek=1
 </pre>
 
+## Unmount image file
 * Unmount all mounted partitions and detach the loopdevice:
 <pre>
 sudo umount ${loopdevice}p*
