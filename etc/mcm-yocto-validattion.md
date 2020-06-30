@@ -64,30 +64,48 @@ enable_network 0
 save_config
 ```
 
-* Check the status
-
-```
-status
-bssid=b4:75:0e:3e:27:04
-freq=2417
-ssid=CISCO1-ENG-2.4
-id=0
-mode=station
-pairwise_cipher=CCMP
-group_cipher=TKIP
-key_mgmt=WPA2-PSK
-wpa_state=COMPLETED
-p2p_device_address=c2:ee:40:35:e0:a0
-address=c0:ee:40:35:e0:a0
-uuid=cc610a76-418c-5051-99d0-1a861cfe0fa3
-```
-
 * Leave the wpa_cli
 ```
 quit
 ```
 
+* Check the wpa_cli status
+
+```
+wpa_cli -i wlan0 status
+  bssid=b4:75:0e:3e:27:04
+  freq=2417
+  ssid=CISCO1-ENG-2.4
+  id=0
+  mode=station
+  pairwise_cipher=CCMP
+  group_cipher=TKIP
+  key_mgmt=WPA2-PSK
+  wpa_state=COMPLETED
+  ip_address=192.168.96.30
+  p2p_device_address=c2:ee:40:35:e0:a0
+  address=c0:ee:40:35:e0:a0
+  uuid=cc610a76-418c-5051-99d0-1a861cfe0fa3
+```
+
 * Get an ip address:
 ```
 dhclient wlan0
+```
+
+* Check the `iw` status
+
+```
+iw wlan0 link
+Connected to b4:75:0e:3e:27:04 (on wlan0)
+        SSID: CISCO1-ENG-2.4
+        freq: 2417
+        RX: 392667 bytes (846 packets)
+        TX: 578 bytes (5 packets)
+        signal: -85 dBm
+        tx bitrate: 5.5 MBit/s
+
+        bss flags:      short-slot-time
+        dtim period:    1
+        beacon int:     100
 ```
