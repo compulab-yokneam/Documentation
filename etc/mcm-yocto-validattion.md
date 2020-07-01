@@ -109,3 +109,41 @@ Connected to b4:75:0e:3e:27:04 (on wlan0)
         dtim period:    1
         beacon int:     100
 ```
+
+# Video Playback
+* Stop weston 1-st
+```
+systemctl stop weston
+```
+* gplay
+```
+gplay-1.0 /media/Sintel_DivXPlusHD_2Titles_6500kbps.mkv
+```
+* Rotate 90
+```
+        [h]display the operation Help
+        [p]Play
+        [s]Stop
+        [e]Seek
+        [a]Pause when playing, play when paused
+        [v]Volume
+        [m]Switch to mute or not
+        [>]Play next file
+        [<]Play previous file
+        [r]Switch to repeated mode or not
+        [u]Select the video track
+        [d]Select the audio track
+        [b]Select the subtitle track
+        [f]Set full screen
+        [z]resize the width and height
+        [t]Rotate
+        [c]Setting play rate
+        [i]Display the metadata
+        [x]eXit
+State changed: buffering
+State changed: playing
+[Playing (No Repeated)][Vol=1.0][00:00:03/00:15:08]t
+Set rotation between 0, 90, 180, 270: 90
+```
+
+
