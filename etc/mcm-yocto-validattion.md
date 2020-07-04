@@ -2,9 +2,9 @@
 
 * Enable pulseaudio
 
-```
-systemctl --user enable pulseaudio 
-```
+|**sumo**|**zeus**|
+|----|----|
+|`systemctl --user enable pulseaudio` | `pulseaudio --system -D` |
 
 # WiFi test
 
