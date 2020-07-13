@@ -111,10 +111,6 @@ Connected to b4:75:0e:3e:27:04 (on wlan0)
 ```
 
 # Video Playback
-* Stop weston 1-st
-```
-systemctl stop weston
-```
 * gplay
 ```
 gplay-1.0 /media/Sintel_DivXPlusHD_2Titles_6500kbps.mkv
