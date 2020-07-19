@@ -1,4 +1,6 @@
-# MuliMedia
+# Linux how to
+
+## MuliMedia
 
 * Enable pulseaudio
 
@@ -6,7 +8,7 @@
 |----|----|
 |`systemctl --user enable pulseaudio` | `pulseaudio --system -D` |
 
-# WiFi test
+## WiFi test
 
 * Stop rfkill
 ```
@@ -110,7 +112,7 @@ Connected to b4:75:0e:3e:27:04 (on wlan0)
         beacon int:     100
 ```
 
-# Video Playback
+## Video Playback
 * gplay
 ```
 gplay-1.0 /media/Sintel_DivXPlusHD_2Titles_6500kbps.mkv
@@ -142,4 +144,38 @@ State changed: playing
 Set rotation between 0, 90, 180, 270: 90
 ```
 
+## EEprom
 
+* U-Boot
+
+|description|command|
+|---|---|
+|Scan i2c-1 bus|i2c dev 1;i2c probe|
+|Dump 1-0x51|i2c md 0x51 .0 0x0 0x100|
+|Write to eeprom|i2c mw 0x51 0x40 0xFF 0x10|
+
+* Linux
+
+|description|command|
+|---|---|
+|Scan i2c-1 bus|i2cdetect -y 1|
+|Read from 1-0x51|i2cdump -f -y 1 0x51|
+|Write to eeprom|i2ctransfer -f -y 1 w5@0x51 0x40 0xFF=|
+
+## U-Boot environmen
+
+* U-Boot
+
+|description|command|
+|---|---|
+|Read Current|printenv|
+|Apply deafault|env default -a|
+|Write|saveenv|
+
+* Linux
+
+|description|command|
+|---|---|
+|Read Current|fw_pintenv \| tee /var/local/env|
+|Clean up environment|echo 0 > /sys/class/block/mmcblk2boot0/force_ro<br>dd if=/dev/zero of=/dev/mmcblk2boot0 bs=1K seek=17 count=1<br>echo 1 > /sys/class/block/mmcblk2boot0/force_ro|
+|Write/Restore|cl_setenv --script /var/local/env|
