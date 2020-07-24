@@ -1,0 +1,68 @@
+# JTAG Debugging
+
+## Requirements:
+* HW: http://dangerousprototypes.com/docs/Bus_Blaster[Bus Blaster v3]
+* SW: http://openocd.org/[OpenOCD]
+* Integration and configuration: https://www.biglakesoftware.com/open-source-jtag-debugging[Open Source JTAG Debugging]
+
+## How to:
+Target is a `imx8mq` or `imx8mq` SOC. Host is a development Linux machine with installed openocd
+
+* BackEnd
+[source,console]
+sudo openocd -f ~/openocd/tcl/interface/ftdi/dp_busblaster.cfg -f ~/openocd/tcl/board/nxp_mcimx8m-evk.cfg
+
+* Monitor
+Get connected to the `openocd:4444`, switch to the `imx8mq.m4` and examine:
+[source,console]
+telnet localhost 4444
+> targets imx8mq.a53.0
+> imx8mq.a53.0 arp_examine
+> targets              
+    TargetName         Type       Endian TapName            State       
+--  ------------------ ---------- ------ ------------------ ------------
+ 0* imx8mq.a53.0       aarch64    little imx8mq.cpu         running
+ 1  imx8mq.a53.1       aarch64    little imx8mq.cpu         examine deferred
+ 2  imx8mq.a53.2       aarch64    little imx8mq.cpu         examine deferred
+ 3  imx8mq.a53.3       aarch64    little imx8mq.cpu         examine deferred
+ 4  imx8mq.m4          cortex_m   little imx8mq.cpu         examine deferred
+ 5  imx8mq.ahb         mem_ap     little imx8mq.cpu         examine deferred
+
+* Front End +
+Get connected to the `openocd:3333`, resume the `imx8mq.a53.0`:
+[source,console]
+${CROSS_COMPILE}gdb
+(gdb) target remote :3333
+Remote debugging using :3333
+(gdb) continue
+
+
+## Debugging with JTAG
+### U-Boot
+
+* Figure out the u-boot relocation address; stop in u-boot and issue: +
+[source,console]
+bdinfo
+
+* Take the value of `relocaddr` and pass it as the starting address of the file's text. In the example bellow it is `0x7df48000`
+
+* Run gdb: +
+[source,console]
+${CROSS_COMPILE}gdb Debug/u-boot
+(gdb) symbol-file
+(gdb) add-symbol-file Debug/u-boot 0x7df48000
+(gdb) target remote :3333
+Remote debugging using :3333
+(gdb) continue
+Continuing.
+
+### SPL
+${CROSS_COMPILE}gdb takes the the starting address of the file's text from the `u-boot-spl`
+
+* Run gdb: +
+[source,console]
+${CROSS_COMPILE}gdb Debug/spl/u-boot-spl
+(gdb) target remote :3333
+Remote debugging using :3333
+(gdb) continue
+Continuing.
