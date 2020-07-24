@@ -5,12 +5,26 @@
 * SW: http://openocd.org/[OpenOCD]
 * Integration and configuration: https://www.biglakesoftware.com/open-source-jtag-debugging[Open Source JTAG Debugging]
 
-## How to:
+## How to build:
+
+* Download
+[source,console]
+git clone git://git.code.sf.net/p/openocd/code
+
+* Build
+[source,console]
+cd /path/to/openocd/code
+./bootstrap
+./configure --prefix=/opt/openocd --enable-ftdi --enable-maintainer-mode --enable-target64
+make -j 8
+sudo make install
+
+## How to use:
 Target is a `imx8mq` or `imx8mq` SOC. Host is a development Linux machine with installed openocd
 
 * BackEnd
 [source,console]
-sudo openocd -f ~/openocd/tcl/interface/ftdi/dp_busblaster.cfg -f ~/openocd/tcl/board/nxp_mcimx8m-evk.cfg
+/opt/openocd/bin/openocd -f interface/ftdi/dp_busblaster_kt-link.cfg -f board/nxp_mcimx8m-evk.cfg
 
 * Monitor
 Get connected to the `openocd:4444`, switch to the `imx8mq.m4` and examine:
