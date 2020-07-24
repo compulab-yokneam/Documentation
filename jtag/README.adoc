@@ -26,8 +26,8 @@ Target is a `imx8mq` or `imx8mq` SOC. Host is a development Linux machine with i
 [source,console]
 /opt/openocd/bin/openocd -f interface/ftdi/dp_busblaster_kt-link.cfg -f board/nxp_mcimx8m-evk.cfg
 
-* Monitor
-Get connected to the `openocd:4444`, switch to the `imx8mq.m4` and examine:
+* Monitor +
+Get connected to the `openocd:4444`, switch to the `mx8mq.a53.0` and examine:
 [source,console]
 telnet localhost 4444
 > targets imx8mq.a53.0
