@@ -1,0 +1,50 @@
+# Create a bootable sd-card.
+
+IMPORTANT: sd-card size >= 4G
+
+## Download a file:
+* Yocto: https://drive.google.com/file/d/1grKwMS0OdPWrd0-t5-fzGbTfK3G_zr_1/view?usp=sharing[imx-image-full-mcm-imx8m-mini-1.0.sdcard.bz2] +
+* Debian: https://drive.google.com/file/d/1wPPUr2xUgsGuAGNWIA4v2ot61vmRVH-T/view?usp=sharing[debian.10.4g.img.xz]
+
+## Create a bootable SD-card:
+* Yocto
+[source,code]
+bzip2 -dc imx-image-full-mcm-imx8m-mini-1.0.sdcard.bz2 | sudo dd of=/dev/sdX
+
+* Debian
+[source,code]
+xz -dc  debian.10.4g.img.xz | sudo dd of=/dev/sdX
+
+## Boot the device from the created sd-card.
+* Turn off the device.
+* Insert the sd-card into the P22 slot.
+* Press and hold SW9.
+* Turn on the device.
+* Release SW9.
+* Let the device boot up.
+
+## Update the eMMC.
+* Open up a terminal window and issue:
+* Update boot loader:
+[source,code]
+cl-uboot
+
+** cl-uboot options: +
+  U-Boot files: imx-boot-mcm-imx8m-mini-sd.bin-flash_evk +
+  Boot devices: mmcblk2boot0
+
+* Update boot environment:
+[source,code]
+cl_setenv update yes
+
+* Deploy rootfs:
+[source,code]
+QUIET=Yes DST=/dev/mmcblk2 cl-deploy
+
+* Wait for a “SUCCESS” message in the terminal window & power off the device.
+[source,code]
+poweroff
+
+* Remove the SD-card and turn on the device, stop in U-Boot and issue:
+[source,code]
+env default -a; saveenv; reset
