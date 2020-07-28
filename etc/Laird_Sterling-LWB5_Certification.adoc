@@ -1,0 +1,24 @@
+# Laird Sterling-LWB5 Certification
+
+## Documentation
+* https://www.lairdconnect.com/wireless-modules/wifi-modules-bluetooth/sterling-lwb5-dual-band-wifi-module-bluetooth-42#documentation[Laird Documetation]
+* https://connectivity-staging.s3.us-east-2.amazonaws.com/2019-03/LWBCert.pdf[Certification Guide Sterling-LWB/LWB5]
+
+## Prepare the sd-card
+* Download the https://drive.google.com/file/d/1NmWTl4CAZJ8vgUOSMjH1vUURTKqyARww/view?usp=sharing[CompuLab Laird Certification Image]
+* Create a bootable SD-card:
+[source,code]
+xz -dc fsl-image-qt5-validation-imx-ucm-imx8m-mini-lair.rootfs.sdcard.xz | sudo dd of=/dev/sdX
+
+## Boot the device from the created sd-card.
+* Turn off the device.
+* Insert the sd-card into the P23 slot.
+* Press and hold SW7.
+* Turn on the device.
+* Release SW7.
+* Let the device boot up.
+
+## Certification
+NOTE: The sd-card contains all required tools & the Sterling firmware files. This is a ready for Certification Image.
+
+Follow the instructions of the https://connectivity-staging.s3.us-east-2.amazonaws.com/2019-03/LWBCert.pdf[Certification Guide Sterling-LWB/LWB5].
