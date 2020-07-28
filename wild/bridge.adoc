@@ -1,0 +1,72 @@
+# Wild Restponder/Bridge mode
+
+Wild device can work as a network bridge while being configure as `Responder`. +
+The device creates a network bridge with two network interfaces: wlan0 ~ enp3s0.
+
+IMPORTANT: Before the start: +
+1) make sure that the `enp3s0` nic is able to get configured with a dhcp address in your LAN. +
+2) being configured with a dhcp address the device is able to ping `google.com`.
+
+## How to procedure
+* Turn on the device
+* Login to the device and turn into root:
+[source,code]
+compulab@compulab-wild:~$ sudo -i
+[sudo] password for compulab: compulab
+
+* Turn off all ftm services:
+[source,code]
+ftm-role
+1) Client
+2) Dumb
+3) <<
+Device role [ Responder: ] > 2
+
+* Make sure that the `enp3s0` is up:
+[source,code]
+cat /sys/class/net/enp3s0/operstate                                                                                                                                                                                                                                                                                                                    
+up
+
+** If the return value is `down` then connect the interface to the LAN and issue the command again util it returns `up`.
+
+* Turn on the `Responder` mode:
+[source,code]
+ftm-role 
+1) Responder
+2) Client
+3) Dumb
+4) <<
+Device role [  ] > 1
+
+* Figure out whether the `br0` started:
+[source,code]
+brctl show
+bridge name     bridge id               STP enabled     interfaces
+br0             8000.0001c01ffe48       no              enp3s0
+                                                        wlan0
+
+* Make sure that an `ip` address was assigned to the `br0` device
+[source,code]
+ifconfig br0
+br0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.24.126  netmask 255.255.0.0  broadcast 192.168.255.255
+        inet6 fe80::201:c0ff:fe1f:fe48  prefixlen 64  scopeid 0x20<link>
+        ether 00:01:c0:1f:fe:48  txqueuelen 1000  (Ethernet)
+        RX packets 23593  bytes 2938735 (2.8 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 65  bytes 8340 (8.1 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+       
+* Make sure that the default gw is configured as well and the `br0` is the interface that provides the access to:
+[source,code]
+netstart -rn
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
+0.0.0.0         192.168.0.110   0.0.0.0         UG        0 0          0 br0
+192.168.0.0     0.0.0.0         255.255.0.0     U         0 0          0 br0
+
+* Try accessing an URL outside of your LAN:
+[source,code]
+ping google.com
+
+NOTE: If it works the device configured as a network bridge correctly.
