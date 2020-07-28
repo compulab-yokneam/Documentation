@@ -70,3 +70,6 @@ Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
 ping google.com
 
 NOTE: If it works the device configured as a network bridge correctly.
+
+# Resources
+The latest available Wild package is: https://drive.google.com/file/d/1qm6ot_MSDO4Ir3yHyEz7XvwwaLqaC1OM/view?usp=sharing[ftm-services_0.7.4.deb]
