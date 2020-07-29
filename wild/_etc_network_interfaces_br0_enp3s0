@@ -6,7 +6,6 @@ auto lo
 iface lo inet loopback
 
 # closest to the edge
-# a spare network interface (can be disconnected)
 # Roles:
 # 1: a generic network interface
 auto enp2s0
