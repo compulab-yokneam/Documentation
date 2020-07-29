@@ -1,0 +1,33 @@
+# interfaces(5) file used by ifup(8) and ifdown(8)
+# Include files from /etc/network/interfaces.d:
+source-directory /etc/network/interfaces.d
+
+auto lo
+iface lo inet loopback
+
+# closest to the edge
+# a spare network interface (can be disconnected)
+# Roles:
+# 1: a generic network interface
+auto enp2s0
+allow-hotplug enp2s0
+iface enp2s0 inet manual
+
+# closest to the power plug
+# Roles:
+# 1: a part of bridge
+# 2: a generic network interface
+auto enp3s0
+allow-hotplug enp3s0
+iface enp3s0 inet manual
+
+auto wlan0
+allow-hotplug wlan0
+iface wlan0 inet manual
+
+# Bridge Setup
+# This is a bridge interface
+# gets turned on when device is a responder
+# auto br0
+iface br0 inet dhcp
+bridge_ports wlan0 enp3s0
