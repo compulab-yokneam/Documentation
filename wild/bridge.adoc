@@ -16,27 +16,18 @@ compulab@compulab-wild:~$ sudo -i
 
 * Turn off all ftm services:
 [source,code]
-ftm-role
-1) Client
-2) Dumb
-3) <<
-Device role [ Responder: ] > 2
+wild -mo
 
 * Make sure that the `enp3s0` is up:
 [source,code]
-cat /sys/class/net/enp3s0/operstate                                                                                                                                                                                                                                                                                                                    
+cat /sys/class/net/enp3s0/operstate
 up
 
 ** If the return value is `down` then connect the interface to the LAN and issue the command again util it returns `up`.
 
 * Turn on the `Responder` mode:
 [source,code]
-ftm-role 
-1) Responder
-2) Client
-3) Dumb
-4) <<
-Device role [  ] > 1
+wild -mr
 
 * Figure out whether the `br0` started:
 [source,code]
@@ -70,6 +61,23 @@ Destination     Gateway         Genmask         Flags   MSS Window  irtt Iface
 ping google.com
 
 NOTE: If it works the device configured as a network bridge correctly.
+
+## Configuration options
+
+Some `Wild` devices do not have `enp3s0` nic. For this devices `enp2s0` must be used. +
+Table below shows how to modify the configuration file according to the used nic.
+
+|=====
+|Interface|Socket panel location|Conf file modification command
+|enp2s0|closest to the edge| sed -i 's/\(bridge_ports wlan0\).*/\1 enp2s0/g' /etc/network/interfaces
+|enp3s0|closest to the power plug| sed -i 's/\(bridge_ports wlan0\).*/\1 enp3s0/g' /etc/network/interfaces
+|=====
+
+If configuration options were changed then restart the ftm services this way:
+[source,code]
+wild -mo
+brctl delbr br0
+wild -mr
 
 # Resources
 The latest available Wild package is: https://drive.google.com/file/d/1qm6ot_MSDO4Ir3yHyEz7XvwwaLqaC1OM/view?usp=sharing[ftm-services_0.7.4.deb]
