@@ -1,0 +1,78 @@
+# SIM7600
+
+## ModemManager
+The Debian `ModemManager` provides a wide range of commands for modem management.
+
+* Get modem info
+[source,code]
+mmcli -m 0
+  --------------------------------
+  General  |            dbus path: /org/freedesktop/ModemManager1/Modem/0
+           |            device id: 74f21510c20cf03751989d354235dddcf5e4d524
+  --------------------------------
+  Hardware |         manufacturer: QUALCOMM INCORPORATED
+           |                model: 0
+           |             revision: LE11B02SIM7500A
+           |         h/w revision: 10000
+           |            supported: gsm-umts, lte
+           |              current: gsm-umts, lte
+           |         equipment id: 868022030064831
+  --------------------------------
+  System   |               device: /sys/devices/platform/32e50000.usb/ci_hdrc.1/usb2/2-1/2-1.5
+           |              drivers: option1, qmi_wwan
+           |               plugin: SimTech
+           |         primary port: cdc-wdm0
+           |                ports: ttyUSB0 (qcdm), ttyUSB2 (at), cdc-wdm0 (qmi), wwan0 (net),
+           |                       ttyUSB3 (at)
+  --------------------------------
+  Status   |                 lock: sim-pin2
+           |       unlock retries: sim-pin (5), sim-pin2 (5), sim-puk (5), sim-puk2 (5)
+           |                state: registered
+           |          power state: on
+           |          access tech: umts
+           |       signal quality: 39% (cached)
+  --------------------------------
+  Modes    |            supported: allowed: 3g; preferred: none
+           |                       allowed: 4g; preferred: none
+           |                       allowed: 3g, 4g; preferred: 3g
+           |                       allowed: 3g, 4g; preferred: 4g
+           |              current: allowed: 3g, 4g; preferred: 4g
+  --------------------------------
+  Bands    |            supported: utran-5, utran-2, eutran-2, eutran-4, eutran-5, eutran-12
+           |              current: utran-5, utran-2, eutran-2, eutran-4, eutran-12
+  --------------------------------
+  IP       |            supported: ipv4, ipv6, ipv4v6
+  --------------------------------
+  3GPP     |                 imei: 868022030064831
+           |          operator id: 42503
+           |         registration: home
+  --------------------------------
+  3GPP EPS | ue mode of operation: csps-1
+  --------------------------------
+  SIM      |            dbus path: /org/freedesktop/ModemManager1/SIM/0
+  
+## AT-Commands
+
+|=====
+|NOTE| AT command mode works if a SIM card is installed. +
+Issue this command `mmcli -m 0 -w` in order to get the modem state. +
+|=====
+
+
+It allows sending the https://simcom.ee/documents/SIM7600C/SIM7500_SIM7600%20Series_AT%20Command%20Manual_V1.01.pdf[Sim7600 AT Commands].
+
+* AT-Commands
+** Request model information:
+[source,code]
+mmcli -m 0 --command='AT+CGMM'
+response: 'SIMCOM_SIM7600A-H'
+
+** Request revision indentification:
+[source,code]
+mmcli -m 0 --command='AT+CGMR'
+response: '+CGMR: LE11B02SIM7500A'
+
+** Request product serial number identification:
+[source,code]
+mmcli -m 0 --command='AT+CGSN'
+response: '868022030064831'
