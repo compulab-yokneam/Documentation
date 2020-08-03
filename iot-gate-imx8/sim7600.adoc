@@ -54,12 +54,12 @@ mmcli -m 0
 ## AT-Commands
 
 |=====
-|NOTE| AT command mode works if a SIM card is installed. +
+|NOTE| 1) AT command mode works if a SIM card is installed. +
 Issue this command `mmcli -m 0 -w` in order to get the modem state. +
+2) AT command mode requires `debug` mode of the https://www.freedesktop.org/wiki/Software/ModemManager/Debugging/[ModemManager]
 |=====
 
-
-It allows sending the https://simcom.ee/documents/SIM7600C/SIM7500_SIM7600%20Series_AT%20Command%20Manual_V1.01.pdf[Sim7600 AT Commands].
+### Sending https://simcom.ee/documents/SIM7600C/SIM7500_SIM7600%20Series_AT%20Command%20Manual_V1.01.pdf[AT Commands]
 
 * AT-Commands
 ** Request model information:
