@@ -1,7 +1,7 @@
 # SIM7600
 
 ## Minicom
-Minicon is a program that can be used for sending AT-command terminal.
+Minicon is a program that can be used for sending AT commands.
 |====
 |NOTE|Stop `MdemManager` first. Issue: +
 `systemctl stop NetworkManager ModemManager`
@@ -20,7 +20,7 @@ minicom -D /dev/ttyUSB2 ~/.minirc.dfl
 Press CTRL_A+E
 
 ** Issuing AT commands. +
-Type AT-command in the minicom window
+Type an AT command in the minicom window and pres `Enter`:
 [source,code]
 ATI
 OK
