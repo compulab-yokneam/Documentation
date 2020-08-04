@@ -1,0 +1,23 @@
+send AT
+expect "OK"
+
+send ATI
+expect "OK"
+
+send AT+CGMI
+expect "OK"
+
+send AT+CGMR
+expect "OK"
+
+send AT+CGSN
+expect "OK"
+
+send AT+CFUN=?
+expect "OK"
+
+send AT+CFUN?
+expect "OK"
+
+send AT+CSQ
+expect "OK"
