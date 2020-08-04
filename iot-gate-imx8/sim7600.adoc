@@ -16,7 +16,7 @@ cd ~; wget https://raw.githubusercontent.com/compulab-yokneam/Documentation/mast
 [source,code]
 minicom -D /dev/ttyUSB2 ~/.minirc.dfl
 
-** While in minicom, enable local echo.
+** While in minicom, enable local echo. +
 Press CTRL_A+E
 
 ** Issuing AT commands. +
@@ -25,7 +25,7 @@ Type AT-command in the minicom window
 ATI
 OK
 
-** Terminate minocom sesseion. +
+** Terminate minocom session. +
 Press CTRL_A+Q
 
 * Script mode
