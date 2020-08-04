@@ -4,7 +4,7 @@ IMPORTANT: sd-card size >= 4G
 
 ## Download a file:
 * Yocto: https://drive.google.com/file/d/1grKwMS0OdPWrd0-t5-fzGbTfK3G_zr_1/view?usp=sharing[imx-image-full-mcm-imx8m-mini-1.0.sdcard.bz2] +
-* Debian: https://drive.google.com/file/d/1wPPUr2xUgsGuAGNWIA4v2ot61vmRVH-T/view?usp=sharing[debian.10.4g.img.xz]
+* Debian: https://drive.google.com/file/d/1z85KqqA1YHCHr7WYmWlBSbd7l2nf0Az1/view?usp=sharing[debian.10.4g.img.xz]
 
 ## Create a bootable SD-card:
 * Yocto
