@@ -76,3 +76,109 @@ response: '+CGMR: LE11B02SIM7500A'
 [source,code]
 mmcli -m 0 --command='AT+CGSN'
 response: '868022030064831'
+
+## libqmi-utils
+
+Another way to talk to QMI modems is to use the https://www.freedesktop.org/software/libqmi/man/latest/qmicli.1.html[QMI protocol from the command line].
+
+* Usefull commands
+
+** get-ids
+[source,code]
+qmicli -d /dev/cdc-wdm0 --dms-get-ids
+[/dev/cdc-wdm0] Device IDs retrieved:
+         ESN: '0'
+        IMEI: '868022030064831'
+        MEID: 'unknown'
+
+** get-capabilities
+[source,code]
+qmicli -d /dev/cdc-wdm0 --dms-get-capabilities
+[/dev/cdc-wdm0] Device capabilities retrieved:
+        Max TX channel rate: '50000000'
+        Max RX channel rate: '100000000'
+               Data Service: 'non-simultaneous-cs-ps'
+                        SIM: 'supported'
+                   Networks: 'umts, lte'
+
+** get-manufacturer
+[source,code]
+qmicli -d /dev/cdc-wdm0 --dms-get-manufacturer
+[/dev/cdc-wdm0] Device manufacturer retrieved:
+        Manufacturer: 'QUALCOMM INCORPORATED'
+
+** get-model
+[source,code]
+qmicli -d /dev/cdc-wdm0 --dms-get-model
+[/dev/cdc-wdm0] Device model retrieved:
+        Model: '0'
+
+** get-revision
+[source,code]
+qmicli -d /dev/cdc-wdm0 --dms-get-revision
+[/dev/cdc-wdm0] Device revision retrieved:
+        Revision: 'LE11B02SIM7500A'
+
+** get-hardware-revision
+[source,code]
+qmicli -d /dev/cdc-wdm0  --dms-get-hardware-revision
+[/dev/cdc-wdm0] Hardware revision retrieved:
+        Revision: '10000'
+
+** get-operating-mode
+[source,code]
+qmicli -d /dev/cdc-wdm0  --dms-get-operating-mode
+[/dev/cdc-wdm0] Operating mode retrieved:
+        Mode: 'online'
+        HW restricted: 'no'
+
+** band-capabilities
+[source,code]
+qmicli -d /dev/cdc-wdm0  --dms-get-band-capabilities
+[/dev/cdc-wdm0] Device band capabilities retrieved:
+        Bands: 'wcdma-pcs-1900, wcdma-850-us'
+        LTE bands: '2, 4, 5, 12'
+
+** network-scan
+[source,code]
+qmicli -d /dev/cdc-wdm0  --nas-network-scan
+[/dev/cdc-wdm0] Successfully scanned networks
+Network [0]:
+        MCC: '425'
+        MNC: '3'
+        Status: 'available, roaming, not-forbidden, not-preferred'
+        Description: 'PCL'
+Network [1]:
+        MCC: '425'
+        MNC: '8'
+        Status: 'available, roaming, not-forbidden, not-preferred'
+        Description: '425 08'
+Network [2]:
+        MCC: '425'
+        MNC: '2'
+        Status: 'available, roaming, not-forbidden, not-preferred'
+        Description: 'Cellcom'
+Network [0]:
+        MCC: '425'
+        MNC: '3'
+        RAT: 'umts'
+Network [1]:
+        MCC: '425'
+        MNC: '8'
+        RAT: 'umts'
+Network [2]:
+        MCC: '425'
+        MNC: '2'
+        RAT: 'umts'
+Network [0]:
+        MCC: '425'
+        MNC: '3'
+        MCC with PCS digit: 'no'
+Network [1]:
+        MCC: '425'
+        MNC: '8'
+        MCC with PCS digit: 'no'
+Network [2]:
+        MCC: '425'
+        MNC: '2'
+        MCC with PCS digit: 'no'
