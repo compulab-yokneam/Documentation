@@ -139,6 +139,80 @@ qmicli -d /dev/cdc-wdm0  --dms-get-band-capabilities
         Bands: 'wcdma-pcs-1900, wcdma-850-us'
         LTE bands: '2, 4, 5, 12'
 
+** get-system-info
+[source,code]
+qmicli -d /dev/cdc-wdm0 --nas-get-system-info
+[/dev/cdc-wdm0] Successfully got system info:
+        WCDMA service:
+                Status: 'limited'
+                True Status: 'limited'
+                Preferred data path: 'no'
+                Domain: 'none'
+                Service capability: 'cs-ps'
+                Roaming status: 'on'
+                Forbidden: 'no'
+                Location Area Code: '33941'
+                Cell ID: '6192238'
+                MCC: '425'
+                MNC: '02'
+                HS call status: 'hsdpa-hsupa-unsupported'
+                HS service: 'hsdpa-hsupa-supported'
+                Primary scrambling code: '11'
+                Cell broadcast support: 'on'
+                Call barring status (CS): 'emergency-only'
+                Call barring status (PS): 'emergency-only'
+                Cipher Domain: 'none'
+        LTE service:
+                Status: 'none'
+                True Status: 'none'
+                Preferred data path: 'no'
+        SIM reject info: 'unavailable'
+
+** get-serving-system
+[source,code]
+qmicli -d /dev/cdc-wdm0  --nas-get-serving-system
+[/dev/cdc-wdm0] Successfully got serving system:
+        Registration state: 'not-registered-searching'
+        CS: 'detached'
+        PS: 'detached'
+        Selected network: '3gpp'
+        Radio interfaces: '1'
+                [0]: 'umts'
+        Roaming status: 'on'
+        Data service capabilities: '0'
+        Current PLMN:
+                MCC: '425'
+                MNC: '2'
+                Description: ''
+        Roaming indicators: '1'
+                [0]: 'on' (umts)
+        Detailed status:
+                Status: 'limited'
+                Capability: 'cs-ps'
+                HDR Status: 'none'
+                HDR Hybrid: 'no'
+                Forbidden: 'no'
+        UMTS primary scrambling code: '11'
+        Full operator code info:
+                MCC: '425'
+                MNC: '2'
+                MNC with PCS digit: 'no'
+
+** get-system-selection-preference
+[source,code]
+qmicli -d /dev/cdc-wdm0  --nas-get-system-selection-preference
+[/dev/cdc-wdm0] Successfully got system selection preference
+        Emergency mode: 'no'
+        Mode preference: 'umts, lte'
+        Band preference: 'wcdma-pcs-1900, wcdma-850-us'
+        LTE band preference: '2, 4, 12'
+        TD-SCDMA band preference: 'a, b, c, d, e, f'
+        Roaming preference: 'any'
+        Network selection preference: 'automatic'
+        Service domain preference: 'cs-ps'
+        GSM/WCDMA acquisition order preference: 'automatic'
+        Acquisition order preference: lte, umts, gsm, cdma-1x, cdma-1xevdo
+
 ** network-scan
 [source,code]
 qmicli -d /dev/cdc-wdm0  --nas-network-scan
