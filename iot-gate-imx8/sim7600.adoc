@@ -1,5 +1,42 @@
 # SIM7600
 
+## Minicom
+Minicon is a program that can be used for sending AT-command terminal.
+|====
+|NOTE|Stop `MdemManager` first. Issue: +
+`systemctl stop NetworkManager ModemManager`
+|====
+
+* Interactive mode
+** Download https://raw.githubusercontent.com/compulab-yokneam/Documentation/master/iot-gate-imx8/.minirc.dfl[.minirc.dfl] file 
+[source,code]
+cd ~; wget https://raw.githubusercontent.com/compulab-yokneam/Documentation/master/iot-gate-imx8/.minirc.dfl
+
+** Start minicom:
+[source,code]
+minicom -D /dev/ttyUSB2 ~/.minirc.dfl
+
+** While in minicom, enable local echo.
+Press CTRL_A+E
+
+** Issuing AT commands. +
+Type AT-command in the minicom window
+[source,code]
+ATI
+OK
+
+** Terminate minocom sesseion. +
+Press CTRL_A+Q
+
+* Script mode
+** Download https://raw.githubusercontent.com/compulab-yokneam/Documentation/master/iot-gate-imx8/.modem.scr[.modem.scr] script file:
+[source,code]
+cd ~; wget https://raw.githubusercontent.com/compulab-yokneam/Documentation/master/iot-gate-imx8/.modem.scr
+
+** Start minicom:
+[source,code]
+minicom -D /dev/ttyUSB2 ~/.minirc.dfl --script=~/.modem.scr
+
 ## ModemManager
 The Debian `ModemManager` provides a wide range of commands for modem management.
 
