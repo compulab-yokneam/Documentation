@@ -18,7 +18,7 @@ Make use of this script [deb2tar.sh](https://raw.githubusercontent.com/compulab-
 <pre>
 wget --output-document=/tmp/deb2tar.sh https://raw.githubusercontent.com/compulab-yokneam/Documentation/master/etc/deb2tar.sh
 chmod a+x /tmp/deb2tar.sh
-/tmp/deb2tar linux-image-*.deb
+/tmp/deb2tar.sh linux-image-*.deb
 </pre>
 
 The output file will be saved as  ```/tmp/linux-image-<version>.tar.bz2```.
