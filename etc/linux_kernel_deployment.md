@@ -2,7 +2,12 @@
 
 ## Compile the Kernel
 Follow the instructions of the SoC Linux Kerne Build.
-For instance: [imx8mm](https://github.com/compulab-yokneam/meta-bsp-imx8mm/blob/rel_imx_5.4.24_2.1.0-dev/Documentation/linux_kernel_build.md)
+
+|SoM Build Instruction|
+|--------|
+|[ucm-imx8m-mini](https://github.com/compulab-yokneam/meta-bsp-imx8mm/blob/rel_imx_5.4.24_2.1.0-dev/Documentation/linux_kernel_build.md)|
+|[cl-som-imx8](https://github.com/compulab-yokneam/meta-bsp-imx8mq/blob/devel-rel_imx_5.4.3_2.0.0/Documentation/linux_kernel_build.md)|
+|[cl-som-imx8x](https://mediawiki.compulab.com/w/index.php?title=CL-SOM-iMX8X:_Building_Linux_Kernel)|
 
 ## Create deb package
 <pre>
