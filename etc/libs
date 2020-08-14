@@ -4,7 +4,7 @@ be=${1:-"fb"}
 declare -A backend=(["fb"]=1 ["x11"]=1 ["wl"]=1)
 [[ ${backend[${be}]} -eq 1 ]] || exit 2
 
-pushd .
+pushd . &>/dev/null
 cd /usr/lib &>/dev/null
 
 libEGL="libEGL.so libEGL.so.1 libEGL.so.1.0"
@@ -15,7 +15,7 @@ libvulkan="libvulkan.so"
 
 for lib in libEGL libGAL libGLESv2 libVDK libvulkan;do
 for l in ${!lib};do
-echo ln -sf "${lib}-${be}.so ${l}"
+ln -sf ${lib}-${be}.so ${l}
 done
 done
 
