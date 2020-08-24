@@ -1,0 +1,25 @@
+# Ubuntu 18.04
+
+## Boot from an externel media
+
+* Download the https://drive.google.com/file/d/1-V61Z4RjEAKy0NxLp7PmOEUTJCXmh1g6/view?usp=sharing[ubuntu.18.04.1G.img.zx] file.
+* Create a bootable media. It can be either an sd-card or a usb-stick.
+[source,code]
+xz -dc ubuntu.18.04.1G.img.zx | sudo dd of=/dev/sdX
+
+* Boot up device using this media.
+* Let the device boot up.
+
+|=====
+|NOTE| The internal media left untouched while booting from an external media.
+|=====
+
+## Update the device internal media
+* Boot up device using an external media.
+* As soon as the device gets booted up issue:
+[source,code]
+QUIET=Yes DST=/dev/mmcblk2 cl-deploy
+* Wait for a “SUCCESS” message in the terminal window & power off the device.
+[source,code]
+poweroff
+* Remove the external media.
