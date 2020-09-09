@@ -96,7 +96,7 @@ Download the OP-TEE from:
 <pre>
 git clone https://source.codeaurora.org/external/imx/imx-optee-os
 git -C imx-optee-os checkout ${NXP_RELEASE}
-git -C imx-atf am ${LAYER_DIR}/recipes-security/optee-imx/compulab/imx8mm/*.patch
+git -C imx-optee-os am ${LAYER_DIR}/recipes-security/optee-imx/compulab/imx8mm/*.patch
 </pre>
 
 * Set environment variables:
@@ -109,7 +109,7 @@ export CROSS_COMPILE64=/usr/bin/arm-linux-gnu-
 * Make tee.bin
 <pre>
 cd imx-optee-os
-./scripts/imx_build.sh mx8mmevk
+./scripts/nxp_build.sh mx8mmevk
 cp -v build.mx8mmevk/core/tee-pager.bin ${SRC_ROOT}/imx-mkimage/iMX8M/tee.bin
 </pre>
 
@@ -127,4 +127,4 @@ make flash_evk SOC=iMX8MM
 </pre>
 
 ## Flashing
-`dd if=flash.bin of=/dev/<your device> bs=1K seek=33 status=progress`
+`dd if=imx-mkimage/iMX8M/flash.bin of=/dev/<your device> bs=1K seek=33 status=progress`
