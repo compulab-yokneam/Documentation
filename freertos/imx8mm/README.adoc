@@ -1,1 +1,19 @@
 # i.MX8M Mini - FreeRTOS on M-core
+
+## SDK Builder
+
+On the https://mcuxpresso.nxp.com/en/select[MCUXpresso SDK Builder] page
+
+* Select Board -> Boards -> i.MX -> EVK-MIMX8MM to buils the SDK package for i.MX8M Mini.
+
+image::https://github.com/compulab-yokneam/Documentation/blob/master/freertos/imx8mm/00.sdk.builder.png[GitHub mascot]
+
+* Select all check boxes
+
+image::https://github.com/compulab-yokneam/Documentation/blob/master/freertos/imx8mm/01.sdk.builder.png[GitHub mascot]
+
+* Agree on the License Agrement and download the SDK from this page:
+
+image::https://github.com/compulab-yokneam/Documentation/blob/master/freertos/imx8mm/02.sdk.builder.png[GitHub mascot]
+
+* The 2.8 SDK image can be downloaded from https://github.com/compulab-yokneam/Documentation/raw/master/freertos/imx8mm/SDK_2.8.0_EVK-MIMX8MM.tar.gz[here]
