@@ -1,0 +1,23 @@
+= WILD quick start =
+
+== Prepare installation media ==
+Issue this procedure on a Linux desktop.
+
+* Download:
+** WilD image: https://www.fit-iot.com/files/download/wild/0.7.2/4G-wild-0.7.2.img.xz
+** ftm-services: https://drive.google.com/file/d/1HGBJb1joQeZvkvYy4oLitrSh6JKHF2Rq/view?usp=sharing
+* Create a boot able media:
+```
+xz -dc /path/to/4G-wild-0.7.2.img.xz | sudo dd of=/dev/sdX bs=1M status=progress
+```
+
+== Update the WILD device ftm-services ==
+* Boot the WILD device using the created media and copy the ``ftm-services_0.7.5.deb`` package to.
+* Install the package:
+```
+dpkg -i /path/to/ftm-services_0.7.5.deb
+```
+
+== Set the device mode ==
+* Initiator: https://fit-pc.com/wiki/index.php?title=WiFi_Indoor_Location_Device_(WILD)_software#Set_WILD_to_initiator_mode
+* Responder: https://fit-pc.com/wiki/index.php?title=WiFi_Indoor_Location_Device_(WILD)_software#Set_WILD_to_responder_mode
