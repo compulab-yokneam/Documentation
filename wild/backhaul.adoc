@@ -1,0 +1,11 @@
+1) A spare/backhaul nic to connect to another/separate LAN.
+2) Configure the DHCP server of this LAN so that the nic with a know mac gets configured with the same/known ip address (Alternatively configure it statically with respect to the separate LAN settings).
+3) On device itself to modify the file /etc/network/interfaces and allow the dhcp for the spare nic.
+
+
+Articles to look at:
+http://fit-pc.com/wiki/index.php?title=WiFi_Indoor_Location_Device_(WILD)_software#FTMR_Network_Configuration
+
+http://fit-pc.com/wiki/index.php?title=WiFi_Indoor_Location_Device_(WILD)_software#FTMR_Backhaul
+
+!IMPORTANT! The backhaul nic must be connected to a separate LAN.
