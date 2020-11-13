@@ -1,0 +1,19 @@
+#!/bin/bash -x
+
+APN=${APN:-"internet.rl"}
+APN=${APN:-"internet.tele2.se"}
+
+echo Y > /sys/class/net/wwan0/qmi/raw_ip
+
+while [ 1 ];do
+
+ip link set dev wwan0 up
+qmicli --device=/dev/cdc-wdm0 --device-open-proxy --wds-start-network="ip-type=4,apn=${APN}" --client-no-release-cid -v
+[[ $? -eq 0 ]] && break
+
+ip link set dev wwan0 down
+sleep 3
+
+done
+
+udhcpc -q -f -n -i wwan0
