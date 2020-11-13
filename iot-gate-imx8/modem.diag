@@ -1,0 +1,48 @@
+#!/bin/bash
+
+APN=${APN:-"internet.tele2.se"}
+
+CMD="
+	AT+SIMCOMATI
+	AT+CPIN?
+	AT+CSQ
+	AT+COPS?
+	AT+CPSI?
+	AT+CREG?
+	AT+CGREG?
+	AT+CGDCONT=1,"IP","${APN}"
+	AT+NETOPEN
+	AT+IPADDR
+"
+
+function disc_modem() {
+	local CONF=$(mktemp /tmp/wvdial.XXX --suffix=".conf" --dry-run)
+	wvdialconf ${CONF}
+	export MODEM=$(awk '(/^Modem = /)&&($0=$3)' ${CONF})
+	rm -rf ${CONF}
+	sleep 3
+}
+
+function send_at_cmd() {
+for cmd in ${CMD};do
+	echo ${cmd} | socat - ${MODEM},crnl
+	sleep 1
+done
+}
+
+function error_exit() {
+cat << eof
+	Please install 'socat'.
+	Issue: apt install socat
+eof
+	exit 2
+}
+
+command -v socat &>/dev/null || error_exit
+
+set -x
+
+exec &> >(tee  /tmp/$(basename $0)".log")
+
+[[ -z ${MODEM} ]] && disc_modem
+send_at_cmd
