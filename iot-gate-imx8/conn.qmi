@@ -1,6 +1,5 @@
 #!/bin/bash -x
 
-APN=${APN:-"internet.rl"}
 APN=${APN:-"internet.tele2.se"}
 
 echo Y > /sys/class/net/wwan0/qmi/raw_ip
