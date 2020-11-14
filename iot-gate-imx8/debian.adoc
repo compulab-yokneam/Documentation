@@ -2,10 +2,14 @@
 
 ## Boot from an externel media
 
-* Download the https://drive.google.com/file/d/1GtOca2QjVCh6mmytczTXRi7aEWM2Qa7v/view?usp=sharing[compulab-debian-bullseye-20201110152210.sdcard.img.xz] file.
+* Downlaod a Debian image:
+|=====
+|Available images:|https://drive.google.com/file/d/12z_wD_gfg4l1FoJOLBl_pn3VWOLYW4xz/view?usp=sharing[Bullseye]| https://drive.google.com/file/d/1iwQ72ZR06sZ7HVITfMT5bZFXF-lDbGDy/view?usp=sharing[Buster]
+|=====
+
 * Create a bootable media. It can be either an sd-card or a usb-stick.
 [source,code]
-xz -dc compulab-debian-bullseye-20201110152210.sdcard.img.xz | sudo dd of=/dev/sdX
+xz -dc compulab-debian-<DISTRO_NAME>-<TIME_STAMP>.sdcard.img.xz | sudo dd of=/dev/sdX
 
 * Boot up device using this media.
 * Let the device boot up.
