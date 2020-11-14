@@ -1,0 +1,6 @@
+# Restore /dev/pts
+
+```
+sudo mount -t devpts devpts /dev/pts
+sudo udevadm trigger
+```
