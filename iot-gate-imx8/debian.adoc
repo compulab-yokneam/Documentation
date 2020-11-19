@@ -4,7 +4,7 @@
 
 * Downlaod a Debian image:
 |=====
-|Available images:|https://drive.google.com/file/d/12z_wD_gfg4l1FoJOLBl_pn3VWOLYW4xz/view?usp=sharing[Bullseye]| https://drive.google.com/file/d/1iwQ72ZR06sZ7HVITfMT5bZFXF-lDbGDy/view?usp=sharing[Buster]
+|Available images:|https://drive.google.com/file/d/12z_wD_gfg4l1FoJOLBl_pn3VWOLYW4xz/view?usp=sharing[Bullseye]| https://drive.google.com/file/d/1D1avQOstmGMpaq-BFGcyEC-0wKqRk5Gb/view?usp=sharing[Buster]
 |=====
 
 * Create a bootable media. It can be either an sd-card or a usb-stick.
