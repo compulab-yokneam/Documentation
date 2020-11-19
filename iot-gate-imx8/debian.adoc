@@ -13,7 +13,7 @@
 
 * Create a bootable media. It can be either an sd-card or a usb-stick.
 [source,code]
-xz -dc compulab-debian-<DISTRO_NAME>-<TIME_STAMP>.sdcard.img.xz | sudo dd of=/dev/sdX
+xz -dc compulab-debian-<DISTRO_NAME>-<TIME_STAMP>.sdcard.img.xz | sudo dd of=/dev/sdX bs=1M
 
 * Boot up device using this media.
 * Let the device boot up.
