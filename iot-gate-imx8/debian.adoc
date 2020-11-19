@@ -3,9 +3,13 @@
 ## Boot from an externel media
 
 * Downlaod a Debian image:
+
 |=====
-|Available images:|https://drive.google.com/file/d/12z_wD_gfg4l1FoJOLBl_pn3VWOLYW4xz/view?usp=sharing[Bullseye]| https://drive.google.com/file/d/1D1avQOstmGMpaq-BFGcyEC-0wKqRk5Gb/view?usp=sharing[Buster]
+|Available images|md5sum
+|https://drive.google.com/file/d/1D1avQOstmGMpaq-BFGcyEC-0wKqRk5Gb/view?usp=sharing[Buster]|f0203befe1f3d58846dafc6546a07e62
+|https://drive.google.com/file/d/12z_wD_gfg4l1FoJOLBl_pn3VWOLYW4xz/view?usp=sharing[Bullseye]|01621c61c55bb55bbfb662694165e013
 |=====
+
 
 * Create a bootable media. It can be either an sd-card or a usb-stick.
 [source,code]
