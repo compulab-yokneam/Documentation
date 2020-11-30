@@ -1,0 +1,80 @@
+# Serial Console
+
+## Requiremens
+* Linux Desktop PC
+
+## How to 
+* Open up a terminal window and issue:
+[source,code]
+sudo udevadm monitor –subsystem-match=tty
+
+* Plug in the usb cable to a desktop usb port.
+* Plug another end (micro-usb) to the board P13 connector.
+** Expected udevadm output:
+```
+KERNEL[34753522.608875] add      /devices/pci0000:00/0000:00:1a.0/usb1/1-1/1-1.4/1-1.4.2/1-1.4.2.2/1-1.4.2.2:1.0/ttyUSB0/tty/ttyUSB0 (tty)
+UDEV  [34753522.634669] add      /devices/pci0000:00/0000:00:1a.0/usb1/1-1/1-1.4/1-1.4.2/1-1.4.2.2/1-1.4.2.2:1.0/ttyUSB0/tty/ttyUSB0 (tty)
+
+```
+* As soon as a ttyUSB device created, make use any serial terminal application `minicom`.
+
+** Create a configuration file:
+```
+cat << eof | tee ~/.minirc.ttyUSB0
+pu port         /dev/ttyUSB0
+pu baudrate     115200
+pu rtscts       No
+pu xonxoff      No
+pu statusline   enabled
+pu sbcolor      BLUE
+eof
+```
+
+** Run `minicom` with the current configuration.
+```
+minicom --noinit --color=on ttyUSB
+```
+
+* Turn on the EVK
+** Expected output:
+```
+U-Boot SPL 2020.04-mcm-imx8m-mini-1.0-5.4.24-2.1.0+g4979a99482 (Nov 27 2020 - 17:36:19 +0000)
+power_bd71837_init
+DDRINFO(D): Nanya 2048G @ 3000 MHz
+DDRINFO: start DRAM init
+DDRINFO: DRAM rate 3000MTS
+DDRINFO:ddrphy calibration done
+DDRINFO: ddrmix config done
+DDRINFO(M): mr5-8 [ 0x5000010 ]
+DDRINFO(E): mr5-8 [ 0x5000010 ]
+Normal Boot
+Trying to boot from MMC2
+NOTICE:  BL31: v2.2(release):imx_5.4.24_er3-0-gb0a00f22b-dirty
+NOTICE:  BL31: Built : 17:36:05, Nov 27 2020
+
+
+U-Boot 2020.04-mcm-imx8m-mini-1.0-5.4.24-2.1.0+g4979a99482 (Nov 27 2020 - 17:36:19 +0000)
+
+CPU:   i.MX8MMQ rev1.0 1800 MHz (running at 1200 MHz)
+CPU:   Commercial temperature grade (0C to 95C) at 46C
+Reset cause: POR
+Model: CompuLab MCM-iMX8M-Mini board
+DRAM:  2 GiB
+Suite:  MCM-iMX8M on unknown
+MMC:   FSL_SDHC: 1, FSL_SDHC: 2
+Loading Environment from MMC... OK
+In:    serial
+Out:   serial
+Err:   serial
+
+ BuildInfo:
+  - ATF b0a00f2
+  - U-Boot 2020.04-mcm-imx8m-mini-1.0-5.4.24-2.1.0+g4979a99482
+
+switch to partitions #0, OK
+mmc2(part 0) is current device
+Net:   eth0: ethernet@30be0000
+Normal Boot
+Hit any key to stop autoboot:  0
+u-boot=>
+```
