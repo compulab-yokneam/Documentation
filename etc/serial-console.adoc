@@ -16,8 +16,7 @@ KERNEL[34753522.608875] add      /devices/pci0000:00/0000:00:1a.0/usb1/1-1/1-1.4
 UDEV  [34753522.634669] add      /devices/pci0000:00/0000:00:1a.0/usb1/1-1/1-1.4/1-1.4.2/1-1.4.2.2/1-1.4.2.2:1.0/ttyUSB0/tty/ttyUSB0 (tty)
 
 ```
-* As soon as a ttyUSB device created, make use any serial terminal application `minicom`.
-
+* As soon as a ttyUSB device created, make use of a serial terminal application `minicom`.
 ** Create a configuration file:
 ```
 cat << eof | tee ~/.minirc.ttyUSB0
