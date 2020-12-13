@@ -6,7 +6,8 @@
 
 |=====
 |Available images|md5sum
-|https://drive.google.com/file/d/1xlLAe3YVDm4Y4NAyGNGryxVefGj6gx66/view?usp=sharing[Buster]|20d176806001c7080e9082a932322adf
+|https://drive.google.com/file/d/1xlLAe3YVDm4Y4NAyGNGryxVefGj6gx66/view?usp=sharing[Buster:ucm]|20d176806001c7080e9082a932322adf
+|https://drive.google.com/file/d/1jnBVAchPbnEKTFqMnelZ-ulbLaPMDN3r/view?usp=sharing[Buster:mcm]|f0847e06e6c55c7ab4b666004e1fe521
 |=====
 
 * Create a bootable media. It can be either an sd-card or a usb-stick.
