@@ -1,0 +1,38 @@
+# Debian 10 arm64
+
+## Boot from an externel media
+
+* Downlaod a Debian image:
+
+|=====
+|Available images|md5sum
+|https://drive.google.com/file/d/1xlLAe3YVDm4Y4NAyGNGryxVefGj6gx66/view?usp=sharing[Buster]|20d176806001c7080e9082a932322adf
+|=====
+
+* Create a bootable media. It can be either an sd-card or a usb-stick.
+[source,code]
+xz -dc compulab-debian-<DISTRO_NAME>-<TIME_STAMP>.sdcard.img.xz | sudo dd of=/dev/sdX bs=1M
+
+* Boot up the device using this media.
+* Let the device boot up.
+
+|=====
+|NOTE| The internal media left untouched while booting from an external media.
+|=====
+
+# Update the device internal media
+* Boot up device using the created media.
+* As soon as the device gets booted up:
+** Deploy the rootfs, issue:
+[source,code]
+QUIET=Yes DST=/dev/mmcblk2 cl-deploy
+** Wait for a “SUCCESS” message in the terminal window.
+
+** Update the device bootloader, issue:
+[source,code]
+QUIET=Yes IMX_DEV=/dev/mmcblk2boot0 IMX_BOOT=/boot/imx-boot-ucm-imx8m-mini-sd.bin-flash_evk cl-uboot
+
+* Power off the device.
+[source,code]
+poweroff
+* Remove the external media.
