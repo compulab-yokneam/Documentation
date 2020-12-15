@@ -7,7 +7,7 @@
 |=====
 |Available images|md5sum
 |https://drive.google.com/file/d/1D1avQOstmGMpaq-BFGcyEC-0wKqRk5Gb/view?usp=sharing[Buster]|f0203befe1f3d58846dafc6546a07e62
-|https://drive.google.com/file/d/1ngVe0IXIOnHaAHA_5MoJ18DB1Ih8vPFk/view?usp=sharing[Buster Xfce4]|56a4b5c651f5156d2494c896217a9e82
+|https://drive.google.com/file/d/1ngVe0IXIOnHaAHA_5MoJ18DB1Ih8vPFk/view?usp=sharing[Buster+Xfce4+Tk]|56a4b5c651f5156d2494c896217a9e82
 |https://drive.google.com/file/d/1M8NVR2Eo8dCy8NAdeycyVMhJPDQ0LrRV/view?usp=sharing[Buster-Testing]|0ec2a0240d0127675972eaa0a27bf5a1
 |https://drive.google.com/file/d/12z_wD_gfg4l1FoJOLBl_pn3VWOLYW4xz/view?usp=sharing[Bullseye]|01621c61c55bb55bbfb662694165e013
 |=====
