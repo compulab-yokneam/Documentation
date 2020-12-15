@@ -1,0 +1,14 @@
+# Forward X over SSH
+
+* Get connected to the device.
+* Install openssh-server.
+* Take the device ip address and get connected to from any Linux desktop using this command:
+[source,code]
+ssh compulab@iot-gate-ip -X
+
+* Make sure that DIPLAY environment has be defined:
+[source,code]
+echo ${DISPLAY}
+localhost:10.0
+
+* Run `xterm`. The application starts running on the external X-serever.
