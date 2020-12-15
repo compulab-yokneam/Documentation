@@ -1,0 +1,17 @@
+# TK
+
+* Take the device ip address and get connected to from any Linux desktop using this command:
+[source,code]
+ssh compulab@iot-gate-ip -X
+
+# TK application test:
+* Go to `~/py` folder. It contais free .py sample files.
+[source,code]
+cd ~/py
+ls -al
+ 
+* Run them:
+[source,code]
+~/py/1.py
+~/py/2.py
+~/py/3.py
