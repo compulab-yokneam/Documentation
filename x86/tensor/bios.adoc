@@ -2,6 +2,8 @@
 
 ## BIOS Settings
 
+Reboot the device and press `DEL` in order to get to the system `BIOS`.
+
 ### Enable developer mode
 
 * Press F10 and type `111111` as the password + `Enter`
