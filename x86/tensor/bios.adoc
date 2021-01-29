@@ -1,0 +1,174 @@
+# Tensor
+
+## BIOS Settings
+
+### Enable developer mode
+
+* Press F10 and type `111111` as the password + `Enter`
+```
+       Aptio Setup Utility - Copyright (C) 2020 American Megatrends, Inc.
+    Quick-Settings  Main  TRIPs  Advanced  Chipset  Security  Boot             >
+/----------------------------------------------------+-------------------------\
+|  Tensor Quick Settings Menu                        |Set the Date. Use Tab   ^|
+|                                                    |to switch between Date  *|
+|  CPU:   Intel(R) Core(TM) i3-9100HL CPU @          |elements.               *|
+|  1.60GHz (4 Cores)                                 |Default Ranges:         *|
+|  RAM:    8192MB @ 2133MHz (1/2 DIMMs Populated)    |Year: 2005-2099         *|
+|  BIOS:  TNSR.I20.PRD/----------------------------------\hs: 1-12            +|
+|                     |          Developer Mode          |: dependent on month+|
+|  System Date        |----------------------------------|                    v|
+|  System Time        |   Enter Password  [          ]   |                     |
+|                     \----------------------------------/---------------------|
+|  Processor TDP            [Auto]                   |><: Select Screen        |
+|                                                    |^v: Select Item          |
+|  Boot Override                                     |Enter: Select            |
+|  debian (Samsung SSD 970 EVO Plus 250GB)           |+/-: Change Opt.         |
+|  debian (Samsung SSD 970 EVO Plus 250GB)           |F1: General Help         |
+|                                                    |F2: Previous Values      |
+|                                                    |F3: Optimized Defaults   |
+|                                                    |F4: Save & Exit          |
+|                                                    |ESC: Exit                |
+\----------------------------------------------------+-------------------------/
+        Version 2.20.1275. Copyright (C) 2020 American Megatrends, Inc.
+```
+
+* Developer mode enabled -- the green confirmation window turns out.
+
+```
+       Aptio Setup Utility - Copyright (C) 2020 American Megatrends, Inc.
+    Quick-Settings  Main  TRIPs  Advanced  Chipset  Security  Boot             >
+/----------------------------------------------------+-------------------------\
+|  Tensor Quick Settings Menu                        |Set the Date. Use Tab   ^|
+|                                                    |to switch between Date  *|
+|  CPU:   Intel(R) Core(TM) i3-9100HL CPU @          |elements.               *|
+|  1.60GHz (4 Cores)                                 |Default Ranges:         *|
+|  RAM:    8192MB/----------------  Success  ----------------\05-2099         *|
+|  BIOS:  TNSR.I2|                                           |  12            +|
+|                |          Developer mode enabled.          |  ndent on month+|
+|  System Date   |Press F10 to toggle between production and |                v|
+|  System Time   |          development menu items.          |                 |
+|                |                                           |  ---------------|
+|  Processor TDP |-------------------------------------------|   Screen        |
+|                |                    Ok                     |   Item          |
+|  Boot Override \-------------------------------------------/  ect            |
+|  debian (Samsung                                              e Opt.         |
+|  debian (Samsung SSD 970 EVO Plus 250GB)           |F1: General Help         |
+|                                                    |F2: Previous Values      |
+|                                                    |F3: Optimized Defaults   |
+|                                                    |F4: Save & Exit          |
+|                                                    |ESC: Exit                |
+\----------------------------------------------------+-------------------------/
+        Version 2.20.1275. Copyright (C) 2020 American Megatrends, Inc.
+```
+
+* ACPI D3Cold to `Disable`
+** Go to: [Advanced:ACPI D3Cold settings]
+
+```
+       Aptio Setup Utility - Copyright (C) 2020 American Megatrends, Inc.
+                                 Advanced
+/----------------------------------------------------+-------------------------\
+|  ACPI D3Cold settings                             ^|Enable/Disable ACPI      |
+|                                                   *|D3Cold (RTD3) support    |
+|  ACPI D3Cold Support      [Enabled]               *|                         |
+|                                                   *|                         |
+|  VR Ramp up delay         16                      *|                         |
+|  PCIE Slot 5 Device       100                     *|                         |
+|  Power-on delay in ms                             *|                         |
+|  Audio Delay              200                     *|                         |
+|  SensorHub                68                      *|                         |
+|  TouchPad                 68                      *|-------------------------|
+|  TouchPanel               68                      *|><: Select Screen        |
+|  P-state Capping          [Disabled]              *|^v: Select Item          |
+|  USB Port 1               [Disabled]              *|Enter: Select            |
+|  USB Port 2               [Disabled]              +|+/-: Change Opt.         |
+|  ZPODD                    [Disabled]              +|F1: General Help         |
+|  WWAN                     [D0/L1.2]               +|F2: Previous Values      |
+|  Sata Port 0              [Disabled]              +|F3: Optimized Defaults   |
+|  Sata Port 1              [Disabled]              v|F4: Save & Exit          |
+|                                                    |ESC: Exit                |
+\----------------------------------------------------+-------------------------/
+        Version 2.20.1275. Copyright (C) 2020 American Megatrends, Inc.
+```
+** Switch it to `Disabled`
+```
+       Aptio Setup Utility - Copyright (C) 2020 American Megatrends, Inc.
+                                 Advanced
+/----------------------------------------------------+-------------------------\
+|  ACPI D3Cold settings                             ^|Enable/Disable ACPI      |
+|                                                   *|D3Cold (RTD3) support    |
+|  ACPI D3Cold Support      [Enabled]               *|                         |
+|                                                   *|                         |
+|  VR Ramp up delay         16                      *|                         |
+|  PCIE Slot 5 Device       100                     *|                         |
+|  Power-on delay in ms                             *|                         |
+|  Audio Delay           /--- ACPI D3Cold Support ----\                        |
+|  SensorHub             | Disabled                   |                        |
+|  TouchPad              | Enabled                    |  ----------------------|
+|  TouchPanel            \----------------------------/   Select Screen        |
+|  P-state Capping                                        Select Item          |
+|  USB Port 1               [Disabled]              *|Enter: Select            |
+|  USB Port 2               [Disabled]              +|+/-: Change Opt.         |
+|  ZPODD                    [Disabled]              +|F1: General Help         |
+|  WWAN                     [D0/L1.2]               +|F2: Previous Values      |
+|  Sata Port 0              [Disabled]              +|F3: Optimized Defaults   |
+|  Sata Port 1              [Disabled]              v|F4: Save & Exit          |
+|                                                    |ESC: Exit                |
+\----------------------------------------------------+-------------------------/
+        Version 2.20.1275. Copyright (C) 2020 American Megatrends, Inc.
+
+        Aptio Setup Utility - Copyright (C) 2020 American Megatrends, Inc.
+                                 Advanced
+/----------------------------------------------------+-------------------------\
+|  ACPI D3Cold settings                              |Enable/Disable ACPI      |
+|                                                    |D3Cold (RTD3) support    |
+|  ACPI D3Cold Support      [Disabled]               |                         |
+|                                                    |                         |
+|                                                    |                         |
+|                                                    |                         |
+|                                                    |                         |
+|                                                    |                         |
+|                                                    |                         |
+|                                                    |-------------------------|
+|                                                    |><: Select Screen        |
+|                                                    |^v: Select Item          |
+|                                                    |Enter: Select            |
+|                                                    |+/-: Change Opt.         |
+|                                                    |F1: General Help         |
+|                                                    |F2: Previous Values      |
+|                                                    |F3: Optimized Defaults   |
+|                                                    |F4: Save & Exit          |
+|                                                    |ESC: Exit                |
+\----------------------------------------------------+-------------------------/
+        Version 2.20.1275. Copyright (C) 2020 American Megatrends, Inc.
+
+```
+** Save the configuration end exit: press `F4`
+```
+       Aptio Setup Utility - Copyright (C) 2020 American Megatrends, Inc.
+                                 Advanced
+/----------------------------------------------------+-------------------------\
+|  ACPI D3Cold settings                              |Enable/Disable ACPI      |
+|                                                    |D3Cold (RTD3) support    |
+|  ACPI D3Cold Support      [Disabled]               |                         |
+|                                                    |                         |
+|                                                    |                         |
+|                       /----- Save & Exit Setup ------\                       |
+|                       |                              |                       |
+|                       | Save configuration and exit? |                       |
+|                       |                              |                       |
+|                       |------------------------------|  ---------------------|
+|                       |     Yes              No      |  Select Screen        |
+|                       \------------------------------/  Select Item          |
+|                                                         r: Select            |
+|                                                    |+/-: Change Opt.         |
+|                                                    |F1: General Help         |
+|                                                    |F2: Previous Values      |
+|                                                    |F3: Optimized Defaults   |
+|                                                    |F4: Save & Exit          |
+|                                                    |ESC: Exit                |
+\----------------------------------------------------+-------------------------/
+        Version 2.20.1275. Copyright (C) 2020 American Megatrends, Inc.
+```
+
+
