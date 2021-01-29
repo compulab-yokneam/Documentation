@@ -1,0 +1,28 @@
+# Acess Point with Network Manager
+
+* Create
+[source,code]
+nmcli con add type wifi ifname wlan0 mode ap con-name WIFI_AP ssid MY_AP
+
+* Basic config
+[source,code]
+nmcli con modify WIFI_AP 802-11-wireless.band bg
+nmcli con modify WIFI_AP 802-11-wireless.channel 1
+nmcli con modify WIFI_AP ipv4.method shared
+nmcli con modify WIFI_AP ipv4.addr 10.0.0.1/24
+
+* Advanced &security config
+[source,code]
+nmcli con modify WIFI_AP 802-11-wireless-security.key-mgmt wpa-psk
+nmcli con modify WIFI_AP 802-11-wireless-security.proto rsn
+nmcli con modify WIFI_AP 802-11-wireless-security.group ccmp
+nmcli con modify WIFI_AP 802-11-wireless-security.pairwise ccmp
+nmcli con modify WIFI_AP 802-11-wireless-security.psk 11223344
+
+* Bring the connection Up
+[source,code]
+nmcli con up WIFI_AP
+
+* Restart Network Manager
+[source,code]
+systemctl restart NetworkManager
