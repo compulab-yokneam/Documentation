@@ -1,0 +1,23 @@
+# ax200
+
+* Prerequisites:
+** Disable https://github.com/compulab-yokneam/Documentation/blob/master/x86/tensor/bios.adoc[ACPI D3Cold Support]
+** Install https://github.com/compulab-yokneam/Documentation/blob/master/x86/tensor/kernel-update.adoc[the latest kernel + firmware]
+
+* Make sure that the ax200 device has been registered as a pci device:
+[source,code]
+lspci -v
+05:00.0 Network controller: Intel Corporation Device 2723 (rev 1a)
+        Subsystem: Intel Corporation Device 0084
+        Flags: bus master, fast devsel, latency 0, IRQ 19
+        Memory at a1300000 (64-bit, non-prefetchable) [size=16K]
+        Capabilities: [c8] Power Management version 3
+        Capabilities: [d0] MSI: Enable- Count=1/1 Maskable- 64bit+
+        Capabilities: [40] Express Endpoint, MSI 00
+        Capabilities: [80] MSI-X: Enable+ Count=16 Masked-
+        Capabilities: [100] Advanced Error Reporting
+        Capabilities: [14c] Latency Tolerance Reporting
+        Capabilities: [154] L1 PM Substates
+        Kernel driver in use: iwlwifi
+        Kernel modules: iwlwifi
+
