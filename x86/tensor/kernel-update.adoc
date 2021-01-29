@@ -1,0 +1,17 @@
+# Kernel update
+
+* Download all deb files from this location https://drive.google.com/drive/folders/1Y18L2eSbAePiXJEJqAG8rQMhmS5eUql9?usp=sharing[Tensor Kernel 5.9.14]
+* Get administrative privilages:
+[source,code]
+sudo -i
+* Install all these packages:
+[source,code]
+cd /path/to/deb/folder
+dpkg -i *.deb
+* Reboot the machine:
+[source,code]
+reboot
+* Make sure that the latest installed kernel is in use:
+[source,code]
+uname -r
+5.9.14
