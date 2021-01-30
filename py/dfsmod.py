@@ -1,9 +1,4 @@
-# Python3 program to print DFS traversal
-# from a given given graph
 from collections import defaultdict
-
-# This class represents a directed graph using
-# adjacency list representation
 
 class Graph:
 
@@ -43,9 +38,7 @@ class Graph:
 		# to print DFS traversal
 		self.DFSUtil(v)
 
-		print(self.links, end='\n')
-
-# Driver code
+		print('Dependencies: ', self.links, end='\n')
 
 # Create a graph given
 # in the above diagram
