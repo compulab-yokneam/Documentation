@@ -11,44 +11,47 @@ class Graph:
         self.links = defaultdict(list)
         # this set is for visited vertex
         self.visited = set()
-        self.visited1 = set()
+
+        self.back_visited = set()
+        self.dep = defaultdict(list)
 
     # function to add an edge to graph
     def addedge(self, u, v):
         self.graph[u].append(v)
 
     # A function used by dfs
-    def dfsutil(self, v):
+    def dfsutil(self, _v):
 
         # Mark the current node as visited
-        self.visited.add(v)
+        self.visited.add(_v)
 
         # Recur for all the vertices
         # adjacent to this vertex
-        for neighbour in self.graph[v]:
+        for neighbour in self.graph[_v]:
             # Add each node that points to this neighbour
-            self.links[neighbour].append(v)
+            self.links[neighbour].append(_v)
             if neighbour not in self.visited:
                 self.dfsutil(neighbour)
 
     # The function to do dfs traversal.
     # It uses recursive dfsutil()
-    def dfs(self, v):
+    def dfs(self, _v):
 
-        # Create a set to store visited vertices
-        # Call the recursive helper function
-        # to print dfs traversal
-        self.dfsutil(v)
+        self.dfsutil(_v)
 
         print('Graph       : ', self.graph, end='\n')
         print('Dependencies: ', self.links, end='\n')
 
-    def dfs1(self, v):
-        self.visited1.add(v)
-        for neighbour in self.links[v]:
-            if neighbour not in self.visited1:
-                self.dfs1(neighbour)
-                print(neighbour, end=' ')
+    def dfsbackutil(self, _v):
+        self.back_visited.add(_v)
+        for neighbour in self.links[_v]:
+            if neighbour not in self.back_visited:
+                self.dfsbackutil(neighbour)
+                self.dep[v].append(neighbour)
+
+    def dfsback(self, _v):
+        self.dfsbackutil(_v)
+        print('Dependenies of: ', v, self.dep, end='\n')
 
 
 g = Graph()
@@ -69,12 +72,10 @@ g.addedge(2, 5)
 g.addedge(5, 6)
 g.addedge(6, 3)
 
-global v
-
 v = 2
 print("Following is dfs from (starting from vertex", v)
 g.dfs(v)
 
 v = 3
 print("Update node order for:", v)
-g.dfs1(v)
+g.dfsback(v)
