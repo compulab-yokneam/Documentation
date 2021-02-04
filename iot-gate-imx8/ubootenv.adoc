@@ -1,0 +1,38 @@
+# Modify U-Boot Environmet Simple Trick
+
+This approache base on the fact that the kernel bootargs string gets passed to the kernel as is.
+
+This is the kernel command line w/out any modifications:
+
+* cat /proc/cmdline
+[source,code]
+console=ttymxc2,115200 earlycon=ec_imx6q,0x30880000,115200 root=/dev/mmcblk2p2 rootwait rw
+
+It contains these basic U-Boot variables:
+
+* root
+[source,code]
+root=/dev/mmcblk2p2
+
+* console
+[source,code]
+console=ttymxc2,115200 earlycon=ec_imx6q,0x30880000,115200
+
+* root_opt
+[source,code]
+rootwait rw
+
+In order to add a user variable to the kernel bootags list use this simple trick.
+Attach it to the `console` variable.
+
+* Example: `console` + `pci=nomsi`
+[source,code]
+cl_setenv console=$(fw_printenv console | awk -F"console=" '($0=$2" pci=nomsi")')
+
+Reboot the machine. The user variable must turn out in the kernel command line:
+
+This is the kernel command line with the user variable:
+
+* cat /proc/cmdline
+[source,code]
+console=ttymxc2,115200=earlycon=ec_imx6q,0x30880000,115200 pci=nomsi root=/dev/mmcblk2p2 rootwait rw
