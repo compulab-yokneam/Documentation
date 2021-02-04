@@ -27,7 +27,7 @@ Attach it to the `console` variable.
 
 * Example: `console` + `pci=nomsi`
 [source,code]
-cl_setenv console=$(fw_printenv console | awk -F"console=" '($0=$2" pci=nomsi")')
+cl_setenv console $(fw_printenv console | awk -F"console=" '($0=$2" pci=nomsi")')
 
 Reboot the machine. The user variable must turn out in the kernel command line:
 
