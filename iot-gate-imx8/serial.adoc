@@ -1,0 +1,27 @@
+# Serial Console How to
+
+## Currrent console
+* From U-Boot environment
+[source,code]
+fw_printenv console
+# sample output
+console=ttymxc2,115200 earlycon=ec_imx6q,0x30880000,115200
+
+* From the `/proc/cmdline`
+[source,code]
+sed 's/ /\n/g' /proc/cmdline | awk '/console=/'
+# sample output
+console=ttymxc2,115200
+
+## Disable/Enable serial console
+* Disable
+[source,code]
+cl_setenv console=tty1
+systemctl disable serial-getty@ttymxc2.service
+reboot
+
+* Enable
+[source,code]
+cl_setenv console='console=ttymxc2,115200  earlycon=ec_imx6q,0x30880000,115200'
+systemctl enable serial-getty@ttymxc2.service
+systemctl start serial-getty@ttymxc2.service
