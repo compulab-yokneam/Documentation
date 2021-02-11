@@ -1,0 +1,118 @@
+# U-Boot
+
+## Boot media
+The cl-som-imx8 hardware design allows using either `mmc` or `emmc` as the device boot media.
+
+Device is a boot media if it meats this requirements:
+The device is able to boot up from a selected boot device in case that the correct boot loader is at 0x33K offset of that device.
+|====
+| Warning | In case that the bootloader is not found the device refuses to boot.
+|====
+
+
+|=====
+|Allowed boot media| Default: `emmc`| Alternative: `mmc`
+|
+|Available emmc U-boot partitions (*):
+
+user partition: mmcblk0
+
+boot0partition: mmcblk0boot0
+
+boot1partition: mmcblk1boot0
+|Available: mmc U-Boot partitions:
+
+user partition: mmcblk1
+|=====
+
+* Alt_Boot
+
+Required in order to allow read bootloader from an alternative media.
+
+# cl-uboot
+
+This is a user space utility that deploys the device `u-boot` to a selected media. All CompuLab images come with this tool installed.
+
+[source,code]
+dpkg -l cl-uboot
+Desired=Unknown/Install/Remove/Purge/Hold
+| Status=Not/Inst/Conf-files/Unpacked/halF-conf/Half-inst/trig-aWait/Trig-pend
+|/ Err?=(none)/Reinst-required (Status,Err: uppercase=bad)
+||/ Name           Version      Architecture Description
++++-==============-============-============-=================================
+ii  cl-uboot       1.0-r1       arm64        cl-uboot version 1.0-r1
+root@cl-som-imx8:~# dpkg -L cl-uboot
+/.
+/usr
+/usr/local
+/usr/local/bin
+/usr/local/bin/cl-uboot
+/usr/local/bin/cl-uboot.work
+/usr/share
+/usr/share/applications
+/usr/share/applications/cl-uboot.desktop
+/usr/share/applications/cl-uboot.png
+
+This tool requires the device bootloader image, that is why the `imx-boot` package gets installed together with this tool.
+[source,code]
+dpkg -l imx-boot
+Desired=Unknown/Install/Remove/Purge/Hold
+| Status=Not/Inst/Conf-files/Unpacked/halF-conf/Half-inst/trig-aWait/Trig-pend
+|/ Err?=(none)/Reinst-required (Status,Err: uppercase=bad)
+||/ Name           Version      Architecture Description
++++-==============-============-============-=================================
+ii  imx-boot       1.0-r0       arm64        imx-boot version 1.0-r0
+root@cl-som-imx8:~# dpkg -L imx-boot
+/.
+/boot
+/boot/imx-boot-cl-som-imx8-sd.bin-flash_evk
+
+* `cl-uboot` ~ `imx-boot` dependencies:
+** cl-uboot
+[source,code]
+apt-cache depends cl-uboot
+cl-uboot
+  Depends: bash
+  Depends: dialog
+  Depends: imx-boot
+  Depends: mmc-utils
+  Depends: pv
+  Depends: xterm
+
+** imx-boot
+[source,code]
+apt-cache rdepends imx-boot
+imx-boot
+Reverse Depends:
+  cl-uboot
+  
+## How to run
+* Open up a terminal and issue: `cl-uboot`
+** 1-st dialog window lets choose an available bootloader file:
+[source,code]
+Available U-Boot files:  (*) imx-boot-cl-som-imx8-sd.bin-flash_evk
+** 2-nd dialog window lets choose an available boot device:
+[source,code]
+( ) mmcblk0
+(*) mmcblk0boot0 – emmc recommended location
+( ) mmcblk0boot1
+( ) mmcblk1      – mmc the only available location
+
+## How to build in the default Yocto environment
+* conf/bblayers.conf
+
+This is the required layers:
+[source,code]
+BBLAYERS += " \                                                                 
+        ${BSPDIR}/sources/meta-compulab \
+        ${BSPDIR}/sources/meta-compulab-bsp/meta-desktop \
+        ${BSPDIR}/sources/meta-bsp-imx8mq \
+" 
+
+* conf/local.conf
+
+Add this line to the `conf/local.conf`
+[source,code]
+cay << eof >> ${BUILDDIR}/conf/local.conf
+CORE_IMAGE_EXTRA_INSTALL += " cl-uboot "
+eof
