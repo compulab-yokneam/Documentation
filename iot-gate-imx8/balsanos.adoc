@@ -1,0 +1,36 @@
+# How to install BalenaOS on the CompuLab iot-gate-imx8 device.
+
+* Assumption:
+All iot-gate-imx8 devices come with a pre-flased u-boot image.
+
+* Installation media is an USB disk on key with a BalenaOS Live image.
+
+* BalenaOS Live image must have these mandatory packages:
+1) imx-boot
+root@iot-gate-imx8:~# dpkg -L imx-boot
+/.
+/boot
+/boot/imx-boot-iot-gate-imx8-sd.bin-flash_evk
+2) cl-uboot
+root@iot-gate-imx8:~# dpkg -L cl-uboot                                                                                                                                                                                                                                                                                         /. 
+[code,source]
+/usr 
+/usr/local 
+/usr/local/bin 
+/usr/local/bin/cl-uboot 
+/usr/local/bin/cl-uboot.work 
+/usr/share 
+/usr/share/applications 
+/usr/share/applications/cl-uboot.desktop 
+/usr/share/applications/cl-uboot.png
+3) cl-deploy
+
+4) A boot.scr at the 1-st media partition.
+It is up to developers to provide the correct script contant. Here is just an empty template:
+https://github.com/compulab-yokneam/meta-compulab-bsp/tree/master/meta-bsp/recipes-bsp/u-boot-scr
+
+This script is in charge of updating the device bootloader if needed and booting the device up.
+Please have a look at this example: https://github.com/compulab-yokneam/meta-compulab/blob/devel/recipes-bsp/u-boot/u-boot-script-compulab/cl-som-imx6/bootscr#L39
+
+As soon as the device boot loader updated the script issues the device reset.
+Next boot the script memory compare statement turns true “U-Boot versions match” and device boots the kernel.
