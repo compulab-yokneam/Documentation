@@ -50,6 +50,8 @@ fi
 ```
 
 ## BalenaOS image to the device internal storage:
+Boot up an iot-gate-imx8 device from a USB media with a BalenaOS Live image.
+
 While in Linux issue:
 
 * Run cl-deploy
