@@ -61,7 +61,7 @@ fi
 ```
 
 ## BalenaOS image to the device internal storage:
-While in Linx issue:
+While in Linux issue:
 
 * Run cl-deploy
 ```
