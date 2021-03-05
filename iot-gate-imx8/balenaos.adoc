@@ -1,19 +1,18 @@
-# How to install BalenaOS on the CompuLab iot-gate-imx8 device.
+# How to install BalenaOS on CompuLab iot-gate-imx8 devices.
 
 * Assumption:
-All iot-gate-imx8 devices come with a pre-flased u-boot image.
-
-* Installation media is an USB disk on key with a BalenaOS Live image.
+** All iot-gate-imx8 devices come with a pre-flased u-boot image.
+** Installation media is an USB disk on key with a BalenaOS Live image.
 
 * BalenaOS Live image must have these mandatory packages:
-1) imx-boot
+** imx-boot
 [source,code]
 root@iot-gate-imx8:~# dpkg -L imx-boot
 /.
 /boot
 /boot/imx-boot-iot-gate-imx8-sd.bin-flash_evk
 
-2) cl-uboot
+** cl-uboot
 [source,code]
 root@iot-gate-imx8:~# dpkg -L cl-uboot 
 /usr 
@@ -26,11 +25,9 @@ root@iot-gate-imx8:~# dpkg -L cl-uboot
 /usr/share/applications/cl-uboot.desktop 
 /usr/share/applications/cl-uboot.png
 
-3) cl-deploy
+** cl-deploy
 
-4) A boot.scr at the 1-st media partition.
-It is up to developers to provide the correct script contant. Here is just an empty template:
-https://github.com/compulab-yokneam/meta-compulab-bsp/tree/master/meta-bsp/recipes-bsp/u-boot-scr
+** https://github.com/compulab-yokneam/meta-compulab-bsp/tree/master/meta-bsp/recipes-bsp/u-boot-scr[u-boot-scr]
 
 This script is in charge of updating the device bootloader if needed and booting the device up.
 Here is a sample script:
@@ -52,7 +49,7 @@ mmc dev ${mmcdev} ${mmcpart}
 mmc read ${oload} ${mmcoff} ${bsize}
 if cmp.b ${nload} ${oload} ${filesize}
 then
-echo U-Boot versions match;
+echo U-Boot versions match
 setenv script
 boot
 else
