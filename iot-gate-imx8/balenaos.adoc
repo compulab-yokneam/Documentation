@@ -59,3 +59,20 @@ echo U-Boot updated finished
 reset
 fi
 ```
+
+## BalenaOS image to the device internal storage:
+While in Linx issue:
+
+* Run cl-deploy
+```
+DST=/dev/mmcblk2 QUIET=Yes cl-deploy
+```
+Wait for a `SUCCESS` message.
+
+* Power off the device
+[source,code]
+poweroff
+* Remover the USB disk on key.
+* Power on the device.
+
+That is all.
