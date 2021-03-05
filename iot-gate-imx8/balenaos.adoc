@@ -7,13 +7,15 @@ All iot-gate-imx8 devices come with a pre-flased u-boot image.
 
 * BalenaOS Live image must have these mandatory packages:
 1) imx-boot
+[source,code]
 root@iot-gate-imx8:~# dpkg -L imx-boot
 /.
 /boot
 /boot/imx-boot-iot-gate-imx8-sd.bin-flash_evk
+
 2) cl-uboot
-root@iot-gate-imx8:~# dpkg -L cl-uboot                                                                                                                                                                                                                                                                                         /. 
-[code,source]
+[source,code]
+root@iot-gate-imx8:~# dpkg -L cl-uboot 
 /usr 
 /usr/local 
 /usr/local/bin 
@@ -23,6 +25,7 @@ root@iot-gate-imx8:~# dpkg -L cl-uboot                     �
 /usr/share/applications 
 /usr/share/applications/cl-uboot.desktop 
 /usr/share/applications/cl-uboot.png
+
 3) cl-deploy
 
 4) A boot.scr at the 1-st media partition.
