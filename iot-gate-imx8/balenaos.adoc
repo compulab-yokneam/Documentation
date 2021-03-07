@@ -17,10 +17,10 @@ root@iot-gate-imx8:~# dpkg -L imx-boot
 
 ** cl-deploy
 
-** https://github.com/compulab-yokneam/meta-compulab-bsp/tree/master/meta-bsp/recipes-bsp/u-boot-scr[u-boot-scr]
+** https://github.com/compulab-yokneam/meta-bsp-imx8mm/tree/rel_imx_5.4.24_2.1.0-dev/recipes-bsp/u-boot-scr[u-boot-scr]
 
 This script is in charge of updating the device bootloader if needed and booting the device up.
-Here is a sample script:
+Here is the CompuLab https://github.com/compulab-yokneam/meta-bsp-imx8mm/blob/rel_imx_5.4.24_2.1.0-dev/recipes-bsp/u-boot-scr/u-boot-script/mx8mm/boot.script[boot.scr implemetation]:
 
 ```
 setenv nload ${loadaddr}
@@ -60,7 +60,6 @@ fi
 setenv script
 boot
 ```
-
 ## BalenaOS image to the device internal storage:
 Boot up an iot-gate-imx8 device from a USB media with a BalenaOS Live image.
 
