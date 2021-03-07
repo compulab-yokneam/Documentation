@@ -32,9 +32,9 @@ setenv bsize 0xB00
 setenv bootloader ##BOOTLOADER##
 
 # Load the new booloader from the file system
-# iface/dev/part defined by the default u-boot environment
-# the boot.scr has been loaded from
-# the same location must have the device bootloader
+# 1) iface/dev/part defined by the default u-boot environment
+# 2) the boot media second partition must have the device bootloader
+# in the partition:boot directory
 if load ${iface} ${dev}:2 ${nload} boot/${bootloader}
 then
 
