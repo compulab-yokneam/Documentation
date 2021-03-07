@@ -1,4 +1,4 @@
-# How to install BalenaOS on CompuLab iot-gate-imx8 devices.
+# How to install BalenaOS on CompuLab iot-gate-imx8 devices
 
 * Assumption:
 ** All iot-gate-imx8 devices come with a pre-flased u-boot image.
@@ -19,6 +19,7 @@ root@iot-gate-imx8:~# dpkg -L imx-boot
 
 ** https://github.com/compulab-yokneam/meta-bsp-imx8mm/tree/iot-gate-imx8/recipes-bsp/u-boot-scr[u-boot-scr]
 
+## u-boot-scr details
 This script is in charge of updating the device bootloader if needed and booting the device up.
 Here is the CompuLab https://github.com/compulab-yokneam/meta-bsp-imx8mm/blob/iot-gate-imx8/recipes-bsp/u-boot-scr/u-boot-script/iot-gate-imx8/boot.script[boot.scr implemetation]:
 
@@ -61,7 +62,7 @@ setenv script
 boot
 ```
 
-## BalenaOS image to the device internal storage:
+## BalenaOS image to the device internal storage
 Boot up an iot-gate-imx8 device from a USB media with a BalenaOS Live image.
 
 While in Linux issue:
