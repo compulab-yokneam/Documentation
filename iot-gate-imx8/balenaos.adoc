@@ -3,6 +3,7 @@
 * Assumption:
 ** All iot-gate-imx8 devices come with a pre-flased u-boot image.
 ** Installation media is a USB disk on key with a BalenaOS Live image.
+** BalenaOS requiers a modified bootloader.
 
 * BalenaOS Live image must have these mandatory packages:
 ** imx-boot
@@ -28,27 +29,36 @@ setenv mmcdev 2
 setenv mmcpart 1
 setenv mmcoff 0x42
 setenv bsize 0xB00
-setenv bootloader imx-boot-iot-gate-imx8-sd.bin-flash_evk
-
-# Read the current booloader from the boot device
-mmc dev ${mmcdev} ${mmcpart}
-mmc read ${oload} ${mmcoff} ${bsize}
+setenv bootloader ##BOOTLOADER##
 
 # Load the new booloader from the file system
-load usb 0 ${nload} ${bootloader}
-
-# Compare the old & the new one.
-if cmp.b ${nload} ${oload} ${filesize}
+# iface/dev/part defined by the default u-boot environment
+# the boot.scr has been loaded from
+# the same location must have the device bootloader
+if load ${iface} ${dev}:2 ${nload} boot/${bootloader}
 then
-echo Nothing to update
+
+    # Read the current booloader from the boot device
+    mmc dev ${mmcdev} ${mmcpart}
+    mmc read ${oload} ${mmcoff} ${bsize}
+
+    # Compare the old & the new one.
+    if cmp.b ${nload} ${oload} ${filesize}
+    then
+        echo Nothing to update
+    else
+        echo Updating the bootloader on mmc [${mmcdev}:${mmcpart}]
+        mmc write ${nload} ${mmcoff} ${bsize}
+        mmc partconf ${mmcdev} 0 ${mmcpart} 0
+        reset
+    fi
+
+else
+    echo ##BOOTLOADER## file not found
+fi
+
 setenv script
 boot
-else
-echo Update the bootloader on mmc [${mmcdev}:${mmcpart}]
-mmc write ${nload} ${mmcoff} ${bsize}
-mmc partconf ${mmcdev} 0 ${mmcpart} 0
-reset
-fi
 ```
 
 ## BalenaOS image to the device internal storage:
