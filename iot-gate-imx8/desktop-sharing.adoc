@@ -1,0 +1,19 @@
+# Sharing a headless device desktop.
+
+## Device (server) must have installed:
+
+* Any desktop environment; xfce4 – is a recommended lightweight desktop.
+* Remote Desktop Protocol (RDP) server
+```
+apt-get install xrdp
+```
+
+## Client must have installed:
+* Remote Desktop Connection client
+```
+apt-get install xrdc
+```
+While on the client side make use of rdc protocol connection.
+
+## RDC vs VNC:
+RDC uses the default Linux credentials, requires no configuration efforts at all.
