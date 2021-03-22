@@ -1,0 +1,22 @@
+# CompuLab 5.4.24 rt-kernel how to
+
+* Follow the instructions of this manual:
+https://github.com/compulab-yokneam/meta-bsp-imx8mm/blob/rel_imx_5.4.24_2.1.0-dev/Documentation/linux_kernel_build.md[Linux Kernel Build]
+
+* Make sure that it is possible to build the kernel outside of the Yocto environment.
+
+* Creating the rt-kernel.
+
+** Download the rt-kernel patch archive:
+[source,code]
+wget https://mirrors.edge.kernel.org/pub/linux/kernel/projects/rt/5.4/older/patch-5.4.24-rt15.patch.xz
+
+** Unpack it:
+[source,code]
+zx -dc /path/to/patch-5.4.24-rt15.patch.xz > /path/to/patch-5.4.24-rt15.patch
+
+** Apply the patch:
+[source,code]
+pacth -p 1 < /path/to/patch-5.4.24-rt15.patch
+
+** Rebuild the kernel with the same defconfig.
