@@ -1,0 +1,48 @@
+# Mender Tests
+
+## Roll Back Test
+
+The mender rool back logics:
+```
+if [ "${upgrade_available}" = "1" ]; then
+    if [ "${bootcount}" != "0" ]; then
+        echo "Rolling back..."
+        if [ "${mender_boot_part}" = "${mender_rootfsa_part}" ]; then
+            mender_boot_part="${mender_rootfsb_part}"
+        else
+            mender_boot_part="${mender_rootfsa_part}"
+        fi
+        upgrade_available=0
+        bootcount=0
+    else
+        echo "Booting new update..."
+        bootcount=1
+    fi
+
+    mender_save_env
+fi
+```
+* Dump the environment:
+```
+fw_printenv
+bootcount=1
+mender_boot_part=2
+upgrade_available=1
+```
+* Set these environment variables:
+```
+fw_setenv upgrade_available 1
+fw_setenv bootcount 1
+```
+* Issue system reset:
+```
+for cmd in u s b; do echo ${cmd} > /proc/sysrq-trigger; done
+```
+
+* Issue `fw_printenv` as soon as the linux prompt available. Expected output is:
+```
+fw_printenv
+bootcount=0
+mender_boot_part=3
+upgrade_available=0
+```
