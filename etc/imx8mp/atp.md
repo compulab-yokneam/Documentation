@@ -7,7 +7,7 @@ http://192.168.11.170/Devel/Work/ATP/atp/machines/i.MX8MP/atp.d/20210519_101447.
 
 * Prepare a bootable sd-card:
 ```
-wget http://192.168.11.170/Devel/Work/ATP/atp/machines/i.MX8MP/boot/tools/prod-boot.img.100
+wget http://192.168.11.170/Devel/Work/ATP/atp/machines/i.MX8MP/atp.d/prod-boot.img.100
 dd if=prod-boot.img.100 of=/dev/sdX bs=1M
 ```
 
