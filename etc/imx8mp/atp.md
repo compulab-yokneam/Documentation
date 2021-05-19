@@ -42,7 +42,7 @@ atp.shell ( device: i.MX8MP ;  status  [  ] ) >
 
 ## SBC ATP
 ```
-7.0) type: `export PROD_DEBUG=SBC-UCMIMX8PLUS`
+7.0) type: `export DEBUG_PROD=SBC-UCMIMX8PLUS`
 7.1) Press `A`
 7.2) Let the process run and wait for a `success` message
 ```
