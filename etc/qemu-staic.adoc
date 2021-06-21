@@ -32,6 +32,6 @@ for i in *; do cp $i $i-static; done
 * Copy the binary to its system location:
 [source,code]
 distr_location=$(which qemu-aarch64-static)
-mv ${distr_location} ${distr_location}.distr
-cp ../qemu-user-static/bin/qemu-aarch64-static ${distr_location}.dev
-ln -s qemu-aarch64-static.dev ${distr_location}
+sudo mv ${distr_location} ${distr_location}.distr
+sudo cp ../qemu-user-static/bin/qemu-aarch64-static ${distr_location}.dev
+sudo ln -s qemu-aarch64-static.dev ${distr_location}
