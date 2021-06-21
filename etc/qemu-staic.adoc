@@ -1,0 +1,37 @@
+# Build qemu-user-static from source code
+
+## Prereqisites:
+* Install the QEMU build dependencies with:
+[source,code]
+sudo apt-get build-dep qemu
+
+* Create a build folder:
+[source,code]
+mkdir qemu_build/qemu -p
+cd qemu_build/qemu
+
+* Download QEMU source code with:
+[source,code]
+git clone git://git.qemu.org/qemu.git .
+git submodule update --init --recursive
+
+* Configure QEMU:
+[source,code]
+./configure --prefix=../qemu-user-static --static --disable-system --enable-linux-user --target-list=aarch64-linux-user
+    
+* Build and install QEMU with:
+[source,code]
+make -j8
+make install
+
+* Add ```-static``` suffix to executables so that ```qemu-debootstrap``` can pick up these executables:
+[source,code]
+cd ../qemu-user-static/bin
+for i in *; do cp $i $i-static; done
+
+* Copy the binary to its system location:
+[source,code]
+distr_location=$(which qemu-aarch64-static)
+mv ${distr_location} ${distr_location}.distr
+cp ../qemu-user-static/bin/qemu-aarch64-static ${distr_location}.dev
+ln -s qemu-aarch64-static.dev ${distr_location}
