@@ -1,5 +1,118 @@
 # Mender Tests
 
+## Create & Install artifact
+* Print Mender environment
+```
+fw_printenv
+===========
+bootcount=0
+mender_boot_part=2
+upgrade_available=0
+```
+* Print the bootable device layout
+```
+lsblk /dev/mmcblk2
+==================
+NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+mmcblk2     179:0    0 29.1G  0 disk 
+|-mmcblk2p1 179:1    0   64M  0 part /boot/efi
+|-mmcblk2p2 179:2    0  3.7G  0 part /
+|-mmcblk2p3 179:3    0  3.7G  0 part 
+`-mmcblk2p4 179:4    0 21.6G  0 part /data
+```
+* Take a rootfs snapshot
+```
+mender snapshot dump > /data/root-part.ext4
+```
+* Write an artifact file.
+```
+mender-artifact write rootfs-image -f /data/root-part.ext4 -n new_artifact --software-version 2.0 -o /data/new_artifact.2.0.mender -t ucm-imx8m-plus
+====================================================================================================================================================
+Writing Artifact...
+Version                 ✓
+Manifest                ✓
+Manifest signature      ✓
+Header                  ✓
+Payload
+........................................................................ - 100 %
+```
+* Mender Artifact to install
+```
+mender install new_artifact.2.0.mender
+======================================
+INFO[0000] Loaded configuration file: /var/lib/mender/mender.conf 
+INFO[0000] Loaded configuration file: /etc/mender/mender.conf 
+INFO[0000] Mender running on partition: /dev/mmcblk2p2  
+INFO[0000] Start updating from local image file: [/data/new_artifact.2.0.mender] 
+Installing Artifact of size 1474456064...
+INFO[0000] No public key was provided for authenticating the artifact 
+INFO[0000] Opening device "/dev/mmcblk2p3" for writing  
+INFO[0000] Native sector size of block device /dev/mmcblk2p3 is 512 bytes. Mender will write in chunks of 1048576 bytes 
+.............................................................. - 100 %
+INFO[0099] All bytes were successfully written to the new partition 
+INFO[0099] The optimized block-device writer wrote a total of 3801 frames, where 11 frames did need to be rewritten (i.e., skipped) 
+INFO[0100] Wrote 3984588800/3984588800 bytes to the inactive partition 
+INFO[0100] Enabling partition with new image installed to be a boot candidate: 3 
+Use -commit to update, or -rollback to roll back the update.
+At least one payload requested a reboot of the device it updated.
+```
+At the end of this process the Mender environment will be:
+```
+fw_printenv 
+===========
+bootcount=0
+mender_boot_part=3
+upgrade_available=1
+mender_uboot_separator=
+mender_boot_part_hex=3
+```
+* Reboot the device
+```
+reboot
+```
+* Print Mender environment
+```
+fw_printenv
+===========
+bootcount=1
+mender_boot_part=3
+upgrade_available=1
+mender_uboot_separator=
+mender_boot_part_hex=3
+```
+* Print the bootable device layout
+```
+lsblk /dev/mmcblk2
+==================
+NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+mmcblk2     179:0    0 29.1G  0 disk 
+|-mmcblk2p1 179:1    0   64M  0 part /boot/efi
+|-mmcblk2p2 179:2    0  3.7G  0 part 
+|-mmcblk2p3 179:3    0  3.7G  0 part /
+`-mmcblk2p4 179:4    0 21.6G  0 part /data
+```
+* Commit changes
+```
+mender commit
+=============
+INFO[0000] Loaded configuration file: /var/lib/mender/mender.conf 
+INFO[0000] Loaded configuration file: /etc/mender/mender.conf 
+INFO[0000] Mender running on partition: /dev/mmcblk2p3  
+Committing Artifact...
+INFO[0000] Committing update 
+```
+* Print Mender environment
+```
+fw_printenv
+===========
+bootcount=1
+mender_boot_part=3
+upgrade_available=0
+mender_uboot_separator=
+mender_boot_part_hex=3
+```
+
+
 ## Roll Back Test
 
 The mender rool back logics:
