@@ -20,7 +20,7 @@ make -j 8
 sudo make install
 
 ## How to use:
-Target is a `imx8mq` or `imx8mq` SOC. Host is a development Linux machine with installed openocd
+Target is a `imx8mq` or `imx8mm` SOC. Host is a development Linux machine with installed openocd
 
 * BackEnd
 [source,console]
