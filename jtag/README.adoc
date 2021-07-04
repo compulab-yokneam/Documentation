@@ -3,17 +3,17 @@
 ## Requirements:
 * HW: http://dangerousprototypes.com/docs/Bus_Blaster[Bus Blaster v3]
 * SW: http://openocd.org/[OpenOCD]
-* Integration and configuration: https://www.biglakesoftware.com/open-source-jtag-debugging[Open Source JTAG Debugging]
 
 ## How to build:
 
 * Download
 [source,console]
-git clone git://git.code.sf.net/p/openocd/code
+mkdir ~/openocd && ~/openocd
+git clone git://git.code.sf.net/p/openocd/code openocd-code
 
 * Build
 [source,console]
-cd /path/to/openocd/code
+cd ~/openocd/openocd-code
 ./bootstrap
 ./configure --prefix=/opt/openocd --enable-ftdi --enable-maintainer-mode --enable-target64
 make -j 8
