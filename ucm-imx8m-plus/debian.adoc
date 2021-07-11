@@ -2,7 +2,7 @@
 
 ## Boot from an externel media
 
-* Downlaod a Debian image:
+* Downlaod an image:
 
 |=====
 |Available images|md5sum
