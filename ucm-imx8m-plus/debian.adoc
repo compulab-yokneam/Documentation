@@ -1,0 +1,34 @@
+# Debian/Ubuntu arm64
+
+## Boot from an externel media
+
+* Downlaod a Debian image:
+
+|=====
+|Available images|md5sum
+|https://drive.google.com/file/d/1CLTGWsOn2vnR89t8lya7JJGBkvSjU8ik/view?usp=sharing[Debian:Bullseye]|c5abf6c11af3f51f7d44f2ae145f15cc
+|https://drive.google.com/file/d/1HBHMmqIsaj46x4IGju_kqrNGfRib7thf/view?usp=sharing[Debian:Sid]|f60218d231c64fc09b555e823880b342
+|https://drive.google.com/file/d/16hbZnfAkMlySYeqFyPkcqu40Xmc2F6gQ/view?usp=sharing[Ubuntu:Groovy]|c40996f2ba9989e9c3115ed0cf9da94f
+|=====
+
+
+* Create a bootable media. It can be either an sd-card or a usb-stick.
+[source,code]
+xz -dc <DISTRO_NAME>-<TIME_STAMP>.sdcard.img.xz | sudo dd of=/dev/sdX bs=1M
+
+* Boot up device using this media.
+* Let the device boot up.
+
+|=====
+|NOTE| The internal media left untouched while booting from an external media.
+|=====
+
+## Update the device internal media
+* Boot up device using an external media.
+* As soon as the device gets booted up issue:
+[source,code]
+QUIET=Yes DST=/dev/mmcblk2 cl-deploy
+* Wait for a “SUCCESS” message in the terminal window & power off the device.
+[source,code]
+poweroff
+* Remove the external media.
