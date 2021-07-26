@@ -18,7 +18,7 @@ https://git.linaro.org/people/paul.liu/systemready/build-scripts.git
 Due to the fact that we was not able to build the atf binaries using the 'original build procedure' we tried  to follow the
 https://git.linaro.org/people/paul.liu/systemready/build-scripts.git/tree/docs/iotgateimx8_building_running.md
 
-Unfortunately we ran into issue at  #104-110 lines.
+Unfortunately we ran into an issue at #104-110 lines.
 
 ## Status
 
