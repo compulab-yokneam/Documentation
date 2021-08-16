@@ -6,7 +6,7 @@ We have a working [environment](https://github.com/compulab-yokneam/compulab-sr)
 * Download the usb image from this [location](https://drive.google.com/drive/folders/1RrKbNv6OClDobwBLrIkFKKeLYpl9TOin).
 * Flash the image file to a USB flash drive:
 ```bash
-xz -dc usb_sr.img.xz | sudo dd of=/dev/sdX bs=1M
+xz -dc /path/to/usb_sr.img.xz | sudo dd of=/dev/sdX bs=1M
 ```
 * Insert the USB flash drive into one of the USB ports.
 * Connect a standard USB cable (included in the kit) between your host PC and the IOT-GATE-iMX8/SBC-IOT-iMX8 Debug console connector. [see drawing](https://mediawiki.compulab.com/w/index.php?title=File:Iot-gate-imx8_front-and-back-panels.png)
