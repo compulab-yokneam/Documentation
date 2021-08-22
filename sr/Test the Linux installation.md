@@ -41,7 +41,7 @@ chmod /media /tmp/grub.install
 Step|Requirements
 ---|---
 Installation | * Requires 'clk_ignore_unused' to be added as a kernel boot parameter.<br>* Requires manual GRUB installation.
-Run time | Requires 'clk_ignore_unused' to be added as a kernel boot parameter.<br>sed -i 's/\(GRUB_CMDLINE_LINUX=".*\)"/\1 clk_ignore_unused "/g' /etc/default/grub
+Run time | Requires 'clk_ignore_unused' to be added as a kernel boot parameter.
 
 * How to add 'clk_ignore_unused' permanentally:
 1) Stop in grub menu; press 'e'; add 'clk_ignore_unused' at `linux  /boot/vmlinuz ...` command
