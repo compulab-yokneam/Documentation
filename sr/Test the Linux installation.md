@@ -9,7 +9,7 @@ Installation | Works out of the box
 Run time | Requires no changes in any conf files.
 
 ## [OpenSuse](https://get.opensuse.org)
-* [MicroSO](https://download.opensuse.org/ports/aarch64/tumbleweed/iso/openSUSE-MicroOS-DVD-aarch64-Current.iso)
+* [MicroOS](https://download.opensuse.org/ports/aarch64/tumbleweed/iso/openSUSE-MicroOS-DVD-aarch64-Current.iso)
 
 Step|Requirements
 ---|---
