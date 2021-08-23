@@ -44,7 +44,7 @@ grub-install -v --no-nvram /dev/mmcblk2
 update-grub2
 eof
 chmod a+x media/tmp/grub.install
-chmod /media /tmp/grub.install
+chroot /media /tmp/grub.install
 ```
 
 ## Ubuntu Server 20.04
