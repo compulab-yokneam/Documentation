@@ -23,7 +23,9 @@ Step|Requirements
 Installation | Works from an sd-card only. Installation kernel does not have the ci_hdrc support.
 Run time | Requires kernel update (5.3.18-59.19-default) in order to get the ci_hdrc support.
 
-## Debian
+## [Debian](https://cdimage.debian.org/debian-cd/11.0.0/arm64/)
+
+* [Debian 11.0.0](https://cdimage.debian.org/debian-cd/11.0.0/arm64/iso-dvd/debian-11.0.0-arm64-DVD-1.iso)
 
 Step|Requirements
 ---|---
