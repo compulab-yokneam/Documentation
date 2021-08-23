@@ -1,12 +1,22 @@
 # Test the Linux installation
-## Fedora IoT
+
+## [Fedora IoT](https://getfedora.org/en/iot/)
+* [Fedora 34](https://download.fedoraproject.org/pub/alt/iot/34/IoT/aarch64/iso/Fedora-IoT-IoT-ostree-aarch64-34-20210801.0.iso)
 
 Step|Requirements
 ---|---
 Installation | Works out of the box
 Run time | Requires no changes in any conf files.
 
-## OpenSuse
+## [OpenSuse](https://get.opensuse.org)
+* [MicroSO](https://download.opensuse.org/ports/aarch64/tumbleweed/iso/openSUSE-MicroOS-DVD-aarch64-Current.iso)
+
+Step|Requirements
+---|---
+Installation | Works out of the box
+Run time | Requires no changes in any conf files.
+
+* [Leap](https://download.opensuse.org/distribution/leap/15.3/iso/openSUSE-Leap-15.3-DVD-aarch64-Current.iso)
 
 Step|Requirements
 ---|---
