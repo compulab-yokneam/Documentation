@@ -30,7 +30,7 @@ Run time | Requires kernel update (5.3.18-59.19-default) in order to get the ci_
 Step|Requirements
 ---|---
 Installation | Works out of the box, but requires manual GRUB installation.
-Run time | Runs flawlessly.
+Run time | Runs w/out reboot. The Kernel does not have imx2_wdt compiled.
 
 * Failure description<br>
 Installer runs into the [efivarfs_set_variable: failed to open ... Read-only file system.](https://wiki.debian.org/UEFI#grub-install_unable_to_set_up_boot_variables).
@@ -38,21 +38,34 @@ Installer runs into the [efivarfs_set_variable: failed to open ... Read-only fil
 * How to fix<br>
 As soon as the installer reports on the failure, open up a shell and issue:
 ```
-mount /dev/mmcblk2p2 /media
-mount /dev/mmcblk2p1 /media/boot/efi
-for i in /dev /dev/pts /proc /sys /sys/firmware/efi/efivars /run; do mount -o bind $i /media$i; done
-cat << eof > media/tmp/grub.install
+mount /dev/mmcblk2p2 /target
+mount /dev/mmcblk2p1 /target/boot/efi
+for i in /dev /dev/pts /proc /sys /sys/firmware/efi/efivars /run; do mount -o bind $i /target$i; done
+cat << eof > /target/tmp/grub.install
 grub-install -v --no-nvram /dev/mmcblk2
 update-grub2
 eof
-chmod a+x media/tmp/grub.install
-chroot /media /tmp/grub.install
+chmod a+x /target/tmp/grub.install
+chroot /target /tmp/grub.install
 ```
+## [Ubuntu](https://ubuntu.com/download/server/arm)
+Both Servers' Installations can't get to the end of the installation process.<br>
+The installer reports on the issue, but the process can be continued manually.<br>
+The installer offers a shell window with the root credentials where: useradd & grub-install can be issued.<br>
+The installer crash logs are available [here](https://drive.google.com/drive/folders/1JhlUDHKiu47gLnfEKsxIt786ZDpf-sUm).
 
-## Ubuntu Server 20.04
+## [Ubuntu Server 21.04](https://cdimage.ubuntu.com/releases/21.04/release/ubuntu-21.04-live-server-arm64.iso)
+
 Step|Requirements
 ---|---
-Installation | * Requires 'clk_ignore_unused' to be added as a kernel boot parameter.<br>* Requires manual GRUB installation.
+Installation | Requires user intercations in order to complete the failed installetion process.
+Run time | Requires no changes in any conf files.
+
+
+## [Ubuntu Server 20.04.2 LTS](https://cdimage.ubuntu.com/releases/20.04/release/ubuntu-20.04.2-live-server-arm64.iso)
+Step|Requirements
+---|---
+Installation | * Requires 'clk_ignore_unused' to be added as a kernel boot parameter.<br>* Requires user intercations in order to complete the failed installetion process.
 Run time | Requires 'clk_ignore_unused' to be added as a kernel boot parameter.
 
 * How to add 'clk_ignore_unused' permanentally:
