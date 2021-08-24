@@ -27,6 +27,8 @@ Done: Remove USB stick & reset the device
 ```bash
 xz -dc /path/to/ir_acs_live_image.img.xz | sudo dd of=/dev/sdX bs=1M
 ```
+
+# Run the SR tests
 * Insert the USB flash drive into one of the USB ports.
 * Power-on the system.
 * The system will automatically start IR test procedure.
