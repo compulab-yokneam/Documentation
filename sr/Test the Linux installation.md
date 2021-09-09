@@ -58,14 +58,14 @@ The installer crash logs are available [here](https://drive.google.com/drive/fol
 
 Step|Requirements
 ---|---
-Installation | Requires user intercations in order to complete the failed installetion process.
+Installation | Requires user intercations in order to complete the failed installation process.
 Run time | Requires no changes in any conf files.
 
 
 ## [Ubuntu Server 20.04.2 LTS](https://cdimage.ubuntu.com/releases/20.04/release/ubuntu-20.04.2-live-server-arm64.iso)
 Step|Requirements
 ---|---
-Installation | * Requires 'clk_ignore_unused' to be added as a kernel boot parameter.<br>* Requires user intercations in order to complete the failed installetion process.
+Installation | * Requires 'clk_ignore_unused' to be added as a kernel boot parameter.<br>* Requires user intercations in order to complete the failed installation process.
 Run time | Requires 'clk_ignore_unused' to be added as a kernel boot parameter.
 
 * How to add 'clk_ignore_unused' permanentally:
