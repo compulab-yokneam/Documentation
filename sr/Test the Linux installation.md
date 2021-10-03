@@ -1,5 +1,7 @@
 # Test the Linux installation
 
+* Installation logs can be foud [here](https://drive.google.com/drive/folders/1hkiJBIRLH0h1hdSkUhGi_7DHvjlUCWfb)
+
 ## [Fedora IoT](https://getfedora.org/en/iot/)
 * [Fedora 34](https://download.fedoraproject.org/pub/alt/iot/34/IoT/aarch64/iso/Fedora-IoT-IoT-ostree-aarch64-34-20210801.0.iso)
 
