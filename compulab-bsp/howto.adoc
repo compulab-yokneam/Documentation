@@ -1,0 +1,21 @@
+# CompuLab Devices BSP howto
+
+## Apply patches
+https://github.com/compulab-yokneam/meta-compulab-csom[CompuLab Yocto Customer SOM layer skeleton]
+
+It shows how to apply additional changes on top of the compulab-linux kernel.
+
+## Kernel Config Update
+CompuLab meta-layer uses the Linux kernel config approach prefer to the kernel build.
+
+It issues `make machine_defconfig` first.
+
+* Pros: Just update the kernel patches including the platform defconfig update.
+* Cons: Yocto .cfg fragment approach does not work as is. Requires a specific task for handling it.
+
+https://github.com/compulab-yokneam/meta-bsp-imx8mp/blob/gatesgarth/recipes-kernel/linux/linux-compulab.in[do_configure_append]
+```
+do_configure_append() {
+	oe_runmake ${MACHINE}_defconfig
+}
+```
