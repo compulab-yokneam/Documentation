@@ -5,6 +5,26 @@ https://github.com/compulab-yokneam/meta-compulab-csom[CompuLab Yocto Customer S
 
 It shows how to apply additional changes on top of the compulab-linux kernel.
 
+* https://github.com/compulab-yokneam/meta-compulab-csom/blob/master/recipes-kernel/linux/linux-compulab_%25.bbappend#L25[Apply configuration fragment]
+```
+do_post_configure() {
+    for _cfg in $(ls "${WORKDIR}/*.cfg"); do
+        cat ${_cfg} >> $config
+    done
+}
+``` 
+This task appends all configuration fragments to the kernel `.config` file.
+All configuration fragments have to be added to the SRC_URI variabel.
+In this example it https://github.com/compulab-yokneam/meta-compulab-csom/blob/master/recipes-kernel/linux/linux-compulab_%25.bbappend#L21[looks like]:
+```
+SRC_URI_append += "\
+	file://00-compulab-config-fragment.cfg \
+"
+```
+
+Refer to the https://www.yoctoproject.org/docs/2.5/kernel-dev/kernel-dev.html#creating-config-fragments[Yocto: Creating Configuration Fragments] for more details.
+
+
 ## Kernel Config Update
 CompuLab meta-layer uses the Linux kernel config approach prefer to the kernel build.
 
