@@ -1,0 +1,37 @@
+# Debian Build Procedure
+
+NOTE: `This is a CompuLab Tool for internal use only. Provided w/out any support. Developers skills are required.`
+
+Supported CompuLab Machines: `cl-som-imx7`
+
+* Prepare NXP BSP
+[source,console]
+repo init -u git://source.codeaurora.org/external/imx/imx-manifest.git -b imx-linux-warrior -m imx-4.19.35-1.1.0.xml
+repo sync
+
+* Download CompuLab meta layer
+[source,console]
+git clone -b devel-warrior https://github.com/compulab-yokneam/meta-bsp-imx7.git sources/meta-bsp-imx7/
+
+* Set COMPULAB_MACHINE environment variable:
+[source,console]
+COMPULAB_MACHINE=cl-som-imx7
+
+* Setup the build environment:
+[source,console]
+MACHINE=${COMPULAB_MACHINE} DISTRO=fsl-imx-fb source sources/meta-bsp-imx7/tools/setup-env -b build-fb-imx7
+
+* Update the conf/bblayers.conf. Add this layer:
+[source,console]
+cat << eof | tee -a conf/bblayers.conf
+BBLAYERS += " ${BSPDIR}/sources/meta-compulab-bsp/meta-devtool"
+BBLAYERS += " ${BSPDIR}/sources/meta-compulab-bsp/meta-utils"
+eof
+
+* Issue this command in the ${BUILDDIR}:
+[source,console]
+bitbake yebian
+
+* Deploy the created image to an sd-card. The image is at:
+[source,console]
+ls -al ${BUILDDIR}/tmp/deploy/images/${MACHINE}/yebian/images/
