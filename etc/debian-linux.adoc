@@ -1,8 +1,8 @@
 # Debian Build Procedure
 
-NOTE: `This is a CompuLab Tool for internal use only. Provided w/out any support. Developers skills are required.`
+NOTE: `This is a CompuLab tool for internal use only. Provided w/out any support. Developers skills are required.`
 
-Supported CompuLab Machines: `cl-som-imx7`
+## cl-som-imx7
 
 * Prepare NXP BSP
 [source,console]
