@@ -29,7 +29,7 @@ reset
 ```
 Let the device start w/out any user interactions.
 
-When installers starts, it opens up this message window, let it continue running.
+When installer starts, it opens up this message window, let it continue running.
 
           +--------cl-deploy will get started in 5 seconds-----------+
           | Configuration file /etc/cl-auto.conf parameters:         |
