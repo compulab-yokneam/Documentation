@@ -10,7 +10,7 @@
 
 * Create an instalation media:
 ```
-xz -dc /path/to/debian-bullseye-armhf-buildd-20211128105400.sdcard.img.xz | sudo dd of=/dev/sdX bs=1M statusp=progress
+xz -dc /path/to/debian-bullseye-armhf-buildd-20211128105400.sdcard.img.xz | sudo dd of=/dev/sdX bs=1M status=progress conv=fsync
 ```
 Make use of the created media for booting the device.
 
