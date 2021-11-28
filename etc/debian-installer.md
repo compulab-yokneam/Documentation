@@ -1,10 +1,10 @@
-# Debian Installation Media
+# Debian Installer
 
 ## Installation media.
 * Please choose an installation media: 
 
-| Supported installation devices | sd-card, usb-stick |
-| :--- | :--- |
+| Supported installation devices | sd-card<br>usb-stick |
+| :--- | ---: |
 
 * Download the [Debian Installer Image](https://drive.google.com/file/d/1PmHPMfB8vWXEY0mK4lxPLbgxGbJJ-P7w/view?usp=sharing)
 
@@ -15,6 +15,9 @@ xz -dc /path/to/debian-bullseye-armhf-buildd-20211128105400.sdcard.img.xz | sudo
 Make use of the created media for booting the device.
 
 ## Installation procedure.
+| WARNING | All internal data will be destroyed |
+| :--- | :--- |
+
 * Turn on the device, stop in U-Boot and issue:
 ```
 env default -a; saveenv
@@ -45,7 +48,7 @@ When installers starts, it opens up this message window, let it continue running
           +----------------------------------------------------------+
 
 
-At the end of the process this message wondow gets shown up, follow the instructions.
+At the end of the process this message window gets shown up, follow the instructions.
 
 
               +-------------------Success----------------------+
