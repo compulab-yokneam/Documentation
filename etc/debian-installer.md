@@ -14,9 +14,14 @@ xz -dc /path/to/debian-bullseye-armhf-buildd-20211128105400.sdcard.img.xz | sudo
 ```
 Make use of the created media for booting the device.
 
-## Installation procedure.
+## Installation procedure
+
 | WARNING | All internal data will be destroyed |
 | :--- | :--- |
+
+### Automatic procedure
+
+This approach recommended for updating the device imternal media w/out any user instractions.
 
 * Turn on the device, stop in U-Boot and issue:
 ```
@@ -60,3 +65,52 @@ At the end of the process this message window gets shown up, follow the instruct
               +------------------------------------------------+
 
 Done.
+
+### Manual Procedure
+
+* Turn on the device, stop in U-Boot and issue:
+```
+env default -a
+setenv skip_inst yes
+```
+
+* Insert the created installation media and issue:
+```
+boot
+```
+
+* As soon as the loging prompt turns out, login to the device and issue:
+```
+cl-deploy
+```
+
+## Customization of the installation media
+
+|This approach allows|installing additional software to the installation media<br>customization of the rootfs<br>
+| :--- | :---|
+
+* Issue ```Manual Procedure``` and stop before ```cl-deploy```.
+
+### User customization example
+* Install an additional software package from the Debian repository:
+```
+apt-get update
+apt-get install <sw-package>
+```
+
+* Install an additional software package from a tarball:
+```
+tar -C / -xf /path/to/sw-package.tar.bz2
+```
+
+* Customization of the rootfs:
+<pre>
+cat << eof | tee -a /etc/motd
+
+Debian Image Customization Version #1
+
+eof
+</pre>
+
+All these changes will be deployed to the destination by ```cl-deploy```.<br>
+After being cusomized the media can be used for either ```Atomatic``` or ```Manual``` installation procedure.
