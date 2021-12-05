@@ -1,13 +1,15 @@
 # Debian Installer
 
-## Installation media
-* Please choose an installation media: 
+Supported features:
 
-| Supported installation devices | sd-card<br>usb-stick |
-| :--- | ---: |
+|Installation media|sd-card<br>usb-stick|
+| :--- | :--- |
+|Installation procedure|automatic<br>manual|
+
+
+## Installation media
 
 * Download the [Debian Installer Image](https://drive.google.com/file/d/1PmHPMfB8vWXEY0mK4lxPLbgxGbJJ-P7w/view?usp=sharing)
-
 * Create an instalation media:
 ```
 xz -dc /path/to/debian-bullseye-armhf-buildd-20211128105400.sdcard.img.xz | sudo dd of=/dev/sdX bs=1M status=progress conv=fsync
