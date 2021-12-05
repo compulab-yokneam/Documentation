@@ -33,7 +33,7 @@ This approach recommended for updating the device imternal media w/out any user 
 
 * Turn on the device, stop in U-Boot and issue:
 ```
-env default -a; saveenv
+env default -a; setenv skip_inst; saveenv
 ```
 
 * Insert the created installation media and issue:
@@ -78,13 +78,12 @@ Done.
 
 * Turn on the device, stop in U-Boot and issue:
 ```
-env default -a
-setenv skip_inst yes
+env default -a; setenv skip_inst yes; saveenv
 ```
 
 * Insert the created installation media and issue:
 ```
-boot
+reset
 ```
 
 * As soon as the loging prompt turns out, login to the device and issue:
