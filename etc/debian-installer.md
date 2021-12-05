@@ -1,6 +1,6 @@
 # Debian Installer
 
-## Installation media.
+## Installation media
 * Please choose an installation media: 
 
 | Supported installation devices | sd-card<br>usb-stick |
