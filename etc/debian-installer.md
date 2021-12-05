@@ -4,7 +4,7 @@ Supported features:
 
 |Installation media|sd-card<br>usb-stick|
 | :--- | :--- |
-|Installation procedure|automatic<br>manual|
+|Installation procedure|[automatic](#automatic-procedure)<br>[manual](#manual-procedure)|
 
 
 ## Installation media
