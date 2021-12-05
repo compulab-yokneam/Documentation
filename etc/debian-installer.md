@@ -9,10 +9,16 @@ Supported features:
 
 ## Installation media
 
-* Download the [Debian Installer Image](https://drive.google.com/file/d/1PmHPMfB8vWXEY0mK4lxPLbgxGbJJ-P7w/view?usp=sharing)
+* Download a Debian live image:
+
+|SOC|URL|Desctiption|
+|:---|:---|:---|
+|iMX7|[Debian 11 + Mender Ready + Azure](https://drive.google.com/file/d/1PmHPMfB8vWXEY0mK4lxPLbgxGbJJ-P7w/view?usp=sharing)|4-part image|
+|iMX7|[Debian 11](https://drive.google.com/file/d/1TpPu27TjP2YjSIkxsufo3My4htWvwPdv/view?usp=sharing)|2-part image|
+
 * Create an instalation media:
 ```
-xz -dc /path/to/debian-bullseye-armhf-buildd-20211128105400.sdcard.img.xz | sudo dd of=/dev/sdX bs=1M status=progress conv=fsync
+xz -dc /path/to/debian-live-image.sdcard.img.xz | sudo dd of=/dev/sdX bs=1M status=progress conv=fsync
 ```
 Make use of the created media for booting the device.
 
