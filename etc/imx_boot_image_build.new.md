@@ -110,7 +110,7 @@ export ARCH=arm64
 </pre>
 * Compile U-Boot flash.bin:
 <pre>
-cat uboot-imx/configs/cl-imx8m-mini_defconfig uboot-imx/configs/${MACHINE}.config > uboot-imx/configs/${MACINE}_defconfig
+cat uboot-imx/configs/cl-imx8m-mini_defconfig uboot-imx/configs/${MACHINE}.config > uboot-imx/configs/${MACHINE}_defconfig
 make -j 16 -C uboot-imx O=${RESULTS} ${MACHINE}_defconfig
 make -j 16 -C uboot-imx O=${RESULTS} ATF_LOAD_ADDR=0x920000 TEE_LOAD_ADDR=0xbe000000 flash.bin
 </pre>
