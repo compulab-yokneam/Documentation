@@ -68,7 +68,7 @@ git -C imx-atf am ${LAYER_DIR}/recipes-bsp/imx-atf/compulab/imx8mm/*.patch
 </pre>
 * Make bl31.bin
 <pre>
-make -C imx-atf PLAT=imx8mm BUILD_BASE=build-optee SPD=opteed \
+make -j 16 -C imx-atf PLAT=imx8mm BUILD_BASE=build-optee SPD=opteed \
   IMX_BOOT_UART_BASE=0x30880000 BL32_BASE=0xbe000000 BL32_SIZE=0x2000000 bl31
 ln -s $(readlink -f imx-atf/build-optee/imx8mm/release/bl31.bin) ${RESULTS}/
 </pre>
@@ -92,9 +92,9 @@ export CROSS_COMPILE64=${CROSS_COMPILE}
 </pre>
 * Make tee.bin
 <pre>
-make -C imx-optee-os PLATFORM=imx PLATFORM_FLAVOR=mx8mmevk \
+make -j 16 -C imx-optee-os PLATFORM=imx PLATFORM_FLAVOR=mx8mmevk \
   CFG_UART_BASE=UART3_BASE CFG_DDR_SIZE=0x80000000
-ln -s $(readlink -f imx-optee-os/out/arm-plat-imx/core/tee-raw.bin) ${RESUTLS}/tee.bin
+ln -s $(readlink -f imx-optee-os/out/arm-plat-imx/core/tee-raw.bin) ${RESULTS}/tee.bin
 </pre>
 
 ### U-Boot
@@ -111,8 +111,8 @@ export ARCH=arm64
 * Compile U-Boot flash.bin:
 <pre>
 cat uboot-imx/configs/cl-imx8m-mini_defconfig uboot-imx/configs/${MACHINE}.config > uboot-imx/configs/${MACINE}_defconfig
-make -C uboot-imx O=${RESULTS} ${MACHINE}_defconfig
-make -C uboot-imx O=${RESULTS} ATF_LOAD_ADDR=0x920000 TEE_LOAD_ADDR=0xbe000000 flash.bin
+make -j 16 -C uboot-imx O=${RESULTS} ${MACHINE}_defconfig
+make -j 16 -C uboot-imx O=${RESULTS} ATF_LOAD_ADDR=0x920000 TEE_LOAD_ADDR=0xbe000000 flash.bin
 </pre>
 
 ## Flashing
