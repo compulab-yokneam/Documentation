@@ -23,6 +23,9 @@ Define the following environment variables:
 |OPTEE revision|export OPTEE=lf-5.10.72-2.2.0|
 |U-Boot revision|export UBOOT=lf-5.10.35-2.0.0|
 
+|IMPORTANT| OPTEE works on a single dram config only|
+|---|---|
+
 ## Prerequisites
 It is up to developer to setup arm64 build environment:
 * Download the [ARM tool chain](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-a/downloads/9-2-2019-12)
@@ -67,13 +70,21 @@ git -C imx-atf am ${LAYER_DIR}/recipes-bsp/imx-atf/compulab/imx8mm/*.patch
 }
 </pre>
 * Make bl31.bin
+
+| optee build |make -j 16 -C imx-atf PLAT=imx8mm BUILD_BASE=build SPD=opteed IMX_BOOT_UART_BASE=0x30880000 BL32_BASE=0xbe000000 BL32_SIZE=0x2000000 bl31
+|:--- |:--- |
+| non-optee build |make -j 16 -C imx-atf PLAT=imx8mm BUILD_BASE=build IMX_BOOT_UART_BASE=0x30880000 bl31
+
+* Ceate a symlink in the ${RESULTS} folder:
 <pre>
-make -j 16 -C imx-atf PLAT=imx8mm BUILD_BASE=build-optee SPD=opteed \
-  IMX_BOOT_UART_BASE=0x30880000 BL32_BASE=0xbe000000 BL32_SIZE=0x2000000 bl31
-ln -s $(readlink -f imx-atf/build-optee/imx8mm/release/bl31.bin) ${RESULTS}/
+ln -s $(readlink -f imx-atf/build/imx8mm/release/bl31.bin) ${RESULTS}/
 </pre>
 
 ### OP-TEE Setup
+
+| Skip this for a non-optee build |
+| --- |
+
 * Download the OP-TEE:
 <pre>
 git clone https://source.codeaurora.org/external/imx/imx-optee-os
