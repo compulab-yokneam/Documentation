@@ -24,8 +24,8 @@ MACHINE=${COMPULAB_MACHINE} DISTRO=fsl-imx-fb source sources/meta-bsp-imx7/tools
 * Update the conf/bblayers.conf. Add this layer:
 [source,console]
 cat << eof | tee -a conf/bblayers.conf
-BBLAYERS += " ${BSPDIR}/sources/meta-compulab-bsp/meta-devtool"
-BBLAYERS += " ${BSPDIR}/sources/meta-compulab-bsp/meta-utils"
+BBLAYERS += " \${BSPDIR}/sources/meta-compulab-bsp/meta-devtool"
+BBLAYERS += " \${BSPDIR}/sources/meta-compulab-bsp/meta-utils"
 eof
 
 * Issue this command in the ${BUILDDIR}:
