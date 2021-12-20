@@ -23,9 +23,6 @@ Define the following environment variables:
 |OPTEE revision|export OPTEE=lf-5.10.72-2.2.0|
 |U-Boot revision|export UBOOT=lf-5.10.35-2.0.0|
 
-|IMPORTANT| OPTEE works on a single dram config only|
-|---|---|
-
 ## Prerequisites
 It is up to developer to setup arm64 build environment:
 * Download the [ARM tool chain](https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-a/downloads/9-2-2019-12)
@@ -71,9 +68,9 @@ git -C imx-atf am ${LAYER_DIR}/recipes-bsp/imx-atf/compulab/imx8mm/*.patch
 </pre>
 * Make bl31.bin
 
-| optee build |make -j 16 -C imx-atf PLAT=imx8mm BUILD_BASE=build SPD=opteed IMX_BOOT_UART_BASE=0x30880000 BL32_BASE=0xbe000000 BL32_SIZE=0x2000000 bl31
+|optee build|make -j 16 -C imx-atf PLAT=imx8mm BUILD_BASE=build BL32_BASE=0x56000000 SPD=opteed bl31
 |:--- |:--- |
-| non-optee build |make -j 16 -C imx-atf PLAT=imx8mm BUILD_BASE=build IMX_BOOT_UART_BASE=0x30880000 bl31
+|non-optee build|make -j 16 -C imx-atf PLAT=imx8mm BUILD_BASE=build BL32_BASE=0x56000000 bl31
 
 * Ceate a symlink in the ${RESULTS} folder:
 <pre>
@@ -103,8 +100,7 @@ export CROSS_COMPILE64=${CROSS_COMPILE}
 </pre>
 * Make tee.bin
 <pre>
-make -j 16 -C imx-optee-os PLATFORM=imx PLATFORM_FLAVOR=mx8mmevk \
-  CFG_UART_BASE=UART3_BASE CFG_DDR_SIZE=0x80000000
+make -j 16 -C imx-optee-os PLATFORM=imx PLATFORM_FLAVOR=mx8mm_cl_iot_gate
 ln -s $(readlink -f imx-optee-os/out/arm-plat-imx/core/tee-raw.bin) ${RESULTS}/tee.bin
 </pre>
 
@@ -123,7 +119,7 @@ export ARCH=arm64
 <pre>
 cat uboot-imx/configs/cl-imx8m-mini_defconfig uboot-imx/configs/${MACHINE}.config > uboot-imx/configs/${MACHINE}_defconfig
 make -j 16 -C uboot-imx O=${RESULTS} ${MACHINE}_defconfig
-make -j 16 -C uboot-imx O=${RESULTS} ATF_LOAD_ADDR=0x920000 TEE_LOAD_ADDR=0xbe000000 flash.bin
+make -j 16 -C uboot-imx O=${RESULTS} ATF_LOAD_ADDR=0x920000 TEE_LOAD_ADDR=0x56000000 flash.bin
 </pre>
 
 ## Flashing
