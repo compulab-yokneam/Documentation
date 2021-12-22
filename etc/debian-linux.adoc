@@ -4,34 +4,14 @@ NOTE: `This is a CompuLab tool for internal use only. Provided w/out any support
 
 ## cl-som-imx7
 
-* Prepare NXP BSP
-[source,console]
-repo init -u git://source.codeaurora.org/external/imx/imx-manifest.git -b imx-linux-warrior -m imx-4.19.35-1.1.0.xml
-repo sync
+* Follow the instructions of https://github.com/compulab-yokneam/meta-bsp-imx7/blob/devel-warrior/README.adoc[meta-bsp-imx7] and build a `U-Boot only`.
 
-* Download CompuLab meta layer
+* Issue this command in order to use the `meta-devtool`:
 [source,console]
-git clone -b devel-warrior https://github.com/compulab-yokneam/meta-bsp-imx7.git sources/meta-bsp-imx7/
+git -C ../sources/meta-compulab-bsp checkout master
 
-* Set COMPULAB_MACHINE environment variable:
+* Set `MACHINE` environment variable:
 [source,console]
-COMPULAB_MACHINE=cl-som-imx7
+MACHINE=cl-som-imx7
 
-* Setup the build environment:
-[source,console]
-MACHINE=${COMPULAB_MACHINE} DISTRO=fsl-imx-fb source sources/meta-bsp-imx7/tools/setup-env -b build-fb-imx7
-
-* Update the conf/bblayers.conf. Add this layer:
-[source,console]
-cat << eof | tee -a conf/bblayers.conf
-BBLAYERS += " \${BSPDIR}/sources/meta-compulab-bsp/meta-devtool"
-BBLAYERS += " \${BSPDIR}/sources/meta-compulab-bsp/meta-utils"
-eof
-
-* Issue this command in the ${BUILDDIR}:
-[source,console]
-bitbake yebian
-
-* Deploy the created image to an sd-card. The image is at:
-[source,console]
-ls -al ${BUILDDIR}/tmp/deploy/images/${MACHINE}/yebian/images/
+* Follow the instructions of the https://github.com/compulab-yokneam/meta-compulab-bsp/blob/master/meta-devtool/recipes-release/yebian/README.md[CompuLab Yebian Tool].
