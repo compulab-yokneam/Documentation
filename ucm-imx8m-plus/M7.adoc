@@ -32,6 +32,7 @@ bootaux 0x8000000
 ```
 tftpboot 0x48000000 ${sip}:imx8mp/flash/hello_world.bin
 dcache flush
+sf probe
 sf erase 0 0x100000
 sf write 0x48000000 0 0x100000
 bootaux 0x8000000
