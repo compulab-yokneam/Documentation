@@ -2,7 +2,8 @@
 
 * Requirements
 ** CompuLab ucm-imx8m-plus evaluation board
-** Precompiled M7 binaries
+** https://drive.google.com/file/d/1dyIjtsBSc1dw9Bv9bDGc5oiFmK7HNW8p/view?usp=sharing[Precompiled M7 binaries]
+** https://drive.google.com/file/d/162O0s2KzSrUVFKb2_c4zASnxOXQ4dsd6/view?usp=sharing[NXP Getting Started]
 
 # HW Setup connectivity:
 * A53 debug console uart2
