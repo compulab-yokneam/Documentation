@@ -14,7 +14,7 @@
 ```
 
 # How to deploy
-* Download the sample tar https://drive.google.com/file/d/1DlLHojliXkT--3aWpyEq_gPbQFz-CS-X/view?usp=sharing[8mp.ramdisk.tar.bz2] to the `/tmp` folder.
+* Download the sample tar file `8mp.ramdisk.tar.bz2` from https://drive.google.com/drive/folders/1TTFBNMIL_dHvhubmeTAyFzONDdknwZUs[this] location to the `/tmp` folder.
 * Unpack the tar file:
 ```
 mkdir /tmp/path/to/ -p
