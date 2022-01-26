@@ -13,13 +13,8 @@
 └── uuu_ramdisk    -- UUU sample script for ramdisk image boot with the kernel image & the device tree file
 ```
 
-# For more details about UUU refer to:
-https://github.com/compulab-yokneam/meta-bsp-imx8mp/tree/gatesgarth#uuu
-
 # How to deploy
-
 * Download the sample tar https://drive.google.com/file/d/1DlLHojliXkT--3aWpyEq_gPbQFz-CS-X/view?usp=sharing[8mp.ramdisk.tar.bz2] to the `/tmp` folder.
-
 * Unpack the tar file:
 ```
 mkdir /tmp/path/to/ -p
@@ -38,3 +33,7 @@ cd /tmp/path/to/8mp.d
 sudo ./uuu_bootloader
 sudo ./uuu_ramdisk
 ```
+
+# For more details about UUU refer to:
+https://github.com/compulab-yokneam/meta-bsp-imx8mp/tree/gatesgarth#uuu
+
