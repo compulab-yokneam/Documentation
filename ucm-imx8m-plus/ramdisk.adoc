@@ -1,0 +1,40 @@
+# Layout
+
+```
+./
+├── buildroot
+│   └── configs
+│       └── aarch64_compulab_defconfig -- BuilRoot config for aarch64 busybox image used for ramdisk
+├── Image-ucm-imx8m-plus.bin -- kernel image file
+├── imx-boot-ucm-imx8m-plus-sd.bin-flash_evk -- imx-boot image
+├── ramdisk.img -- ramdisk image
+├── ucm-imx8m-plus.dtb -- device tree file
+├── uuu_bootloader -- UUU sample script for booting the device using SDP
+└── uuu_ramdisk    -- UUU sample script for ramdisk image boot with the kernel image & the device tree file
+```
+
+# For more details about UUU refer to:
+https://github.com/compulab-yokneam/meta-bsp-imx8mp/tree/gatesgarth#uuu
+
+# How to deploy
+
+* Download the sample tar https://drive.google.com/file/d/1DlLHojliXkT--3aWpyEq_gPbQFz-CS-X/view?usp=sharing[8mp.ramdisk.tar.bz2] to the `/tmp` folder.
+
+* Unpack the tar file:
+```
+mkdir /tmp/path/to/ -p
+tar -C /tmp/path/to -xf /tmp/8mp.ramdisk.tar.bz2
+```
+
+# How to run
+
+* Go to the all binaries unpacked folder:
+```
+cd /tmp/path/to/8mp.d
+```
+
+* Issue:
+```
+sudo ./uuu_bootloader
+sudo ./uuu_ramdisk
+```
