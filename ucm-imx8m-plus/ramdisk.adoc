@@ -36,7 +36,7 @@ sudo ./uuu_ramdisk
 # For more details about UUU refer to:
 https://github.com/compulab-yokneam/meta-bsp-imx8mp/tree/gatesgarth#uuu
 
-# BuilRoot
+# BuildRoot
 
 * Clone the https://git.buildroot.net/buildroot[buildtoot] sources:
 ```
