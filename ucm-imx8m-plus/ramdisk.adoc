@@ -3,8 +3,7 @@
 ```
 ./
 ├── buildroot
-│   └── configs
-│       └── aarch64_compulab_defconfig -- BuilRoot config for aarch64 busybox image used for ramdisk
+│   └── 0001-config-Add-compula-arm64-config.patch -- BuilRoot patch
 ├── Image-ucm-imx8m-plus.bin -- kernel image file
 ├── imx-boot-ucm-imx8m-plus-sd.bin-flash_evk -- imx-boot image
 ├── ramdisk.img -- ramdisk image
@@ -36,4 +35,27 @@ sudo ./uuu_ramdisk
 
 # For more details about UUU refer to:
 https://github.com/compulab-yokneam/meta-bsp-imx8mp/tree/gatesgarth#uuu
+
+# BuilRoot
+
+* Clone the https://git.buildroot.net/buildroot[buildtoot] sources:
+```
+mkdir /tmp/path/to/br/{src,build} -p ; cd /tmp/path/to/br/src
+export BUILD_ROOT_OUTPUT=/tmp/path/to/br/build
+git clone git://git.buildroot.net/buildroot .
+git checkout -b 2021.11.x remotes/origin/2021.11.x
+```
+
+* Apply the CompuLab patch and build:
+```
+git am /tmp/path/to/8mp.d/buildroot/*.patch
+make O=${BUILD_ROOT_OUTPUT} aarch64_compulab_defconfig
+make O=${BUILD_ROOT_OUTPUT} -j 16
+```
+
+* Creat ramdisk.image file:
+
+```
+ mkimage -A arm -O Linux -T ramdisk -d ${BUILD_ROOT_OUTPUT}/images/rootfs.ext2.gz /path/to/ramdisk.image
+```
 
