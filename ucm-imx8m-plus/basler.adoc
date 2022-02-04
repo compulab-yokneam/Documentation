@@ -1,0 +1,27 @@
+# Basler how to
+
+
+
+This a brief manual that explains how to add https://drive.google.com/file/d/1x5c8KVGbB3Hq8fHLnukEH-mB_GRyXRsF/view?usp=sharing[`Basler meta-layers`] to https://github.com/compulab-yokneam/meta-bsp-imx8mp/tree/hardknott-5.10.72-2.2.0[hardknott-5.10.72-2.2.0].
+
+* Folow the insructions of https://github.com/compulab-yokneam/meta-bsp-imx8mp/blob/hardknott-5.10.72-2.2.0/README.md[this manual] and build `imx-image-full`
+
+* Download https://drive.google.com/file/d/1x5c8KVGbB3Hq8fHLnukEH-mB_GRyXRsF/view?usp=sharing[`Basler meta-layers archive`] 
+
+* Deploy it:
+```
+tar -C ${BUILDDIR}/../sources -xf /path/to/basler-compulab-mipi-imx8mp-for-lf-5.10.72-2.2.0.tar.bz2
+```
+
+* Update the ${BUILDDIR}/conf/bblayers.conf
+```
+BBLAYERS += "${BSPDIR}/sources/meta-basler-imx8"
+BBLAYERS += "${BSPDIR}/sources/meta-basler-tools/meta-basler-common"
+```
+
+* Make sure that these new target can be created:
+```
+bitbake kernel-module-basler-camera kernel-module-isp-vvcam isp-imx basler-camera
+```
+
+* Build `imx-image-full` again. All required Balser package will be created and added to the image automaticaly.
