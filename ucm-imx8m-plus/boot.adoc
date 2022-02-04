@@ -1,0 +1,29 @@
+# How to boot the board ignoring the boot environment
+
+# eMMC boot
+
+* Boot parameters
+```
+setenv bootargs console=ttymxc1,115200 root=/dev/mmcblk2p2 rootwait rw 
+setenv bootargs ${bootargs} video=disp.screen0_output_mode=EDID:0 video=HDMI-A-1:1024x600@50
+```
+* Load kernel image:
+```
+load mmc 2 ${loadaddr} ${image}
+```
+
+* Load the default device tree:
+```
+load mmc 2 ${fdt_addr} ${fdtfile}
+```
+* Boot device:
+```
+booti ${loadaddr} - ${fdt_addr}
+```
+
+# Important
+Some U-boot version can have other names for environent variables: 
+
+* Device tree load address: fdt_addr, fdtaddr
+
+* Deveic tree file name: fdt_file, fdtfile
