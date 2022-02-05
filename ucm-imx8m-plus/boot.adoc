@@ -18,6 +18,19 @@ setenv bootargs console=ttymxc1,115200 root=/dev/mmcblk${boot_device}p2 rootwait
 setenv bootargs ${bootargs} video=disp.screen0_output_mode=EDID:0 video=HDMI-A-1:1024x600@50
 ```
 
+* Video output options to set in U-Boot.
+
+The default behaviour is all interfaces are on.
+
+In order to change the default video configuration add a video parameter to the kernel `bootargs` string:
+
+|===
+|Interface | output forced to on | output forced to off
+|DSI | video=DSI-1:e | video=DSI-1:d
+|LVDS| video=LVDS-1:e| video=LVDS-1:d
+|HDMI| video=HDIM-A-1:e| video=HDIM-A-1:d
+|===
+
 * Load kernel image:
 ```
 load mmc ${boot_device} ${loadaddr} ${image}
