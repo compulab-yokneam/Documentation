@@ -22,7 +22,7 @@ booti ${loadaddr} - ${fdt_addr}
 ```
 
 # Important
-Some U-boot version can have other names for environent variables: 
+Some U-boot versions can have other names for environent variables: 
 
 * Device tree load address: fdt_addr, fdtaddr
 
