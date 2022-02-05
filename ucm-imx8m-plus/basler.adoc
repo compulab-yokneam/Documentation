@@ -7,7 +7,19 @@
 
 This a brief manual that explains how to add https://drive.google.com/file/d/1x5c8KVGbB3Hq8fHLnukEH-mB_GRyXRsF/view?usp=sharing[`Basler meta-layers`] to https://github.com/compulab-yokneam/meta-bsp-imx8mp/tree/hardknott-5.10.72-2.2.0[hardknott-5.10.72-2.2.0].
 
-* Folow the insructions of https://github.com/compulab-yokneam/meta-bsp-imx8mp/blob/hardknott-5.10.72-2.2.0/README.md[this manual] and build `imx-image-full`
+* Folow the insructions of https://github.com/compulab-yokneam/meta-bsp-imx8mp/blob/hardknott-5.10.72-2.2.0/README.md[this manual] and build `imx-image-full`:
+```
+bitbake -k imx-image-full
+```
+
+* Before changing the environment for Basler, issue this command:
+|====
+|!|It must be done in order to prevent an image build issue with Basler.
+|====
+
+```
+bitbake -k imx-image-full isp-imx -c cleanall
+```
 
 * Download https://drive.google.com/file/d/1x5c8KVGbB3Hq8fHLnukEH-mB_GRyXRsF/view?usp=sharing[`Basler meta-layers archive`] 
 
