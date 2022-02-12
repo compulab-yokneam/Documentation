@@ -9,6 +9,8 @@ for CONF_DIR in ${!ENV_TYPE_ARAY[@]};do
 if [[ -d ${YOCTO_TARGET_SRC}/${CONF_DIR} ]];then
     ENV_TYPE=${ENV_TYPE_ARAY[${CONF_DIR}]}
     break
+else
+    ENV_TYPE=invalid
 fi
 done
 
@@ -48,7 +50,6 @@ popd
 }
 
 do_kernel_prepare() {
-# echo "ENV: "${ENV_TYPE}
 YOCTO_RECIPE_FILE=${YOCTO_KERNEL_RECIPE_FILE:-linux-kernel_%.bbappend}
 YOCTO_RECIPE=${YOCTO_KERNEL_RECIPE}
 YOCTO_PATCH=${YOCTO_KERNEL_PATCH}
@@ -57,7 +58,6 @@ do_common_prepare
 }
 
 do_uboot_prepare() {
-# echo "ENV: "${ENV_TYPE}
 YOCTO_RECIPE_FILE=${YOCTO_UBOOT_RECIPE_FILE:-u-boot-compulab_%.bbappend}
 YOCTO_RECIPE=${YOCTO_UBOOT_RECIPE}
 YOCTO_PATCH=${YOCTO_UBOOT_PATCH}
@@ -68,7 +68,7 @@ do_common_prepare
 do_yocto_prepare() {
 if [[ -z ${BASE} ]];then
 cat << eof
-	No BASE specified. Exiting ...
+    No BASE specified. Exiting ...
 eof
 return
 fi
@@ -79,7 +79,6 @@ GNUM=" --start-number ${NUM}"
 
 [[ -n ${BIN} ]] && GNUM+=" --full-index --binary"
 
-[[ $ENV_TYPE = "uboot" ||  $ENV_TYPE = "kernel" ]] || ENV_TYPE="invalid"
 do_${ENV_TYPE}_prepare
 }
 
