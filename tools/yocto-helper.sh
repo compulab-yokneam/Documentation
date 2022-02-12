@@ -27,7 +27,9 @@ YOCTO_UBOOT_INC=${YOCTO_UBOOT_PATCH}${suffix}".inc"
 
 do_invalid_prepare() {
 cat << eof
-	Invalid environmen type. Exiting ...
+    Invalid environmen type.
+    YOCTO_TARGET_SRC=${YOCTO_TARGET_SRC}
+    Exiting ...
 eof
 }
 
@@ -73,10 +75,7 @@ eof
 return
 fi
 
-[[ -z ${NUM} ]] && NUM=0
-GNUM=" --start-number ${NUM}"
-[[ ${NUM} -ne 0 ]] && EXT="."${NUM} || EXT=""
-
+[[ -n ${NUM} ]] && GNUM+=" --start-number ${NUM}"
 [[ -n ${BIN} ]] && GNUM+=" --full-index --binary"
 
 do_${ENV_TYPE}_prepare
