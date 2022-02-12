@@ -1,17 +1,17 @@
-unset plat_name YOCTO_LAYER_PATH YOCTO_KERNEL_RECIPE_FILE YOCTO_UBOOT_RECIPE_FILE suffix
+#!/bin/bash
 
-do_export() {
-export YOCTO_LAYER_PATH=${YOCTO_LAYER_PATH:-/tmp/y}
 
-export plat_name=${plat_name:-compulab}
-export suffix=${suffix:--mod}
-export YOCTO_KERNEL_RECIPE=recipes-kernel
-export YOCTO_KERNEL_PATCH=${YOCTO_KERNEL_RECIPE}/linux${suffix}/${plat_name}
-export YOCTO_KERNEL_INC=${YOCTO_KERNEL_PATCH}${suffix}".inc"
+do_init() {
+YOCTO_LAYER_PATH=${YOCTO_LAYER_PATH:-/tmp/y}
 
-export YOCTO_UBOOT_RECIPE=recipes-bsp
-export YOCTO_UBOOT_PATCH=${YOCTO_UBOOT_RECIPE}/u-boot${suffix}/${plat_name}
-export YOCTO_UBOOT_INC=${YOCTO_UBOOT_PATCH}${suffix}".inc"
+plat_name=${plat_name:-compulab}
+YOCTO_KERNEL_RECIPE=recipes-kernel
+YOCTO_KERNEL_PATCH=${YOCTO_KERNEL_RECIPE}/linux${suffix}/${plat_name}
+YOCTO_KERNEL_INC=${YOCTO_KERNEL_PATCH}${suffix}".inc"
+
+YOCTO_UBOOT_RECIPE=recipes-bsp
+YOCTO_UBOOT_PATCH=${YOCTO_UBOOT_RECIPE}/u-boot${suffix}/${plat_name}
+YOCTO_UBOOT_INC=${YOCTO_UBOOT_PATCH}${suffix}".inc"
 }
 
 do_invalid_prepare() {
@@ -40,24 +40,24 @@ popd
 
 do_kernel_prepare() {
 # echo "ENV: "${ENV_TYPE}
-export YOCTO_RECIPE_FILE=${YOCTO_KERNEL_RECIPE_FILE:-linux-kernel_%.bbappend}
-export YOCTO_RECIPE=${YOCTO_KERNEL_RECIPE}
-export YOCTO_PATCH=${YOCTO_KERNEL_PATCH}
-export YOCTO_INC=${YOCTO_KERNEL_INC}
+YOCTO_RECIPE_FILE=${YOCTO_KERNEL_RECIPE_FILE:-linux-kernel_%.bbappend}
+YOCTO_RECIPE=${YOCTO_KERNEL_RECIPE}
+YOCTO_PATCH=${YOCTO_KERNEL_PATCH}
+YOCTO_INC=${YOCTO_KERNEL_INC}
 do_common_prepare
 }
 
 do_uboot_prepare() {
 # echo "ENV: "${ENV_TYPE}
-export YOCTO_RECIPE_FILE=${YOCTO_UBOOT_RECIPE_FILE:-u-boot-compulab_%.bbappend}
-export YOCTO_RECIPE=${YOCTO_UBOOT_RECIPE}
-export YOCTO_PATCH=${YOCTO_UBOOT_PATCH}
-export YOCTO_INC=${YOCTO_UBOOT_INC}
+YOCTO_RECIPE_FILE=${YOCTO_UBOOT_RECIPE_FILE:-u-boot-compulab_%.bbappend}
+YOCTO_RECIPE=${YOCTO_UBOOT_RECIPE}
+YOCTO_PATCH=${YOCTO_UBOOT_PATCH}
+YOCTO_INC=${YOCTO_UBOOT_INC}
 do_common_prepare
 }
 
 do_yocto_prepare() {
-do_export
+do_init
 if [[ -z ${BASE} ]];then
 cat << eof
 	No BASE specified. Exiting ...
@@ -74,3 +74,5 @@ GNUM=" --start-number ${NUM}"
 [[ $ENV_TYPE = "uboot" ||  $ENV_TYPE = "kernel" ]] || ENV_TYPE="invalid"
 do_${ENV_TYPE}_prepare
 }
+
+do_yocto_prepare
