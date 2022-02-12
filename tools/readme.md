@@ -6,13 +6,21 @@ Supported machines:
 
 # How to download:
 <pre>
-wget --output-document=/tmp/yocto-functions.inc https://github.com/compulab-yokneam/Documentation/edit/master/tools/yocto-functions.inc
+wget --directory-prefix=/tmp/yocto-tools https://github.com/compulab-yokneam/Documentation/edit/master/tools/yocto-helper.sh
 </pre>
 
-# How to deploy the latest 5 commits to the `meta-bsp-imx8mp`:
+# How to use the changes with the target BSP meta-layer
+* Use [`meta-compulab-csom`](https://github.com/compulab-yokneam/meta-compulab-csom/tree/template) template
 <pre>
-source /tmp/yocto-functions.inc
-suffix=-test YOCTO_LAYER_PATH=${BUILDDIR}/../sources/meta-bsp-imx8mp BASE=HEAD~5 do_yocto_prepare
+git -C ${BUILDDIR}/../sources clone --branch template https://github.com/compulab-yokneam/meta-compulab-csom.git
+cat << eof | tee -a ${BUILDDIR}/conf/bblayers.conf
+BBLAYERS += "${BSPDIR}/sources/meta-compulab-csom"
+eof
+</pre>
+
+* Deploy the latest 5 commits to:
+<pre>
+YOCTO_TARGET_SRC=/path/to/source_code YOCTO_LAYER_PATH=${BUILDDIR}/../sources/meta-compulab-csom BASE=HEAD~5 source /tmp/yocto-tools/yocto-helper.sh
 </pre>
 
 # How to figure out whether the patches reached the target:
