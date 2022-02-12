@@ -1,18 +1,17 @@
-unset vendor plat_name YOCTO_TMP YOCTO_KERNEL_RECIPE_FILE YOCTO_UBOOT_RECIPE_FILE suffix
+unset plat_name YOCTO_LAYER_PATH YOCTO_KERNEL_RECIPE_FILE YOCTO_UBOOT_RECIPE_FILE suffix
 
 do_export() {
-export YOCTO_TMP=${YOCTO_TMP:-/tmp/y}
+export YOCTO_LAYER_PATH=${YOCTO_LAYER_PATH:-/tmp/y}
 
-export vendor=${vendor:-compulab}
 export plat_name=${plat_name:-compulab}
 export suffix=${suffix:--mod}
 export YOCTO_KERNEL_RECIPE=recipes-kernel
-export YOCTO_KERNEL_PATCH=${YOCTO_KERNEL_RECIPE}/linux${suffix}/${vendor}/${plat_name}
-export YOCTO_KERNEL_INC=${YOCTO_KERNEL_PATCH}".inc"
+export YOCTO_KERNEL_PATCH=${YOCTO_KERNEL_RECIPE}/linux${suffix}/${plat_name}
+export YOCTO_KERNEL_INC=${YOCTO_KERNEL_PATCH}${suffix}".inc"
 
 export YOCTO_UBOOT_RECIPE=recipes-bsp
-export YOCTO_UBOOT_PATCH=${YOCTO_UBOOT_RECIPE}/u-boot${suffix}/${vendor}/${plat_name}
-export YOCTO_UBOOT_INC=${YOCTO_UBOOT_PATCH}".inc"
+export YOCTO_UBOOT_PATCH=${YOCTO_UBOOT_RECIPE}/u-boot${suffix}/${plat_name}
+export YOCTO_UBOOT_INC=${YOCTO_UBOOT_PATCH}${suffix}".inc"
 }
 
 do_invalid_prepare() {
@@ -24,16 +23,16 @@ eof
 do_common_prepare() {
 echo "Issue: do_common_prepare(ENV=${ENV_TYPE}, NUM=${NUM}, BASE=${BASE})"
 YOCTO_PATCH+=${suffix}
-rm -rf ${YOCTO_TMP}/${YOCTO_PATCH}
-mkdir -p ${YOCTO_TMP}/${YOCTO_PATCH}
-git format-patch --no-numbered ${GNUM} --output-directory ${YOCTO_TMP}/${YOCTO_PATCH} $BASE
+rm -rf ${YOCTO_LAYER_PATH}/${YOCTO_PATCH}
+mkdir -p ${YOCTO_LAYER_PATH}/${YOCTO_PATCH}
+git format-patch --no-numbered ${GNUM} --output-directory ${YOCTO_LAYER_PATH}/${YOCTO_PATCH} $BASE
 pushd .
-cd ${YOCTO_TMP}/${YOCTO_PATCH} 
-ls | awk -v P=$P 'BEGIN { $0="SRC_URI_append = \" \\" ; print } {$0="\tfile://"$0" \\"; print } END { $0="\""; print } ' | tee ${YOCTO_TMP}/${YOCTO_INC}${EXT}
+cd ${YOCTO_LAYER_PATH}/${YOCTO_PATCH}
+ls | awk -v P=$P 'BEGIN { $0="SRC_URI_append = \" \\" ; print } {$0="\tfile://"$0" \\"; print } END { $0="\""; print } ' | tee ${YOCTO_LAYER_PATH}/${YOCTO_INC}${EXT}
 
 cat << eof | tee ../${YOCTO_RECIPE_FILE}
 FILESEXTRAPATHS_prepend := "\${THISDIR}/${plat_name}${suffix}:"
-include ${plat_name}${suffix}.inc
+require ${plat_name}${suffix}.inc
 eof
 
 popd
