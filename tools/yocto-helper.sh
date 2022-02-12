@@ -1,9 +1,18 @@
 #!/bin/bash
 
+declare -A ENV_TYPE_ARAY=( ['configs']=uboot ['arch/arm64/configs']=kernel ['arch/arm/configs']=kernel )
 
 do_init() {
-YOCTO_LAYER_PATH=${YOCTO_LAYER_PATH:-/tmp/y}
+YOCTO_TARGET_SRC=${YOCTO_TARGET_SRC:-$(pwd)}
 
+for CONF_DIR in ${!ENV_TYPE_ARAY[@]};do
+if [[ -d ${YOCTO_TARGET_SRC}/${CONF_DIR} ]];then
+    ENV_TYPE=${ENV_TYPE_ARAY[${CONF_DIR}]}
+    break
+fi
+done
+
+YOCTO_LAYER_PATH=${YOCTO_LAYER_PATH:-/tmp/y}
 plat_name=${plat_name:-compulab}
 YOCTO_KERNEL_RECIPE=recipes-kernel
 YOCTO_KERNEL_PATCH=${YOCTO_KERNEL_RECIPE}/linux${suffix}/${plat_name}
@@ -25,7 +34,7 @@ echo "Issue: do_common_prepare(ENV=${ENV_TYPE}, NUM=${NUM}, BASE=${BASE})"
 YOCTO_PATCH+=${suffix}
 rm -rf ${YOCTO_LAYER_PATH}/${YOCTO_PATCH}
 mkdir -p ${YOCTO_LAYER_PATH}/${YOCTO_PATCH}
-git format-patch --no-numbered ${GNUM} --output-directory ${YOCTO_LAYER_PATH}/${YOCTO_PATCH} $BASE
+git -C ${YOCTO_TARGET_SRC} format-patch --no-numbered ${GNUM} --output-directory ${YOCTO_LAYER_PATH}/${YOCTO_PATCH} $BASE
 pushd .
 cd ${YOCTO_LAYER_PATH}/${YOCTO_PATCH}
 ls | awk -v P=$P 'BEGIN { $0="SRC_URI_append = \" \\" ; print } {$0="\tfile://"$0" \\"; print } END { $0="\""; print } ' | tee ${YOCTO_LAYER_PATH}/${YOCTO_INC}${EXT}
@@ -57,7 +66,6 @@ do_common_prepare
 }
 
 do_yocto_prepare() {
-do_init
 if [[ -z ${BASE} ]];then
 cat << eof
 	No BASE specified. Exiting ...
@@ -75,4 +83,12 @@ GNUM=" --start-number ${NUM}"
 do_${ENV_TYPE}_prepare
 }
 
+do_yocto_prepare_ext() {
+do_init
+pushd .
+cd ${YOCTO_TARGET_SRC}
 do_yocto_prepare
+popd
+}
+
+do_yocto_prepare_ext
