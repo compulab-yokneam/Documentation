@@ -14,7 +14,7 @@ wget --directory-prefix=/tmp/yocto-tools https://github.com/compulab-yokneam/Doc
 <pre>
 git -C ${BUILDDIR}/../sources clone --branch template https://github.com/compulab-yokneam/meta-compulab-csom.git
 cat << eof | tee -a ${BUILDDIR}/conf/bblayers.conf
-BBLAYERS += "${BSPDIR}/sources/meta-compulab-csom"
+BBLAYERS += "\${BSPDIR}/sources/meta-compulab-csom"
 eof
 </pre>
 
