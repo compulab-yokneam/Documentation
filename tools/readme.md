@@ -1,4 +1,4 @@
-# Yocto Helper Manual
+# Yocto Functions Manual
 
 Supported machines:
 
