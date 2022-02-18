@@ -160,10 +160,10 @@ mender_boot_part=3
 upgrade_available=0
 ```
 
-## Reflash a new mender image on an early flashed mender media.
+## Reflash a new Mender image on an early flashed Mender media.
 * Reboot the device and stop in U-boot, issue:
 ```
 mmc dev 2; mmc erase 0 0x400; reset
 ```
 * As soon as the target media layout was cleaned up, use a new Mended sd-card and let the device boot up from.
-* Issue cl-deploy 'or' mr-deploy. Follow the utils instructions.
+* Issue `cl-deploy` 'or' `mr-deploy`. Follow the utils instructions.
