@@ -1,6 +1,8 @@
-# Mender Tests
+# Mender How to
 
-## Create & Install artifact
+## Mender Tests
+
+### Create & Install artifact
 * Print Mender environment
 ```
 fw_printenv
@@ -160,7 +162,7 @@ mender_boot_part=3
 upgrade_available=0
 ```
 
-## Reflash a new Mender image on an early flashed Mender media.
+### Reflash a new Mender image on an early flashed Mender media.
 * Reboot the device and stop in U-boot, issue:
 ```
 mmc dev 2; mmc erase 0 0x400; reset
