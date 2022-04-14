@@ -17,7 +17,7 @@ git submodule update --init --recursive
 
 * Configure QEMU:
 [source,code]
-./configure --prefix=../qemu-user-static --static --disable-system --enable-linux-user --target-list=aarch64-linux-user
+./configure --prefix=$(readlink -f ../qemu-user-static) --static --disable-system --enable-linux-user --target-list=aarch64-linux-user
     
 * Build and install QEMU with:
 [source,code]
@@ -33,5 +33,5 @@ for i in *; do cp $i $i-static; done
 [source,code]
 distr_location=$(which qemu-aarch64-static)
 sudo mv ${distr_location} ${distr_location}.distr
-sudo cp ../qemu-user-static/bin/qemu-aarch64-static ${distr_location}.dev
+sudo cp qemu-aarch64-static ${distr_location}.dev
 sudo ln -s qemu-aarch64-static.dev ${distr_location}
