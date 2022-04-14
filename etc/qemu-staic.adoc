@@ -3,7 +3,7 @@
 ## Prereqisites:
 * Install the QEMU build dependencies with:
 [source,code]
-sudo apt-get build-dep qemu
+sudo apt-get build-dep qemu ninja-build
 
 * Create a build folder:
 [source,code]
