@@ -1,0 +1,24 @@
+#!/bin/bash -xv
+
+for D in meta-bsp-imx8mp meta-compulab meta-compulab-bsp;do
+cd ${D}
+
+for pattern in append prepend remove;do
+    for f in $(grep -r "${pattern}" . | awk -F":" '(!/.patch/)&&($0=$1)');do
+        sed -i "s/_${pattern}_/\:${pattern}\:/g" ${f};
+        sed -i "s/_${pattern}/\:${pattern}/g" ${f};
+    done
+done
+
+for pattern in LAYERSERIES_COMPAT;do
+    for f in $(grep -r "${pattern}" . | awk -F":" '(!/.patch/)&&($0=$1)');do
+        sed -i 's/\(LAYERSERIES_COMPAT.*\)\"/\1 honister\"/g' ${f};
+    done
+done
+
+for f in $(grep -r '_${PN}' . | awk -F":" '(!/.patch/)&&($0=$1)');do
+    sed -i 's/_${PN}/\:${PN}/g' ${f};
+done
+
+cd -
+done
