@@ -6,7 +6,7 @@
 |---|---|
 |/dev/sdh|Original media|
 |xint.img|Image file|
-|/dev/loop29|Igage loop device|
+|/dev/loop29|Image loop device|
 
 ## Create an 3G-image file:
 |NOTE|3G-file is enought; the original device data resides below 3G capacity|
