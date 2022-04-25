@@ -20,7 +20,7 @@ sudo dd if=/dev/sdh of=xint.img bs=1M count=3084 status=progress
 sudo losetup --show --find xint.img
 ```
 
-## Replicate the GPT partition scheme from /dev/sdh to /dev/loop29
+## Replicate the GPT partition scheme:
 ```
 sudo sgdisk -R /dev/loop29 /dev/sdh
 ```
@@ -41,7 +41,7 @@ sudo blkid /dev/sdh*
 /dev/sdh2: UUID="c79651a3-07de-448f-a730-479923bb11ae" TYPE="ext4" PARTLABEL="RECOVERY" PARTUUID="d6d9ce8c-b3d3-482e-88ea-fc901629f240"
 </pre>
 
-* partition schem
+* partition scheme
 ```
 sudo sgdisk -p /dev/sdh
 ```
@@ -72,7 +72,7 @@ sudo blkid /dev/loop29*
 /dev/loop29p2: UUID="c79651a3-07de-448f-a730-479923bb11ae" TYPE="ext4" PARTLABEL="RECOVERY" PARTUUID="d6d9ce8c-b3d3-482e-88ea-fc901629f240"
 </pre>
 
-* partition schem
+* partition scheme
 ```
 sudo sgdisk -p /dev/loop29
 ```
