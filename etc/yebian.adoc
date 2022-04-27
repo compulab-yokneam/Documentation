@@ -1,17 +1,15 @@
-# Yebian
+# Yebian Manual Tool Install
 
-* git source snapshot
+* Yocto Build 1-st:
 [source,code]
-[[ -d .git ]] && ( git remote -v | awk '/fetch/&&($0="git clone "$2)' ; git show |  head -1 | awk '$0="git checkout -b devel "$2' )
- 
-* take the patches, configure, compile and install
-[source,code]
-tar -chjvf /tmp/$(basename $(pwd)).tar.bz2 patches ../temp/run.do_configure ../temp/run.do_compile ../temp/run.do_install
+cd ${BUILDDIR}
+bitbake -k yebian
 
-* take the configure, compile and install
+* Deploy Yebian Tools zip:
 [source,code]
-tar -chjvf /tmp/$(basename $(pwd)).tar.bz2 ../temp/run.do_configure ../temp/run.do_compile ../temp/run.do_install
+cd ${BUILDDIR}/tmp/deploy/images/${MACHINE}/yebian/
+unzip -d $(pwd) /path/to/yebian-tools-devel-next.zip
 
-* apply patches
+* Run the Yebian build script:
 [source,code]
-awk '$0="patch -p1 < ../patches/"$1' ../patches/series | sh -x
+${BUILDDIR}/tmp/deploy/images/${MACHINE}/yebian/ebian-tools-devel-next/debian.cmd
