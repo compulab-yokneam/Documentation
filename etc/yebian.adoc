@@ -15,7 +15,7 @@ cd ${BUILDDIR}/tmp/deploy/images/${MACHINE}/yebian/scripts
 
 * Run the Yebian build script:
 [source,code]
-${BUILDDIR}/tmp/deploy/images/${MACHINE}/yebian/ebian-tools/debian.cmd
+${BUILDDIR}/tmp/deploy/images/${MACHINE}/yebian/yebian-tools/debian.cmd
 
 # For compulab-yokneam guests:
 
@@ -26,4 +26,4 @@ unzip -d $(pwd) /path/to/yebian-tools-devel-next.zip
 
 * Run the Yebian build script:
 [source,code]
-${BUILDDIR}/tmp/deploy/images/${MACHINE}/yebian/ebian-tools-devel-next/debian.cmd
+${BUILDDIR}/tmp/deploy/images/${MACHINE}/yebian/yebian-tools-devel-next/debian.cmd
