@@ -6,6 +6,19 @@ export MACHINE=ucm-imx8m-plus
 cd ${BUILDDIR}
 bitbake -k yebian
 
+# For compulab-yokneam owners:
+
+* Download the tools
+[source,code]
+cd ${BUILDDIR}/tmp/deploy/images/${MACHINE}/yebian/scripts
+./bootstrap.sh
+
+* Run the Yebian build script:
+[source,code]
+${BUILDDIR}/tmp/deploy/images/${MACHINE}/yebian/ebian-tools/debian.cmd
+
+# For compulab-yokneam guests:
+
 * Deploy Yebian Tools zip:
 [source,code]
 cd ${BUILDDIR}/tmp/deploy/images/${MACHINE}/yebian/
