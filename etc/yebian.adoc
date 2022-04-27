@@ -2,6 +2,7 @@
 
 * Yocto Build 1-st:
 [source,code]
+export MACHINE=ucm-imx8m-plus
 cd ${BUILDDIR}
 bitbake -k yebian
 
