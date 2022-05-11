@@ -6,7 +6,7 @@ Supported machines:
 
 # How to download:
 <pre>
-wget --directory-prefix=/tmp/yocto-tools https://github.com/compulab-yokneam/Documentation/edit/master/tools/yocto-helper.sh
+wget --directory-prefix=/tmp/yocto-tools https://raw.githubusercontent.com/compulab-yokneam/Documentation/master/tools/yocto-helper.sh
 </pre>
 
 # How to use the changes with the target BSP meta-layer
