@@ -2,6 +2,8 @@
 
 APN=${APN:-"internet.tele2.se"}
 
+qmicli --device=/dev/cdc-wdm0 --dms-set-operating-mode=online
+
 echo Y > /sys/class/net/wwan0/qmi/raw_ip
 
 while [ 1 ];do
