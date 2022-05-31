@@ -1,0 +1,9 @@
+# debug & initcall_debug
+
+* modify /etc/default/grub
+[source,code]
+sed -i 's/quiet//g;s/\(^GRUB_CMDLINE_LINUX=\"\)/\1debug initcall_debug/g' /etc/default/grub
+
+* update grub
+[source,code]
+update-grub2
