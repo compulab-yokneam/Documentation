@@ -1,0 +1,9 @@
+* Download the sysrq-reboot file
+
+[source,code]
+wget --output-document=/usr/local/bin/sysrq-reboot.sh https://raw.githubusercontent.com/compulab-yokneam/Documentation/master/x86/sysrq-reboot.sh
+
+* Issue a sysrq reboot:
+
+[source,code]
+bash /usr/local/bin/sysrq-reboot.sh
