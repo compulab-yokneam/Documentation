@@ -15,8 +15,6 @@ eof
 
 ### Switch between the outputs
 
-It can be carried out either by GUI or CLI:
-
 |output|GUI|CLI|
 |---|---|---|
 |front|Profile:Analog Stereo Output;Output:analog-front|pactl set-default-sink analog-front|
