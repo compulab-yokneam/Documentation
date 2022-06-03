@@ -2,6 +2,9 @@
 
 ## Pulseaudio
 
+NOTE: This is not a permanet configuration; must be issued after each pulseaudio restart.<br>
+A persistent config solution will be provided latter.
+
 ### Configuring the outputs
 
 * Rear headphone output
@@ -18,16 +21,9 @@ pacmd update-sink-proplist alsa_output.hw_0_2 device.description="Built-in-Front
 
 ### Switch between the outputs
 
-* GUI
+It can be carried out either by GUI or CLI:
 
-|output|path|
-|---|---|
-|front|Profile:Analog Stereo Output;Output:Built-in-Front|
-|rear|Profile:Analog Stereo Output;Output:Built-in-Rear|
-
-* CLI
-
-|output|command|
-|---|---|
-|front|pactl set-default-sink alsa_output.hw_0_2|
-|rear|pactl set-default-sink alsa_output.hw_0_0|
+|output|GUI|CLI|
+|---|---|---|
+|front|Profile:Analog Stereo Output;Output:Built-in-Front|pactl set-default-sink alsa_output.hw_0_2|
+|rear|Profile:Analog Stereo Output;Output:Built-in-Rear|pactl set-default-sink alsa_output.hw_0_0|
