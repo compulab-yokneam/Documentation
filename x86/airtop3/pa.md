@@ -21,3 +21,6 @@ It can be carried out either by GUI or CLI:
 |---|---|---|
 |front|Profile:Analog Stereo Output;Output:analog-front|pactl set-default-sink analog-front|
 |rear|Profile:Analog Stereo Output;Output:analog-rear|pactl set-default-sink analog-rear|
+
+## Used Materials:
+* https://wiki.archlinux.org/title/PulseAudio/Examples
