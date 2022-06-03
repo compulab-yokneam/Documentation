@@ -24,3 +24,4 @@ It can be carried out either by GUI or CLI:
 
 ## Used Materials:
 * https://wiki.archlinux.org/title/PulseAudio/Examples
+* https://www.freedesktop.org/wiki/Software/PulseAudio/Backends/ALSA/Profiles/
