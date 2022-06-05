@@ -5,7 +5,7 @@
 ```
 sudo -i
 dpkg -i /path/to/deb-packages-folder/*.deb
-umoun /boot
+umount /boot
 dpkg -i /path/to/deb-packages-folder/*.deb
 ```
 
