@@ -5,6 +5,7 @@
 ```
 sudo -i
 dpkg -i /path/to/deb-packages-folder/*.deb
+DST=/dev/mmcblk2 source /usr/local/bin/cl-deploy.mod
 umount /boot
 dpkg -i /path/to/deb-packages-folder/*.deb
 ```
