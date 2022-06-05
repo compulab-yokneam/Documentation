@@ -1,0 +1,24 @@
+# GPIO how to
+
+* Download *.deb files from this https://drive.google.com/drive/folders/12RsBbaMpxagxUQFa3k8x3ZbsH-0TPGtW[location]
+* Copy the file to the device and issue this sequence:
+```
+sudo -i
+dpkg -i /path/to/deb-packages-folder/*.deb
+umoun /boot
+dpkg -i /path/to/deb-packages-folder/*.deb
+```
+
+* Reboot the machine and select the `ucm-imx8m-plus-p21.dtb`.
+* Let the device boot up.
+* Follow the https://embeddedbits.org/new-linux-kernel-gpio-user-space-interface/[gpio manual] for controlling the P21[11-23] pins.
+|====
+|P21-PIN|GPIO
+|11| 129
+|13| 128
+|15| 130
+|17| 126
+|19| 125
+|21| 127
+|23| 124
+|====
