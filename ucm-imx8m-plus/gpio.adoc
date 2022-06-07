@@ -1,7 +1,11 @@
 # GPIO how to
 
-* Download *.deb files from this https://drive.google.com/drive/folders/12RsBbaMpxagxUQFa3k8x3ZbsH-0TPGtW[location]
-* Copy the file to the device and issue this sequence:
+Here are two options:
+
+# Option #1 (if the image is already deployed onto the eMMC)
+
+* Download *.deb files from this https://drive.google.com/drive/folders/1CrKuV57plLNn1b8ep7Qh57pdYNbyoPf4[debs' location]
+* Copy the file to the device and issue this sequence (`cl-deploy.mod` assumes that the device is eMMC):
 ```
 sudo -i
 dpkg -i /path/to/deb-packages-folder/*.deb
@@ -9,9 +13,27 @@ DST=/dev/mmcblk2 source /usr/local/bin/cl-deploy.mod
 umount /boot
 dpkg -i /path/to/deb-packages-folder/*.deb
 ```
-
 * Reboot the machine and select the `ucm-imx8m-plus-p21.dtb`.
 * Let the device boot up.
+
+# Option #2
+
+* Download the lates Debian image from this https://drive.google.com/drive/folders/12RsBbaMpxagxUQFa3k8x3ZbsH-0TPGtW[images' location]
+* Create a bootable sd-card.
+* Issue AltBoot.
+* Issue cl-deploy and install it into the eMMC:
+```
+DST=/dev/mmcblk2 QUIET=Yes cl-deploy
+```
+* Issue cl-uboot:
+```
+IMX_DEV=/dev/mmcblk2boot0 IMX_BOOT=/boot/imx-boot-ucm-imx8m-mini-sd.bin-flash_evk QUIET=Yes cl-uboot
+```
+* Power off
+* Remove the sd-card.
+* Power on the machine and select the `ucm-imx8m-plus-p21.dtb`.
+
+# Using GPIO P21
 * Follow the https://embeddedbits.org/new-linux-kernel-gpio-user-space-interface/[gpio manual] for controlling the P21[11-23] pins.
 |====
 |P21-PIN|GPIO
