@@ -1,0 +1,11 @@
+# NXP Ubuntu VPU/GPU support
+
+## NXP PoC
+This is the NXP desktop solution based on Ubuntu 20.04: https://source.codeaurora.org/external/imx/meta-nxp-desktop/tree/README.md?h=imx-5.10.72-hardknott[README.md]
+
+### NXP Ubuntu Image
+* Ready to run NXP Ubuntu 20.04: https://drive.google.com/drive/folders/129Poswe3MEHlehwlYQ3So68GVNN7qWOW[imx-image-desktop-ucm-imx8m-plus-YYYYMMDDhhmmss.rootfs.wic.bz2]
+* Credentials: sudo account: user/user
+
+## Compulab
+Unfortunately there is no a formal procedure for providing the entire NXP vpu gpu support in Debian. This support comes with Yocto Poky image only.
