@@ -26,7 +26,7 @@ Connected Known USB Devices
         1:8      MX865   SDPS:   0x1FC9 0x0146   0x0002
 ```
 
-5) As soon as the device recognized by the host issue:
+5) As soon as the device recognized by the host, issue this command for dploying the bootloader to the device:
 ```
-sudo uuu -v -d /path/to/imx-boot-iot-gate-imx8plus-sd.bin-flash_evk
+sudo uuu -v -b emmc /path/to/imx-boot-iot-gate-imx8plus-sd.bin-flash_evk
 ```
