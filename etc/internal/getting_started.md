@@ -4,7 +4,7 @@
 
 |File|Description|
 | :--- | :--- |
-|[debian-bookworm-arm64-minbase-20220711142200.rw.sdcard.img](http://192.168.11.175/devel/yocto/honister/build-ucm-imx8m-plus/tmp/deploy/images/iot-gate-imx8plus/yebian/images/debian-bookworm-arm64-minbase-20220709081559.sdcard.img)|Debian Image|
+[debian-bookworm-arm64-minbase.rw.sdcard.img](http://192.168.11.175/devel/yocto/honister/build-ucm-imx8m-plus/tmp/deploy/images/iot-gate-imx8plus/yebian/images/debian-bookworm-arm64-minbase.rw.sdcard.img)|Debian Image|
 |[imx-boot-iot-gate-imx8plus-sd.bin-flash_evk](http://192.168.11.175/devel/yocto/honister/build-ucm-imx8m-plus/tmp/deploy/images/iot-gate-imx8plus/yebian/images/imx-boot-iot-gate-imx8plus-sd.bin-flash_evk)|Bootloader|
 
 
