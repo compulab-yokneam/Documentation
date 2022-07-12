@@ -15,7 +15,7 @@ sudo dd if=/path/to/debian-bookworm-arm64-minbase-20220709081559.sdcard.img of=/
 
 * Update the device bootloader:
 1) Connect the device using USBA~microsd cable to the host PC.
-3) Power on the device and issue this command on host CP:
+3) Power on the device and issue this command on host PC:
 ```
 uuu -lsusb
 ```
