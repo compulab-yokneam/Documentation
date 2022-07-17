@@ -6,8 +6,8 @@
 ```
                     GNU GRUB  version 2.06-3
 ┌───────────────────────────────────────────────────────────
-│ Boot Linux RW
-│ Boot Linux RO
+│ Boot Linux
+│ Boot Linux RT
 │ Show Linux
 │*Install Linux
 | Advanced Boot Options
