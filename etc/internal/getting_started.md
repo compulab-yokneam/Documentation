@@ -5,6 +5,7 @@
 |File|Description|
 | :--- | :--- |
 |[debian-bookworm-arm64-minbase.rw.msdos.sdcard.img](http://192.168.11.175/devel/yocto/honister/build-ucm-imx8m-plus/tmp/deploy/images/iot-gate-imx8plus/freezed-debian-images/debian-bookworm-arm64-minbase.rw.msdos.sdcard.img)|Debian Image|
+|[debian-bookworm-arm64-minbase.rw.msdos.sdcard.img](http://192.168.11.175/devel/yocto/honister/build-ucm-imx8m-plus/tmp/deploy/images/iot-gate-imx8plus/freezed-debian-images/debian-bookworm-arm64-minbase.rw.msdos.sdcard.img)|Debian Image|
 |[imx-boot-iot-gate-imx8plus-sd.bin-flash_evk](http://192.168.11.175/devel/yocto/honister/build-ucm-imx8m-plus/tmp/deploy/images/iot-gate-imx8plus/freezed-debian-images/imx-boot-iot-gate-imx8plus-sd.bin-flash_evk)|Bootloader|
 
 
