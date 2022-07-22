@@ -10,7 +10,7 @@
 
 * Create a bootable usb media:
 ```
-sudo dd if=/path/to/debian-bookworm-arm64-minbase.rw.sdcard.img of=/dev/sdX bs=4M status=progress
+sudo dd if=/path/to/debian-bullseye-arm64-minbase.rw.gpt.sdcard.img of=/dev/sdX bs=4M status=progress
 ```
 
 * Update the device bootloader:
