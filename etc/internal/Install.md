@@ -6,9 +6,8 @@
 ```
                     GNU GRUB  version 2.06-3
 ┌───────────────────────────────────────────────────────────
-│ Boot Linux
-│ Boot Linux RT
-│ Show Linux
+│ Boot Linux Image-5.15.5-rt22+g070f2e215360
+│ Boot Linux Image-5.15.5+gb1890f1017e3
 │*Install Linux
 | Advanced Boot Options
 └───────────────────────────────────────────────────────────
