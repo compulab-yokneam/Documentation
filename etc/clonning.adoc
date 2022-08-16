@@ -31,7 +31,7 @@ cl-deploy
 cl-deploy
 
 ** Follow the on screen procedure; choose the ``internal media`` as the destionation.
-** Wait for: ``` SUCCESS ```
+** Wait for: ``SUCCESS``
 ** Turn off the device.
 
 * Running the new SOM
