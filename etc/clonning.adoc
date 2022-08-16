@@ -1,0 +1,41 @@
+# Internal Media Clonning Procedure
+
+It can be usefull for taking the EVK board OS snapshot to an external media.
+
+WARNING: The external media data will be removed
+
+This approach works on all CompuLab boards.
+
+## How To procedure
+
+* EVK SOM emmc -> external media
+
+** Turn on the board.
+** Login as root.
+** Insert an external media: it can be either sd-card or usb-stck.
+** Issue:
+[source,console]
+cl-deploy
+
+** Follow the on screen procedure; choose the ``external media`` as the destionation.
+** Wait for: ``SUCCESS``
+** Turn off the device.
+
+* External media -> To a new SOM emmc
+
+** Replace the EVK SoM with a new one.
+** Turn on the device.
+** Login as root.
+** Issue:
+[source,console]
+cl-deploy
+
+** Follow the on screen procedure; choose the ``internal media`` as the destionation.
+** Wait for: ``` SUCCESS ```
+** Turn off the device.
+
+* Running the new SOM
+
+** Remove the external media.
+** Turn on the device.
+** Make sure that it works.
