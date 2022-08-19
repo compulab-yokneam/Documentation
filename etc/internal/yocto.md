@@ -14,7 +14,7 @@
 
 * Get back to the Yocto build environment:
 ```
-source setup <build-imx8m-plus>
+source setup <build-imx-platform>
 ```
 * Issue UUU build:
 ```
