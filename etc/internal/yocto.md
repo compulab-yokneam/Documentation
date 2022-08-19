@@ -20,7 +20,7 @@ source setup <build-imx8m-plus>
 ```
 bitbak uuu-native
 ```
-As soon as the uuu-native process gets terminated w/out an error, go to to the ${MACHINE} deployment folder:
+As soon as the uuu-native process gets terminated w/out an error, go to the ${MACHINE} deployment folder:
 ```
 cd ${BUILDDIR}/tmp/deploy/images/${MACHINE}
 ```
