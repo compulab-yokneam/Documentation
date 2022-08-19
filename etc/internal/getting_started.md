@@ -1,17 +1,12 @@
-# Getting started
+# Getting started with SDP
 
-* Download files from this [location:](http://192.168.11.175/devel/yocto/honister/build-ucm-imx8m-plus/tmp/deploy/images/iot-gate-imx8plus/freezed-debian-images/11)
+* Download files from this [location](https://drive.google.com/drive/folders/1g2P1VUd2WhROOC-E87UMqhHE1f3z_MPe) and uncompress them.
 
 |File|Description|
 | :--- | :--- |
-|[debian-bullseye-arm64-minbase.rw.gpt.sdcard.img](http://192.168.11.175/devel/yocto/honister/build-ucm-imx8m-plus/tmp/deploy/images/iot-gate-imx8plus/freezed-debian-images/11/debian-bullseye-arm64-minbase.rw.gpt.sdcard.img)|Debian Image (Stable)|
-|[imx-boot-iot-gate-imx8plus-sd.bin-flash_evk](http://192.168.11.175/devel/yocto/honister/build-ucm-imx8m-plus/tmp/deploy/images/iot-gate-imx8plus/freezed-debian-images/imx-boot-iot-gate-imx8plus-sd.bin-flash_evk)|Bootloader|
+|debian-bullseye-arm64-minbase-TIMESTAMP.rw.gpt.sdcard.img.xz|Debian Image (Stable)|
+|imx-boot-iot-gate-imx8plus-sd.bin-flash_evk.xz|Bootloader|
 
-
-* Create a bootable usb media:
-```
-sudo dd if=/path/to/debian-bullseye-arm64-minbase.rw.gpt.sdcard.img of=/dev/sdX bs=4M status=progress
-```
 
 * SDP mode:
 1) Turn off the device.
