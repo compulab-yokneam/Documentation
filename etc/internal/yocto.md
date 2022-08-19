@@ -1,0 +1,43 @@
+# Yocto UUU & SDP
+
+| Prerequisites | The entire Yocto image build procedure must be carried out first.
+| :--- | :--- |
+
+
+|Supported BSP|
+| :--- |
+|[honister](https://github.com/compulab-yokneam/meta-bsp-imx8mp/tree/honister)|
+|[kirkstone](https://github.com/compulab-yokneam/meta-bsp-imx8mp/tree/kirkstone)|
+
+
+## Build UUU in the Yocto build environment
+
+* Get back to the Yocto build environment:
+```
+source setup <build-imx8m-plus>
+```
+* Issue UUU build:
+```
+bitbak uuu-native
+```
+As soon as the uuu-native process gets terminated w/out an error, go to to the ${MACHINE} deployment folder:
+```
+cd ${BUILDDIR}/tmp/deploy/images/${MACHINE}
+```
+
+* SDP boot
+
+This command make the device load the bootloader only:
+```
+sudo ./uuu-native/bin/uuu -v ./imx-boot
+```
+
+* Flash the tootloader onto the emmc:
+```
+sudo ./uuu-native/bin/uuu -v -b emmc ./imx-boot
+```
+
+* Flash the bootloader and the OS image onto the emmc:
+```
+sudo ./uuu-native/bin/uuu -v -b emmc_emmc ./imx-boot ./${TARGET-IMAGE}-${MACHINE}.tar.bz2
+```
