@@ -29,7 +29,7 @@ sudo uuu -v -b emmc /path/to/imx-boot-iot-gate-imx8plus-sd.bin-flash_evk
 ```
 2) Update the device bootloader and OS:
 ```
-sudo uuu -v -b emmc_emmc /path/to/imx-boot-iot-gate-imx8plus-sd.bin-flash_evk /path/to/debian-bullseye-arm64-minbase.rw.gpt.sdcard.img
+sudo uuu -v -b emmc_all /path/to/imx-boot-iot-gate-imx8plus-sd.bin-flash_evk /path/to/debian-bullseye-arm64-minbase.rw.gpt.sdcard.img
 ```
 
 * Back to the normal:
