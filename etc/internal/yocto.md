@@ -39,5 +39,5 @@ sudo ./uuu-native/bin/uuu -v -b emmc ./imx-boot
 
 * Flash the bootloader and the OS image onto the emmc:
 ```
-sudo ./uuu-native/bin/uuu -v -b emmc_all ./imx-boot ./${TARGET-IMAGE}-${MACHINE}.tar.bz2
+sudo ./uuu-native/bin/uuu -v -b emmc_all ./imx-boot ./${TARGET-IMAGE}-${MACHINE}.wic.bz2
 ```
