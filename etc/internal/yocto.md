@@ -41,3 +41,7 @@ sudo ./uuu-native/bin/uuu -v -b emmc ./imx-boot
 ```
 sudo ./uuu-native/bin/uuu -v -b emmc_all ./imx-boot ./${TARGET-IMAGE}-${MACHINE}.tar.bz2
 ```
+
+* Permanent SDP boot
+ <br>1. Remove sd-card
+ <br>2. Set the ALT_BOOT jumper (E19) on
