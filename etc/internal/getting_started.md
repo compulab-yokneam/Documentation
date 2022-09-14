@@ -1,11 +1,13 @@
 # Getting started with SDP
 
-* Download files from this [location](https://drive.google.com/drive/folders/1g2P1VUd2WhROOC-E87UMqhHE1f3z_MPe) and uncompress them.
+* Download files from this:
+ <br> [iot-gate-imx8plus](https://drive.google.com/drive/folders/1g2P1VUd2WhROOC-E87UMqhHE1f3z_MPe)
+ <br> [ucm-imx8m-plus](https://drive.google.com/drive/folders/1kfoQOWoDTWToHP73mxTJPqG3Qd-nnFpz)
 
 |File|Description|
 | :--- | :--- |
 |debian-bullseye-arm64-minbase-TIMESTAMP.rw.gpt.sdcard.img.xz|Debian Image (Stable)|
-|imx-boot-iot-gate-imx8plus-sd.bin-flash_evk.xz|Bootloader|
+|imx-boot-\<MACHINE\>-sd.bin-flash_evk.xz|Bootloader|
 
 
 * SDP mode:
@@ -25,11 +27,11 @@ Connected Known USB Devices
 * Update the device SW using the SDP
 1) Update the device bootloader:
 ```
-sudo uuu -v -b emmc /path/to/imx-boot-iot-gate-imx8plus-sd.bin-flash_evk
+sudo uuu -v -b emmc /path/to/imx-boot-<MACHINE>-sd.bin-flash_evk
 ```
 2) Update the device bootloader and OS:
 ```
-sudo uuu -v -b emmc_all /path/to/imx-boot-iot-gate-imx8plus-sd.bin-flash_evk /path/to/debian-bullseye-arm64-minbase.rw.gpt.sdcard.img
+sudo uuu -v -b emmc_all /path/to/imx-boot-<MACHINE>-sd.bin-flash_evk /path/to/debian-bullseye-arm64-minbase.rw.gpt.sdcard.img
 ```
 
 * Back to the normal:
