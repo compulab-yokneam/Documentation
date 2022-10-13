@@ -27,10 +27,10 @@ Build boot firmware as described [here](imx7_building_firmware.md)
 * To ensure loading boot script the USB storage device must have at least one partition:
   * Formatted with either ext2/3/4 or FAT file system and
   * Containing at least boot script image
-* To ensure loading kernel, fdt and mounting root filesystem the USB storage device must have at least two partition:
+* To ensure loading kernel, fdt and mounting root filesystem the USB storage device either carries [Debian Linux live image](https://mediawiki.compulab.com/w/index.php?title=CL-SOM-iMX7:_Linux:_Creating_Live-SD_card) or alternatively has at least two partition:
   * First one:
     * formatted with either ext2/3/4 or FAT file system and
-    * containing at least kernel image and fdt file (device tree blob)
+    * containing at least kernel image and fdt file (device tree blob); filenames shall conform [Cl-SOM-iMX7 Linux package](https://mediawiki.compulab.com/w/index.php?title=CL-SOM-iMX7:_Linux:_Package_contents) naming convention 
   * Second one:
     * formatted with either ext2/3/4 or FAT file system and
     * containing a proper Linux root filesystem
