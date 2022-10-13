@@ -1,7 +1,12 @@
 # Preparation steps
 ## Host configuration
+Make sure developing host has all required [tools and utilities](../host_configuration.md)
+
 ## Getting U-Boot Sources
+Clone U-Boot source repository and prepare a developing branch as described [here](imx7_getting_sources.md)
+
 ## Building Firmware Image
+Build boot firmware as described [here](imx7_building_firmware.md)
 
 # Task 1: 
 * Create bootable [SD card](https://mediawiki.compulab.com/w/index.php?title=CL-SOM-iMX7:_U-Boot:_Creating_a_bootable_SD_card)
