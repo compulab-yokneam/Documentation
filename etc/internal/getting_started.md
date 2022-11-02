@@ -13,7 +13,7 @@
 * SDP mode:
 1) Turn off the device.
 2) Connect the device programming-port to the host PC using USBA~microsd cable.
-3) Power on the device and issue this command on host PC:
+3) Power on the device and issue this command on the host PC:
 ```
 uuu -lsusb
 ```
