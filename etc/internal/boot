@@ -1,0 +1,34 @@
+# Available net ifaces
+setenv usb_net ax88179_eth
+setenv fec_net  ethernet@30be0000
+setenv eqos_net ethernet@30be0000
+
+setenv net_cfg_done no
+setenv get_ip "dhcp"
+
+if test ${ethprime} = "eth0"
+then
+ setenv ip_cmd ":::::eth0:dhcp"
+ setenv net_cfg_done yes
+fi
+
+if test ${ethprime} = "eth1"
+then
+ setenv ip_cmd ":::::eth0:dhcp"
+ setenv net_cfg_done yes
+fi
+
+if test ${net_cfg_done} = "no"
+then
+ setenv ethaddr
+ setenv ethact ${usb_net}
+ setenv ethprime ${usb_net}
+ setenv ip_cmd ":::::eth2:dhcp"
+ setenv get_ip "usb reset; dhcp"
+fi
+
+run get_ip
+
+setenv boot_scr_tftp ${tftp_server_export}/boot.tftp.scr
+
+tftpboot ${loadaddr} ${serverip}:${boot_scr_tftp} && source ${loadaddr}

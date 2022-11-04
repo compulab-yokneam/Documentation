@@ -1,0 +1,10 @@
+setenv image "${tftp_server_export}/Image.gz"
+setenv fdt_file "${tftp_server_export}/ucm-imx8m-plus.dtb"
+setenv console "console=ttymxc1,115200"
+setenv nfsroot "${nfsserver}:/export/rootfs"
+setenv bootargs "root=/dev/nfs ip=${ip_cmd} ${console} nfsroot=${nfsroot} rw rootwait
+
+setenv load_kernel 'tftpboot ${initrd_addr} ${serverip}:${image};unzip ${initrd_addr} ${loadaddr}'
+setenv load_fdt 'tftpboot ${fdt_addr} ${serverip}:${fdt_file}'
+setenv bootcmd 'run load_kernel && run load_fdt && booti ${loadaddr} - ${fdt_addr};'
+boot
