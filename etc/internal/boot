@@ -5,6 +5,7 @@ setenv eqos_net ethernet@30be0000
 
 setenv net_cfg_done no
 setenv get_ip "dhcp"
+setenv bootscript ${tftp_server_export}/boot.tftp.scr
 
 if test ${ethprime} = "eth0"
 then
@@ -29,6 +30,4 @@ fi
 
 run get_ip
 
-setenv boot_scr_tftp ${tftp_server_export}/boot.tftp.scr
-
-tftpboot ${loadaddr} ${serverip}:${boot_scr_tftp} && source ${loadaddr}
+tftpboot ${loadaddr} ${serverip}:${bootscript} && source ${loadaddr}
