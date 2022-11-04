@@ -1,7 +1,9 @@
 # Available net ifaces
-setenv usb_net ax88179_eth
+## Internal NXP ehthernet ifaces
 setenv fec_net  ethernet@30be0000
 setenv eqos_net ethernet@30be0000
+## ax88179 is a usb-ethernet adapter used for phyless configurations
+setenv usb_net ax88179_eth
 
 setenv net_cfg_done no
 setenv get_ip "dhcp"
