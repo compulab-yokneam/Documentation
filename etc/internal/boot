@@ -7,6 +7,10 @@ setenv usb_net ax88179_eth
 
 setenv net_cfg_done no
 setenv get_ip "dhcp"
+
+# Take this value from the tftp server configuration
+setenv tftp_server_export /var/lib/tftpboot
+
 setenv bootscript ${tftp_server_export}/boot.tftp.scr
 
 if test ${ethprime} = "eth0"
