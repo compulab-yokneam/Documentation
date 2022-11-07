@@ -1,6 +1,13 @@
-# cl-uboot
+# cl-uboot how to
 
-* 1) Select a U-Boot file:
+* Open up a terminal window and issue cl-uboot"
+
+<pre>
+cl-uboot
+</pre>
+
+* Select a U-Boot file:
+
 <pre>
 Select a U-Boot file:
 ------------------------------------------------------------------------------------------------------------------
@@ -20,7 +27,9 @@ Select a U-Boot file:
                   m------------------------------------------------------------------------------j
 
 </pre>
-* 2) Select a boot device:
+
+* Select a boot device:
+
 <pre>
 Select a boot device:
 ------------------------------------------------------------------------------------------------------------------
@@ -38,8 +47,10 @@ Select a boot device:
                   t------------------------------------------------------------------------------u
                   x                       <  OK  >            <Cancel>                           x
                   m------------------------------------------------------------------------------j
+</pre>
 
-* 3) Complete window/screee:
+* Complete window/screee:
+
 <pre>
 mmc bootpart enable 1 0 /dev/mmcblk2boot0;dd if=/boot/imx-boot-ucm-imx8m-mini-sd.bin-flash_evk of=/dev/mmcblk2boot
 ------------------------------------------------------------------------------------------------------------------
@@ -57,4 +68,20 @@ mmc bootpart enable 1 0 /dev/mmcblk2boot0;dd if=/boot/imx-boot-ucm-imx8m-mini-sd
                   t------------------------------------------------------------------------------u
                   x                                   <  OK  >                                   x
                   m------------------------------------------------------------------------------j
+</pre>
+
+* Reboot the device, stop in U-Boot and issue:
+* 1) check the U-Boot version
+<pre>
+version
+</pre>
+* 2) check the U-Boot location
+<pre>
+mmc partconf 1
+</pre>
+<pre>
+EXT_CSD[179], PARTITION_CONFIG:
+BOOT_ACK: 0x0
+BOOT_PARTITION_ENABLE: 0x1
+PARTITION_ACCESS: 0x0
 </pre>
