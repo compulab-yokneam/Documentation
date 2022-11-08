@@ -1,5 +1,7 @@
 # cl-uboot how to
 
+## interactive mode
+
 * Open up a terminal window and issue cl-uboot"
 
 <pre>
@@ -84,4 +86,12 @@ EXT_CSD[179], PARTITION_CONFIG:
 BOOT_ACK: 0x0
 BOOT_PARTITION_ENABLE: 0x1
 PARTITION_ACCESS: 0x0
+</pre>
+
+## non-interactive mode
+
+* Open up a terminal window and issue cl-uboot.quiet"
+
+<pre>
+IMX_BOOT=/boot/imx-boot-ucm-imx8m-mini-sd.bin-flash_evk IMX_DEV=/dev/mmcblk2boot0 cl-uboot.quiet
 </pre>
