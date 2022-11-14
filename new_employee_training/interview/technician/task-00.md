@@ -1,5 +1,6 @@
 # C-LAB
-## 1-st Interview for Technician position in R&D Dept
+## Interview for Technician position in R&D Dept
+### PART 1
 
 1. Obtain IOT-GATE-RPI4
 2. Connect display, keyboard, mouse
