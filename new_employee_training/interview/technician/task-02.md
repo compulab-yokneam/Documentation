@@ -6,3 +6,7 @@
 4. Follow step-by-step instruction to achive the goal
 5. Do not hesitate to find a required solution in open resources
 6. Feel free to contact interviewers with any issue/question/remark you have
+
+### Resources:
+* [Raspberry Pi Documentation](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html)
+* [Google](https://www.google.com/)
