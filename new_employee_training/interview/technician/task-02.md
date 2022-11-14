@@ -1,5 +1,6 @@
 # C-LAB
-## 1-st Interview for Technician position in R&D Dept
+## Interview for Technician position in R&D Dept
+### PART 3
 
 1. Connect the IOT-GATE-RPI4 gateway to C-LAB internal network
 3. Open the next step [Instruction Guide](http://192.168.10.106/mediawiki/index.php/IOT-GATE-RPI4:_Training_Tasks)
