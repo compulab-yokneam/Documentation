@@ -8,22 +8,17 @@ MINVALUE=$((0x${mr[0]}))
 MAXVALUE=$((0x${mr[2]}))
 </pre>
 
-* Create a database:
-<pre>
-createdb -U postgres macserver
-</pre>
+* Database:
 
-* Create a mac-server sequence name `compulab`:
-<pre>
-psql -U postgres -d macserver -c "CREATE SEQUENCE compulab MINVALUE ${MINVALUE} MAXVALUE ${MAXVALUE} START ${MINVALUE}"
-</pre>
+|Operation|Command line|
+|---|---|
+|create|createdb -U postgres macserver|
+|remove|dropdb -U postgres macserver|
 
-* Remove the `compulad` sequence:
-<pre>
-psql -U postgres -d macserver -c 'DROP SEQUENCE compulab'
-</pre>
+* Sequence:
 
-* Reques a mac-address from the sequence `compulab`:
-<pre>
-psql -d "macserver" -U "postgres" -c "select lpad(to_hex(nextval('compulab')), 12, '0')::macaddr"
-</pre>
+|Operation|Command line|
+|---|---|
+|create|`psql -U postgres -d macserver -c "CREATE SEQUENCE compulab MINVALUE ${MINVALUE} MAXVALUE ${MAXVALUE} START ${MINVALUE}"`|
+|remove|`psql -U postgres -d macserver -c 'DROP SEQUENCE compulab'`|
+|request|`psql -d "macserver" -U "postgres" -c "select lpad(to_hex(nextval('compulab')), 12, '0')::macaddr"`|
