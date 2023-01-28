@@ -25,7 +25,7 @@ As soon as the uuu-native process gets terminated w/out an error, go to the ${MA
 cd ${BUILDDIR}/tmp/deploy/images/${MACHINE}
 ```
 
-* SDP boot
+## SDP boot
 
 This command make the device load the bootloader only:
 ```
