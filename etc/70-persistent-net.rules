@@ -1,0 +1,7 @@
+# This is a sample udev rule file that allows providing a custom iface names
+# vendor iface names
+# SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{type}=="1", KERNELS=="30bf0000.ethernet" , NAME="fec0"
+# SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{type}=="1", KERNELS=="30be0000.ethernet" , NAME="eqos0"
+# traditional iface names
+SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{type}=="1", KERNELS=="30bf0000.ethernet" , NAME="eth0"
+SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{type}=="1", KERNELS=="30be0000.ethernet" , NAME="eth1"
