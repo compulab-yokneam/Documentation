@@ -10,7 +10,12 @@
 |[kirkstone](https://github.com/compulab-yokneam/meta-bsp-imx8mp/tree/kirkstone)|
 
 
-## Build UUU in the Yocto build environment
+# UUU
+| Method #| Description |
+|:--- | :--- |
+|[Debian snapcraft](https://snapcraft.io/install/universal-update-utility/debian) | OS Distro/Easy |
+|[NXP UUU](https://github.com/nxp-imx/mfgtools)| NXP Source/Medium |
+|Yocto UUU build| For developers only; See how to below |
 
 * Get back to the Yocto build environment:
 ```
