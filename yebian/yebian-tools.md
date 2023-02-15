@@ -70,15 +70,15 @@ ls -al ${BUILDDIR}/tmp/deploy/images/${MACHINE}/yebian/images/
 
 * Image customization on Debian environment:
 ```
-stages="debian" ${BUILDDIR}/tmp/deploy/images/${MACHINE}/yebian/scripts/debian.cmd
+stages="debian" ${BUILDDIR}/tmp/deploy/images/${MACHINE}/yebian/yebian-tools/debian.cmd
 ```
 
 * Image customization on CompuLab environment:
 ```
-stages="compulab" ${BUILDDIR}/tmp/deploy/images/${MACHINE}/yebian/scripts/debian.cmd
+stages="compulab" ${BUILDDIR}/tmp/deploy/images/${MACHINE}/yebian/yebian-tools/debian.cmd
 ```
 
 * After customization image build:
 ```
-rootmode="ro" stages="5" ${BUILDDIR}/tmp/deploy/images/${MACHINE}/yebian/scripts/debian.cmd
+rootmode="ro" stages="5" ${BUILDDIR}/tmp/deploy/images/${MACHINE}/yebian/yebian-tools/debian.cmd
 ```
