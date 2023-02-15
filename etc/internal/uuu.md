@@ -28,6 +28,6 @@ sudo /path/to/uuu -v -b emmc /path/to/imx-boot-${MACHINE}-sd.bin-flash_evk
 
 * Flash the bootloader and the OS image onto the emmc:
 ```
-sudo /pat/to/uuu -v -b emmc_all /path/to/imx-boot-${MACHINE}-sd.bin-flash_evk /path/to/imx-image-multimedia-${MACHINE}-${TIMESTAMP}.rootfs.wic.bz2
+sudo /path/to/uuu -v -b emmc_all /path/to/imx-boot-${MACHINE}-sd.bin-flash_evk /path/to/imx-image-multimedia-${MACHINE}-${TIMESTAMP}.rootfs.wic.bz2
 ```
 The process takes some time depends on the image size. Issue ```reset``` at the end of the process.
