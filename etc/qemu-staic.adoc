@@ -12,7 +12,7 @@ cd qemu_build/qemu
 
 * Download QEMU source code with:
 [source,code]
-git clone git://git.qemu.org/qemu.git .
+git clone https://gitlab.com/qemu-project/qemu.git .
 git submodule update --init --recursive
 
 * Configure QEMU:
