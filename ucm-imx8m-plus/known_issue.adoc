@@ -14,5 +14,5 @@ Evaluation board can't wake up after suspend if a PCIe device is installed into 
 The module can't access the system eeprom for reading at boot time that leads to an endless loop
 |====
 |Scenario|Power on the device; Use the 30c30000.sai-wm8731-hifi as ad default audio sink; Issue a playback; reboot
-|Workaround|1) Avoid using the ucm-imx8m-plus-wm8731.dtb; 2) Usssue power off/on instead of reboot;
+|Workaround|1) Avoid using the ucm-imx8m-plus-wm8731.dtb; 2) Issue power off/on instead of reboot;
 |====
