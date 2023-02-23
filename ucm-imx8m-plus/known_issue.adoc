@@ -1,7 +1,7 @@
 # Known Issues
 
 ## Suspen/Resume
-Evaluation board can't wake up after suspend if a PCIe device is installed into the P9 connector
+Evaluation board can't wake up after suspend if a PCIe device installed into the P9 connector
 
 |====
 |Scenario|Install any PCIe device into the P9 connector; turn on the board; issue:
