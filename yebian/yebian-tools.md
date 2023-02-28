@@ -19,7 +19,8 @@ ${BUILDDIR}/tmp/deploy/images/${MACHINE}/yebian/scripts/bootstrap.sh
 ```
 
 ### Configuring the build
-* Update the conf/local.conf:
+* Update the ${BUILDDIR}/conf/local.conf:<br>
+This option gets passed to the grub-conf recipes, that in turn creats rw and ro enteries in the grub.cfg
 ```
 ROOTMODES ="rw ro"
 ```
