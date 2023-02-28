@@ -19,15 +19,18 @@ ${BUILDDIR}/tmp/deploy/images/${MACHINE}/yebian/scripts/bootstrap.sh
 ```
 
 ### Configuring the build
+
 * Update the ${BUILDDIR}/conf/local.conf:<br>
 This option gets passed to the grub-conf recipes, that in turn creats rw and ro enteries in the grub.cfg
 ```
 ROOTMODES ="rw ro"
 ```
+
 * Issue this script in order to create a Debian build cinfiguration file:
 ```
 ${BUILDDIR}/tmp/deploy/images/${MACHINE}/yebian/yebian-tools/debian.cmd
 ```
+
 * Follow the instructions onf the screen dialog:
 ```
 --- Debootstrap Configuration started --
@@ -64,6 +67,7 @@ mender_image=yes ${BUILDDIR}/tmp/deploy/images/${MACHINE}/yebian/yebian-tools/de
 ```
 
 ### Build results
+
 * Deploy the created image to an sd-card. The image is at:
 ```
 ls -al ${BUILDDIR}/tmp/deploy/images/${MACHINE}/yebian/images/
