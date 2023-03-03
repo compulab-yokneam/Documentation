@@ -15,6 +15,11 @@ Follow the instructions of the SoC Linux Kerne Build.
 make -j`nproc` bindeb-pkg
 </pre>
 
+## Resulted debs are at one folder up:
+<pre>
+ls -al ../*.deb
+</pre>
+
 ## Transfor the created ```linux-image-<version>-<arch>.deb``` to a tarball
 This procedure creates a ready to deploy tarball that meats the CompuLab rootfs layout requirements.
 * Linux image file name is 'Image'
