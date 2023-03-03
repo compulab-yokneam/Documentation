@@ -34,7 +34,7 @@ tar -C ${snap_location} -cjvf ${tar_name} ${snap_time}
 cat << eof
 
 	System snapshot is done
-	Please the file: ${tar_name}
+	Please post the file: ${tar_name}
 	to CompuLab support
 
 eof
