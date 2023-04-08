@@ -2,11 +2,11 @@
 
 * Add following lines to `conf/local.conf`
 
-```
-# opencv
-OPENCV_SRC = "git://github.com/nxp-imx/opencv-imx.git;protocol=https;branch=master"
 
-# sigma-dut
-SRC_URI:remove:sigma-dut = "git://source.codeaurora.org/quic/la/platform/vendor/qcom-opensource/wlan/utils/sigma-dut;protocol=https;branch=github-qca/master;"
-SRC_URI:append:sigma-dut = "git://github.com/qca/sigma-dut.git;protocol=https;branch=master;"
+* Download the tar ball from this location:
+[ca2gh](https://drive.google.com/drive/folders/1gcEGkO1mexa_IDxiPLg-8E1pB8epWJFw)
+
+* Deploy it this way:
+```
+tar -C  ${BUILDDIR}/../sources/meta-compulab -xf /path/to/recipes-github.tar.bz2
 ```
