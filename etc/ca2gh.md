@@ -1,8 +1,5 @@
 # codeaurora to github
 
-* Add following lines to `conf/local.conf`
-
-
 * Download the tar ball from this location:
 [ca2gh](https://drive.google.com/drive/folders/1gcEGkO1mexa_IDxiPLg-8E1pB8epWJFw)
 
