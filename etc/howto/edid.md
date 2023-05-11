@@ -4,7 +4,7 @@
 ```
 CONFIG_DRM_LOAD_EDID_FIRMWARE=y
 ```
-* Use [Edid build manual](https://unix.stackexchange.com/questions/97023/how-to-make-edid) for creatin a custom `edid.S` file.
+* Use [Edid build manual](https://unix.stackexchange.com/questions/97023/how-to-make-edid) for creation a custom `edid.S` file.
 
 * Sample steps:
 ```
