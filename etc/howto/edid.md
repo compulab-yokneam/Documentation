@@ -47,7 +47,7 @@ cat tools/edid/640x480.S
 ```
 ```
 /*
-   1024x768.S: EDID data set for standard 1024x768 60 Hz monitor
+   640x480.S: EDID data set for standard 640x480 60 Hz monitor
 
    Copyright (C) 2011 Carsten Emde <C.Emde@osadl.org>
 
@@ -86,7 +86,7 @@ cat tools/edid/640x480.S
 #define DPI 72
 #define VFREQ 60 /* Hz */
 #define TIMING_NAME "Linux XGA"
-#define ESTABLISHED_TIMING2_BITS 0x08 /* Bit 3 -> 1024x768 @60 Hz */
+#define ESTABLISHED_TIMING2_BITS 0x08 /* Bit 3 -> 640x480 @60 Hz */
 #define HSYNC_POL 0
 #define VSYNC_POL 0
 
