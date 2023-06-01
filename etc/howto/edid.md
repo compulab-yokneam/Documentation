@@ -101,3 +101,4 @@ make -C /path/to/kernel-source-tree/tools/edid
 ```
 drm.edid_firmware=edid/edid.bin video=disp.screen0_output_mode=EDID:0
 ```
+* [3d-party manual](https://wiki.archlinux.org/title/kernel_mode_setting#Forcing_modes_and_EDID)
