@@ -8,6 +8,8 @@ Fitlet3 features a pca953x gpio extender
 
 * Registering a new gpio chip
 ```
+MODULES='i2c_smbus i2c_i80i i2c_dev'
+
 PCA9555=0x20
 
 for _m in ${MODULES};do
