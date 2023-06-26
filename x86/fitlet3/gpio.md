@@ -28,7 +28,6 @@ cat << eof
 PCA9555 start gpio # ${GPIO_BASE}
 
 eof
-
 ```
 
 * Using the rigistered gpio chip<br>
