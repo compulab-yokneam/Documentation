@@ -2,6 +2,14 @@
 
 ## Serial console 
 
+* Connector J30 - RS232
+
+|PIN#|Func|
+|---|---|
+|6|TXD|
+|7|RXD|
+|10|GND|
+
 ### Host side
 
 * Device topology
