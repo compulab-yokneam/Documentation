@@ -10,25 +10,19 @@ Fitlet3 features a pca953x gpio extender
 
 * Registering a new gpio chip
 ```
-MODULES='i2c_smbus i2c_i80i i2c_dev'
-
+MODULES='i2c_smbus i2c_dev'
 PCA9555=0x20
 
 for _m in ${MODULES};do
 modprobe ${_m}
 done
 
-sm_bus=$(i2cdetect -l | awk '(/smbus/)&&($0=$1)')
-
+smbus=$(i2cdetect -l | awk '(/smbus/)&&($0=$1)')
 echo pca9555 ${PCA9555} > /sys/bus/i2c/devices/${sm_bus}/new_device
-
-ls -al /sys/class/gpio/|grep ${sm_bus} 
-
-GPIO_BASE=$(ls -al /sys/class/gpio/ | awk -F"/" '(/i2c-2/)&&($0=$NF)&&(gsub(/gpiochip/,""))')
+GPIO_BASE=$(ls -al /sys/class/gpio/ | awk -v smbus=${smbus} -F"/" '($0~sm_bus)&&($0=$NF)&&(gsub(/gpiochip/,""))')
 
 cat << eof
 PCA9555 start gpio # ${GPIO_BASE}
-
 eof
 ```
 
@@ -38,8 +32,8 @@ Follow the instructions of: https://www.kernel.org/doc/Documentation/gpio/sysfs.
 
 * Unregistering device
 ```
-sm_bus=$(i2cdetect -l | awk '(/smbus/)&&($0=$1)')
-echo 0x20 > /sys/bus/i2c/devices/${sm_bus}/delete_device
+smbus=$(i2cdetect -l | awk '(/smbus/)&&($0=$1)')
+echo ${PCA9555} > /sys/bus/i2c/devices/${smbus}/delete_device
 ```
 
 ### Automatic:
