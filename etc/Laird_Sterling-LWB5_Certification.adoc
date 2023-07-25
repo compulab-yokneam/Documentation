@@ -5,7 +5,7 @@
 * https://connectivity-staging.s3.us-east-2.amazonaws.com/2019-03/LWBCert.pdf[Certification Guide Sterling-LWB/LWB5]
 
 ## Prepare the sd-card
-* Download the https://drive.google.com/file/d/1NmWTl4CAZJ8vgUOSMjH1vUURTKqyARww/view?usp=sharing[CompuLab Laird Certification Image]
+* Download the https://drive.google.com/drive/folders/1J12FVwkUtxepF0U7Ic-BKH-SUqF3Axau[CompuLab Laird Certification Image]
 * Create a bootable SD-card:
 [source,code]
 xz -dc fsl-image-qt5-validation-imx-ucm-imx8m-mini-lair.rootfs.sdcard.xz | sudo dd of=/dev/sdX
