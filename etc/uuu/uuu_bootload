@@ -3,4 +3,4 @@
 # Assumes that the DUT in sdp mode: uuu -lsusb
 # MX865   SDPS:   0x1FC9 0x0146   0x0002
 
-uuu -d -v emmc /path/to/imx-boot_ucm-imx8m-plus_d2d4
+uuu d -v /path/to/imx-boot_ucm-imx8m-plus_d2d4
