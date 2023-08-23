@@ -1,0 +1,14 @@
+#!/bin/bash -x
+
+function issue_uuu_fb_cmd {
+    uuu -v FB: ucmd $@
+}
+
+mmc_dev=${mmc_dev:-"2"}
+mmc_erace_command="mmc erase 0x0 0x4000"
+
+for mmc_part in $(seq 0 2);do
+    cmd="mmc dev ${mmc_dev} ${mmc_part}"
+    issue_uuu_fb_cmd ${cmd}
+    issue_uuu_fb_cmd ${mmc_erace_command}
+done
