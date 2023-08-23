@@ -1,0 +1,29 @@
+#/bin/bash -x
+
+# Assumes that the DUT in FB mode: uuu -lsusb
+# FB:     0x0525 0xA4A5   0x0223
+
+rootfs=/path/to/nfs/rootfs
+build=/path/to/kernel/build
+
+kernel=${build}/arch/arm64/boot/Image
+tree=${build}/arch/arm64/boot/dts/compulab/ucm-imx8m-plus.dtb
+
+nfsroot=${rootfs}
+serverip=<server_ip>
+
+interface=0
+interface=${interface:-0}
+#IP=":::::eth${interface}:dhcp"
+IP="dhcp"
+
+uuu -v FB: ucmd setenv fastboot_buffer \${loadaddr}
+uuu -v FB: download -f ${kernel}
+uuu -v FB: ucmd setenv fastboot_buffer \${fdt_addr}
+uuu -v FB: download -f ${tree}
+uuu -v FB: ucmd setenv serverip ${serverip}
+uuu -v FB: ucmd setenv nfsroot ${nfsroot}
+
+uuu -v FB: ucmd setenv netargs "setenv bootargs console=tty1 console=\${console} root=/dev/nfs ip=${IP} nfsroot=\${serverip}:\${nfsroot},v3,tcp rootwait rw"
+uuu -v FB: ucmd run netargs
+uuu -v FB: acmd booti \${loadaddr} - \${fdt_addr}
