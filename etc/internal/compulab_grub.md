@@ -9,6 +9,6 @@ load ${dev} ${num} ${fdt_addr} ${fdtfile}
 bootefi ${loadaddr} ${fdt_addr}
 ```
 
-If the target media does not have the ```EFI/BOOT/bootaa64.efi``` file, then ```distro_bootcmd``` continues looking for the kernel image file and the device tree for issuing a booti command w/out any user interactions.
+If the target media does not have the ```EFI/BOOT/bootaa64.efi``` file, then ```distro_bootcmd``` continues looking for the kernel image file and the device tree for issuing a ```booti``` command w/out any user interactions.
 
 CompuLab Debian and Yocto images do have EFI/BOOT/bootaa64.efi file + all grub configuration files that allow using GRUB boot menu.
