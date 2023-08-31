@@ -1,0 +1,31 @@
+# How to install BalenaOS on CompuLab iot-gate-imx8mplus devices
+
+## ums method
+
+* Turn on an iot-gate-imx8mplus device and stop in U-Boot.
+* Connect a USB~micto usb cable to the iot-gate-imx8mplus programming port (micro-end) the USB-A to a desktop PC.
+* Issue in U-boot to expose the entire emmc media:
+[source,code]
+ums 0 mmc 2
+
+** Issue the balenaOS deployment from the desktop side.
+
+* Issue in U-boot to expose the entire emmc boot partiton:
+[source,code]
+ums 0 mmc 2.1
+
+** Issue the balena bootloader deployment from the desktop side.
+
+## uuu/fastboot method
+* Turn on an iot-gate-imx8mplus device and stop in U-Boot.
+* Connect a USB~micto usb cable to the iot-gate-imx8mplus programming port (micro-end) the USB-A to a desktop PC.
+* Issue in U-boot:
+[source,code]
+fastboot 0
+
+** On the desktop:
+[source,code]
+sudo uuu -v -b emmc_all /path/to/imx-boot_4g /path/to/balena-cloud-compulab-iot-gate-imx8plus-2.113.31+rev1-v14.9.8.img
+
+
+That is all.
