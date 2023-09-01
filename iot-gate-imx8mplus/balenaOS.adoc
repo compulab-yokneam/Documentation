@@ -1,31 +1,72 @@
 # How to install BalenaOS on CompuLab iot-gate-imx8mplus devices
 
 ## ums method
+* Before the start:
+** [IMPORTANT]
+desktop: `the entire block device` must be used on the destop command.
+
+** [NOTE]
+desktop: `/dev/sdb` is just an example.
+Please use the host detected block device in the following commands.
 
 * Turn on an iot-gate-imx8mplus device and stop in U-Boot.
 * Connect a USB~micto usb cable to the iot-gate-imx8mplus programming port (micro-end) the USB-A to a desktop PC.
-* Issue in U-boot to expose the entire emmc media:
-[source,code]
-ums 0 mmc 2
+** OS image deployment:
 
-** Issue the balenaOS deployment from the desktop side.
+[cols="1,1,1"]
+|===
+|#
+|target command
+|desktop command
 
-* Issue in U-boot to expose the entire emmc boot partiton:
-[source,code]
-ums 0 mmc 2.1
+|1
+|ums 0 mmc 2
+|
 
-** Issue the balena bootloader deployment from the desktop side.
+|2
+|
+|unzip -p /path/to/balena-cloud-compulab-iot-gate-imx8plus-2.113.31+rev1-v14.9.8.img.zip \| sudo dd of=/dev/sdb bs=1M status=progress conv=fsync
+|===
+
+** Bootloader deployment:
+
+[cols="1,1,1"]
+|===
+|#
+|target command
+|desktop command
+
+|1
+|ums 0 mmc 2.1
+|
+
+|2
+|
+|unzip -p /path/to/imx-boot_4g \| sudo dd of=/dev/sdb bs=1M status=progress conv=fsync
+|===
 
 ## uuu/fastboot method
+* Before the start:
+** [IMPORTANT]
+desktop: unzip the OS image before issuing the `uuu` command.
+
 * Turn on an iot-gate-imx8mplus device and stop in U-Boot.
 * Connect a USB~micto usb cable to the iot-gate-imx8mplus programming port (micro-end) the USB-A to a desktop PC.
-* Issue in U-boot:
-[source,code]
-fastboot 0
+** OS image + bootloader deployment:
 
-** On the desktop:
-[source,code]
-sudo uuu -v -b emmc_all /path/to/imx-boot_4g /path/to/balena-cloud-compulab-iot-gate-imx8plus-2.113.31+rev1-v14.9.8.img
+[cols="1,1,1"]
+|===
+|step #
+|target command
+|desktop command
 
+| 1
+|fastboot 0
+|
+
+| 2
+|
+|sudo uuu -v -b emmc_all /path/to/imx-boot_4g /path/to/balena-cloud-compulab-iot-gate-imx8plus-2.113.31+rev1-v14.9.8.img
+|===
 
 That is all.
