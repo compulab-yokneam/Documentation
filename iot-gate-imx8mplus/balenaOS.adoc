@@ -42,7 +42,7 @@ Please use the host detected block device in the following commands.
 
 |2
 |
-|unzip -p /path/to/imx-boot_4g \| sudo dd of=/dev/sdb bs=1M status=progress conv=fsync
+|sudo dd if=/path/to/imx-boot_4g of=/dev/sdb bs=1M status=progress conv=fsync
 |===
 
 ## uuu/fastboot method
