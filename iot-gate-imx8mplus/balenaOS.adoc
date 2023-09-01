@@ -10,7 +10,7 @@ desktop: `/dev/sdb` is just an example.
 Please use the host detected block device in the following commands.
 
 * Turn on an iot-gate-imx8mplus device and stop in U-Boot.
-* Connect a USB~micto usb cable to the iot-gate-imx8mplus programming port (micro-end) the USB-A to a desktop PC.
+* Connect a USB~micto usb cable to the iot-gate-imx8mplus programming port (micro-end) and the USB-A to a desktop PC usb port.
 ** OS image deployment:
 
 [cols="1,1,1"]
@@ -51,7 +51,7 @@ Please use the host detected block device in the following commands.
 desktop: unzip the OS image before issuing the `uuu` command.
 
 * Turn on an iot-gate-imx8mplus device and stop in U-Boot.
-* Connect a USB~micto usb cable to the iot-gate-imx8mplus programming port (micro-end) the USB-A to a desktop PC.
+* Connect a USB~micto usb cable to the iot-gate-imx8mplus programming port (micro-end) and the USB-A to a desktop PC usb port.
 ** OS image + bootloader deployment:
 
 [cols="1,1,1"]
