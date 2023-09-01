@@ -3,7 +3,7 @@
 ## ums method
 * Before the start:
 ** [IMPORTANT]
-desktop: `the entire block device` must be used on the destop command.
+desktop: `the entire block device` must be used in the desktop command.
 
 ** [NOTE]
 desktop: `/dev/sdb` is just an example.
