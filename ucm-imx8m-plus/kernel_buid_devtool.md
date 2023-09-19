@@ -1,4 +1,4 @@
-# Modifuing the CompuLab Linux Kernel using devtool
+# Modifying the CompuLab Linux Kernel using devtool
 
 ## Go to the Yocto build environment
 ```
