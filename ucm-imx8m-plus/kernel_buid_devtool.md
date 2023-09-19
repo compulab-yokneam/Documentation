@@ -1,28 +1,28 @@
 # Modifying the CompuLab Linux Kernel using devtool
 
-## Go to the Yocto build environment
+## Go to the Yocto build environment:
 ```
 cd ${BUILDDIR}
 ```
 
-## devtool modify
+## Create the linux kernel tree snapshot:
 ```
 devtool modify linux-compulab
 ```
 
-## go to the Linux kernel source tree and modify it if required:
+## Go to the linux kernel source tree and modify it if required:
 ```
 cd ${BUILDDIR}/workspace/sources/linux-compulab
 ```
 
-## devtool build
+## Build the linux kernel from the modified snapshot:
 ```
 devtool build linux-compulab
 ```
 
 Make sure that the command returns no compilation error.
 
-## Issue the entire image build with the modified kernel
+## Issue the entire image build with the modified kernel:
 ```
 bitbake -k imx-image-full
 ```
