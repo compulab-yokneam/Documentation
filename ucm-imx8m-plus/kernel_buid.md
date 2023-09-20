@@ -36,12 +36,12 @@ make menuconifg
 make -j `nproc`
 ```
 
-## Issue Kernel install
+## Building the Debian Package
 ```
-make -j `nproc` install modules_install
+make -j `nproc` bindeb-pkg
 ```
 
-## Update the system grub configuration
+## Issue Kernel Debian Package install
 ```
-update-grub2
+sudo dpkg -i ../linux-headers-5.15.32_5.15.32-1_arm64.deb ../linux-image-5.15.32_5.15.32-1_arm64.deb ../linux-libc-dev_5.15.32-1_arm64.deb
 ```
