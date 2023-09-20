@@ -33,12 +33,12 @@ make menuconifg
 
 ## Issue Kernel build
 ```
-make -j 4
+make -j `nproc`
 ```
 
 ## Issue Kernel install
 ```
-make -j 8 install modules_install
+make -j `nproc` install modules_install
 ```
 
 ## Update the system grub configuration
