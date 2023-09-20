@@ -1,5 +1,10 @@
 # Building the CompuLab Linux Kernel on a CompuLab device:
 
+* Prerequisites
+```
+sudo apt install make build-essential libncurses-dev bison flex libssl-dev libelf-dev zip
+```
+
 ## Download and deploy the source code:
 ```
 wget -P /tmp/ https://github.com/compulab-yokneam/linux-compulab/archive/refs/heads/linux-compulab_v5.15.32.zip
