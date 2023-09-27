@@ -21,6 +21,12 @@ cd /usr/src/linux-compulab-linux-compulab_v5.15.32
 |som-imx8m-plus|```export MACHINE=som-imx8m-plus```|
 |iot-gate-imx8plus|```export MACHINE=iot-gate-imx8plus```|
 
+* Add imx-sdma firmware (optonal):
+```
+wget -O - --no-check-certificate https://github.com/compulab-yokneam/bin/raw/linux-firmware/imx-sdma-20230404.tar.bz2 | tar -xjvf -
+wget -O - --no-check-certificate https://raw.githubusercontent.com/compulab-yokneam/meta-bsp-imx8mp/kirkstone-2.2.0/recipes-kernel/linux/compulab/5.15.32/imx8mp/linux-firmware-sdma.cfg >> arch/arm64/configs/compulab.config
+```
+
 * Apply the CompuLab machine configuration:
 ```
 make ${MACHINE}_defconfig compulab.config
