@@ -5,14 +5,6 @@
 sudo apt install make build-essential libncurses-dev bison flex libssl-dev libelf-dev zip
 ```
 
-## Download and deploy the source code
-```
-wget -P /tmp/ https://github.com/compulab-yokneam/linux-compulab/archive/refs/heads/linux-compulab_v5.15.32.zip
-unzip -d /usr/src /tmp/linux-compulab_v5.15.32.zip
-cd /usr/src/linux-compulab-linux-compulab_v5.15.32
-```
-
-## Apply the CompuLab default configuration
 * Set a CompuLab machine:
 
 | Machine | Command Line |
@@ -21,13 +13,31 @@ cd /usr/src/linux-compulab-linux-compulab_v5.15.32
 |som-imx8m-plus|```export MACHINE=som-imx8m-plus```|
 |iot-gate-imx8plus|```export MACHINE=iot-gate-imx8plus```|
 
-* Add imx-sdma firmware (optonal):
+## Download and deploy the source code
+```
+wget -P /tmp/ https://github.com/compulab-yokneam/linux-compulab/archive/refs/heads/linux-compulab_v5.15.32.zip
+unzip -d /usr/src /tmp/linux-compulab_v5.15.32.zip
+cd /usr/src/linux-compulab-linux-compulab_v5.15.32
+```
+
+## Address the uart dma issue
+
+* option#1) Add imx-sdma firmware:
 ```
 wget -O - --no-check-certificate https://github.com/compulab-yokneam/bin/raw/linux-firmware/imx-sdma-20230404.tar.bz2 | tar -xjvf -
 wget -O - --no-check-certificate https://raw.githubusercontent.com/compulab-yokneam/meta-bsp-imx8mp/kirkstone-2.2.0/recipes-kernel/linux/compulab/5.15.32/imx8mp/linux-firmware-sdma.cfg >> arch/arm64/configs/compulab.config
 ```
 
-* Apply the CompuLab machine configuration:
+* option#2) Disable dma channels for all enabled uart nodes:
+```
+&uart3 {
+  /delete-property/ dmas;
+  /delete-property/ dma-names;
+  status = "okay";
+};
+```
+  
+## Apply the CompuLab machine configuration:
 ```
 make ${MACHINE}_defconfig compulab.config
 ```
