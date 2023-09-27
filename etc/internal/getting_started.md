@@ -12,8 +12,14 @@
 
 * SDP mode:
 1) Turn off the device.
-2) Connect the device programming-port to the host PC using USBA~microsd cable.
-3) Power on the device and issue this command on the host PC:
+2) Issu SDP boot:
+
+|Device|How to|
+| :--- | :--- |
+|iot|Connect the device programming-port to the host PC using USBA~microsd cable.|
+|som|Connect USB-C J5 port to the host PC and issue Alt-Boot w/out a removable media|
+
+4) Power on the device and issue this command on the host PC:
 ```
 uuu -lsusb
 ```
@@ -27,11 +33,11 @@ Connected Known USB Devices
 * Update the device SW using the SDP
 1) Update the device bootloader:
 ```
-sudo uuu -v -b emmc /path/to/imx-boot-<MACHINE>-sd.bin-flash_evk
+sudo uuu -d -v -b emmc /path/to/imx-boot-<MACHINE>-sd.bin-flash_evk
 ```
 2) Update the device bootloader and OS:
 ```
-sudo uuu -v -b emmc_all /path/to/imx-boot-<MACHINE>-sd.bin-flash_evk /path/to/debian-bullseye-arm64-minbase.rw.gpt.sdcard.img
+sudo uuu -d -v -b emmc_all /path/to/imx-boot-<MACHINE>-sd.bin-flash_evk /path/to/debian-bullseye-arm64-minbase.rw.gpt.sdcard.img
 ```
 
 * Back to the normal:
