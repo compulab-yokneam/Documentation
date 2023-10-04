@@ -2,7 +2,7 @@
 
 * Prerequisites
 ```
-sudo apt install make build-essential libncurses-dev bison flex libssl-dev libelf-dev zip
+sudo apt-get install --no-install-recommends make build-essential libncurses-dev bison flex libssl-dev libelf-dev zip unzip
 ```
 
 ## Download and deploy the source code:
