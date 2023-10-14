@@ -37,11 +37,28 @@ make -j `nproc`
 
 ## Issue Kernel install
 ```
-make -j `nproc` install modules_install
+cp -v arch/arm64/boot/Image /boot/Image-$(cat include/config/kernel.release)
+```
+
+## Issue device trees install
+```
+cp -v arch/arm64/boot/dts/compulab/*.dtb /boot
+```
+
+## Issue modules install
+```
+make -j `nproc` modules_install
 ```
 
 ## Update the boot partition
 ```
-mount /dev/mmcblk2p1 /boot
-make -j `nproc` install
+mkdir /tmp/boot
+mount /dev/mmcblk2p1 /tmp/boot
+cp -v /boot/*.dtb /boot/Image-$(cat include/config/kernel.release) /tmp/boot/
+umount /tmp/boot
+```
+
+## Update boot environment
+```
+fw_setenv image Image-$(cat include/config/kernel.release)
 ```
