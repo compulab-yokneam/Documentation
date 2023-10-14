@@ -40,7 +40,23 @@ make menuconifg
 make -j `nproc`
 ```
 
-## Issue kernel raw install:
+## Issue kernel install:
+
+The linux kernel on the CompuLab devices can be installed by:
+<br>a) running the linux-kenel istallation script;
+<br>b) installing the linux-kernel debian packages.
+
+It is up to developers to choose a method.
+
+* linux-kernel installation script:
 ```
 INSTALL_MOD_PATH=/ bash <(wget -O - https://raw.githubusercontent.com/compulab-yokneam/Documentation/master/ucm-imx8m-plus/linux-compulab-kernel-install-script.sh)
+```
+
+* linux-kernel debian packages:
+```
+make -j `nproc` bindeb-pkg
+cd ../
+dpkg -i $(ls | awk '/linux-headers|linux-image|linux-libc/&&/\.deb/&&!/dbg/' ORS=" ")
+cd -
 ```
