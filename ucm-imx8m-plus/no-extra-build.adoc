@@ -1,0 +1,9 @@
+# imx8mp w/out CompuLab addons
+
+* Download the https://drive.google.com/file/d/1BqInc0yTT5jTiIZIpT6VuqmxoxtaqDPV/view?usp=drive_link[meta-bsp-imx8mp.remove-extras.patch]
+* Apply the patch:
+```
+cd ${BUILDDIR}/../sources/meta-bsp-imx8mp
+patch -p 1 < /path/to/meta-bsp-imx8mp.remove-extras.patch
+```
+* Continue with https://github.com/compulab-yokneam/meta-bsp-imx8mp#setup-build-environment[setup-build-environment]
