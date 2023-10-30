@@ -2,6 +2,10 @@
 UCM-iMX8M-PLUS features three Enhanced Configurable Serial Peripheral Interface (eCSPI) modules.<br>
 The CompuLab EVK uses the ECSPI2 bus in order to show the usage of the Linux spidev interface.
 
+
+The CompuLab demo image with a working spidev can be downloaded from [here](https://drive.google.com/drive/folders/1lFgMzrhqlxho0YJvrBxnLyL5JW_TqixW)
+
+
 ## spidev
 * Device Tree:
 <pre>
@@ -46,7 +50,8 @@ The CompuLab EVK uses the ECSPI2 bus in order to show the usage of the Linux spi
 
 * Linux command line test:
 <pre>
-root@ucm-imx8m-plus:~# spidev_test -p 1234/5678 -v -D /dev/spidev1.0
+spidev_test -p 1234/5678 -v -D /dev/spidev1.0
+
 spi mode: 0x4
 bits per word: 8
 max speed: 500000 Hz (500 kHz)
