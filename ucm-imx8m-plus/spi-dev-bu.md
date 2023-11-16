@@ -1,6 +1,6 @@
 # A new SPI device bring-up
 1. Configure an spidev "rohm,dh2228fv" on the required spi bus with the correct cs.<br>
-2. Use the spidev_test and perform an input request from the device<br>
+2. Use the spidev_test and perform an input request from the device.<br>
   2.1 Make sure that the spidev_test return no error. Go to the step #3<br>
   2.2 the spidev_test failed; make sure that the device connected correctly & fix all connectivity’s issues.<br>
 3. Define the real spi device not on the same bus and the cs.<br>
