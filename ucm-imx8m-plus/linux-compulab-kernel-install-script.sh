@@ -26,6 +26,11 @@ kernel_rootfs_install() {
         return 0
 }
 
+kernel_instal_init() {
+        findmnt /boot -no SOURCE && umount -l /boot || true
+        return 0
+}
+
 kernel_boot_update() {
 # Exit if INSTALL_PATH is not /boot
         local _boot=$(readlink -e ${INSTALL_PATH})
@@ -64,5 +69,6 @@ kernel_boot_environment_update() {
         fw_setenv image Image-${R}
 }
 
+kernel_instal_init
 kernel_rootfs_install
 kernel_boot_update && kernel_boot_environment_update || true
