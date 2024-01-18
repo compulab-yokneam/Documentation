@@ -1,8 +1,8 @@
 # CompuLab imx8mp Linux enable logs
 
+* Isuue these commands:
 ```
-sed -i 's/\(^.*\/var\/log\)/# \1/g' /etc/fstab
-umount /var/log -l 2>/dev/null || true
-mkdir -p /var/log/journal
-systemd-tmpfiles --create --prefix /var/log/journal
+sudo -i
+bash <(curl -Sl https://raw.githubusercontent.com/compulab-yokneam/Documentation/master/ucm-imx8m-plus/logs.sh)
 ```
+* For advanced users, look [at](https://github.com/compulab-yokneam/Documentation/blob/master/ucm-imx8m-plus/logs.sh)
