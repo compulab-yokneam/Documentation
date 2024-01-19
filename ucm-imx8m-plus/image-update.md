@@ -3,9 +3,9 @@
 ## Tool & requirements
 * Dowbload the [image-update.sh](https://raw.githubusercontent.com/compulab-yokneam/Documentation/master/ucm-imx8m-plus/image-update.sh)
 * Requirements:
-  the host must have:
-  a) qemu-user-static installed
-  b) loop device support enabled
+  the host must have:<br>
+  a) qemu-user-static installed<br>
+  b) loop device support enabled<br>
 
 ## How to
 * Expand the image:
@@ -23,5 +23,5 @@ sudo /path/to/image-update.sh chroot <image-file>
 sudo /path/to/image-update.sh chroot <image-file> <script-to-issue-in-chroot>
 ```
 
-|NOTE|This script issues no validation on the image and the script correctness|
+|NOTE|This tool issues no validation on the image and the script correctness|
 |---|---|
