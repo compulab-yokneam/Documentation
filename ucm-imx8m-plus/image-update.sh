@@ -43,13 +43,13 @@ _expand() {
 
 expand_func() {
 	IMAGE=${IMAGE} _mount
-	SIZE=${SIZE} _expand
+	IMAGE=${IMAGE} SIZE=${SIZE} _expand
 	_umount
 }
 
 chroot_func() {
 	IMAGE=${IMAGE} _mount
-	SCRIPT=${SCRIPT} _chroot
+	IMAGE=${IMAGE} SCRIPT=${SCRIPT} _chroot
 	_umount
 }
 
