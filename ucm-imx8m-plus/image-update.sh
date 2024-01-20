@@ -1,6 +1,7 @@
 #!/bin/bash
 
-QEMU_STATIC=/usr/bin/qemu-aarch64-static
+QEMU_STATIC=qemu-aarch64-static
+GROWFS=/lib/systemd/systemd-growfs
 mnt_point=/tmp/mount.d
 FULL_ARGS=$@
 MAIN_SCRIPT=${0}
@@ -19,15 +20,30 @@ eof
    exit 1
 }
 
-_qemu_req() {
-    [[ -f ${QEMU_STATIC} ]] && return 0 || true
+declare -A _anonymous_req_array=()
+_anonymous_req_array+=(["qemu-aarch64-static"]="qemu-user-static")
+_anonymous_req_array+=(["e2fsck"]="e2fsprogs")
+_anonymous_req_array+=(["resize2fs"]="e2fsprogs")
+_anonymous_req_array+=(["parted"]="parted")
+_anonymous_req_array+=(["fdisk"]="fdisk")
+_anonymous_req_array+=(["truncate"]="coreutils")
+_anonymous_req() {
+    for _prog in $@;do
+        command -v ${_prog} &>/dev/null && rc=$? || rc=$?
+        if [[ ${rc} -ne 0 ]];then
 cat << eof
-    ${QEMU_STATIC} is not found;
+    ${_prog} is not found;
     issue:
         sudo apt-get update
-        sudo apt-get qemu-user-static
+        sudo apt-get ${_anonymous_req_array[$_prog]}
 eof
-    exit 1
+        exit 1
+        fi
+    done
+}
+
+_sw_req() {
+    _anonymous_req ${!_anonymous_req_array[@]}
 }
 
 _bind_mount() {
@@ -52,26 +68,32 @@ _bind_umount() {
 }
 
 _qemu_add() {
-	cp ${QEMU_STATIC} ${mnt_point}/bin/
+    cp $(which ${QEMU_STATIC}) ${mnt_point}/bin/
 }
 
 _qemu_rem() {
-	rm ${mnt_point}/${QEMU_STATIC}
+    rm ${mnt_point}/bin/${QEMU_STATIC}
+}
+
+_loop_device_init() {
+    export loop_device=$(losetup --show --find --partscan ${IMAGE})
+}
+
+_loop_device_fini() {
+    losetup --detach ${loop_device}
 }
 
 _mount() {
-	export loop_device=$(losetup --show --find --partscan ${IMAGE})
-	mkdir -p ${mnt_point}
-	mount ${loop_device}p2 ${mnt_point}
-	_bind_mount
-	_qemu_add
+    mkdir -p ${mnt_point}
+    mount ${loop_device}p2 ${mnt_point}
+    _bind_mount
+    _qemu_add
 }
 
 _umount() {
-	_qemu_rem
-	_bind_umount
-	umount ${mnt_point}
-	losetup --detach ${loop_device}
+    _qemu_rem
+    _bind_umount
+    umount ${mnt_point}
 }
 
 _chroot() {
@@ -85,37 +107,64 @@ fi
 chroot ${mnt_point} ${SCRIPT}
 }
 
+_resize_fs() {
+    if [[ -z ${device_to_resize:-""} ]];then
+        echo "no device provided"
+        return 0;
+    fi
+
+    device_to_resize=$(basename ${device_to_resize})
+    part2resize=${part2resize:-${device_to_resize: -1}}
+
+    linux_storage_device=/dev/$(basename $(dirname /sys/class/block/*/${device_to_resize}))
+
+    echo "w" | fdisk ${linux_storage_device} &> /dev/null || true
+
+    echo "Yes" | parted ---pretend-input-tty ${linux_storage_device} resizepart ${part2resize} 100% || true
+    e2fsck -f /dev/${device_to_resize}
+    resize2fs /dev/${device_to_resize}
+}
+
+_expand_prepend() {
+    local _image_size=$(($(stat --format=%s ${IMAGE})>>30))
+    if [[ ${SIZE} -lt ${_image_size} ]];then
+cat << eof
+    Image size ${_image_size} > ${SIZE}
+    shrink mode is not supported
+eof
+        exit 1
+    fi
+    if [[ ${SIZE} -eq ${_image_size} ]];then
+cat << eof
+    Image size ${_image_size} == ${SIZE}
+    Nothing to expand
+eof
+        exit 0
+    fi
+    return 0
+}
+
 _expand() {
-    truncate --size=${SIZE}G ${IMAGE}	
-    chroot ${mnt_point} /usr/bin/compulab-resize-part.sh || true
-    /lib/systemd/systemd-growfs ${mnt_point}
+    device_to_resize=${loop_device}p2 _resize_fs
+    IMAGE=${IMAGE} _mount
+    ${GROWFS} ${mnt_point} || true
+    _umount
 }
 
 expand_func() {
-	local _image_size=$(($(stat --format=%s ${IMAGE})>>30))
-	if [[ ${SIZE} -lt ${_image_size} ]];then
-cat << eof
-	Image size is ${_image_size} > ${SIZE}
-	shrink mode is not supported
-eof
-		exit 1
-	fi
-	if [[ ${SIZE} -eq ${_image_size} ]];then
-cat << eof
-	Image size ${_image_size} == ${SIZE}
-	Nothing to expand
-eof
-		exit 0
-	fi
-	IMAGE=${IMAGE} _mount
-	IMAGE=${IMAGE} SIZE=${SIZE} _expand
-	_umount
+    _expand_prepend
+    truncate --size=${SIZE}G ${IMAGE}
+    _loop_device_init
+    IMAGE=${IMAGE} SIZE=${SIZE} _expand
+    _loop_device_fini
 }
 
 chroot_func() {
-	IMAGE=${IMAGE} _mount
-	IMAGE=${IMAGE} SCRIPT=${SCRIPT} _chroot
-	_umount
+    _loop_device_init
+    IMAGE=${IMAGE} _mount
+    IMAGE=${IMAGE} SCRIPT=${SCRIPT} _chroot
+    _umount
+    _loop_device_fini
 }
 
 help_func() {
@@ -130,7 +179,7 @@ exit 2
 }
 
 _admin_req
-_qemu_req
+_sw_req
 
 FUNCTION=${FUNCTION:-"help"}_func
 command -v ${FUNCTION} || FUNCTION="help_func"
