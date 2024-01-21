@@ -50,7 +50,7 @@ _bind_mount() {
     declare -A mounto=([proc]='-t proc proc' [sys]='-t sysfs sys' [dev]='-t devtmpfs dev' [dev/pts]='-t devpts devpts')
     local mpoints="sys proc dev dev/pts"
     for d in ${mpoints}; do
-        mpoint=$(readlink -f ${mnt_point}/${d})
+        mpoint=$(readlink -e ${mnt_point}/${d})
         findmnt ${mpoint} &>/dev/null || mount ${mounto[${d}]} ${mnt_point}/${d}
     done
 }
@@ -59,7 +59,7 @@ _bind_umount() {
     local mpoints="dev/pts dev proc sys"
     for d in ${mpoints}; do
 	if [[ -d ${mnt_point}/${d} ]];then
-        mpoint=$(readlink -f ${mnt_point}/${d})
+        mpoint=$(readlink -e ${mnt_point}/${d})
         while [ 1 ];do
             findmnt ${mpoint} &>/dev/null && umount ${mpoint} || break
         done
