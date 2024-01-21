@@ -1,7 +1,7 @@
 # CompuLab image modification
 
 ## Tool & requirements
-* Dowbload the [image-update.sh](https://raw.githubusercontent.com/compulab-yokneam/Documentation/master/ucm-imx8m-plus/image-update.sh)
+* Dowbload the [image-update.sh](https://github.com/compulab-yokneam/Documentation/blob/master/ucm-imx8m-plus/image-update.sh)
 * Requirements:
   the host must have:<br>
   a) qemu-user-static installed<br>
