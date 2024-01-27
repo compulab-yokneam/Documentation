@@ -83,28 +83,39 @@ _loop_device_fini() {
     losetup --detach ${loop_device}
 }
 
-_mount() {
+__mount() {
     mkdir -p ${mnt_point}
     mount ${loop_device}p2 ${mnt_point}
+}
+
+_mount() {
+    __mount
     _bind_mount
     _qemu_add
+}
+
+__umount() {
+    umount ${mnt_point}
 }
 
 _umount() {
     _qemu_rem
     _bind_umount
-    umount ${mnt_point}
+    __umount
 }
 
 _chroot() {
+local _chroot_fini_cmd="true"
 if [ -f ${SCRIPT:-""} ];then
     cp ${SCRIPT} ${mnt_point}/tmp/
     SCRIPT=/tmp/$(basename ${SCRIPT})
     chmod a+x ${mnt_point}/${SCRIPT}
+    _chroot_fini_cmd="rm -rf ${mnt_point}/${SCRIPT}"
 else
     SCRIPT="tmux"
 fi
 chroot ${mnt_point} ${SCRIPT}
+${_chroot_fini_cmd}
 }
 
 _resize_fs() {
@@ -125,13 +136,53 @@ _resize_fs() {
     resize2fs /dev/${device_to_resize}
 }
 
+_rootfs_size=0
+_get_rootfs_size() {
+    _loop_device_init
+    __mount
+    _qemu_add
+	local __size=$(chroot ${mnt_point} du -sk / | awk '$0=$1')
+    _qemu_rem
+    __umount
+    _loop_device_fini
+    __size=$(( $(( ${__size} >> 20 )) + 1 ))
+    export _rootfs_size=${__size}
+    return 0
+}
+
+_shrink_image_file() {
+    local __image=${1}
+    local __size=${2}
+    local __work="work_${__size}.sh"
+    dd if=/dev/zero of=${__image} bs=1M count=$(( ${__size} << 10 )) status=progress
+    local _original_image=${IMAGE}
+    IMAGE=${__image} _loop_device_init
+    local _loop_device=${loop_device}
+cat << eof > ${__work}
+    QUIET=Yes SRC=/ DST=${_loop_device} cl-deploy
+    sync;sync;sync;
+eof
+    IMAGE=${_original_image} SCRIPT=${__work} chroot_func
+
+    loop_device=${_loop_device} _loop_device_fini
+}
+
 _expand_prepend() {
     local _image_size=$(($(stat --format=%s ${IMAGE})>>30))
     if [[ ${SIZE} -lt ${_image_size} ]];then
+	_get_rootfs_size
+        if [[ ${SIZE} -lt ${_rootfs_size} ]];then
 cat << eof
-    Image size ${_image_size} > ${SIZE}
-    shrink mode is not supported
+    Rootfs size ${_rootfs_size} > ${SIZE}
+    shrink mode is not available
 eof
+            exit 1
+        else
+cat << eof
+    Starting shrink mode for ${IMAGE}_${SIZE}
+eof
+            _shrink_image_file ${IMAGE}_${SIZE} ${SIZE}
+        fi
         exit 1
     fi
     if [[ ${SIZE} -eq ${_image_size} ]];then
