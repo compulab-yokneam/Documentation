@@ -5,7 +5,7 @@
 
 ## Discovered:
 1)	The U-Boot does not issue authenticate_image() at bootefi context.
-2)	EFI/BOOT/bootaa64.efi.GRUB loads a signed Linux Image to an address that does not match the [IVT table value](https://github.com/nxp-imx/uboot-imx/blob/lf_v2022.04/doc/imx/habv4/script_examples/genIVT.pl#L5)
+2)	EFI/BOOT/bootaa64.efi.GRUB loads a signed Linux Image to the address that does not match the [IVT table value](https://github.com/nxp-imx/uboot-imx/blob/lf_v2022.04/doc/imx/habv4/script_examples/genIVT.pl#L5)
 3)	EFI/BOOT/bootaa64.efi.GRUB passes the control back to the U-Boot, it reports on:<pre>Authenticate image from DDR location 0xcd747000...
 Error: Invalid IVT structure
 </pre>and continues booting the system.<br>
