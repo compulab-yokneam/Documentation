@@ -13,7 +13,7 @@ Have a look at attached boot [log](https://github.com/compulab-yokneam/Documenta
 
 ## Solution:
 To make the U-Boot prevent booting unsigned images while issuing bootefi.<br>
-Have a look at attached boot log tahe shows how the u-boot authentificates the bootefi [binary](https://github.com/compulab-yokneam/Documentation/blob/master/mender/mender-hab-boot.log#L85-L117)
+Have a look at attached boot log that shows how the U-Boot authentificates the bootefi [binary](https://github.com/compulab-yokneam/Documentation/blob/master/mender/mender-hab-boot.log#L85-L117)
 
 ## Implementation:
 * [meta-compulab-hab](https://github.com/compulab-yokneam/meta-compulab-hab/commit/30484d691af600dd271e559d23ebc66fedeeb8b0)
