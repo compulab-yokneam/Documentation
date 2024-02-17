@@ -1,4 +1,4 @@
-# Prevent booting a 3-d party unsigned bootloader.
+# Prevent booting unsigned uefi binaries.
 
 |NOTE|The CompuLab Mender solution does use GRUB wherefore the <bootmedia>/EFI/BOOT/bootaa64.efi is in use.|
 |---|---|
