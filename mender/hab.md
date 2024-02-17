@@ -12,9 +12,9 @@ Error: Invalid IVT structure
 Have a look at attached boot [log](https://github.com/compulab-yokneam/Documentation/blob/master/mender/mender-hab-boot.log#L123-L128)
 
 ## Solution:
-To make the U-Boot prevent booting unsigned images while issuing bootefi.<br>
-Have a look at attached boot log that shows how the U-Boot authentificates the bootefi [binary](https://github.com/compulab-yokneam/Documentation/blob/master/mender/mender-hab-boot.log#L85-L117)
+To make the U-Boot prevent booting unsigned images while issuing bootefi [1-code](https://github.com/compulab-yokneam/u-boot-compulab/commit/964c985b899f8c5707c95540baa9fa671f4597a0) [2-log](https://github.com/compulab-yokneam/Documentation/blob/master/mender/mender-hab-boot.log#L85-L117)<br>
+To sing up the relocated kernel Image loaded by [grub](https://github.com/compulab-yokneam/cst-tools/blob/master/imx8/Makefile#L42-L48)
 
 ## Implementation:
-* [meta-compulab-hab](https://github.com/compulab-yokneam/meta-compulab-hab/commit/30484d691af600dd271e559d23ebc66fedeeb8b0)
-* [u-boot-compulab](https://github.com/compulab-yokneam/u-boot-compulab/commit/964c985b899f8c5707c95540baa9fa671f4597a0)
+* [meta-compulab-hab](https://github.com/compulab-yokneam/meta-compulab-hab) + [cst-tools](https://github.com/compulab-yokneam/cst-tools/commits/master/imx8)
+* [u-boot-compulab](https://github.com/compulab-yokneam/u-boot-compulab/tree/u-boot-compulab_v2022.04)
