@@ -1,0 +1,696 @@
+reset 
++ reset
+resetting ...
+
+U-Boot SPL 2022.04-compulab+gc137845eae (Dec 17 2023 - 13:36:08 +0000)
+pca9450@25 [ldo4][d] = 1v8
+DDRINFO: EEPROM VALID DATA [ [ cafecafe ] = 1061010 2 
+DDRINFO(D): Samsung 2048MB @ 3000 MHz
+DDRINFO: start DRAM init
+DDRINFO: DRAM rate 3000MTS
+DDRINFO:ddrphy calibration done
+DDRINFO: ddrmix config done
+DDRINFO(M): mr5-8 [ 0x1061010 ]
+DDRINFO(E): mr5-8 [ 0x1061010 ]
+Normal Boot
+WDT:   Not starting watchdog@30280000
+Trying to boot from BOOTROM
+Boot Stage: Primary boot
+image offset 0x0, pagesize 0x200, ivt offset 0x0
+
+Authenticate image from DDR location 0x401fcdc0...
+NOTICE:  BL31: v2.6(release):lf-5.15.71-2.2.0-0-g3c1583ba0
+NOTICE:  BL31: Built : 11:00:38, Nov 21 2022
+
+
+U-Boot 2022.04-compulab+gc137845eae (Dec 17 2023 - 13:36:08 +0000)
+
+CPU:   i.MX8MP[8] rev1.1 at 1200 MHz
+Reset cause: POR
+Model: CompuLab UCM-iMX8M-Plus
+DRAM:  2 GiB
+Core:  122 devices, 34 uclasses, devicetree: separate
+WDT:   Not starting watchdog@30280000
+MMC:   FSL_SDHC: 1, FSL_SDHC: 2
+Loading Environment from MMC... OK
+[*]-Video Link 0imx_sec_dsim mipi_dsi@32e60000: wait pkthdr tx done time out
+imx_sec_dsim mipi_dsi@32e60000: panel ili9881c_panel enable backlight error -16
+lcdifv3_video lcd-controller@32e80000: fail to set backlight
+probe video device failed, ret -16
+
+	[0] lcd-controller@32e80000, video
+	[1] mipi_dsi@32e60000, video_bridge
+	[2] ili9881c_panel, panel
+fail to probe panel device ili9881c_panel
+probe video device failed, ret -16
+fail to probe panel device ili9881c_panel
+fail to probe panel device ili9881c_panel
+In:    serial
+Out:   serial
+Err:   serial
+SEC0:  RNG instantiated
+
+ BuildInfo:
+  - ATF 3c1583b
+
++ mmc dev 2
+switch to partitions #0, OK
+mmc2(part 0) is current device
+flash target is MMC:2
+Net:   eth1: ethernet@30bf0000 [PRIME]
+Fastboot: Normal
+Normal Boot
+Hit any key to stop autoboot:  2  0 
+ucm-imx8m-plus=> version; fuse read 1 3; hab_status
++ version
+U-Boot 2022.04-compulab+gc137845eae (Dec 17 2023 - 13:36:08 +0000)
+
+aarch64-poky-linux-gcc (GCC) 11.3.0
+GNU ld (GNU Binutils) 2.38.20220708
++ fuse read 1 3
+Reading bank 1:
+
+Word 0x00000003: 8a000000
++ hab_status
+
+Secure boot enabled
+
+HAB Configuration: 0xcc, HAB State: 0x99
+No HAB Events Found!
+
+ucm-imx8m-plus=> ls mmc 2
++ ls mmc 2
+            EFI/
+ 34475872   Image
+ 33757696   Image-5.15.71-rt51-+g6e6394f36a11
+ 34475872   Image.signed
+   221979   config-5.15.71-rt51-+g6e6394f36a11
+  2139728   flash.bin.signed
+      199   fuse.out
+            grub/
+      113   hab_auth_img.cmd
+  2139920   imx-boot
+  2139920   imx-boot-ucm-imx8m-plus-sd.bin-flash_evk
+ 33757696   kernel-5.15.71-rt51-+g6e6394f36a11
+        0   no-auto
+    83422   ucm-imx8m-plus-hdmi.dtb
+    83430   ucm-imx8m-plus-headless.dtb
+    83229   ucm-imx8m-plus-ldo4.dtb
+    83422   ucm-imx8m-plus-lvds.dtb
+    83422   ucm-imx8m-plus-mipi.dtb
+    83426   ucm-imx8m-plus-nopcie.dtb
+    83806   ucm-imx8m-plus-p21.dtb
+    85195   ucm-imx8m-plus-rpmsg.dtb
+    83418   ucm-imx8m-plus-thermal.dtb
+    83422   ucm-imx8m-plus-usbdev.dtb
+    83414   ucm-imx8m-plus-wm8731.dtb
+    83410   ucm-imx8m-plus.dtb
+    84432   ucm-imx8m-plus_mipi-csi1-ar0234.dtb
+    84400   ucm-imx8m-plus_mipi-csi1-ar0521.dtb
+    84443   ucm-imx8m-plus_mipi-csi1-ar1335-mcu.dtb
+    84404   ucm-imx8m-plus_mipi-csi1-imx219.dtb
+    84412   ucm-imx8m-plus_mipi-csi1.dtb
+    84456   ucm-imx8m-plus_mipi-csi2.dtb
+    85254   ucm-imx8m-plus_mipi-dual.dtb
+
+30 file(s), 2 dir(s)
+
+ucm-imx8m-plus=> setenv bootargs 'console=ttymxc1,115200 console=tty1 root=/dev/mmcblk2p2 rootwait rw'
++ setenv bootargs console=ttymxc1,115200 console=tty1 root=/dev/mmcblk2p2 rootwait rw
+ucm-imx8m-plus=> load mmc 2 ${loadaddr} Image-5.15.71-rt51-+g6e6394f36a11
++ load mmc 2 0x40480000 Image-5.15.71-rt51-+g6e6394f36a11
+33757696 bytes read in 103 ms (312.6 MiB/s)
+ucm-imx8m-plus=> load mmc 2 ${fdt_addr_r} ucm-imx8m-plus.dtb
++ load mmc 2 0x43000000 ucm-imx8m-plus.dtb
+83410 bytes read in 1 ms (79.5 MiB/s)
+ucm-imx8m-plus=> booti ${loadaddr} ${fdt_addr_r}
++ booti 0x40480000 0x43000000
+
+Authenticate image from DDR location 0x40480000...
+bad magic magic=0xff length=0xffff version=0xff
+bad length magic=0xff length=0xffff version=0xff
+bad version magic=0xff length=0xffff version=0xff
+Error: Invalid IVT structure
+Authenticate Image Fail, Please check
+
+ucm-imx8m-plus=> bootefi ${loadaddr} ${fdt_addr_r} 
++ bootefi 0x40480000 0x43000000
+MMC: no card present
+Scanning disk mmc@30b50000.blk...
+Disk mmc@30b50000.blk not ready
+Scanning disk mmc@30b60000.blk...
+Found 3 disks
+No EFI system partition
+fail to probe panel device ili9881c_panel
+Booting /Image-5.15.71-rt51-+g6e6394f36a11
+EFI stub: Booting Linux Kernel...
+EFI stub: EFI_RNG_PROTOCOL unavailable
+EFI stub: Using DTB from configuration table
+EFI stub: Exiting boot services...
+[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd034]
+[    0.000000] Linux version 5.15.71-rt51-+g6e6394f36a11 (oe-user@oe-host) (aarch64-poky-linux-gcc (GCC) 11.3.0, GNU ld (GNU Binutils) 2.38.20220708) #1 SMP PREEMPT_RT Sun Dec 17 13:37:06 UTC 2023
+[    0.000000] Machine model: CompuLab UCM-iMX8M-Plus EVK
+[    0.000000] efi: EFI v2.90 by Das U-Boot
+[    0.000000] efi: ESRT=0xb8bbc040 RTPROP=0xb8bbe040 SMBIOS=0xb8bc0000 MEMRESERVE=0xb8bb6040 
+[    0.000000] esrt: Reserving ESRT space from 0x00000000b8bbc040 to 0x00000000b8bbc078.
+[    0.000000] Reserved memory: created CMA memory pool at 0x0000000066000000, size 704 MiB
+[    0.000000] OF: reserved mem: initialized node linux,cma, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created DMA memory pool at 0x0000000094300000, size 1 MiB
+[    0.000000] OF: reserved mem: initialized node vdev0buffer@94300000, compatible id shared-dma-pool
+[    0.000000] NUMA: No NUMA configuration found
+[    0.000000] NUMA: Faking a node at [mem 0x0000000000900000-0x00000000bfffffff]
+[    0.000000] NUMA: NODE_DATA [mem 0xbfc406c0-0xbfc42fff]
+[    0.000000] Zone ranges:
+[    0.000000]   DMA      [mem 0x0000000000900000-0x00000000bfffffff]
+[    0.000000]   DMA32    empty
+[    0.000000]   Normal   empty
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000000900000-0x000000000096ffff]
+[    0.000000]   node   0: [mem 0x0000000040000000-0x0000000055ffffff]
+[    0.000000]   node   0: [mem 0x0000000056000000-0x0000000057ffffff]
+[    0.000000]   node   0: [mem 0x0000000058000000-0x00000000923fffff]
+[    0.000000]   node   0: [mem 0x0000000092400000-0x00000000a43fffff]
+[    0.000000]   node   0: [mem 0x00000000a4400000-0x00000000b8bbdfff]
+[    0.000000]   node   0: [mem 0x00000000b8bbe000-0x00000000b8bbefff]
+[    0.000000]   node   0: [mem 0x00000000b8bbf000-0x00000000b8bbffff]
+[    0.000000]   node   0: [mem 0x00000000b8bc0000-0x00000000b8bc2fff]
+[    0.000000]   node   0: [mem 0x00000000b8bc3000-0x00000000b8bc3fff]
+[    0.000000]   node   0: [mem 0x00000000b8bc4000-0x00000000b8be5fff]
+[    0.000000]   node   0: [mem 0x00000000b8be6000-0x00000000bbecffff]
+[    0.000000]   node   0: [mem 0x00000000bbed0000-0x00000000bbedffff]
+[    0.000000]   node   0: [mem 0x00000000bbee0000-0x00000000bfffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000000900000-0x00000000bfffffff]
+[    0.000000] On node 0, zone DMA: 2304 pages in unavailable ranges
+[    0.000000] On node 0, zone DMA: 30352 pages in unavailable ranges
+[    0.000000] psci: probing for conduit method from DT.
+[    0.000000] psci: PSCIv1.1 detected in firmware.
+[    0.000000] psci: Using standard PSCI v0.2 function IDs
+[    0.000000] psci: Trusted OS migration not required
+[    0.000000] psci: SMC Calling Convention v1.2
+[    0.000000] percpu: Embedded 20 pages/cpu s44656 r8192 d29072 u81920
+[    0.000000] Detected VIPT I-cache on CPU0
+[    0.000000] CPU features: detected: GIC system register CPU interface
+[    0.000000] CPU features: kernel page table isolation forced ON by KASLR
+[    0.000000] CPU features: detected: Kernel page table isolation (KPTI)
+[    0.000000] CPU features: detected: ARM erratum 845719
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 516206
+[    0.000000] Policy zone: DMA
+[    0.000000] Kernel command line: console=ttymxc1,115200 console=tty1 root=/dev/mmcblk2p2 rootwait rw
+[    0.000000] Dentry cache hash table entries: 262144 (order: 9, 2097152 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 131072 (order: 8, 1048576 bytes, linear)
+[    0.000000] mem auto-init: stack:off, heap alloc:off, heap free:off
+[    0.000000] Memory: 972460K/2097600K available (19392K kernel code, 1606K rwdata, 8796K rodata, 3072K init, 624K bss, 404244K reserved, 720896K cma-reserved)
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=4, Nodes=1
+[    0.000000] rcu: Preemptible hierarchical RCU implementation.
+[    0.000000] rcu: 	RCU event tracing is enabled.
+[    0.000000] rcu: 	RCU restricting CPUs from NR_CPUS=256 to nr_cpu_ids=4.
+[    0.000000] rcu: 	RCU priority boosting: priority 1 delay 500 ms.
+[    0.000000] rcu: 	RCU_SOFTIRQ processing moved to rcuc kthreads.
+[    0.000000] 	No expedited grace period (rcu_normal_after_boot).
+[    0.000000] 	Trampoline variant of Tasks RCU enabled.
+[    0.000000] 	Tracing variant of Tasks RCU enabled.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
+[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=4
+[    0.000000] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
+[    0.000000] GICv3: GIC: Using split EOI/Deactivate mode
+[    0.000000] GICv3: 160 SPIs implemented
+[    0.000000] GICv3: 0 Extended SPIs implemented
+[    0.000000] GICv3: Distributor has no Range Selector support
+[    0.000000] Root IRQ handler: gic_handle_irq
+[    0.000000] GICv3: 16 PPIs implemented
+[    0.000000] GICv3: CPU0: found redistributor 0 region 0:0x0000000038880000
+[    0.000000] ITS: No ITS available, not enabling LPIs
+[    0.000000] arch_timer: cp15 timer(s) running at 8.00MHz (phys).
+[    0.000000] clocksource: arch_sys_counter: mask: 0xffffffffffffff max_cycles: 0x1d854df40, max_idle_ns: 440795202120 ns
+[    0.000000] sched_clock: 56 bits at 8MHz, resolution 125ns, wraps every 2199023255500ns
+[    0.000482] Console: colour dummy device 80x25
+[    0.000491] printk: console [tty1] enabled
+[    0.000552] Calibrating delay loop (skipped), value calculated using timer frequency.. 16.00 BogoMIPS (lpj=32000)
+[    0.000561] pid_max: default: 32768 minimum: 301
+[    0.000629] LSM: Security Framework initializing
+[    0.000723] Mount-cache hash table entries: 4096 (order: 3, 32768 bytes, linear)
+[    0.000735] Mountpoint-cache hash table entries: 4096 (order: 3, 32768 bytes, linear)
+[    0.002427] rcu: Hierarchical SRCU implementation.
+[    0.004110] EFI runtime services will be disabled.
+[    0.004373] smp: Bringing up secondary CPUs ...
+[    0.005005] Detected VIPT I-cache on CPU1
+[    0.005033] GICv3: CPU1: found redistributor 1 region 0:0x00000000388a0000
+[    0.005070] CPU1: Booted secondary processor 0x0000000001 [0x410fd034]
+[    0.005721] Detected VIPT I-cache on CPU2
+[    0.005739] GICv3: CPU2: found redistributor 2 region 0:0x00000000388c0000
+[    0.005758] CPU2: Booted secondary processor 0x0000000002 [0x410fd034]
+[    0.006371] Detected VIPT I-cache on CPU3
+[    0.006389] GICv3: CPU3: found redistributor 3 region 0:0x00000000388e0000
+[    0.006408] CPU3: Booted secondary processor 0x0000000003 [0x410fd034]
+[    0.006473] smp: Brought up 1 node, 4 CPUs
+[    0.006479] SMP: Total of 4 processors activated.
+[    0.006482] CPU features: detected: 32-bit EL0 Support
+[    0.006485] CPU features: detected: 32-bit EL1 Support
+[    0.006489] CPU features: detected: CRC32 instructions
+[    0.014475] CPU: All CPU(s) started at EL2
+[    0.014513] alternatives: patching kernel code
+[    0.015441] devtmpfs: initialized
+[    0.030778] KASLR disabled due to lack of seed
+[    0.030976] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.030991] futex hash table entries: 1024 (order: 4, 65536 bytes, linear)
+[    0.050481] pinctrl core: initialized pinctrl subsystem
+[    0.051184] SMBIOS 3.0 present.
+[    0.051206] DMI: Unknown Unknown Product/Unknown Product, BIOS 2022.04-compulab+gc137845eae 04/01/2022
+[    0.051825] NET: Registered PF_NETLINK/PF_ROUTE protocol family
+[    0.058197] DMA: preallocated 256 KiB GFP_KERNEL pool for atomic allocations
+[    0.058592] DMA: preallocated 256 KiB GFP_KERNEL|GFP_DMA pool for atomic allocations
+[    0.058947] DMA: preallocated 256 KiB GFP_KERNEL|GFP_DMA32 pool for atomic allocations
+[    0.059010] audit: initializing netlink subsys (disabled)
+[    0.059222] audit: type=2000 audit(0.056:1): state=initialized audit_enabled=0 res=1
+[    0.059998] thermal_sys: Registered thermal governor 'step_wise'
+[    0.060002] thermal_sys: Registered thermal governor 'power_allocator'
+[    0.060462] cpuidle: using governor menu
+[    0.060736] hw-breakpoint: found 6 breakpoint and 4 watchpoint registers.
+[    0.060815] ASID allocator initialised with 32768 entries
+[    0.061985] Serial: AMBA PL011 UART driver
+[    0.062219] imx mu driver is registered.
+[    0.062244] imx rpmsg driver is registered.
+[    0.074578] imx8mp-pinctrl 30330000.pinctrl: initialized IMX pinctrl driver
+[    0.086443] platform 32e80000.lcd-controller: Fixing up cyclic dependency with 32e60000.mipi_dsi
+[    0.087444] platform 32c00000.bus:ldb@32ec005c: Fixing up cyclic dependency with 32e90000.lcd-controller
+[    0.093777] platform 32fd8000.hdmi: Fixing up cyclic dependency with 32fc6000.lcd-controller
+[    0.102200] platform lvds0_panel: Fixing up cyclic dependency with 32c00000.bus:ldb@32ec005c
+[    0.125428] HugeTLB registered 1.00 GiB page size, pre-allocated 0 pages
+[    0.125439] HugeTLB registered 32.0 MiB page size, pre-allocated 0 pages
+[    0.125443] HugeTLB registered 2.00 MiB page size, pre-allocated 0 pages
+[    0.125447] HugeTLB registered 64.0 KiB page size, pre-allocated 0 pages
+[    0.126647] cryptd: max_cpu_qlen set to 1000
+[    0.130211] ACPI: Interpreter disabled.
+[    0.131160] iommu: Default domain type: Translated 
+[    0.131164] iommu: DMA domain TLB invalidation policy: strict mode 
+[    0.131356] vgaarb: loaded
+[    0.131728] SCSI subsystem initialized
+[    0.132133] usbcore: registered new interface driver usbfs
+[    0.132181] usbcore: registered new interface driver hub
+[    0.132210] usbcore: registered new device driver usb
+[    0.133353] mc: Linux media interface: v0.10
+[    0.133384] videodev: Linux video capture interface: v2.00
+[    0.133458] pps_core: LinuxPPS API ver. 1 registered
+[    0.133462] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    0.133477] PTP clock support registered
+[    0.133678] EDAC MC: Ver: 3.0.0
+[    0.135221] FPGA manager framework
+[    0.135320] Advanced Linux Sound Architecture Driver Initialized.
+[    0.135963] Bluetooth: Core ver 2.22
+[    0.135991] NET: Registered PF_BLUETOOTH protocol family
+[    0.135994] Bluetooth: HCI device and connection manager initialized
+[    0.136005] Bluetooth: HCI socket layer initialized
+[    0.136011] Bluetooth: L2CAP socket layer initialized
+[    0.136028] Bluetooth: SCO socket layer initialized
+[    0.136764] clocksource: Switched to clocksource arch_sys_counter
+[    0.136947] VFS: Disk quotas dquot_6.6.0
+[    0.136993] VFS: Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+[    0.137193] pnp: PnP ACPI: disabled
+[    0.144744] NET: Registered PF_INET protocol family
+[    0.144934] IP idents hash table entries: 32768 (order: 6, 262144 bytes, linear)
+[    0.145983] tcp_listen_portaddr_hash hash table entries: 1024 (order: 3, 49152 bytes, linear)
+[    0.146053] Table-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)
+[    0.146065] TCP established hash table entries: 16384 (order: 5, 131072 bytes, linear)
+[    0.146220] TCP bind hash table entries: 16384 (order: 7, 655360 bytes, linear)
+[    0.146744] TCP: Hash tables configured (established 16384 bind 16384)
+[    0.146864] UDP hash table entries: 1024 (order: 4, 98304 bytes, linear)
+[    0.146973] UDP-Lite hash table entries: 1024 (order: 4, 98304 bytes, linear)
+[    0.147221] NET: Registered PF_UNIX/PF_LOCAL protocol family
+[    0.147728] RPC: Registered named UNIX socket transport module.
+[    0.147732] RPC: Registered udp transport module.
+[    0.147734] RPC: Registered tcp transport module.
+[    0.147737] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    0.148474] PCI: CLS 0 bytes, default 64
+[    0.149625] hw perfevents: enabled with armv8_cortex_a53 PMU driver, 7 counters available
+[    0.150277] kvm [1]: IPA Size Limit: 40 bits
+[    0.152266] kvm [1]: GICv3: no GICV resource entry
+[    0.152270] kvm [1]: disabling GICv2 emulation
+[    0.152281] kvm [1]: GIC system register CPU interface enabled
+[    0.152357] kvm [1]: vgic interrupt IRQ9
+[    0.152461] kvm [1]: Hyp mode initialized successfully
+[    0.156289] Initialise system trusted keyrings
+[    0.156453] workingset: timestamp_bits=42 max_order=19 bucket_order=0
+[    0.166745] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    0.167488] NFS: Registering the id_resolver key type
+[    0.167528] Key type id_resolver registered
+[    0.167531] Key type id_legacy registered
+[    0.167634] nfs4filelayout_init: NFSv4 File Layout Driver Registering...
+[    0.167638] nfs4flexfilelayout_init: NFSv4 Flexfile Layout Driver Registering...
+[    0.167659] jffs2: version 2.2. (NAND) © 2001-2006 Red Hat, Inc.
+[    0.168093] 9p: Installing v9fs 9p2000 file system support
+[    0.205067] Key type asymmetric registered
+[    0.205074] Asymmetric key parser 'x509' registered
+[    0.205144] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 243)
+[    0.205247] io scheduler mq-deadline registered
+[    0.205252] io scheduler kyber registered
+[    0.213048] EINJ: ACPI disabled.
+[    0.218570] clk: failed to reparent gic to sys_pll2_500m: -16
+[    0.224691] imx-sdma 30bd0000.dma-controller: Direct firmware load for imx/sdma/sdma-imx7d.bin failed with error -2
+[    0.226706] mxs-dma 33000000.dma-apbh: initialized
+[    0.228701] SoC: i.MX8MP revision 1.1
+[    0.229563] Bus freq driver module loaded
+[    0.237248] Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
+[    0.239752] clk: failed to reparent uart2 to sys_pll1_80m: -16
+[    0.240103] 30890000.serial: ttymxc1 at MMIO 0x30890000 (irq = 34, base_baud = 1500000) is a IMX
+[    0.240164] printk: console [ttymxc1] enabled
+[    0.248959] imx-sdma 30bd0000.dma-controller: Direct firmware load for imx/sdma/sdma-imx7d.bin failed with error -2
+[    0.248976] imx-sdma 30bd0000.dma-controller: external firmware not found, using ROM firmware
+[    0.258504] loop: module loaded
+[    0.260167] megasas: 07.717.02.00-rc1
+[    0.262239] imx ahci driver is registered.
+[    0.266548] spi-nor spi0.0: unrecognized JEDEC id bytes: 00 00 00 00 00 00
+[    0.266560] spi-nor: probe of spi0.0 failed with error -2
+[    0.270739] tun: Universal TUN/TAP device driver, 1.6
+[    0.271689] thunder_xcv, ver 1.0
+[    0.271734] thunder_bgx, ver 1.0
+[    0.271778] nicpf, ver 1.0
+[    0.274415] hclge is initializing
+[    0.274436] hns3: Hisilicon Ethernet Network Driver for Hip08 Family - version
+[    0.274439] hns3: Copyright (c) 2017 Huawei Corporation.
+[    0.274499] e1000: Intel(R) PRO/1000 Network Driver
+[    0.274502] e1000: Copyright (c) 1999-2006 Intel Corporation.
+[    0.274549] e1000e: Intel(R) PRO/1000 Network Driver
+[    0.274552] e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
+[    0.274600] igb: Intel(R) Gigabit Ethernet Network Driver
+[    0.274603] igb: Copyright (c) 2007-2014 Intel Corporation.
+[    0.274639] igbvf: Intel(R) Gigabit Virtual Function Network Driver
+[    0.274642] igbvf: Copyright (c) 2009 - 2012 Intel Corporation.
+[    0.274862] sky2: driver version 1.30
+[    0.275629] usbcore: registered new interface driver r8152
+[    0.275939] VFIO - User Level meta-driver version: 0.3
+[    0.282095] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    0.282105] ehci-pci: EHCI PCI platform driver
+[    0.282144] ehci-platform: EHCI generic platform driver
+[    0.282373] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+[    0.282397] ohci-pci: OHCI PCI platform driver
+[    0.282434] ohci-platform: OHCI generic platform driver
+[    0.283279] usbcore: registered new interface driver uas
+[    0.283329] usbcore: registered new interface driver usb-storage
+[    0.283402] usbcore: registered new interface driver usbserial_generic
+[    0.283425] usbserial: USB Serial support registered for generic
+[    0.283458] usbcore: registered new interface driver ftdi_sio
+[    0.283479] usbserial: USB Serial support registered for FTDI USB Serial Device
+[    0.283511] usbcore: registered new interface driver usb_serial_simple
+[    0.283537] usbserial: USB Serial support registered for carelink
+[    0.283557] usbserial: USB Serial support registered for zio
+[    0.283578] usbserial: USB Serial support registered for funsoft
+[    0.283600] usbserial: USB Serial support registered for flashloader
+[    0.283620] usbserial: USB Serial support registered for google
+[    0.283640] usbserial: USB Serial support registered for libtransistor
+[    0.283660] usbserial: USB Serial support registered for vivopay
+[    0.283681] usbserial: USB Serial support registered for moto_modem
+[    0.283703] usbserial: USB Serial support registered for motorola_tetra
+[    0.283723] usbserial: USB Serial support registered for nokia
+[    0.283744] usbserial: USB Serial support registered for novatel_gps
+[    0.283765] usbserial: USB Serial support registered for hp4x
+[    0.283786] usbserial: USB Serial support registered for suunto
+[    0.283806] usbserial: USB Serial support registered for siemens_mpi
+[    0.283842] usbcore: registered new interface driver usb_ehset_test
+[    0.287369] input: 30370000.snvs:snvs-powerkey as /devices/platform/soc@0/30000000.bus/30370000.snvs/30370000.snvs:snvs-powerkey/input/input0
+[    0.289834] snvs_rtc 30370000.snvs:snvs-rtc-lp: registered as rtc0
+[    0.289863] snvs_rtc 30370000.snvs:snvs-rtc-lp: setting system clock to 2024-02-18T16:45:46 UTC (1708274746)
+[    0.290048] i2c_dev: i2c /dev entries driver
+[    0.295109] Bluetooth: HCI UART driver ver 2.3
+[    0.295119] Bluetooth: HCI UART protocol H4 registered
+[    0.295123] Bluetooth: HCI UART protocol BCSP registered
+[    0.295148] Bluetooth: HCI UART protocol LL registered
+[    0.295151] Bluetooth: HCI UART protocol ATH3K registered
+[    0.295179] Bluetooth: HCI UART protocol Three-wire (H5) registered
+[    0.295297] Bluetooth: HCI UART protocol Broadcom registered
+[    0.295321] Bluetooth: HCI UART protocol QCA registered
+[    0.295347] Bluetooth: HCI UART protocol Marvell registered
+[    0.295566] EDAC MC: ECC not enabled
+[    0.297429] sdhci: Secure Digital Host Controller Interface driver
+[    0.297434] sdhci: Copyright(c) Pierre Ossman
+[    0.298269] Synopsys Designware Multimedia Card Interface Driver
+[    0.299058] sdhci-pltfm: SDHCI platform and OF driver helper
+[    0.302593] SMCCC: SOC_ID: ARCH_SOC_ID not implemented, skipping ....
+[    0.303203] usbcore: registered new interface driver usbhid
+[    0.303207] usbhid: USB HID core driver
+[    0.308421]  cs_system_cfg: CoreSight Configuration manager initialised
+[    0.310300] optee: probing for conduit method.
+[    0.310318] optee: revision 3.19 (00919403)
+[    0.310889] optee: dynamic shared memory is enabled
+[    0.311246] optee: initialized driver
+[    0.314656] Galcore version 6.4.3.p4.398061
+[    0.333644] mmc2: SDHCI controller on 30b60000.mmc [30b60000.mmc] using ADMA
+[    0.402127] mmc2: new HS400 Enhanced strobe MMC card at address 0001
+[    0.402787] mmcblk2: mmc2:0001 TX2964 58.3 GiB 
+[    0.405731]  mmcblk2: p1 p2
+[    0.406368] mmcblk2boot0: mmc2:0001 TX2964 4.00 MiB 
+[    0.407743] mmcblk2boot1: mmc2:0001 TX2964 4.00 MiB 
+[    0.409014] mmcblk2rpmb: mmc2:0001 TX2964 4.00 MiB, chardev (234:0)
+[    0.414148] [drm] Initialized vivante 1.0.0 20170808 for 40000000.mix_gpu_ml on minor 0
+[    0.416395] hantrodec 0 : module inserted. Major = 511
+[    0.418523] hantrodec 1 : module inserted. Major = 511
+[    0.419840] hantroenc: HW at base <0000000038320000> with ID <0x80006200>
+[    0.420093] hx280enc: module inserted. Major <510>
+[    0.423639] NET: Registered PF_LLC protocol family
+[    0.423757] Initializing XFRM netlink socket
+[    0.424272] NET: Registered PF_INET6 protocol family
+[    0.426385] Segment Routing with IPv6
+[    0.426426] In-situ OAM (IOAM) with IPv6
+[    0.426475] NET: Registered PF_PACKET protocol family
+[    0.426512] bridge: filtering via arp/ip/ip6tables is no longer available by default. Update your scripts to load br_netfilter if you need this.
+[    0.426907] Bluetooth: RFCOMM TTY layer initialized
+[    0.426918] Bluetooth: RFCOMM socket layer initialized
+[    0.426942] Bluetooth: RFCOMM ver 1.11
+[    0.426952] Bluetooth: BNEP (Ethernet Emulation) ver 1.3
+[    0.426955] Bluetooth: BNEP filters: protocol multicast
+[    0.426963] Bluetooth: BNEP socket layer initialized
+[    0.426965] Bluetooth: HIDP (Human Interface Emulation) ver 1.2
+[    0.426972] Bluetooth: HIDP socket layer initialized
+[    0.427413] 8021q: 802.1Q VLAN Support v1.8
+[    0.427433] lib80211: common routines for IEEE802.11 drivers
+[    0.427571] 9pnet: Installing 9P2000 support
+[    0.427606] tsn generic netlink module v1 init...
+[    0.427694] Key type dns_resolver registered
+[    0.428633] printk: console [tty1]: printing thread started
+[    0.428714] printk: console [ttymxc1]: printing thread started
+[    0.428751] Loading compiled-in X.509 certificates
+[    0.527228] nxp-pca9450 0-0025: pca9450bc probed.
+[    0.527347] i2c i2c-0: IMX I2C adapter registered
+[    0.530441] pca953x 1-0020: supply vcc not found, using dummy regulator
+[    0.530591] pca953x 1-0020: using no AI
+[    0.536650] rtc-abx80x 1-0069: model 1805, revision 2.3, lot 32a, wafer 13, uid 5b75
+[    0.537316] rtc-abx80x 1-0069: Calibrate XT 32772300 mHz:
+[    0.542524] rtc-abx80x 1-0069: sqw output enabled @ 32768_Hz
+[    0.543929] rtc-abx80x 1-0069: Create sysfs group: 0
+[    0.547081] rtc-abx80x 1-0069: Oscillator failure, data is invalid.
+[    0.547521] rtc-abx80x 1-0069: registered as rtc1
+[    0.547599] i2c i2c-1: IMX I2C adapter registered
+[    0.550740] i2c i2c-4: IMX I2C adapter registered
+[    0.554330] i2c i2c-5: IMX I2C adapter registered
+[    0.555374] imx8mq-usb-phy 381f0040.usb-phy: supply vbus not found, using dummy regulator
+[    0.555789] imx8mq-usb-phy 382f0040.usb-phy: supply vbus not found, using dummy regulator
+[    0.557920] pwm-backlight dsi_backlight: supply power not found, using dummy regulator
+[    0.558558] imx6q-pcie 33800000.pcie: supply epdev_on not found, using dummy regulator
+[    0.559639] pwm-backlight lvds_backlight: supply power not found, using dummy regulator
+[    0.560830] imx6q-pcie 33800000.pcie: PLL REF_CLK is used!.
+[    0.561724] imx6q-pcie 33800000.pcie: PCIe PHY PLL clock is locked.
+[    0.587214] imx-sdma 30e10000.dma-controller: Direct firmware load for imx/sdma/sdma-imx7d.bin failed with error -2
+[    0.592618] panel-simple lvds0_panel: supply power not found, using dummy regulator
+[    0.598881] imx-dwmac 30bf0000.ethernet: IRQ eth_lpi not found
+[    0.599015] imx-dwmac 30bf0000.ethernet: force_sf_dma_mode is ignored if force_thresh_dma_mode is set.
+[    0.599929] imx-dwmac 30bf0000.ethernet: User ID: 0x10, Synopsys ID: 0x51
+[    0.599940] imx-dwmac 30bf0000.ethernet: 	DWMAC4/5
+[    0.599947] imx-dwmac 30bf0000.ethernet: DMA HW capability register supported
+[    0.599952] imx-dwmac 30bf0000.ethernet: RX Checksum Offload Engine supported
+[    0.599956] imx-dwmac 30bf0000.ethernet: Wake-Up On Lan supported
+[    0.600021] imx-dwmac 30bf0000.ethernet: Enable RX Mitigation via HW Watchdog Timer
+[    0.600029] imx-dwmac 30bf0000.ethernet: Enabled L3L4 Flow TC (entries=8)
+[    0.600035] imx-dwmac 30bf0000.ethernet: Enabled RFS Flow TC (entries=8)
+[    0.600046] imx-dwmac 30bf0000.ethernet: Enabling HW TC (entries=256, max_off=256)
+[    0.600053] imx-dwmac 30bf0000.ethernet: Using 34 bits DMA width
+[    0.612864] imx-sdma 30e10000.dma-controller: Direct firmware load for imx/sdma/sdma-imx7d.bin failed with error -2
+[    0.612883] imx-sdma 30e10000.dma-controller: external firmware not found, using ROM firmware
+[    0.621414] imx6q-pcie 33800000.pcie: PCIe PLL is locked.
+[    0.621475] imx6q-pcie 33800000.pcie: iATU unroll: enabled
+[    0.621480] imx6q-pcie 33800000.pcie: Detected iATU regions: 4 outbound, 4 inbound
+[    0.621494] imx6q-pcie 33800000.pcie: host bridge /soc@0/pcie@33800000 ranges:
+[    0.621513] imx6q-pcie 33800000.pcie:   No bus range found for /soc@0/pcie@33800000, using [bus 00-ff]
+[    0.621553] imx6q-pcie 33800000.pcie:       IO 0x001ff80000..0x001ff8ffff -> 0x0000000000
+[    0.621572] imx6q-pcie 33800000.pcie:      MEM 0x0018000000..0x001fefffff -> 0x0018000000
+[    0.621666] imx6q-pcie 33800000.pcie: iATU unroll: enabled
+[    0.621671] imx6q-pcie 33800000.pcie: Detected iATU regions: 4 outbound, 4 inbound
+[    0.797990] mdio_bus stmmac-1: tx-queues-config has invalid PHY address
+[    0.797998] mdio_bus stmmac-1: rx-queues-config has invalid PHY address
+[    0.798005] mdio_bus stmmac-1: scan phy tx-queues-config at address 1
+[    0.800676] mdio_bus stmmac-1: scan phy rx-queues-config at address 2
+[    0.801536] mdio_bus stmmac-1: scan phy rx-queues-config at address 3
+[    0.802088] mdio_bus stmmac-1: scan phy rx-queues-config at address 4
+[    0.802340] mdio_bus stmmac-1: scan phy rx-queues-config at address 5
+[    0.802880] mdio_bus stmmac-1: scan phy rx-queues-config at address 6
+[    0.803432] mdio_bus stmmac-1: scan phy rx-queues-config at address 7
+[    0.803979] mdio_bus stmmac-1: scan phy rx-queues-config at address 8
+[    0.804228] mdio_bus stmmac-1: scan phy rx-queues-config at address 9
+[    0.804477] mdio_bus stmmac-1: scan phy rx-queues-config at address 10
+[    0.804725] mdio_bus stmmac-1: scan phy rx-queues-config at address 11
+[    0.804974] mdio_bus stmmac-1: scan phy rx-queues-config at address 12
+[    0.805224] mdio_bus stmmac-1: scan phy rx-queues-config at address 13
+[    0.805471] mdio_bus stmmac-1: scan phy rx-queues-config at address 14
+[    0.805720] mdio_bus stmmac-1: scan phy rx-queues-config at address 15
+[    0.805965] mdio_bus stmmac-1: scan phy rx-queues-config at address 16
+[    0.806213] mdio_bus stmmac-1: scan phy rx-queues-config at address 17
+[    0.806463] mdio_bus stmmac-1: scan phy rx-queues-config at address 18
+[    0.806711] mdio_bus stmmac-1: scan phy rx-queues-config at address 19
+[    0.806958] mdio_bus stmmac-1: scan phy rx-queues-config at address 20
+[    0.807206] mdio_bus stmmac-1: scan phy rx-queues-config at address 21
+[    0.807454] mdio_bus stmmac-1: scan phy rx-queues-config at address 22
+[    0.807701] mdio_bus stmmac-1: scan phy rx-queues-config at address 23
+[    0.807948] mdio_bus stmmac-1: scan phy rx-queues-config at address 24
+[    0.808195] mdio_bus stmmac-1: scan phy rx-queues-config at address 25
+[    0.808442] mdio_bus stmmac-1: scan phy rx-queues-config at address 26
+[    0.808689] mdio_bus stmmac-1: scan phy rx-queues-config at address 27
+[    0.808938] mdio_bus stmmac-1: scan phy rx-queues-config at address 28
+[    0.809504] mdio_bus stmmac-1: scan phy rx-queues-config at address 29
+[    0.810052] mdio_bus stmmac-1: scan phy rx-queues-config at address 30
+[    0.810601] mdio_bus stmmac-1: scan phy rx-queues-config at address 31
+[    0.813447] xhci-hcd xhci-hcd.1.auto: xHCI Host Controller
+[    0.813470] xhci-hcd xhci-hcd.1.auto: new USB bus registered, assigned bus number 1
+[    0.813835] xhci-hcd xhci-hcd.1.auto: hcc params 0x0220fe6d hci version 0x110 quirks 0x0000002001010010
+[    0.814990] xhci-hcd xhci-hcd.1.auto: irq 74, io mem 0x38100000
+[    0.815201] xhci-hcd xhci-hcd.1.auto: xHCI Host Controller
+[    0.815213] xhci-hcd xhci-hcd.1.auto: new USB bus registered, assigned bus number 2
+[    0.815225] xhci-hcd xhci-hcd.1.auto: Host supports USB 3.0 SuperSpeed
+[    0.816168] hub 1-0:1.0: USB hub found
+[    0.816198] hub 1-0:1.0: 1 port detected
+[    0.816585] usb usb2: We don't know the algorithms for LPM for this host, disabling LPM.
+[    0.817160] hub 2-0:1.0: USB hub found
+[    0.817185] hub 2-0:1.0: 1 port detected
+[    0.818796] xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+[    0.818815] xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 3
+[    0.819239] xhci-hcd xhci-hcd.2.auto: hcc params 0x0220fe6d hci version 0x110 quirks 0x0000002001010010
+[    0.820148] xhci-hcd xhci-hcd.2.auto: irq 75, io mem 0x38200000
+[    0.820321] xhci-hcd xhci-hcd.2.auto: xHCI Host Controller
+[    0.820333] xhci-hcd xhci-hcd.2.auto: new USB bus registered, assigned bus number 4
+[    0.820344] xhci-hcd xhci-hcd.2.auto: Host supports USB 3.0 SuperSpeed
+[    0.821021] hub 3-0:1.0: USB hub found
+[    0.821050] hub 3-0:1.0: 1 port detected
+[    0.821433] usb usb4: We don't know the algorithms for LPM for this host, disabling LPM.
+[    0.821992] hub 4-0:1.0: USB hub found
+[    0.822017] hub 4-0:1.0: 1 port detected
+[    0.822695] imx-cpufreq-dt imx-cpufreq-dt: cpu speed grade 5 mkt segment 0 supported-hw 0x20 0x1
+[    0.823897] Hot alarm is canceled. GPU3D clock will return to 64/64
+[    0.826693] sdhci-esdhc-imx 30b50000.mmc: Got CD GPIO
+[    0.830010] dwhdmi-imx 32fd8000.hdmi: Detected HDMI TX controller v2.13a with HDCP (samsung_dw_hdmi_phy2)
+[    0.830584] dwhdmi-imx 32fd8000.hdmi: registered DesignWare HDMI I2C bus driver
+[    0.831703] imx-drm display-subsystem: bound imx-lcdifv3-crtc.0 (ops lcdifv3_crtc_ops)
+[    0.831820] imx-drm display-subsystem: bound imx-lcdifv3-crtc.1 (ops lcdifv3_crtc_ops)
+[    0.831920] imx-drm display-subsystem: bound imx-lcdifv3-crtc.2 (ops lcdifv3_crtc_ops)
+[    0.832000] imx_sec_dsim_drv 32e60000.mipi_dsi: version number is 0x1060200
+[    0.832242] ili9881c-dsi 32e60000.mipi_dsi.0: supply power not found, using dummy regulator
+[    0.832352] ili9881c-dsi 32e60000.mipi_dsi.0: Couldn't get panel timing from dtb, use driver settings
+[    0.832437] imx-drm display-subsystem: bound 32e60000.mipi_dsi (ops imx_sec_dsim_ops)
+[    0.832683] imx-drm display-subsystem: bound 32c00000.bus:ldb@32ec005c (ops imx8mp_ldb_ops)
+[    0.832716] imx-drm display-subsystem: bound 32fd8000.hdmi (ops dw_hdmi_imx_ops)
+[    0.833152] [drm] Initialized imx-drm 1.0.0 20120507 for display-subsystem on minor 1
+[    0.859761] mmc1: SDHCI controller on 30b50000.mmc [30b50000.mmc] using ADMA
+[    1.181100] imx_sec_dsim_drv 32e60000.mipi_dsi: wait pkthdr tx done time out
+[    1.181113] ili9881c-dsi 32e60000.mipi_dsi.0: ili9881c_send_cmd_data:54 failed -16
+[    1.181120] ili9881c-dsi 32e60000.mipi_dsi.0: ili9881c_enable 359 Failed command  # = [ 56 ]; ret = [ -16 ]
+[    1.181129] imx_sec_dsim_drv 32e60000.mipi_dsi: panel enable failed: -16
+[    1.437441] imx_sec_dsim_drv 32e60000.mipi_dsi: wait pkthdr tx done time out
+[    1.482806] Console: switching to colour frame buffer device 90x37
+[    1.499137] imx-drm display-subsystem: [drm] fb0: imx-drmdrmfb frame buffer device
+[    1.504918] cfg80211: Loading compiled-in X.509 certificates for regulatory database
+[    1.507996] cfg80211: Loaded X.509 cert 'sforshee: 00b28ddf47aef9cea7'
+[    1.508870] platform regulatory.0: Direct firmware load for regulatory.db failed with error -2
+[    1.508882] cfg80211: failed to load regulatory.db
+[    1.527888] ALSA device list:
+[    1.527893]   No soundcards found.
+[    1.624997] imx6q-pcie 33800000.pcie: Phy link never came up
+[    1.625040] imx6q-pcie: probe of 33800000.pcie failed with error -110
+[    1.635846] EXT4-fs (mmcblk2p2): mounted filesystem with ordered data mode. Opts: (null). Quota mode: none.
+[    1.635912] VFS: Mounted root (ext4 filesystem) on device 179:2.
+[    1.636317] devtmpfs: mounted
+[    1.637165] Freeing unused kernel memory: 3072K
+[    1.649067] Run /sbin/init as init process
+[    1.798798] systemd[1]: systemd 250.5+ running in system mode (+PAM -AUDIT -SELINUX -APPARMOR +IMA -SMACK +SECCOMP -GCRYPT -GNUTLS -OPENSSL +ACL +BLKID -CURL -ELFUTILS -FIDO2 -IDN2 -IDN -IPTC +KMOD -LIBCRYPTSETUP +LIBFDISK -PCRE2 -PWQUALITY -P11KIT -QRENCODE -BZIP2 -LZ4 -XZ -ZLIB +ZSTD -BPF_FRAMEWORK +XKBCOMMON +UTMP +SYSVINIT default-hierarchy=hybrid)
+[    1.799560] systemd[1]: Detected architecture arm64.
+[    1.845130] usb 4-1: new SuperSpeed USB device number 2 using xhci-hcd
+[    1.871519] usb-storage 4-1:1.0: USB Mass Storage device detected
+[    1.872795] scsi host0: usb-storage 4-1:1.0
+[    2.059970] systemd[1]: Hostname set to <ucm-imx8m-plus>.
+[    2.157195] systemd-sysv-generator[233]: SysV service '/etc/init.d/reboot' lacks a native systemd unit file. Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it more safe and robust.
+[    2.157409] systemd-sysv-generator[233]: SysV service '/etc/init.d/umountfs' lacks a native systemd unit file. Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it more safe and robust.
+[    2.158008] systemd-sysv-generator[233]: SysV service '/etc/init.d/sendsigs' lacks a native systemd unit file. Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it more safe and robust.
+[    2.158687] systemd-sysv-generator[233]: SysV service '/etc/init.d/save-rtc.sh' lacks a native systemd unit file. Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it more safe and robust.
+[    2.159095] systemd-sysv-generator[233]: SysV service '/etc/init.d/single' lacks a native systemd unit file. Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it more safe and robust.
+[    2.159195] systemd-sysv-generator[233]: SysV service '/etc/init.d/halt' lacks a native systemd unit file. Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it more safe and robust.
+[    2.159447] systemd-sysv-generator[233]: SysV service '/etc/init.d/umountnfs.sh' lacks a native systemd unit file. Automatically generating a unit file for compatibility. Please update package to include a native systemd unit file, in order to make it more safe and robust.
+[    2.390588] systemd[1]: Queued start job for default target Multi-User System.
+[    2.437788] systemd[1]: Created slice Slice /system/getty.
+[    2.502504] systemd[1]: Created slice Slice /system/modprobe.
+[    2.572075] systemd[1]: Created slice Slice /system/serial-getty.
+[    2.646210] systemd[1]: Created slice User and Session Slice.
+[    2.730911] systemd[1]: Started Dispatch Password Requests to Console Directory Watch.
+[    2.793538] systemd[1]: Started Forward Password Requests to Wall Directory Watch.
+[    2.860901] systemd[1]: Reached target Path Units.
+[    2.879098] scsi 0:0:0:0: Direct-Access      USB      SanDisk 3.2Gen1 1.00 PQ: 0 ANSI: 6
+[    2.880112] sd 0:0:0:0: [sda] 30031872 512-byte logical blocks: (15.4 GB/14.3 GiB)
+[    2.881885] sd 0:0:0:0: [sda] Write Protect is off
+[    2.883986] sd 0:0:0:0: [sda] Write cache: disabled, read cache: enabled, doesn't support DPO or FUA
+[    2.903613]  sda: sda1 sda2
+[    2.906798] sd 0:0:0:0: [sda] Attached SCSI removable disk
+[    2.928746] systemd[1]: Reached target Remote File Systems.
+[    2.997024] systemd[1]: Reached target Slice Units.
+[    3.072725] systemd[1]: Reached target Swaps.
+[    3.167446] systemd[1]: Listening on RPCbind Server Activation Socket.
+[    3.247208] systemd[1]: Reached target RPC Port Mapper.
+[    3.314527] systemd[1]: Listening on Syslog Socket.
+[    3.383258] systemd[1]: Listening on initctl Compatibility Named Pipe.
+[    3.446802] systemd[1]: Listening on Journal Audit Socket.
+[    3.518633] systemd[1]: Listening on Journal Socket (/dev/log).
+[    3.591696] systemd[1]: Listening on Journal Socket.
+[    3.655881] systemd[1]: Listening on Network Service Netlink Socket.
+[    3.720608] systemd[1]: Listening on udev Control Socket.
+[    3.791476] systemd[1]: Listening on udev Kernel Socket.
+[    3.872352] systemd[1]: Listening on User Database Manager Socket.
+[    3.965700] systemd[1]: Mounting Huge Pages File System...
+[    4.047738] systemd[1]: Mounting POSIX Message Queue File System...
+[    4.146897] systemd[1]: Mounting Kernel Debug File System...
+[    4.232708] systemd[1]: Kernel Trace File System was skipped because of a failed condition check (ConditionPathExists=/sys/kernel/tracing).
+[    4.240393] systemd[1]: Mounting Temporary Directory /tmp...
+[    4.324699] systemd[1]: Starting Create List of Static Device Nodes...
+[    4.399858] systemd[1]: Starting Load Kernel Module configfs...
+[    4.472500] systemd[1]: Starting Load Kernel Module drm...
+[    4.548029] systemd[1]: Starting Load Kernel Module fuse...
+[    4.562563] fuse: init (API version 7.34)
+[    4.616926] systemd[1]: Starting RPC Bind...
+[    4.695243] systemd[1]: File System Check on Root Device was skipped because of a failed condition check (ConditionPathIsReadWrite=!/).
+[    4.701309] systemd[1]: Starting Journal Service...
+[    4.777574] systemd[1]: Load Kernel Modules was skipped because all trigger condition checks failed.
+[    4.781536] systemd[1]: Starting Generate network units from Kernel command line...
+[    4.870773] systemd[1]: Starting Remount Root and Kernel File Systems...
+[    4.892672] EXT4-fs (mmcblk2p2): re-mounted. Opts: (null). Quota mode: none.
+[    4.959140] systemd[1]: Starting Apply Kernel Variables...
+[    5.033276] systemd[1]: Starting Coldplug All udev Devices...
+[    5.135931] systemd[1]: Started RPC Bind.
+[    5.271151] systemd[1]: Started Journal Service.
+[    5.933857] systemd-journald[248]: Received client request to flush runtime journal.
+[    5.969602] audit: type=1334 audit(1708274752.176:2): prog-id=5 op=LOAD
+[    5.969752] audit: type=1334 audit(1708274752.176:3): prog-id=6 op=LOAD
+[    6.452909] remoteproc remoteproc0: imx-dsp-rproc is available
+[    6.583551] caam-snvs 30370000.caam-snvs: violation handlers armed - init state
+[    6.608313] CAN device driver interface
+[    6.624292] caam 30900000.crypto: device ID = 0x0a16040100000100 (Era 9)
+[    6.624309] caam 30900000.crypto: job rings = 1, qi = 0
+[    6.695015] Goodix-TS 4-005d: supply AVDD28 not found, using dummy regulator
+[    6.699058] Goodix-TS 4-005d: supply VDDIO not found, using dummy regulator
+[    6.699877] at24 1-0050: supply vcc not found, using dummy regulator
+[    6.713099] at24 1-0050: 1024 byte 24c08 EEPROM, writable, 16 bytes/write
+[    6.714371] at24 1-0054: supply vcc not found, using dummy regulator
+[    6.718155] random: dbus-daemon: uninitialized urandom read (12 bytes read)
+[    6.736160] at24 1-0054: 1024 byte 24c08 EEPROM, writable, 16 bytes/write
+[    6.772269] random: dbus-daemon: uninitialized urandom read (12 bytes read)
+[    6.802524] random: dhcpcd: uninitialized urandom read (112 bytes read)
+[    6.827799] Goodix-TS 4-005d: i2c test failed attempt 1: -6
+
+NXP i.MX Release Distro 5.15-kirkstone ucm-imx8m-plus ttymxc1
+
+ucm-imx8m-plus login: root (automatic login)
+
+COLUMNS=181;LINES=50;export COLUMNS LINES;
+root@ucm-imx8m-plus:~# 
