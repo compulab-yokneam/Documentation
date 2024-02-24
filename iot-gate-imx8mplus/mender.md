@@ -3,7 +3,7 @@
 |NOTE|iot-gate-imx8plus-r2.1 only|
 |---|---|
 
-* Address an outdated optee patch issue:
+* Disable an outdated optee patch:
 ```
 cd ${BUILDDIR}
 sed -i '$ a BBMASK += "meta-bsp-imx8mp/recipes-security/optee-imx/optee-os_%.bbappend"' ../sources/meta-bsp-imx8mp/conf/machine/iot-gate-imx8plus.conf
