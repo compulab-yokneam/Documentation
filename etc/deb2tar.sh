@@ -11,7 +11,7 @@ rm -rf  ${KID} ; mkdir -p ${KID}
 
 dpkg -x ${PKG} ${KID}
 cp ${KID}/usr/lib/*/compulab/* ${KID}/boot/
-mv ${KID}/boot/vmlinuz* ${KID}/boot/Image
+cat ${KID}/boot/vmlinuz* | gunzip -c - > ${KID}/boot/Image
 rm -rf ${KID}/{usr,etc}                                    
 fakeroot tar -C ${KID} -cjf ${KID}.tar.bz2 .
 stat ${KID}.tar.bz2
