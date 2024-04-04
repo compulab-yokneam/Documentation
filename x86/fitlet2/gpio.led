@@ -4,7 +4,12 @@ declare -A gpio_array=(['LED1_GREEN']=1 ['LED1_YELLOW']=2 ['LED2_GREEN']=3 ['LED
 
 export gpio_base=0
 function _gpio_base() {
-	gpio_base=$(cat /sys/class/gpio/$(ls -al /sys/class/gpio/ | awk '/gpiochip/&&/INT3452:00/&&($0=$NF)')/base 2>/dev/null)
+        for file in $(ls -al /sys/class/gpio/ | awk '/gpiochip/&&/INT3452:00/&&($0=$NF)');do
+        if [[ -f /sys/class/gpio/${file}/base ]];then
+                gpio_base=$(cat /sys/class/gpio/${file}/base)
+                return
+        fi
+        done
 }
 
 function _gpio_export() {
