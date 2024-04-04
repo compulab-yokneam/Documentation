@@ -1,0 +1,88 @@
+#!/bin/bash -x
+
+declare -A gpio_array=(['LED1_GREEN']=1 ['LED1_YELLOW']=2 ['LED2_GREEN']=3 ['LED2_YELLOW']=4)
+
+export gpio_base=0
+function _gpio_base() {
+	gpio_base=$(cat /sys/class/gpio/$(ls -al /sys/class/gpio/ | awk '/gpiochip/&&/INT3452:00/&&($0=$NF)')/base 2>/dev/null)
+}
+
+function _gpio_export() {
+for _gpio in  ${gpio_array[@]};do
+	_gpio=$((${gpio_base}+${_gpio}));
+	[[ -d /sys/class/gpio/gpio${_gpio} ]] || echo ${_gpio} > /sys/class/gpio/export;
+done
+}
+
+function _gpio_unexport() {
+for _gpio in  ${gpio_array[@]};do
+	_gpio=$((${gpio_base}+${_gpio}));
+	[[ ! -d /sys/class/gpio/gpio${_gpio} ]] ||  echo ${_gpio} > /sys/class/gpio/unexport;
+done
+}
+
+function _led() {
+	declare -i _gpio=${1}
+	local _value=${2}
+	_gpio=${gpio_base}+${_gpio}
+	[[ -d /sys/class/gpio/gpio${_gpio} ]] || echo ${_gpio} > /sys/class/gpio/export;
+	echo out > /sys/class/gpio/gpio${_gpio}/direction
+	echo ${_value} > /sys/class/gpio/gpio${_gpio}/value
+}
+
+function l1_green() {
+	_led 2 0
+	_led 1 1
+}
+
+function l1_yellow() {
+	_led 1 0
+	_led 2 1
+}
+
+function l1_off() {
+	_led 1 0
+	_led 2 0
+}
+
+function l2_green() {
+	_led 4 0
+	_led 3 1
+}
+
+function l2_yellow() {
+	_led 3 0
+	_led 4 1
+}
+
+function l2_off() {
+	_led 3 0
+	_led 4 0
+}
+
+function gpio_demo() {
+
+_gpio_base
+_gpio_export
+
+l1_off
+l2_off
+
+sleep 3
+
+l1_green
+l2_green
+
+sleep 3
+
+l1_yellow
+l2_yellow
+
+sleep 3
+
+l1_off
+l2_off
+
+_gpio_unexport
+
+}
