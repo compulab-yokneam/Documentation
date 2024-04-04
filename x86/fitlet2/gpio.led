@@ -91,3 +91,5 @@ l2_off
 _gpio_unexport
 
 }
+
+gpio_demo
