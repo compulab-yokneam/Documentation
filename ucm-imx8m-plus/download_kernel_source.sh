@@ -26,9 +26,17 @@ cat << eof
 	Extracting kernell ${VERSION} -> $(pwd)/linux-compulab-linux-compulab_v${VERSION}
 eof
 	wget -qO - https://github.com/compulab-yokneam/linux-compulab/archive/refs/heads/linux-compulab_v${VERSION}.tar.gz | dd status=progress | tar -xf -
-	kerne_folder=$(readlink -f linux-compulab-linux-compulab_v${VERSION})
+	kernel_folder=$(readlink -f linux-compulab-linux-compulab_v${VERSION})
 cat << eof
-	Done! Goto the ${kernel_folder} and continue with the build procedure.
+Done!
+
+How to continue:
+  make -C ${kernel_folder} compulab_v8_defconfig compulab.config
+  # Choose a packaging method:
+  deb) make -C ${kernel_folder} -j 16 bindeb-pkg
+  tar) make -C ${kernel_folder} -j 16 tarbz2-pkg
+
+Good Luck!
 eof
 }
 
