@@ -25,18 +25,10 @@ function get_kernel_source_tree() {
 cat << eof
 	Extracting kernell ${VERSION} -> $(pwd)/linux-compulab-linux-compulab_v${VERSION}
 eof
-	wget -qO - https://github.com/compulab-yokneam/linux-compulab/archive/refs/heads/linux-compulab_v${VERSION}.tar.gz | tar -xf -
+	wget -qO - https://github.com/compulab-yokneam/linux-compulab/archive/refs/heads/linux-compulab_v${VERSION}.tar.gz | dd status=progress | tar -xf -
 	kerne_folder=$(readlink -f linux-compulab-linux-compulab_v${VERSION})
 cat << eof
-How to continue witt Linux Kernel ${VERSION}:
-cd ${kernel_folder}
-make compulab_v8_defconfig compulab.config
-# Build kernel, modules and dtbs
-make -j `nproc`
-# Build only the binary kernel deb package 
-make -j `nproc` bindeb-pkg
-# Build the kernel as a bzip2 compressed tarball
-make -j `nproc` bindeb-pkg
+	Done! Goto the ${kernel_folder} and continue with the build procedure.
 eof
 }
 
