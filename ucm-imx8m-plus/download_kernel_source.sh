@@ -25,9 +25,9 @@ function get_kernel_source_tree() {
 
 	wget -qO - https://github.com/compulab-yokneam/linux-compulab/archive/refs/heads/linux-compulab_v${VERSION}.tar.gz | tar -xvf -
 cat << eof
-Kernel ${VERSION} folder: $(readlink -f linux-compulab_v${VERSION})
+Kernel ${VERSION} folder: $(readlink -f linux-compulab-linux-compulab_v${VERSION})
 eof
-	pushd linux-compulab_v${VERSION}
+	pushd linux-compulab-linux-compulab_v${VERSION}
 }
 
 get_kernel_source_tree
