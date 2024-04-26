@@ -5,11 +5,10 @@
 sudo apt-get install --no-install-recommends make build-essential libncurses-dev bison flex libssl-dev libelf-dev zip unzip
 ```
 
-## Download and deploy the source code:
+## Download the source code:
 ```
-wget -P /tmp/ https://github.com/compulab-yokneam/linux-compulab/archive/refs/heads/linux-compulab_v5.15.32.zip
-unzip -d /usr/src /tmp/linux-compulab_v5.15.32.zip
-cd /usr/src/linux-compulab-linux-compulab_v5.15.32
+mkdir -p ~/compulab-bsp/src ; cd ~/compulab-bsp/src
+bash <(curl -L https://raw.githubusercontent.com/compulab-yokneam/Documentation/master/ucm-imx8m-plus/download_kernel_source.sh)
 ```
 
 ## Apply the CompuLab default configuration
