@@ -1,6 +1,9 @@
 #!/bin/bash -x
 
-function get_kernel_source_tree() {
+PROJECT_NAME=linux-compulab
+SRC_URI=https://github.com/compulab-yokneam/${PROJECT_NAME}/archive/refs/heads/
+
+function get_kernel_source_vers() {
 
 	select_string+="5.15.32 "
 	select_string+="5.15.71 "
@@ -22,11 +25,15 @@ function get_kernel_source_tree() {
 		;;
 		esac
 	done
+}
+
+function get_kernel_source_tree() {
+	kernel_folder=$(pwd)/${PROJECT_NAME}_v${VERSION}
+	mkdir -p ${kernel_folder}
 cat << eof
-	Extracting kernell ${VERSION} -> $(pwd)/linux-compulab-linux-compulab_v${VERSION}
+	Extracting kernel ${VERSION} -> ${kernel_folder}
 eof
-	wget -qO - https://github.com/compulab-yokneam/linux-compulab/archive/refs/heads/linux-compulab_v${VERSION}.tar.gz | dd status=progress | tar -xf -
-	kernel_folder=$(readlink -f linux-compulab-linux-compulab_v${VERSION})
+	wget -qO - ${SRC_URI}/${PROJECT_NAME}_v${VERSION}.tar.gz | dd status=progress | tar -C ${kernel_folder} --strip-components=1 --extract --gzip --file -
 cat << eof
 Done!
 
@@ -40,4 +47,5 @@ Good Luck!
 eof
 }
 
+get_kernel_source_vers
 get_kernel_source_tree
