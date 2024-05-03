@@ -289,7 +289,7 @@ How to proceed:
     * toggle `RESET`
 
 * The Linux machine teminal must show this up:<pre>
-(ins)# udevadm monitor 
+udevadm monitor 
 monitor will print the received events for:
 UDEV - the event which udev sends out after rule processing
 KERNEL - the kernel uevent
@@ -305,6 +305,16 @@ UDEV  [29005568.019897] add      /devices/pci0000:00/0000:00:14.0/usb1/1-8/1-8:1
 UDEV  [29005568.022544] add      /devices/pci0000:00/0000:00:14.0/usb1/1-8/1-8:1.0/usbmisc/hiddev0 (usbmisc)
 UDEV  [29005568.022577] add      /devices/pci0000:00/0000:00:14.0/usb1/1-8/1-8:1.0/0003:1FC9:0146.158A (hid)
 UDEV  [29005568.023299] add      /devices/pci0000:00/0000:00:14.0/usb1/1-8/1-8:1.0/0003:1FC9:0146.158A/hidraw/hidraw0 (hidraw)
+</pre>
+
+* Make sure that the connected device is in the SDP mode:<pre>
+uuu -lsusb
+uuu (Universal Update Utility) for nxp imx chips -- libuuu_1.5.11-0-g7c0fb61
+Connected Known USB Devices
+        Path     Chip    Pro     Vid     Pid     BcdVersion
+        ==================================================
+        1:1      MX865   SDPS:   0x1FC9 0x0146   0x0002
+</pre>
 
 ## Download the bootloader
 ```
