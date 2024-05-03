@@ -14,7 +14,7 @@
 | Machine | Command Line |
 |---|---|
 |ucm-imx8m-plus|```export COMPULAB_MACHINE=ucm-imx8m-plus```|
-|~~mcm-imx8m-plus~~|~~```export COMPULAB_MACHINE=mcm-imx8m-plus```~~|
+|mcm-imx8m-plus|```export COMPULAB_MACHINE=mcm-imx8m-plus```|
 |~~som-imx8m-plus~~|~~```export COMPULAB_MACHINE=som-imx8m-plus```~~|
 |~~iot-gate-imx8plus~~|~~```export COMPULAB_MACHINE=iot-gate-imx8plus```~~|
 |~~sbc-iot-imx8plus~~|~~```export COMPULAB_MACHINE=iot-gate-imx8plus```~~|
@@ -67,6 +67,17 @@ bitbake -k imx-image-full
 | build command | binary file location |
 |---|---|
 |```bitbake -k imx-boot```|```${BUILDDIR}/tmp/deploy/images/${MACHINE}/imx-boot-tagged```|
+
+## Building the build machine tools
+
+* Building the UUU:
+
+| build command | binary file location |
+|---|---|
+|```bitbake -k uuu-native```|```${BUILDDIR}/tmp/deploy/images/${MACHINE}/uuu-native/bin/uuu```|
+ 
+* Install the UUU:<br>
+```sudo ln -sf $(readlink -e ${BUILDDIR}/tmp/deploy/images/${MACHINE}/uuu-native/bin/uuu) /usr/local/bin```
 
 ## Get back to the already created build environment
 ```
@@ -229,9 +240,9 @@ Sample /usr/share/cl-deploy/app/00_cl-deploy.app script
         Rebooting in 3 seconds...
 ```
 
-# UUU
+# Using UUU
+
 Prerquirements:
-* Refer to the [`mfgtools`](https://github.com/NXPmicro/mfgtools) for details about the tool and install it.
 * Connect the device to a Linux desktop using a TypeC (USB1) port.
 * On the Linux machine open up a terminal window and type:<br>```udevadm monitor```
 * Turn on the device, stop in U-Boot and issue:<br>```fastboot 0```
@@ -251,13 +262,13 @@ cd ${BUILDDIR}/tmp/deploy/images/${MACHINE}
 
 ## Burn bootloader into emmc
 ```
-sudo uuu -v -b emmc imx-boot-tagged
+sudo uuu -d -v -b emmc imx-boot-tagged
 ```
 
 ## Burn rootfs image into emmc
 ```bash
 zstd -dc imx-image-full-${MACHINE}.wic.zst > imx-image-full-${MACHINE}.wic
-sudo uuu -v -b emmc_all imx-boot-tagged mx-image-full-${MACHINE}.wic
+sudo uuu -d -v -b emmc_all imx-boot-tagged mx-image-full-${MACHINE}.wic
 ```
 
 # SDP
@@ -267,11 +278,16 @@ The device gets into this mode if the default boot device does not have a valid 
 The simpest way to make the device get into this mode is to issue AltBoot w/out sd-card in the P23 slot.<br>
 How to proceed:
 * Turn on the device, stop in U-Boot.
-* On the Linux machine open up a terminal window and type:<br>```udevadm monitor```
-* On the device:
-  * press and hold `ALT_BOOT`
-  * toggle `RESET`
-  * release `ALT_BOOT`
+* On the Linux development machine open up a terminal window and type:<br>```udevadm monitor```
+* On the target device:
+  * One time AltBoot mode
+    * press and hold `ALT_BOOT`
+    * toggle `RESET`
+    * release `ALT_BOOT`
+  * Permanet AltBoot mode for development purpose only.<br>
+    Set the E17 jumper on.<br>
+    * toggle `RESET`
+
 * The Linux machine teminal must show this up:<pre>
 (ins)# udevadm monitor 
 monitor will print the received events for:
@@ -292,5 +308,5 @@ UDEV  [29005568.023299] add      /devices/pci0000:00/0000:00:14.0/usb1/1-8/1-8:1
 
 ## Download the bootloader
 ```
-sudo uuu -v imx-boot-tagged
+sudo uuu -d -v imx-boot-tagged
 ```
