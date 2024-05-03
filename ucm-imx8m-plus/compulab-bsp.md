@@ -316,7 +316,92 @@ Connected Known USB Devices
         1:1      MX865   SDPS:   0x1FC9 0x0146   0x0002
 </pre>
 
-## Download the bootloader
-```
-sudo uuu -d -v imx-boot-tagged
-```
+| NOTE | When the device in SDP mode, the device serial console is irresponsive |
+|---|---|
+
+* Download the bootloader
+  * Issue this command from the Linux development host<pre>sudo uuu -d -v imx-boot-tagged</pre>
+  * The target device serial console sample output:<pre>
+U-Boot SPL 2023.04-compulab+gb31d600948 (Feb 01 2024 - 11:53:52 +0000)
+pca9450@25 [ldo4][u] = 1v8
+DDRINFO: EEPROM VALID DATA [ [ cafecafe ] = ffffffff ff 
+DDRINFO: Cfg attempt: [ 1/6 ]
+DDRINFO(?): deadbeaf 2048MB @ 3000 MHz
+DDRINFO: start DRAM init
+DDRINFO: DRAM rate 3000MTS
+DDRINFO:ddrphy calibration done
+DDRINFO: ddrmix config done
+DDRINFO(M): mr5-8 [ 0x1061010 ]
+DDRINFO(T): mr5-8 [ 0xdeadbeef ]
+spl_dram_ů
+U-Boot SPL 2023.04-compulab+gb31d600948 (Feb 01 2024 - 11:53:52 +0000)
+pca9450@25 [ldo4][u] = 1v8
+DDRINFO: Cfg attempt: [ 2/6 ]
+DDRINFO(?): Samsung 4096MB @ 3200 MHz
+DDRINFO: start DRAM init
+DDRINFO: DRAM rate 3200MTS
+DDRINFO:ddrphy calibration done
+DDRINFO: ddrmix config done
+DDRINFO(M): mr5-8 [ 0x1061010 ]
+DDRINFO(T): mr5-8 [ 0x1061010 ]
+DDRINFO(E): mr5-8 [ 0x1061010 ], read back
+DDRINFO(EEPROM): make sure that the eeprom is accessible
+DDRINFO(EEPROM): i2c dev 1; i2c md 0x51 0x40 0x50
+spl_dram_é
+U-Boot SPL 2023.04-compulab+gb31d600948 (Feb 01 2024 - 11:53:52 +0000)
+pca9450@25 [ldo4][u] = 1v8
+DDRINFO: EEPROM VALID DATA [ [ cafecafe ] = 1061010 4 
+DDRINFO(D): Samsung 4096MB @ 3200 MHz
+DDRINFO: start DRAM init
+DDRINFO: DRAM rate 3200MTS
+DDRINFO:ddrphy calibration done
+DDRINFO: ddrmix config done
+DDRINFO(M): mr5-8 [ 0x1061010 ]
+DDRINFO(E): mr5-8 [ 0x1061010 ]
+SEC0:  RNG instantiated
+Normal Boot
+Trying to boot from BOOTROM
+Boot Stage: USB boot
+Find img info 0x480163a0, size 1064
+Need continue download 1024
+Download 1859632, Total size 1860752
+NOTICE:  Do not release JR0 to NS as it can be used by HAB
+NOTICE:  BL31: v2.8(release):lf-6.1.55-2.2.0-0-g08e9d4eef
+NOTICE:  BL31: Built : 06:43:30, Nov 21 2023
+\
+U-Boot 2023.04-compulab+gb31d600948 (Feb 01 2024 - 11:53:52 +0000)
+\
+CPU:   i.MX8MP[8] rev1.1 1800 MHz (running at 1200 MHz)
+CPU:   Commercial temperature grade (0C to 95C) at 54C
+Reset cause: POR
+Model: CompuLab UCM-iMX8M-Plus
+DRAM:  4 GiB
+Core:  247 devices, 37 uclasses, devicetree: separate
+MMC:   FSL_SDHC: 1, FSL_SDHC: 2
+Loading Environment from nowhere... OK
+[*]-Video Link 1Enable clock-controller@30380000 failed
+Enable clock-controller@30380000 failed
+ (1024 x 600)
+	[0] lcd-controller@32e90000, video
+	[1] lvds-channel@0, display
+	[2] lvds-panel, panel
+In:    serial
+Out:   vidconsole
+Err:   vidconsole
+SEC0:  RNG instantiated
+MMC Device 0 not found
+no mmc device at slot 0
+Detect USB boot. Will enter fastboot mode!
+Net:   eth1: ethernet@30bf0000 [PRIME]
+Fastboot: Normal
+Boot from USB for mfgtools
+*** Warning - Use default environment for 				 mfgtools
+, using default environment
+\
+Run bootcmd_mfg: run mfgtool_args;if iminfo ${initrd_addr}; then if test ${tee} = yes; then bootm ${tee_addr} ${initrd_addr} ${fdt_addr}; else booti ${loadaddr} ${initrd_addr} ${fdt_addr}; fi; else echo "Run fastboot ..."; fastboot 0; fi;
+Hit any key to stop autoboot:  0 
+\
+\#\# Checking Image at 43800000 ...
+Unknown image format!
+Run fastboot ...
+</pre>
