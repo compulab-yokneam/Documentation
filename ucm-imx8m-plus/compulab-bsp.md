@@ -74,10 +74,10 @@ bitbake -k imx-image-full
 
 | build command | binary file location |
 |---|---|
-|```bitbake -k uuu-native```|```${BUILDDIR}/tmp/deploy/images/${MACHINE}/uuu-native/bin/uuu```|
+|```bitbake -k uuu-native```|```${BUILDDIR}/tmp/deploy/images/${COMPULAB_MACHINE}/uuu-native/bin/uuu```|
  
 * Install the UUU:<br>
-```sudo ln -sf $(readlink -e ${BUILDDIR}/tmp/deploy/images/${MACHINE}/uuu-native/bin/uuu) /usr/local/bin```
+```sudo ln -sf $(readlink -e ${BUILDDIR}/tmp/deploy/images/${COMPULAB_MACHINE}/uuu-native/bin/uuu) /usr/local/bin```
 
 ## Get back to the already created build environment
 ```
