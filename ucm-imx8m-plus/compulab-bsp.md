@@ -405,3 +405,6 @@ Hit any key to stop autoboot:  0
 Unknown image format!
 Run fastboot ...
 </pre>
+
+| Get U-Boot prompt on the target device | Ctrl^C on the device console |
+| --- | --- |
