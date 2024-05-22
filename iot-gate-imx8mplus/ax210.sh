@@ -24,8 +24,8 @@ move_files() {
         done
 }
 
-DIRRECTION=${DIRRECTION:-0}
+DIRECTION=${DIRECTION:-0}
 
-[[ ${DIRRECTION} -eq 0 ]] && source_dir=${ACTIVE_DIR} destination_dir=${HIDDEN_DIR} || source_dir=${HIDDEN_DIR} destination_dir=${ACTIVE_DIR}
+[[ ${DIRECTION} -eq 0 ]] && source_dir=${ACTIVE_DIR} destination_dir=${HIDDEN_DIR} || source_dir=${HIDDEN_DIR} destination_dir=${ACTIVE_DIR}
 
 source_dir=${source_dir} destination_dir=${destination_dir} move_files
