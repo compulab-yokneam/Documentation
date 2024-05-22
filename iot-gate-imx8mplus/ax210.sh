@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 
 ACTIVE_DIR=/lib/firmware
 HIDDEN_DIR=/lib/firmware/hidden
