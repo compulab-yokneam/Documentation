@@ -20,5 +20,10 @@ function rem_n_cleanup() {
     apt-get purge docker-ce docker-ce-cli
 }
 
+function fix_n_go() {
+    sed -i '/INTERCEPT_DIR/d' /var/lib/dpkg/info/grub-efi-env.postinst
+}
+
+fix_n_go
 rem_n_cleanup
 get_n_install
