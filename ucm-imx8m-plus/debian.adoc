@@ -4,11 +4,11 @@
 
 * Downlaod an image:
 
+
 |=====
 |Available images|md5sum
-|https://drive.google.com/file/d/1CLTGWsOn2vnR89t8lya7JJGBkvSjU8ik/view?usp=sharing[Debian:Bullseye]|c5abf6c11af3f51f7d44f2ae145f15cc
-|https://drive.google.com/file/d/1HBHMmqIsaj46x4IGju_kqrNGfRib7thf/view?usp=sharing[Debian:Sid]|f60218d231c64fc09b555e823880b342
-|https://drive.google.com/file/d/16hbZnfAkMlySYeqFyPkcqu40Xmc2F6gQ/view?usp=sharing[Ubuntu:Groovy]|c40996f2ba9989e9c3115ed0cf9da94f
+|https://drive.google.com/drive/folders/1GNUIpvAsbNJW4mQAgmtNhQrBHFcH2yVD[Debian:12]|0c5182c669306444f10c9901a35ba8b9
+|https://drive.google.com/drive/folders/10ixdajJRtrPgHpFksO-5aOGo3avOQvcp[Ubuntu:22.04]|c40996f2ba9989e9c3115ed0cf9da94f
 |=====
 
 
