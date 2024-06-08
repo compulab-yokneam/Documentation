@@ -6,8 +6,8 @@
 
 
 |=====
-|Available images|md5sum
-|https://drive.google.com/drive/folders/1GNUIpvAsbNJW4mQAgmtNhQrBHFcH2yVD[Debian:12]|0c5182c669306444f10c9901a35ba8b9
+|Available images|xz file md5sum
+|https://drive.google.com/drive/folders/1TQoGNUPN7xDYbnvxJVU1fuuzfp42XnvT[Debian:12]|0c5182c669306444f10c9901a35ba8b9
 |https://drive.google.com/drive/folders/10ixdajJRtrPgHpFksO-5aOGo3avOQvcp[Ubuntu:22.04]|c40996f2ba9989e9c3115ed0cf9da94f
 |=====
 
