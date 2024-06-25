@@ -37,4 +37,4 @@ The device tree source code is [here](https://github.com/compulab-yokneam/linux-
 
 |watch fo interrupts|Grab events|Trigger an event|
 |---|---|---|
-|watch -n 0.5 "cat /proc/interrupts  \| awk '/DIO_IN/'"|evtest --grab /dev/input/by-path/platform-gpio-keys-event|sudo iotg-imx8plus-dio -o 2 $((i++))%2))))|
+|watch -n 0.5 "cat /proc/interrupts  \| awk '/DIO_IN/'"|evtest --grab /dev/input/by-path/platform-gpio-keys-event|sudo iotg-imx8plus-dio -o 2 $(($((i++))%2))|
