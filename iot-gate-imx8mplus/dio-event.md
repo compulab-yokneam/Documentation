@@ -1,4 +1,14 @@
-# DIO event grab setup
+# DIO event grab sample setup
+
+# How to enable
+
+|NOTE|Works with bsp_bootcmd only|
+|---|---|
+
+```
+fw_setenv fdtofile iot-gate-imx8plus-gpio-keys.dtbo
+```
+The device tree source code is [here](https://github.com/compulab-yokneam/linux-compulab/blob/linux-compulab_v6.1.22/arch/arm64/boot/dts/compulab/iot-gate-imx8plus-gpio-keys.dts)
 
 # How to connect
 * Connect Lab Power Supply as below:
@@ -28,14 +38,3 @@
 |watch fo interrupts|Grab events|Trigger an event|
 |---|---|---|
 |watch -n 0.5 "cat /proc/interrupts  \| awk '/DIO_IN/'"|evtest --grab /dev/input/by-path/platform-gpio-keys-event|sudo iotg-imx8plus-dio -o 2 $((i++))%2))))|
-
-# How to enable
-
-|NOTE|Runs with bsp_bootcmd only|
-|---|---|
-
-```
-fw_setenv fdtofile iot-gate-imx8plus-gpio-keys.dtbo
-```
-The device tree source code is [here](https://github.com/compulab-yokneam/linux-compulab/blob/linux-compulab_v6.1.22/arch/arm64/boot/dts/compulab/iot-gate-imx8plus-gpio-keys.dts)
-
