@@ -8,7 +8,9 @@
 ```
 fw_setenv fdtofile iot-gate-imx8plus-gpio-keys.dtbo
 ```
-The device tree source code is [here](https://github.com/compulab-yokneam/linux-compulab/blob/linux-compulab_v6.1.22/arch/arm64/boot/dts/compulab/iot-gate-imx8plus-gpio-keys.dts)
+* The source of:
+  * [device tree](https://github.com/compulab-yokneam/linux-compulab/blob/linux-compulab_v6.1.22/arch/arm64/boot/dts/compulab/iot-gate-imx8plus-gpio-keys.dts)
+  * [Makefile](https://github.com/compulab-yokneam/linux-compulab/blob/linux-compulab_v6.1.22/arch/arm64/boot/dts/compulab/Makefile#L33)
 
 # How to connect
 * Connect Lab Power Supply as below:
