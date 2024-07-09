@@ -7,9 +7,6 @@ function get_current_env() {
 	local _efi_folder=${EFI}/${_current_kernel}
 	mkdir -p ${_efi_folder}	
 	fw_printenv fdtfile image mmcpart | tee ${_efi_folder}/.env
-cat << eof | tee ${_efi_folder}/.cmd
-fw_setenv --script ${_efi_folder}/.env
-eof
 }
 
 function get_tararch_env() {
@@ -25,9 +22,6 @@ fdtfile=${fdtfile}
 mmcpart=2
 eof
 
-cat << eof | tee ${_efi_folder}/.cmd
-fw_setenv --script ${_efi_folder}/.env
-eof
 	tar --keep-directory-symlink -C / -xf ${TAR_FILE}
 
 	cat ${_efi_folder}/.env  | awk -F"=" '($0="setenv "$1" "$2)' | tee  ${_efi_folder}/boot.in
