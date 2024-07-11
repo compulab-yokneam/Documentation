@@ -1,30 +1,17 @@
 #!/bin/bash -ex
 
-EFI=/boot/efi
+EFI=/boot/kernel-backup.d
 
-function get_current_env() {
+function save_current_env() {
 	local _current_kernel=$(uname -r)
 	local _efi_folder=${EFI}/${_current_kernel}
-	mkdir -p ${_efi_folder}	
-	fw_printenv fdtfile image mmcpart | tee ${_efi_folder}/.env
-}
-
-function get_tararch_env() {
-	export $(fw_printenv fdtfile)
-	export $(tar tvf ${TAR_FILE} | awk -v fdtfile=${fdtfile} -v image=vmlinux '($0~fdtfile)&&($0="fdtfile="$NF)||($0~image)&&($0="image="$NF)')
-	export version=$(sed 's/^.*vmlinux-//g' <<< ${image})
-	local _current_kernel=${version}
-	local _efi_folder=${EFI}/${_current_kernel}
-	mkdir -p ${_efi_folder}	
-cat << eof | tee ${_efi_folder}/.env
-image=${image}
-fdtfile=${fdtfile}
-mmcpart=2
-eof
-
-	tar --keep-directory-symlink -C / -xf ${TAR_FILE}
-
-	cat ${_efi_folder}/.env  | awk -F"=" '($0="setenv "$1" "$2)' | tee  ${_efi_folder}/boot.in
+	[[ ! -f ${bootp_mp}/boot.${_current_kernel}.scr ]] || return 0
+	[[ ! -d ${_efi_folder} ]] || return 0
+	mkdir -p ${_efi_folder}
+	mv ${bootp_mp}/{Image*,*.dtb*} ${_efi_folder}/
+	export $(fw_printenv fdtfile image)
+	export $(find ${_efi_folder} | awk -v fdtfile=${fdtfile} -v image=${image} '($0~fdtfile)&&($0="fdtfile="$NF)||($0~image)&&($0="image="$NF)')
+	(for value in fdtfile image;do echo "setenv ${value} ${!value}"; done) | tee ${_efi_folder}/boot.in
 	cat /proc/cmdline | awk '$0="setenv bootargs ""\""$0"\""' | tee -a ${_efi_folder}/boot.in
 cat << eof | tee -a ${_efi_folder}/boot.in
 load mmc 2:2 \${loadaddr} \${image}
@@ -32,7 +19,17 @@ load mmc 2:2 \${fdt_addr_r} \${fdtfile}
 booti \${loadaddr} - \${fdt_addr_r}
 eof
 	mkimage -C none -O Linux -A arm -T script -d ${_efi_folder}/boot.in ${_efi_folder}/boot.scr
-	cp ${_efi_folder}/boot.scr ${bootp_mp}/
+	cp ${_efi_folder}/boot.scr ${bootp_mp}/boot.${_current_kernel}.scr
+}
+
+function set_new_env() {
+	export $(fw_printenv fdtfile)
+	export $(tar tvf ${TAR_FILE} | awk -v fdtfile=${fdtfile} -v image=vmlinux '($0~fdtfile)&&($0="fdtfile="$NF)||($0~image)&&($0="image="$NF)')
+	export version=$(sed 's/^.*vmlinux-//g' <<< ${image})
+	tar --keep-directory-symlink -C / -xf ${TAR_FILE}
+	cp /${image} ${bootp_mp}/Image-${version}
+	ln -sf Image-${version} ${bootp_mp}/Image || mv ${bootp_mp}/Image-${version} ${bootp_mp}/Image
+	cp $(dirname /${fdtfile})/*.dtb* ${bootp_mp}
 }
 
 function boot_device_init() {
@@ -41,17 +38,18 @@ function boot_device_init() {
 	bootp=${bootp:0:-1}1
 	umount -l ${bootp} &>/dev/null || true
 	mount ${bootp} ${bootp_mp}
-	function boot_device_fini() {
-		umount ${bootp}
-		rm -rf ${bootp_mp}
-	}
+}
+
+function boot_device_fini() {
+	umount ${bootp}
+	rm -rf ${bootp_mp}
 }
 
 TAR_FILE=${1}
 
 boot_device_init
-get_current_env
-get_tararch_env
+save_current_env
+set_new_env
 boot_device_fini
 
 cat << eof
