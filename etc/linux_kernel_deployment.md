@@ -28,4 +28,4 @@ bash <(curl -L https://raw.githubusercontent.com/compulab-yokneam/Documentation/
 <pre>
 uname -r
 </pre>
-Make sure that the reported version matches the original deb package version.
+Make sure that the reported version matches the package version.
