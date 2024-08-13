@@ -14,3 +14,8 @@ systemctl daemon-reload && systemctl restart bluetooth
 ```
 journalctl --unit=bluetooth -f
 ```
+
+* Dump the service debug messages:
+```
+journalctl --unit=bluetooth
+```
