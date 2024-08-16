@@ -22,7 +22,7 @@ sudo make install
 ## How to use:
 Target is a `imx8mq` or `imx8mm` SOC. Host is a development Linux machine with installed openocd
 
-* BackEnd
+* Back End
 [source,console]
 /opt/openocd/bin/openocd -f interface/ftdi/dp_busblaster_kt-link.cfg -f board/nxp_mcimx8m-evk.cfg
 
