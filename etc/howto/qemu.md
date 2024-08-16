@@ -15,3 +15,5 @@ bash <(curl -sl https://raw.githubusercontent.com/compulab-yokneam/Documentation
 telnel localhost 4446
 </pre>
 
+## Etc
+* [Script source](https://github.com/compulab-yokneam/Documentation/blob/master/etc/howto/qemu.sh)
