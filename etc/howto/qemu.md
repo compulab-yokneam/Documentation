@@ -10,7 +10,7 @@ sudo -i
 bash <(curl -sl https://raw.githubusercontent.com/compulab-yokneam/Documentation/master/etc/howto/qemu.sh) /path/to/os.image
 </pre>
 
-## Get connected to the Qemu console
+## Get connected to the Qemu device console
 <pre>
 telnel localhost 4446
 </pre>
