@@ -32,8 +32,10 @@ function issue_fini() {
 SCRIPT_FULL_PATH=$(readlink -e ${BASH_SOURCE[0]})
 function issue_help() {
 cat << eof
-	Error: ${ERROR_MSG}
-	sudo ${SCRIPT_FULL_PATH} ${IMAGE_FILE}
+	Error:
+ 		${ERROR_MSG}
+	Usage:
+ 		sudo ${SCRIPT_FULL_PATH} ${IMAGE_FILE}
 eof
 	exit 1
 }
