@@ -43,7 +43,7 @@ IMAGE_FILE=${1:-"/path/to/os.image"}
 
 [[ $(id --user) -eq 0 ]] || { ERROR_MSG="Insuficient permissions; run with sudo" issue_help; }
 [[ -f ${IMAGE_FILE} ]] || { ERROR_MSG="File ${IMAGE_FILE} not found" issue_help; }
-file  ${IMAGE_FILE} | grep -q "DOS\/MBR boot sector" ||{  ERROR_MSG="File ${IMAGE_FILE} is not an OS image file" issue_help; }
+file ${IMAGE_FILE} | grep -q "DOS\/MBR boot sector" || {  ERROR_MSG="File ${IMAGE_FILE} is not an OS image file" issue_help; }
 
 issue_init
 issue_qemu
