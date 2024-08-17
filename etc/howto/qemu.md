@@ -5,12 +5,24 @@
 * Enablded loop device support
 
 ## Run Qemu with an os image file
+### On console mode:
+* Command to issue:
 <pre>
 sudo -i
 bash <(curl -sl https://raw.githubusercontent.com/compulab-yokneam/Documentation/master/etc/howto/qemu.sh) /path/to/os.image
 </pre>
+|NOTE|Use ```Ctrl-a h``` for help|
+|---|---|
 
-## Get connected to the Qemu device console
+
+### Console through telnet:
+* Command to issue:
+<pre>
+sudo -i
+bash <(curl -sl https://raw.githubusercontent.com/compulab-yokneam/Documentation/master/etc/howto/qemu.sh) /path/to/os.image 2
+</pre>
+
+* Get connected to the device console:
 <pre>
 telnel localhost 4446
 </pre>
