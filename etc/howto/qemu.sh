@@ -12,6 +12,16 @@ qemu-system-aarch64 -smp 8 -m 1024 -cpu cortex-a53 \
 	-monitor stdio
 }
 
+function issue_qemu_oc() {
+qemu-system-aarch64 -smp 8 -m 1024 -cpu cortex-a53 \
+	-machine type=virt,gic-version=3 \
+	-kernel ${KERNEL_IMAGE} \
+	-drive if=none,file=${OS_IMAGE},id=foo,format=raw \
+	-device virtio-blk-device,drive=foo \
+	-append 'root=/dev/vda2 rw console=ttyAMA0 rootwait earlyprintk' \
+	-nographic
+}
+
 function issue_init() {
 	export mpoint=$(mktemp --dry-run --quiet)
 	export loop_device=$(sudo losetup --show --find --partscan ${IMAGE_FILE})
@@ -43,11 +53,12 @@ eof
 
 
 IMAGE_FILE=${1:-"/path/to/os.image"}
+[[ -z "${2}" ]] && ISSUE_QEMU="issue_qemu" || ISSUE_QEMU="issue_qemu_oc"
 
 [[ $(id --user) -eq 0 ]] || { ERROR_MSG="Insufficient permissions; run with sudo" issue_help; }
 [[ -f ${IMAGE_FILE} ]] || { IMAGE_FILE="/path/to/os.image" ERROR_MSG="File ${IMAGE_FILE} not found" issue_help; }
 file -L ${IMAGE_FILE} | grep -q "DOS\/MBR boot sector" || {  ERROR_MSG="File ${IMAGE_FILE} is not an OS image file" issue_help; }
 
 issue_init
-issue_qemu
+${ISSUE_QEMU}
 issue_fini
