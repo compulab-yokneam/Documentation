@@ -53,7 +53,7 @@ eof
 
 
 IMAGE_FILE=${1:-"/path/to/os.image"}
-[[ -z "${2}" ]] && ISSUE_QEMU="issue_qemu" || ISSUE_QEMU="issue_qemu_oc"
+[[ -z "${2}" ]] && ISSUE_QEMU="issue_qemu_oc" || ISSUE_QEMU="issue_qemu"
 
 [[ $(id --user) -eq 0 ]] || { ERROR_MSG="Insufficient permissions; run with sudo" issue_help; }
 [[ -f ${IMAGE_FILE} ]] || { IMAGE_FILE="/path/to/os.image" ERROR_MSG="File ${IMAGE_FILE} not found" issue_help; }
