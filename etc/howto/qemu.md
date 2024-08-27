@@ -24,7 +24,7 @@ bash <(curl -sl https://raw.githubusercontent.com/compulab-yokneam/Documentation
 
 * Get connected to the device console:
 <pre>
-telnel localhost 4446
+telnet localhost 4446
 </pre>
 
 ## Etc
