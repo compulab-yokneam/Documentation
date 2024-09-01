@@ -1,5 +1,8 @@
 #!/bin/bash -ex
 
+SWD=$(dirname ${BASH_SOURCE[0]})
+source ${SWD}/common.inc
+
 modprobe trusted
 KEY=0123456789abcdef
 CAAMDIR=/data/caam

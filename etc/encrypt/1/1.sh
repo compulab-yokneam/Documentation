@@ -1,8 +1,9 @@
 #!/bin/bash -ex
 
+SWD=$(dirname ${BASH_SOURCE[0]})
+source ${SWD}/common.inc
+
 modprobe trusted
-KEYNAME=dm_trust
-BLOB=/opt/encrypt.d/KEYNAME.blob
 if [[ ! -e ${BLOB} ]];then
 	KEY="$(keyctl add trusted $KEYNAME 'new 32' @s)"
 	keyctl pipe $KEY > $BLOB
