@@ -25,7 +25,7 @@ eof
 function set_new_env() {
 	export $(fw_printenv fdtfile)
 	export $(tar --keep-directory-symlink -C / -xvf ${TAR_FILE} | awk -v fdtfile=${fdtfile} -v image=vmlinuz '($0~fdtfile)&&($0="fdtfile="$NF)||($0~image)&&($0="image="$NF)')
-	export version=${image/*vmlinuz-/ }
+	export version=${image/*vmlinuz-/}
 	cat /${image} | gunzip -c - > ${bootp_mp}/Image-${version}
 	ln -sf Image-${version} ${bootp_mp}/Image || mv ${bootp_mp}/Image-${version} ${bootp_mp}/Image
 	cp $(dirname /${fdtfile})/*.dtb* ${bootp_mp}
