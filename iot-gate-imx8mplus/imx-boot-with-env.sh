@@ -1,7 +1,6 @@
 #!/bin/bash -e
 
 UBOOT_ENV_IN=u-boot-initial-env-sd
-UBOOT_ENV=u-boot.env
 UBOOT_ENV_OFFSET=8064
 UBOOT_ENV_SIZE=16384
 
@@ -13,13 +12,9 @@ IMX_BOOT_OFFSET=0
 IMX_BOOT_FULL=${IMX_BOOT}-with-env
 IMX_BOOT_FULL_SIZE=8192
 
-mkenvimage -s ${UBOOT_ENV_SIZE} -o ${UBOOT_ENV} ${UBOOT_ENV_IN}
 dd if=/dev/zero    of=${IMX_BOOT_FULL} bs=512 count=${IMX_BOOT_FULL_SIZE} 2>/dev/null
-
 dd if=${IMX_BOOT}  of=${IMX_BOOT_FULL} bs=512 seek=${IMX_BOOT_OFFSET} conv=notrunc 2>/dev/null
-dd if=${UBOOT_ENV} of=${IMX_BOOT_FULL} bs=512 seek=${UBOOT_ENV_OFFSET} conv=notrunc 2>/dev/null
-
-rm -rf ${UBOOT_ENV}
+cat ${UBOOT_ENV_IN} | mkenvimage -s ${UBOOT_ENV_SIZE} | dd of=${IMX_BOOT_FULL} bs=512 seek=${UBOOT_ENV_OFFSET} conv=notrunc 2>/dev/null
 
 cat << eof
 
