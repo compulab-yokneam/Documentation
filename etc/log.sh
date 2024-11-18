@@ -11,3 +11,5 @@ sleep 3
 dmesg -T
 ls -al /sys/class/net/
 ip a
+find /lib/firmware
+zcat /proc/config.gz
