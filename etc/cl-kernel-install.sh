@@ -8,7 +8,7 @@ function save_current_env() {
 	[[ ! -f ${bootp_mp}/boot.${_current_kernel}.scr ]] || return 0
 	[[ ! -d ${_efi_folder} ]] || return 0
 	mkdir -p ${_efi_folder}
-	mv ${bootp_mp}/{Image*,*.dtb*} ${_efi_folder}/
+	mv ${bootp_mp}/{Image*,*.dtb*} ${_efi_folder}/ &>/dev/null || true
 	export $(fw_printenv fdtfile image)
 	export $(find ${_efi_folder} | awk -v fdtfile=${fdtfile} -v image=${image} '($0~fdtfile)&&($0="fdtfile="$NF)||($0~image)&&($0="image="$NF)')
 	(for value in fdtfile image;do echo "setenv ${value} ${!value}"; done) | tee ${_efi_folder}/boot.in
@@ -21,7 +21,7 @@ command -v mkimage || return
 mkimage -C none -O Linux -A arm -T script -d ${_efi_folder}/boot.in ${_efi_folder}/boot.scr || return
 cp ${_efi_folder}/boot.scr ${bootp_mp}/boot.${_current_kernel}.scr
 eof
-	source ${_efi_folder}/.boot.cmd
+	source ${_efi_folder}/.boot.cmd || true
 }
 
 function set_new_env() {
