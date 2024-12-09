@@ -26,7 +26,7 @@ make -j`nproc` tarbz2-pkg
 |On another device|Copy linux-\<version\>-arm64.tar.bz2 to the target devive /tmp/linux-compulab.tar.bz2|
 
 ### Deploy the created image
-* Issue CompuLab linux install script as root:
+* Issue CompuLab linux install [script](https://github.com/compulab-yokneam/Documentation/blob/master/etc/cl-kernel-install.sh) as root:
 ```
 sudo -i
 bash <(curl -L https://raw.githubusercontent.com/compulab-yokneam/Documentation/master/etc/cl-kernel-install.sh) /tmp/linux-compulab.tar.bz2
