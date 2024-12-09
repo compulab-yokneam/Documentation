@@ -5,10 +5,9 @@ EFI=/boot/kernel-backup.d
 function save_current_env() {
 	local _current_kernel=$(uname -r)
 	local _efi_folder=${EFI}/${_current_kernel}
-	[[ ! -f ${bootp_mp}/boot.${_current_kernel}.scr ]] || return 0
 	[[ ! -d ${_efi_folder} ]] || return 0
 	mkdir -p ${_efi_folder}
-	mv ${bootp_mp}/{Image*,*.dtb*} ${_efi_folder}/ &>/dev/null || true
+	cp ${bootp_mp}/{Image*,*.dtb*,kernel*,config*} ${_efi_folder}/ &>/dev/null || true
 	export $(fw_printenv fdtfile image)
 	export $(find ${_efi_folder} | awk -v fdtfile=${fdtfile} -v image=${image} '($0~fdtfile)&&($0="fdtfile="$NF)||($0~image)&&($0="image="$NF)')
 	(for value in fdtfile image;do echo "setenv ${value} ${!value}"; done) | tee ${_efi_folder}/boot.in
@@ -22,6 +21,10 @@ mkimage -C none -O Linux -A arm -T script -d ${_efi_folder}/boot.in ${_efi_folde
 cp ${_efi_folder}/boot.scr ${bootp_mp}/boot.${_current_kernel}.scr
 eof
 	source ${_efi_folder}/.boot.cmd || true
+}
+
+function cleanup_current_env() {
+	rm ${bootp_mp}/{Image*,*.dtb*,kernel*,config*}
 }
 
 function set_new_env() {
@@ -50,6 +53,7 @@ TAR_FILE=${1}
 
 boot_device_init
 save_current_env
+cleanup_current_env
 set_new_env
 boot_device_fini
 
