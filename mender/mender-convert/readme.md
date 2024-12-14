@@ -8,4 +8,4 @@ git clone https://github.com/mendersoftware/mender-artifact
 ```
 
 ##  Compulab implementation
-* [mender-convert-compulab.sh](https://github.com/compulab-yokneam/Documentation/blob/master/mender/mender-convert-compulab.sh)
+* [mender-convert-compulab.sh](https://github.com/compulab-yokneam/Documentation/blob/master/mender/mender-convert/mender-convert-compulab.sh)
