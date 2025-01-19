@@ -1,0 +1,75 @@
+<Logging>
+## Location (path) of log file
+LogFilename /tmp/
+## Log prefix
+LogPrefix BiTLog2
+## Format - Ascii|HTML|Certificate
+Format Ascii
+## Logging detail level - summary|normal
+LogDetailLevel normal
+## Trace level - None (0) | Activity Trace 1 (1)| Activity Trace 2 (2) 
+TraceLevel 0
+##maximum number of lines for file
+MaxFileLines 1000		
+## Logging mode - single file or multiples with timestamp
+##   - ClearAppend Clear results & append (single file)
+##   - AccumulateAppend Clear results & append (single file)
+##   - ClearNew Clear results and overwrite existing (single file) 
+##		- Timestamp Create new timestamped files (multiple files)
+LogMode ClearNew
+## Logging Interval - periodically log results summary during a test. 
+## Expects a value in minutes, 0 for log results at end of test
+LogInterval 0
+</Logging>
+
+## Duty cycles
+<DutyCycles>
+## Auto stop after XXX minutes
+AutoStopMinutes 1
+## Auto stop after XXX cycles
+AutoStopCycles 1
+## Duty cycle load for each test, 1-100
+USB 1
+</DutyCycles>
+
+## Network
+<Network>
+## Have an IP keyword (up to 4) for each destination IP to test. The IP specified should be an address external
+## to the system under test that can respond to ping requests.
+IP 192.168.11.1
+## Bad packet ratio
+## - Set to 0 for every bad packet to generate and error
+## - Set to a 1-99 range for an error to be generated once the bad packet ratio reaches this level
+BadPacketRatio 2
+## Timeout - ms time before connection times out, 100 - 200000
+TimeOut 2000
+## Uncomment TestAllNICs to bind each entered IP to a different network card
+#TestAllNICs
+</Network>
+
+## USB test section
+<USB>
+## Automatically select all USB plugs found on the system for testing
+AutoSelectAllUSB
+## Number of USB tests to run (when not using AutoSelectAllUSB)
+NumUSB 2
+## Run the benchmark test at the start of the USB test
+RunUSBBenchmark
+## USB 3 connection speed Auto, SuperSpeed (5GB/s), HighSpeed (480Mb/s), FullSpeed (Mb/s), Cycle (Cycle between speeds)
+USB3Connection Auto 
+</USB>
+
+## Sound section
+#<Sound>
+## Maximum distortion allowed before and error is logged, allowed values 1-20
+#MaxDistortion 5
+## Sound device name to test - plughw, default or other sound alias, should be left as plughw in most cases 
+#SoundDevName plughw
+#</Sound>
+
+## Errors
+<Errors>
+## Action to take on error - Continue (Continue), Beep and continue (Beep), Stop tests (Stop)
+ActionOnError Continue
+</Errors>
+
