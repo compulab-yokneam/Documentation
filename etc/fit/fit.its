@@ -55,7 +55,7 @@
                         };
                 };
                 simple {
-                        description = "Standard Boot w/out remadisk";
+                        description = "Standard Boot w/out ramdisk";
                         kernel = "kernel";
                         fdt = "fdt";
                         hash {
