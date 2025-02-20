@@ -5,7 +5,7 @@
 ### Create & Install artifact
 * Print Mender environment
 ```
-fw_printenv
+grub-mender-grubenv-print
 ===========
 bootcount=0
 mender_boot_part=2
@@ -60,7 +60,7 @@ At least one payload requested a reboot of the device it updated.
 ```
 At the end of this process the Mender environment will be:
 ```
-fw_printenv 
+grub-mender-grubenv-print
 ===========
 bootcount=0
 mender_boot_part=3
@@ -74,7 +74,7 @@ reboot
 ```
 * Print Mender environment
 ```
-fw_printenv
+grub-mender-grubenv-print
 ===========
 bootcount=1
 mender_boot_part=3
@@ -105,7 +105,7 @@ INFO[0000] Committing update
 ```
 * Print Mender environment
 ```
-fw_printenv
+grub-mender-grubenv-print
 ===========
 bootcount=1
 mender_boot_part=3
@@ -139,24 +139,24 @@ fi
 ```
 * Dump the environment:
 ```
-fw_printenv
+grub-mender-grubenv-print
 bootcount=1
 mender_boot_part=2
 upgrade_available=1
 ```
 * Set these environment variables:
 ```
-fw_setenv upgrade_available 1
-fw_setenv bootcount 1
+grub-mender-grubenv-set upgrade_available 1
+grub-mender-grubenv-set bootcount 1
 ```
 * Issue system reset:
 ```
 for cmd in u s b; do echo ${cmd} > /proc/sysrq-trigger; done
 ```
 
-* Issue `fw_printenv` as soon as the linux prompt available. Expected output is:
+* Issue `grub-mender-grubenv-print` as soon as the linux prompt available. Expected output is:
 ```
-fw_printenv
+grub-mender-grubenv-print
 bootcount=0
 mender_boot_part=3
 upgrade_available=0
@@ -168,4 +168,4 @@ upgrade_available=0
 mmc dev 2; mmc erase 0 0x400; reset
 ```
 * As soon as the target media layout was cleaned up, use a new Mended sd-card and let the device boot up from.
-* Issue `cl-deploy` 'or' `mr-deploy`. Follow the utils instructions.
+* Issue `cl-deploy` and  follow the onscreen instructions.
