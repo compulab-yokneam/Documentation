@@ -28,7 +28,9 @@ mender snapshot dump > /data/root-part.ext4
 ```
 * Write an artifact file.
 ```
-mender-artifact write rootfs-image -f /data/root-part.ext4 -n new_artifact --software-version 2.0 -o /data/new_artifact.2.0.mender -t ucm-imx8m-plus
+mender-artifact write rootfs-image -f /data/root-part.ext4 -n new_artifact \
+    --software-version 2.0 -o /data/new_artifact.2.0.mender \
+    -t $(awk -F"=" '$0=$2' /data/mender/device_type)
 ====================================================================================================================================================
 Writing Artifact...
 Version                 ✓
