@@ -26,7 +26,7 @@ mmcblk2     179:0    0 29.1G  0 disk
 ```
 mender snapshot dump > /data/root-part.ext4
 ```
-* Write an artifact file.
+* Write an artifact file
 ```
 mender-artifact write rootfs-image -f /data/root-part.ext4 -n new_artifact \
     --software-version 2.0 -o /data/new_artifact.2.0.mender \
@@ -116,6 +116,27 @@ mender_uboot_separator=
 mender_boot_part_hex=3
 ```
 
+## Use the Yocto Mender rootfs artifact file
+
+* Copy the created file to the device
+```
+scp user@build-host:/path/to/${BUILDDIR}/tmp/deploy/images/${MACHINE}/*.mender /data/rootfs-artifact.mender
+```
+
+* Install the rootfs artifcat file
+```
+mender install /data/rootfs-artifact.mender
+```
+
+* Reboot the device
+```
+reboot
+```
+
+* Commit changes
+```
+mender commit
+```
 
 ## Roll Back Test
 
