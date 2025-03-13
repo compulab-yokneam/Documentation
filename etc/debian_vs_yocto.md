@@ -5,8 +5,8 @@
 
 * Features
 
-|(V)Features:Distro(>)|Debian|Yocto|
-|:---|:---|:---|
+|Features|Debian|Yocto|
+|---|---|---|
 |O/S image ownership|Compulab|Developer (customer)|
 |Distro maintenance/update|Official Debian distro maintainer|Developer (customer)|
 |Package Manager|apt/dpkg with the official Debian repository|Developer's repository using [apt/dpkg with the Yocto distro](https://github.com/compulab-yokneam/Documentation/wiki/Yocto-deb-repository)|
