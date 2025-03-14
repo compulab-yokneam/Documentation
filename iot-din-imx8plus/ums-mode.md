@@ -54,9 +54,9 @@ udisksctl unmount --block-device /dev/sdg1
 udisksctl unmount --block-device /dev/sdg2
 ```
 
-7) Go back to the iot-din and stop "ums" command: crtl+
+7) Go back to the iot-din and stop "ums" command: Crtl+C
 
-8) Take the usb-cabble off the device mng port.
+8) Take the usb-cable off the device mng port.
 
 9) Reset the device.
 
