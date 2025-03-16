@@ -2,7 +2,7 @@
 
 1) Turn on the devive and stop in U-boot.
 
-2) Connect an USB to micrco_sd cable to the device mng port and to the Linux PC usb port.
+2) Connect an USB to micrco_usb cable to the device programming port (on bottom panel) and to the Linux PC usb port.
 
 ``` 
 iot-din:mng-port <-> micro_sd -- usb_a <-> Linux PC:usb-port
@@ -13,7 +13,7 @@ iot-din:mng-port <-> micro_sd -- usb_a <-> Linux PC:usb-port
 ums 0 mmc 2
 ```
 
-4) On the connecte Linux PC, make sure that the device got recognized as an usb mass storage device.
+4) On the connected Linux PC, make sure that the device got recognized as an usb mass storage device.
 
 5) Follow this [manual](https://mediawiki.compulab.com/w/index.php?title=IOT-DIN-IMX8PLUS:_Debian_Linux:_Preparing_Live_Media)
 
@@ -26,37 +26,37 @@ For instance the created device was named as `/dev/sdg`, then the command must b
 unzip -p /path/to/iot-din-imx8plus_debian-linux_2023-10-11.zip | sudo dd of=/dev/sdg bs=1M status=progress conv=fsync
 ```
 
-7) At the env of the process on the Linux PC issue this command:
+7) At the end of the process on the Linux PC issue this command:
 ```
-lsblk /dev/sdg
+lsblk /dev/sd**g**
 ```
 
 6.1) Make sure that it has two partitions.
 
 6.2) Issue these command and make sure that were carried out w/out any error.
 ```
-udisksctl mount --block-device /dev/sdg1
+udisksctl mount --block-device /dev/sd**g1**
 ```
 Browse the /dev/sdg1 device mount point; make sure that it contains the Linux kernel image and the device tree files.
 ```
-udisksctl mount --block-device /dev/sdg2
+udisksctl mount --block-device /dev/sd**g2**
 ```
 
 Browse the /dev/sdg2 device mount point; it must the the Debia rootfs; issue this command:
 ```
-cat /path/to/rootfs/etc/{issie,hostname}
+cat /path/to/rootfs/etc/{issue,hostname}
 ```
 
 6.3) Unmount both devices:
 
 ```
-udisksctl unmount --block-device /dev/sdg1
-udisksctl unmount --block-device /dev/sdg2
+udisksctl unmount --block-device /dev/sd**g1**
+udisksctl unmount --block-device /dev/sd**g2**
 ```
 
-7) Go back to the iot-din and stop "ums" command: Crtl+C
+7) Go back to the iot-din managment console and stop "ums" command: Crtl+C
 
-8) Take the usb-cable off the device mng port.
+8) Disconnect usb-cable from the device programming port.
 
 9) Reset the device.
 
