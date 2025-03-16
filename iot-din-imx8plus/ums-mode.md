@@ -28,18 +28,18 @@ unzip -p /path/to/iot-din-imx8plus_debian-linux_2023-10-11.zip | sudo dd of=/dev
 
 7) At the end of the process on the Linux PC issue this command:
 ```
-lsblk /dev/sd**g**
+lsblk /dev/sdg
 ```
 
 6.1) Make sure that it has two partitions.
 
 6.2) Issue these command and make sure that were carried out w/out any error.
 ```
-udisksctl mount --block-device /dev/sd**g1**
+udisksctl mount --block-device /dev/sdg1
 ```
 Browse the /dev/sdg1 device mount point; make sure that it contains the Linux kernel image and the device tree files.
 ```
-udisksctl mount --block-device /dev/sd**g2**
+udisksctl mount --block-device /dev/sdg2
 ```
 
 Browse the /dev/sdg2 device mount point; it must the the Debia rootfs; issue this command:
@@ -50,8 +50,8 @@ cat /path/to/rootfs/etc/{issue,hostname}
 6.3) Unmount both devices:
 
 ```
-udisksctl unmount --block-device /dev/sd**g1**
-udisksctl unmount --block-device /dev/sd**g2**
+udisksctl unmount --block-device /dev/sdg1
+udisksctl unmount --block-device /dev/sdg2
 ```
 
 7) Go back to the iot-din managment console and stop "ums" command: Crtl+C
