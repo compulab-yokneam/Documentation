@@ -82,10 +82,10 @@ wget -q -O - https://github.com/compulab-yokneam/bin/raw/refs/heads/compulab-fir
 * Turn off the device.
 * Connect a USB~micto usb cable to the iot-gate-imx8mplus programming port (micro-end) and the USB-A to a desktop PC usb port.
 * Turn on the iot-gate-imx8mplus device.
-** [on the desktop PC] Make sure that the device was recognized by the ``mfgtools``
+** [on the desktop PC] Make sure that the device was recognized by the ``mfgtools``:
 [source,code]
 sudo uuu -lsusb
-** [on the desktop PC] Update the device bootloader using the ``mfgtools``
+** [on the desktop PC] Update the device bootloader using the ``mfgtools``:
 [source,code]
 sudo uuu -v -b emmc /tmp/flash.bin
 
