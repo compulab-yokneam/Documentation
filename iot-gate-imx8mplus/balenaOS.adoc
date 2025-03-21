@@ -87,7 +87,7 @@ wget -q -O - https://github.com/compulab-yokneam/bin/raw/refs/heads/compulab-fir
 sudo uuu -lsusb
 ** [on the desktop PC] Update the device bootloader using the ``mfgtools``:
 [source,code]
-sudo uuu -v -b emmc /tmp/flash.bin
+sudo uuu -d -v -b emmc /tmp/flash.bin
 
 * Turn off the device.
 * Disconnect the cable connected to the iot-gate-imx8mplus programming portt.
