@@ -72,7 +72,7 @@ desktop: unzip the OS image before issuing the `uuu` command.
 # How to restore the CompuLab bootloader
 * Before the start:
 ** [IMPORTANT]
-Download the device bootloader from this location:
+Download the device bootloader from this location https://drive.google.com/drive/folders/1jQiP8--rddoLEUI7guRRbNSXykg_Ogev[deivce firmware].
 
 * Turn off the device.
 * Connect a USB~micto usb cable to the iot-gate-imx8mplus programming port (micro-end) and the USB-A to a desktop PC usb port.
