@@ -70,25 +70,26 @@ desktop: unzip the OS image before issuing the `uuu` command.
 |===
 
 # How to restore the CompuLab bootloader
-* Before the start:
-** [IMPORTANT]
-Download the device bootloader from this location https://drive.google.com/drive/folders/1jQiP8--rddoLEUI7guRRbNSXykg_Ogev[deivce firmware].
+## Download firmware according to the device dram options:
+* D2 or D4
+[source,code]
+wget -q -O - https://github.com/compulab-yokneam/bin/raw/refs/heads/compulab-firmware/iot-gate-imx8plus/flash.bin.d2d4.xz | xz -dc - > /tmp/flash.bin
+* D1 or D8 
+[source,code]
+wget -q -O - https://github.com/compulab-yokneam/bin/raw/refs/heads/compulab-firmware/iot-gate-imx8plus/flash.bin.d1d8.xz | xz -dc - > /tmp/flash.bin
 
+## Update firmware:
 * Turn off the device.
 * Connect a USB~micto usb cable to the iot-gate-imx8mplus programming port (micro-end) and the USB-A to a desktop PC usb port.
 * Turn on the iot-gate-imx8mplus device.
+** [on the desktop PC] Make sure that the device was recognized by the ``mfgtools``
+[source,code]
+sudo uuu -lsusb
+** [on the desktop PC] Update the device bootloader using the ``mfgtools``
+[source,code]
+sudo uuu -v -b emmc /tmp/flash.bin
 
-[cols="1,1,1"]
-|===
-|step #
-|description
-|desktop command
-
-| 1
-|Make sure that the device was recognized by the ``mfgtools``
-|sudo uuu -lsusb
-
-| 2
-|Update the device bootloader using the ``mfgtools``
-|sudo uuu -v -b emmc /path/to/imx-boot_4g
-|===
+* Turn off the device.
+* Disconnect the cable connected to the iot-gate-imx8mplus programming portt.
+* Turn on the iot-gate-imx8mplus device.
+* Make sure that the device is able to get to the U-boot prompt.
