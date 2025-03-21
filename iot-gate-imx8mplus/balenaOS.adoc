@@ -69,4 +69,26 @@ desktop: unzip the OS image before issuing the `uuu` command.
 |sudo uuu -v -b emmc_all /path/to/imx-boot_4g /path/to/balena-cloud-compulab-iot-gate-imx8plus-2.113.31+rev1-v14.9.8.img
 |===
 
-That is all.
+# How to restore the CompuLab bootloader
+* Before the start:
+** [IMPORTANT]
+Download the device bootloader from this location:
+
+* Turn off the device.
+* Connect a USB~micto usb cable to the iot-gate-imx8mplus programming port (micro-end) and the USB-A to a desktop PC usb port.
+* Turn on the iot-gate-imx8mplus device.
+
+[cols="1,1,1"]
+|===
+|step #
+|description
+|desktop command
+
+| 1
+|Make sure that the device was recognized by the ``mfgtools``
+|sudo uuu -lsusb
+
+| 2
+|Update the device bootloader using the ``mfgtools``
+|sudo uuu -v -b emmc /path/to/imx-boot_4g
+|===
