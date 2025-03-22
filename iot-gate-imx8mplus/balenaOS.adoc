@@ -90,6 +90,6 @@ sudo uuu -lsusb
 sudo uuu -d -v -b emmc /tmp/flash.bin
 
 * Turn off the device.
-* Disconnect the cable connected to the iot-gate-imx8mplus programming portt.
+* Disconnect the cable connected to the device programming port.
 * Turn on the iot-gate-imx8mplus device.
 * Make sure that the device is able to get to the U-boot prompt.
