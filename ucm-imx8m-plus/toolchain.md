@@ -8,7 +8,7 @@ whet https://www.kernel.org/pub/tools/crosstool/files/bin/x86_64/14.2.0/x86_64-g
 
 * Install it:
 <pre>
-xz -dc ~/Downloads/x86_64-gcc-14.2.0-nolibc-aarch64-linux.tar.xz | sudo tar -C -C /opt -xf -
+xz -dc ~/Downloads/x86_64-gcc-14.2.0-nolibc-aarch64-linux.tar.xz | sudo tar -C /opt -xf -
 </pre>
 
 * Set environment variables:
