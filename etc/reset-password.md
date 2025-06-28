@@ -10,7 +10,7 @@
 ```
 setenv boot_opt "init=/usr/local/bin/cl-init"; run bsp_bootcmd;
 ```
-## This scren shows up; press ``Stop Auto Installer``
+## This screen shows up; press ``Stop Auto Installer``
 ```
 
  +--------cl-deploy will get started in 5 seconds-----------+  
