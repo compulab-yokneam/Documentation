@@ -8,7 +8,7 @@
 * Turn on the imx8mp device and stop in U-boot.
 * Type:
 ```
-setenv boot_opt "init=/usr/local/bin/cl-init"; run bsp_bootcmd;
+setenv boot_opt "init=/usr/local/bin/cl-init"; setenv console "ttymxc1,115200"; run bsp_bootcmd;
 ```
 ## This screen shows up; press ``Stop Auto Installer``
 ```
