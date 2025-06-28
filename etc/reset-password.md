@@ -10,7 +10,7 @@
 ```
 setenv boot_opt "init=/usr/local/bin/cl-init"; run bsp_bootcmd;
 ```
-## This scren show up, ``Stop Auto Installes``
+## This scren shows up; press ``Stop Auto Installer``
 ```
 
  +--------cl-deploy will get started in 5 seconds-----------+  
@@ -30,7 +30,7 @@ setenv boot_opt "init=/usr/local/bin/cl-init"; run bsp_bootcmd;
  +----------------------------------------------------------+  
 ```
 
-## Nex screen show up; it has a long PS1 prompt with a ">" at the end
+## Next screen shows up; it has a long PS1 prompt with a ">" at the end
 ```
   on/E -- Enable auto install boot mode
  off/D -- Disable auto install boot mode
