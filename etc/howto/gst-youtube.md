@@ -1,5 +1,8 @@
 #  How use gstreamer to play/stream youtube video
 
+
+* Source<br>https://forum.manjaro.org/t/how-use-gstreamer-to-play-stream-youtube-video-in-1080-60-or-higher-with-audio/175760
+
 * Tool
 ```
 curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp_linux_aarch64 -o /usr/local/bin/youtube-dl
