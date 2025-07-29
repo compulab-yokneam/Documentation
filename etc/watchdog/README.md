@@ -7,8 +7,12 @@
 sudo -i
 ```
 
-* Run this command:
-
+* A user initiated panic command:
 ```
 bash <(curl -L https://raw.githubusercontent.com/compulab-yokneam/Documentation/refs/heads/master/etc/watchdog/watchdog_test.sh)
+```
+
+* A fast reboot command:
+```
+bash <(curl -L https://raw.githubusercontent.com/compulab-yokneam/Documentation/refs/heads/master/etc/watchdog/fast_reboot.sh)
 ```
