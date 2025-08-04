@@ -5,7 +5,7 @@ export OEI_CROSS_COMPILE=${SM_CROSS_COMPILE}
 export TOOLS=/opt/imx-oei
 export ARCH=arm
 sudo mkdir -p ${TOOLS}
-ln -sf dirname $(dirname ${SM_CROSS_COMPILE}) ${TOOLS}/
+sudo ln -sf dirname $(dirname ${SM_CROSS_COMPILE}) ${TOOLS}/
 ```
 
 * imx-oei
