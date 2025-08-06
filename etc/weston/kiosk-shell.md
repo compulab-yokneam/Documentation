@@ -23,3 +23,8 @@ keymap_layout=us
 ```
 WAYLAND_DEBUG=1 chromium --no-sandbox --kiosk 2>&1 | | awk '/xdg_shell|wl_shell|set_app_id/'
 ```
+
+# google resources
+* [weston.ini + kiosk-shell](https://www.google.com/search?q=weston+kiosk+shell+example+weston.ini+file&sca_esv=679a45043caa68e1&sxsrf=AE3TifOUZP9PqITQYtjFmIkJnRqYT_eu2Q%3A1754509535636&ei=37CTaJvNJvCjkdUPg6XLIQ&oq=weston+kiosk+shell+example+weston.ini&gs_lp=Egxnd3Mtd2l6LXNlcnAiJXdlc3RvbiBraW9zayBzaGVsbCBleGFtcGxlIHdlc3Rvbi5pbmkqAggAMgUQIRigAUjlXlCMNViGUXABeAGQAQCYAe8BoAG3D6oBBjAuMTAuMbgBA8gBAPgBAZgCDKAC7A_CAgoQABiwAxjWBBhHwgIGEAAYFhgewgIIEAAYgAQYogTCAgUQIRifBcICBxAhGKABGAqYAwCIBgGQBgiSBwUxLjkuMqAHmimyBwUwLjkuMrgH5g_CBwUwLjkuM8gHHg&sclient=gws-wiz-serp)
+
+* [weston.ini + app_id](https://www.google.com/search?q=weston+kiosk+shell+how+to+get+app_id&oq=weston+kiosk+shell+how+to+get+app_id&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRigATIHCAIQIRigATIHCAMQIRigATIHCAQQIRiPAjIHCAUQIRiPAtIBCTE2MDIzajBqN6gCALACAA&sourceid=chrome&ie=UTF-8)
