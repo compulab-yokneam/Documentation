@@ -10,12 +10,12 @@ xwayland=true
 [output]
 name=HDMI-A-1
 mode=preferred
-app-ids=org.example.YourKioskApp
+# app-ids=org.example.YourKioskApp
 
 [output]
 name=HDMI-A-2
 mode=preferred
-app-ids=org.example.AnotherKioskApp
+# app-ids=org.example.AnotherKioskApp
 
 [keyboard]
 keymap_layout=us
@@ -23,6 +23,8 @@ keymap_layout=us
 
 ## Run Chromium
 ```
+# Restart the weston after editing the /etc/xdg/weston/weston.ini
+systemctl restart weston
 chromium --no-sandbox --kiosk &>/dev/null &
 ```
 
