@@ -13,7 +13,7 @@ mode=preferred
 # app-ids=org.example.YourKioskApp
 
 [output]
-name=HDMI-A-2
+name=LVDS-1
 mode=preferred
 # app-ids=org.example.AnotherKioskApp
 
@@ -30,7 +30,7 @@ chromium --no-sandbox --kiosk &>/dev/null &
 
 ## Get app_id (optional)
 ```
-WAYLAND_DEBUG=1 chromium --no-sandbox --kiosk 2>&1 | | awk '/xdg_shell|wl_shell|set_app_id/'
+WAYLAND_DEBUG=1 /path/to/application 2>&1 | awk '/xdg_shell|wl_shell|set_app_id/'
 ```
 
 # google resources
