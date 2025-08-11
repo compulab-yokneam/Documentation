@@ -5,7 +5,7 @@ wget --quiet -O - https://github.com/bluenviron/mediamtx/releases/download/v1.13
 ```
 * Make it run:
 ```
-/usr/local/bin/mediamtx &>/dev/null &
+/usr/local/bin/mediamtx /usr/local/bin/mediamtx.yml &>/dev/null &
 ```
 # Host
 ```
