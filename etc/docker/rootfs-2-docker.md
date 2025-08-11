@@ -18,3 +18,6 @@ docker build -t your-image-name .
 ```
 docker run --interactive --tty --privileged your-image-name
 ```
+
+* Usefull information for the future use:
+<br>https://developer.tenten.co/how-to-migrate-docker-container-to-another-server-in-ubuntu-2204
