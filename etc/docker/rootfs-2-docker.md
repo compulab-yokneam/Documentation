@@ -16,7 +16,7 @@ docker build -t your-image-name .
 
 * Run the Container:<br>Once the image is built, you can run a container from it.
 ```
-docker run --rm --interactive --tty --privileged your-image-name
+docker run --network=host --rm --interactive --tty --privileged your-image-name
 ```
 
 * Save the Container:
