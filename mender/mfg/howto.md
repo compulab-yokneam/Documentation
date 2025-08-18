@@ -2,7 +2,7 @@
 
 ## Customer side
 
-* Define the MACHINE environment variadle:
+* Define the MACHINE environment variable:
 ```
 export MACHINE=<iot-gate-imx8|iot-gate-imx8plus>
 ```
