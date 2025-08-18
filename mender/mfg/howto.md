@@ -4,7 +4,7 @@
 
 * Define the MACHINE environment variadle:
 ```
-export MACHINE=iot-gate-imx8
+export MACHINE=<iot-gate-imx8|iot-gate-imx8plus>
 ```
 
 * How to prepare file for manufacturing:<br>
