@@ -24,7 +24,7 @@ devtool modify linux-compulab
 touch workspace/sources/linux-compulab/README.new
 git -C workspace/sources/linux-compulab add README.new
 git -C workspace/sources/linux-compulab commit -s -m"Add the README.new file"
-devtool update-recipe --append ../sources/meta-modifications-layer linix-compulab
+devtool update-recipe --append ../sources/meta-modifications-layer linux-compulab
 ```
 
 * u-boot-compulab developmen process:
