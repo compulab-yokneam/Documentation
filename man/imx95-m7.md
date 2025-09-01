@@ -61,8 +61,9 @@ boot
 ```
 * Linux login prompt turns out, login as ``root`` and issue:
 ```
+echo stop > /sys/class/remoteproc/remoteproc1/state
 echo -n "imx95-15x15-evk_m7_TCM_rpmsg_lite_str_echo_rtos.elf" > /sys/class/remoteproc/remoteproc1/firmware
-echo start >  /sys/class/remoteproc/remoteproc1/state
+echo start > /sys/class/remoteproc/remoteproc1/state
 modprobe imx_rpmsg_tty
 [[ -c /dev/ttyRPMSG30 ]] && echo "ping from linux" > /dev/ttyRPMSG30 || echo "Something goes wrong"
 ```
