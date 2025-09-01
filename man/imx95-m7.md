@@ -2,11 +2,21 @@
 
 ## Prerequisites:
 
+* SW
+  
 |Module| ... |
 |---|---|
 |imx-system-manager|config: mx95cplrpmsg|
-|imx-boot|target: lpboot_sm_a55|
+|imx-boot|target: all (m33 loads/boots/starts m7); lpboot_sm_a55|
 |fdtfile|ucm-imx95-rpmsg.dtb|
+
+* HW
+
+|Module| ... |
+|---|---|
+|EVK|ucm-imx95 on SB-UCMIMX95|
+|M33-Console|UARTB: P19[2(rx),4(tx),6(gnd)]
+|M7-Console|UARTA: P20[2(rx),4(tx),6(gnd)]
 
 ## How to proceed
 ### Load and run the m7 core from u-boot
