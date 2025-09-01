@@ -1,6 +1,26 @@
 # imx95 m7 how to
 
-## Prerequisites:
+## Introduction
+NXP imx-system-manager has two configurations that provide different permissions two each core.
+
+* ``mx95cp`` permission matrix
+
+|*|M33|M7|A55
+|---|---|---|---|
+|M33|---|full|full|
+|M7|---|---|suspemd/resume;rpmsg|
+|A55|---|rpmsg|---|
+
+* ``mx95cprpmsg`` permission matrix
+ 
+|*|M33|M7|A55
+|---|---|---|---|
+|M33|---|full|full|
+|M7|---|---|suspemd/resume;rpmsg|
+|A55|---|full|---|
+
+
+## Prerequisites
 
 * SW
   
