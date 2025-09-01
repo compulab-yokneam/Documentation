@@ -43,6 +43,7 @@ NXP imx-system-manager has two configurations that provide different permissions
 
 * Turn on the device and stop in U-Boot and issue:
 ```
+stopaux 0 1
 prepaux 1
 load mmc 0:2 ${loadaddr} lib/firmware/imx95-19x19-evk_m7_TCM_power_mode_switch.bin
 cp.b ${loadaddr} 0x203c0000 ${filesize}
