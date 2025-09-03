@@ -6,7 +6,7 @@
 
 ```
 cd ${BUILDDIR}
-cat << eof | tee -a conf/local.cond
+cat << eof | tee -a conf/local.conf
 IMXBOOT_VARIANT = "rpmsg"
 eof
 ```
@@ -14,7 +14,7 @@ eof
 * Set a m7 firmware that will be a part of the flash image:
 
 ```
-cat << eof | tee -a conf/local.cond
+cat << eof | tee -a conf/local.conf
 M4_DEFAULT_IMAGE_MX95:mx95-generic-bsp = "imx95-19x19-evk_m7_TCM_rpmsg_lite_str_echo_rtos.bin"
 eof
 ```
