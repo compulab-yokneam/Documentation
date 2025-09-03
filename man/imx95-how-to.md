@@ -11,7 +11,7 @@ IMXBOOT_VARIANT = "rpmsg"
 eof
 ```
 
-* Set a m7 firmware that will be a part of the flash image:
+* Set an m7 firmware that will be a part of the flash image:
 
 ```
 cat << eof | tee -a conf/local.conf
