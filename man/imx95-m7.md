@@ -28,7 +28,7 @@ NXP imx-system-manager has two configurations that provide different permissions
 |---|---|
 |imx-system-manager|config: mx95cplrpmsg|
 |imx-boot|target: all (m33 loads/boots/starts m7); lpboot_sm_a55|
-|fdtfile|ucm-imx95-rpmsg.dtb|
+|fdtfile|ucm-imx95.dtb|
 
 * HW
 
