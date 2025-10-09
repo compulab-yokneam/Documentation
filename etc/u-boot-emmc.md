@@ -27,16 +27,31 @@
 
 ## Flash the u-boot
 
+* imx8mp
+
+|boot partition|partition id|offset|
+|---|---|---|
+|user|0|33K|
+|boot0|1|0K|
+|boot1|2|0K|
+
 * user partition:
 ```
 echo 0 > /sys/class/block/mmcblk0/force_ro
-dd if=/boot/imx-boot-cl-som-imx8-sd.bin-flash_evk of=/dev/mmcblk0 bs=1K seek=33
+dd if=/boot/imx-boot-ucm-imx8m-plus-sbev-sd.bin-flash_evk of=/dev/mmcblk0 bs=1K seek=33
 mmc bootpart enable 0 0 /dev/mmcblk0
 ```
 
-* boot partition:
+* boot partition 0:
 ```
 echo 0 > /sys/class/block/mmcblk0boot0/force_ro
-dd if=/boot/imx-boot-cl-som-imx8-sd.bin-flash_evk of=/dev/mmcblk0boot0 bs=1K seek=33
+dd if=/boot/imx-boot-ucm-imx8m-plus-sbev-sd.bin-flash_evk of=/dev/mmcblk0boot0 bs=1K seek=0
 mmc bootpart enable 1 0 /dev/mmcblk0
+```
+
+* boot partition 1:
+```
+echo 0 > /sys/class/block/mmcblk0boot1/force_ro
+dd if=/boot/imx-boot-ucm-imx8m-plus-sbev-sd.bin-flash_evk of=/dev/mmcblk0boot1 bs=1K seek=0
+mmc bootpart enable 2 0 /dev/mmcblk0
 ```
