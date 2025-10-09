@@ -1,7 +1,7 @@
 #!/bin/bash -ex
 
 function issue_qemu() {
-qemu-system-aarch64 -smp 8 -m 1024 -cpu cortex-a53 \
+qemu-system-aarch64 -smp 8 -m 4096 -cpu cortex-a53 \
 	-machine type=virt,gic-version=3 \
 	-kernel ${KERNEL_IMAGE} \
 	-display none \
