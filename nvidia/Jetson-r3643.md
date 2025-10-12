@@ -69,3 +69,9 @@ sudo -E make install -C kernel
 sudo -E make modules_install
 sudo cp -a kernel-devicetree/generic-dts/dtbs ${INSTALL_MOD_PATH}/boot/
 ```
+
+# Rootfs mods
+```
+systemctl disable nv-oem-config.target
+systemctl disable nv-l4t-bootloader-config.service
+```
