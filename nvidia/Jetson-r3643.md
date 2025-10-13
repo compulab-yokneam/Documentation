@@ -68,6 +68,7 @@ export INSTALL_MOD_PATH=${WORKDIR}/sources/Linux_for_Tegra/rootfs/
 sudo -E make install -C kernel
 sudo -E make modules_install
 sudo cp -a kernel-devicetree/generic-dts/dtbs ${INSTALL_MOD_PATH}/boot/
+sudo cp ${KERNEL_HEADERS}/arch/arm64/boot/Image ${INSTALL_MOD_PATH}/boot/
 ```
 
 # Rootfs mods
