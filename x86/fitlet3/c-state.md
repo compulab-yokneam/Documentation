@@ -5,7 +5,7 @@
 cat << eof | tee /opt/c-state.sh
 #!/bin/bash -x
 echo "C-STATE: Starting updating the c-state ..." > /dev/kmsg
-for f in /sys/devices/system/cpu/cpu*/cpuidle/state*/disable; do echo 1 > $f; done
+for f in /sys/devices/system/cpu/cpu*/cpuidle/state*/disable; do echo 1 > \$f; done
 echo "C-STATE: Updating the c-state [done]" > /dev/kmsg
 eof
 chmod a+x /opt/c-state.sh
