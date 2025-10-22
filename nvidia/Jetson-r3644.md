@@ -2,7 +2,7 @@
 
 * NVidia Jetson Linux: https://developer.nvidia.com/embedded/jetson-linux-r3644
 
-## Setup environment:
+# Setup environment:
 * Make the WorkDir:
 ```
 mkdir jetson-linux-r3644 && cd  jetson-linux-r3644
@@ -37,8 +37,7 @@ cd ${WORKDIR}/sources/Linux_for_Tegra/source
 export RELEASE_TAG=jetson_36.4.4
 ./source_sync.sh -t ${RELEASE_TAG}
 ```
-
-# Environmnet
+# Cross compiler environmnet
 ```
 export ARCH=arm64
 export CROSS_COMPILE=${WORKDIR}/tools/aarch64--glibc--stable-2022.08-1/bin/aarch64-buildroot-linux-gnu-
@@ -87,6 +86,16 @@ sudo ./tools/kernel_flash/l4t_initrd_flash.sh --external-device nvme0n1p1 -c too
 * Bootloader
 ```
 sudo ./tools/kernel_flash/l4t_initrd_flash.sh -c tools/kernel_flash/flash_l4t_external.xml -p "-c bootloader/generic/cfg/flash_t234_qspi.xml --no-systemimg" --network usb0 edge-ai external
+```
+
+# Backup & Restore
+* Backup
+```
+sudo ./tools/backup_restore/l4t_backup_restore.sh -b edge-ai
+```
+* Restore
+```
+sudo ./tools/backup_restore/l4t_backup_restore.sh -b edge-ai
 ```
 
 ## CompuLab
