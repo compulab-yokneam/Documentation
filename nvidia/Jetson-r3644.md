@@ -1,9 +1,9 @@
 # Start from here
-https://developer.nvidia.com/embedded/jetson-linux-r3643
+https://developer.nvidia.com/embedded/jetson-linux-r3644
 ## Setup environment:
 * Make the WorkDir:
 ```
-mkdir jetson-linux-r3643 && cd  jetson-linux-r3643
+mkdir jetson-linux-r3644 && cd  jetson-linux-r3644
 export WORKDIR=$(pwd)
 ```
 * Make more directories
@@ -19,10 +19,10 @@ wget -P downloads https://developer.nvidia.com/downloads/embedded/l4t/r36_releas
 ```
 tar -xpf ${WORKDIR}/downloads/aarch64--glibc--stable-2022.08-1.tar.bz2 -C ${WORKDIR}/tools
 ```
-* Download [Driver Package (BSP)](https://developer.nvidia.com/downloads/embedded/l4t/r36_release_v4.3/release/Jetson_Linux_r36.4.3_aarch64.tbz2):
+* Download [Driver Package (BSP)](https://developer.nvidia.com/downloads/embedded/l4t/r36_release_v4.4/release/Jetson_Linux_r36.4.4_aarch64.tbz2):
 ```
 cd ${WORKDIR}
-wget -P downloads https://developer.nvidia.com/downloads/embedded/l4t/r36_release_v4.3/release/Jetson_Linux_r36.4.3_aarch64.tbz2
+wget -P downloads https://developer.nvidia.com/downloads/embedded/l4t/r36_release_v4.4/release/Jetson_Linux_r36.4.4_aarch64.tbz2
 ```
 * Extract the BSP archive:
 ```
@@ -32,7 +32,7 @@ tar -xpf downloads/Jetson_Linux_r36.4.3_aarch64.tbz2 -C sources
 * Go to the source folder and download all sources:
 ```
 cd ${WORKDIR}/sources/Linux_for_Tegra/source
-export RELEASE_TAG=jetson_36.4.3
+export RELEASE_TAG=jetson_36.4.4
 ./source_sync.sh -t ${RELEASE_TAG}
 ```
 
