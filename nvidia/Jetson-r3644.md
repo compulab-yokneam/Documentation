@@ -1,7 +1,6 @@
 # Intro
 
-* NVidia original release note: https://developer.nvidia.com/embedded/jetson-linux-r3644
-* CompuLab development snapshot: https://github.com/compulab-yokneam/edge-ai-linux/blob/master/README.md
+* NVidia Jetson Linux: https://developer.nvidia.com/embedded/jetson-linux-r3644
 
 ## Setup environment:
 * Make the WorkDir:
@@ -89,3 +88,6 @@ sudo ./tools/kernel_flash/l4t_initrd_flash.sh --external-device nvme0n1p1 -c too
 ```
 sudo ./tools/kernel_flash/l4t_initrd_flash.sh -c tools/kernel_flash/flash_l4t_external.xml -p "-c bootloader/generic/cfg/flash_t234_qspi.xml --no-systemimg" --network usb0 edge-ai external
 ```
+
+## CompuLab
+* CompuLab development snapshot: https://github.com/compulab-yokneam/edge-ai-linux/blob/master/README.md
