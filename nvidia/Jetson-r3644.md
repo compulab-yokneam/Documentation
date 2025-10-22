@@ -1,5 +1,8 @@
-# Start from here
-https://developer.nvidia.com/embedded/jetson-linux-r3644
+# Intro
+
+* NVidia original release note: https://developer.nvidia.com/embedded/jetson-linux-r3644
+* CompuLab development snapshot: https://github.com/compulab-yokneam/edge-ai-linux/blob/master/README.md
+
 ## Setup environment:
 * Make the WorkDir:
 ```
