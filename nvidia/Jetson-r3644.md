@@ -30,6 +30,7 @@ wget -P downloads https://developer.nvidia.com/downloads/embedded/l4t/r36_releas
 ```
 cd ${WORKDIR}
 tar -xpf downloads/Jetson_Linux_r36.4.3_aarch64.tbz2 -C sources
+export L4T_ROOT=${WORKDIR}/sources/Linux_for_Tegra
 ```
 * Go to the source folder and download all sources:
 ```
