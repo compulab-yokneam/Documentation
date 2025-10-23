@@ -64,13 +64,18 @@ mkdir ${WORKDIR}/sources/Linux_for_Tegra/rootfs/{boot,lib} -p
 export INSTALL_MOD_PATH=${WORKDIR}/sources/Linux_for_Tegra/rootfs/
 ```
 
-* Issue install
+* Issue install into ``rootfs``:
 ```
 export INSTALL_MOD_PATH=${WORKDIR}/sources/Linux_for_Tegra/rootfs/
 sudo -E make install -C kernel
 sudo -E make modules_install
 sudo cp -a kernel-devicetree/generic-dts/dtbs ${INSTALL_MOD_PATH}/boot/
 sudo cp ${KERNEL_HEADERS}/arch/arm64/boot/Image ${INSTALL_MOD_PATH}/boot/
+```
+
+* Copy the device tree files to the ``${L4T_ROOT}/kernel/dtb``:
+```
+sudo cp -a kernel-devicetree/generic-dts/dtbs/* ${L4T_ROOT}/kernel/dtb/
 ```
 
 # Rootfs mods
