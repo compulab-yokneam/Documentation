@@ -24,24 +24,24 @@ tar -xpf ${WORKDIR}/downloads/aarch64--glibc--stable-2022.08-1.tar.bz2 -C ${WORK
 * Download [Driver Package (BSP)](https://developer.nvidia.com/downloads/embedded/L4T/r38_Release_v2.1/release/Jetson_Linux_R38.2.1_aarch64.tbz2):
 ```
 cd ${WORKDIR}
-wget -P downloads https://developer.nvidia.com/downloads/embedded/l4t/r36_release_v4.4/release/Jetson_Linux_r36.4.4_aarch64.tbz2
+wget -P downloads https://developer.nvidia.com/downloads/embedded/l4t/r36_release_v4.4/release/Jetson_Linux_r38.2.1_aarch64.tbz2
 ```
 * Extract the BSP archive:
 ```
 cd ${WORKDIR}
-tar -xpf downloads/Jetson_Linux_r36.4.3_aarch64.tbz2 -C sources
+tar -xpf downloads/Jetson_Linux_r38.2.1_aarch64.tbz2 -C sources
 export L4T_ROOT=${WORKDIR}/sources/Linux_for_Tegra
 ```
 * Go to the source folder and download all sources:
 ```
 cd ${WORKDIR}/sources/Linux_for_Tegra/source
-export RELEASE_TAG=jetson_36.4.4
+export RELEASE_TAG=jetson_38.2.1
 ./source_sync.sh -t ${RELEASE_TAG}
 ```
 # Cross compiler environmnet
 ```
 export ARCH=arm64
-export CROSS_COMPILE=${WORKDIR}/tools/aarch64--glibc--stable-2022.08-1/bin/aarch64-buildroot-linux-gnu-
+export CROSS_COMPILE=${WORKDIR}/tools/tools/x-tools/aarch64-none-linux-gnu/bin/aarch64-none-linux-gnu-
 ```
 # Build
 * Goto to the source root and set an ev `KERNEL_HEADERS`
