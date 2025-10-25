@@ -106,3 +106,4 @@ sudo ./tools/backup_restore/l4t_backup_restore.sh -b edge-ai
 
 ## CompuLab
 * CompuLab development snapshot: https://github.com/compulab-yokneam/edge-ai-linux/blob/master/README.md
+* Yet anover CompuLab resource: https://github.com/compulab-yokneam/compulab-l4t
