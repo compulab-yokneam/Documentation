@@ -12,7 +12,7 @@ sudo nv-update-initrd
 ```
 * Update the ``/boot/extlinux/extlinux.conf`` file:
 ```
-sudo sed -i "/root=/i\      FDT /boot/dtbs/tegra234-p3768-0000+p3767-0005-nv-super-compulab.dtb" /boot/extlinux/extlinux.conf
+sudo sed -i "s/\(APPEND\)/\1 net.ifnames=0/g;/root=/i\      FDT /boot/dtbs/tegra234-p3768-0000+p3767-0005-nv-super-compulab.dtb" /boot/extlinux/extlinux.conf
 ```
 * Reboot machine, login and issue:
 ```
