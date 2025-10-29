@@ -4,7 +4,7 @@
 restore=${restore:-"no"}
 IWLWIFI_DIR=/lib/firmware/iwlwifi.d
 IWLWIFI_PAT=/lib/firmware/iwlwifi-
-IWLWIF_FW="iwlwifi-cc-a0-62.ucode iwlwifi-ty-a0-gf-a0-62.ucode"
+IWLWIF_FW="iwlwifi-cc-a0-62.ucode iwlwifi-ty-a0-gf-a0-65.ucode"
 
 main() {
 cat << eof
