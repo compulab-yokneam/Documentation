@@ -107,7 +107,7 @@ sudo ./tools/backup_restore/l4t_backup_restore.sh -b edge-ai
 ```
 * Restore
 ```
-sudo ./tools/backup_restore/l4t_backup_restore.sh -b edge-ai
+sudo ./tools/backup_restore/l4t_backup_restore.sh -r edge-ai
 ```
 
 ## CompuLab
