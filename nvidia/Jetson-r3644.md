@@ -79,9 +79,9 @@ sudo cp -a kernel-devicetree/generic-dts/dtbs/* ${L4T_ROOT}/kernel/dtb/
 ```
 
 # Rootfs mods
+* Update the ``/boot/extlinux/extlinux.conf`` file:<br>
 ```
-systemctl disable nv-oem-config.target
-systemctl disable nv-l4t-bootloader-config.service
+sudo sed -i "/APPEND/i\      FDT /boot/dtbs/tegra234-p3768-0000+p3767-0005-nv-super-device.dtb" ${INSTALL_MOD_PATH}/boot/extlinux/extlinux.conf
 ```
 
 # Flashing the device
