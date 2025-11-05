@@ -7,8 +7,8 @@
     |---|---|
 
     ```
-    sudo sed -i "/FDT/d" /boot/extlinux/extlinux.conf
-    sudo sed -i "/root=/i\      FDT /boot/dtbs/tegra234-p3768-0000+p3767-0005-nv-super-host.dtb" /boot/extlinux/extlinux.conf
+    sudo -i
+    bash <(wget -qO -  https://raw.githubusercontent.com/compulab-yokneam/Documentation/refs/heads/master/nvidia/fdt.sh)
     ```
   * Optional: Disable the network interfaces renaming:
     ```
