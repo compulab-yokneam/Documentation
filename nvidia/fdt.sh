@@ -1,7 +1,7 @@
 #!/bin/bash 
 
 extlinux=/boot/extlinux/extlinux.conf
-BR=$(awk '(/COMPATIBLE_SPEC/)&&($0=$2)' /etc/nv_boot_control.conf)
+BR=$(awk '(/TNSPEC/)&&($0=$2)' /etc/nv_boot_control.conf)
 BR=(${BR//-/ })
 BR=${BR[2]}
 FDT="/boot/dtbs/tegra234-p3768-0000+p3767-${BR}-nv-super-host.dtb"
