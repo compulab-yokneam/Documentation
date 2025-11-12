@@ -60,7 +60,7 @@ make -j 16 dtbs
 
 * Prepare destination
 ```
-mkdir ${WORKDIR}/sources/Linux_for_Tegra/rootfs/{boot,lib} -p
+mkdir ${WORKDIR}/sources/Linux_for_Tegra/rootfs/{boot/dtbs,lib} -p
 export INSTALL_MOD_PATH=${WORKDIR}/sources/Linux_for_Tegra/rootfs/
 ```
 
@@ -69,7 +69,7 @@ export INSTALL_MOD_PATH=${WORKDIR}/sources/Linux_for_Tegra/rootfs/
 export INSTALL_MOD_PATH=${WORKDIR}/sources/Linux_for_Tegra/rootfs/
 sudo -E make install -C kernel
 sudo -E make modules_install
-sudo cp -a kernel-devicetree/generic-dts/dtbs ${INSTALL_MOD_PATH}/boot/
+sudo cp -a kernel-devicetree/generic-dts/dtbs/*-nv-super*.dtb ${INSTALL_MOD_PATH}/boot/dtbs/
 sudo cp ${KERNEL_HEADERS}/arch/arm64/boot/Image ${INSTALL_MOD_PATH}/boot/
 ```
 
@@ -79,25 +79,30 @@ sudo cp -a kernel-devicetree/generic-dts/dtbs/* ${L4T_ROOT}/kernel/dtb/
 ```
 
 # Rootfs mods
-* Update the ``/boot/extlinux/extlinux.conf`` file:<br>
+* (optional) Update the ``/boot/extlinux/extlinux.conf`` file:<br>
 ```
 sudo sed -i "/^ *APPEND/i\      FDT /boot/dtbs/tegra234-p3768-0000+p3767-0005-nv-super-device.dtb" ${INSTALL_MOD_PATH}/boot/extlinux/extlinux.conf
 ```
 
 # Flashing the device
+  |Revision|Configuration ev|
+  |---|---|
+  |rev1v1|export EDGE_AI="edge-ai"|
+  |rev1v2|export EDGE_AI="edge-ai-rev1v2"|
+
 * The rootfs+bootlader
 ```
 sudo ./tools/kernel_flash/l4t_initrd_flash.sh --external-device nvme0n1p1 \
   -c tools/kernel_flash/flash_l4t_t234_nvme.xml \
   -p "-c bootloader/generic/cfg/flash_t234_qspi.xml" \
-  --showlogs --network usb0 edge-ai external | tee /tmp/edge-ai-rootfs-bootloader.log
+  --showlogs --network usb0 ${EDGE_AI:-"edge-ai-rev1v2"} external | tee /tmp/edge-ai-rootfs-bootloader.log
 ```
 * Bootloader
 ```
 sudo ./tools/kernel_flash/l4t_initrd_flash.sh \
   -c tools/kernel_flash/flash_l4t_external.xml \
   -p "-c bootloader/generic/cfg/flash_t234_qspi.xml --no-systemimg" \
-  --network usb0 edge-ai external | tee /tmp/edge-ai-bootloader.log
+  --network usb0 ${EDGE_AI:-"edge-ai-rev1v2"} external | tee /tmp/edge-ai-bootloader.log
 ```
 
 # Backup & Restore
