@@ -80,6 +80,7 @@ sudo cp -a kernel-devicetree/generic-dts/dtbs/* ${L4T_ROOT}/kernel/dtb/
 
 # Rootfs mods
 * (optional) Update the ``/boot/extlinux/extlinux.conf`` file:<br>
+As of now the CompuLab customized rootfs has a servise that is in charge of updating the ``extlinux.conf`` at the very 1-st boot.
 ```
 sudo sed -i "/^ *APPEND/i\      FDT /boot/dtbs/tegra234-p3768-0000+p3767-0005-nv-super-device.dtb" ${INSTALL_MOD_PATH}/boot/extlinux/extlinux.conf
 ```
@@ -87,22 +88,22 @@ sudo sed -i "/^ *APPEND/i\      FDT /boot/dtbs/tegra234-p3768-0000+p3767-0005-nv
 # Flashing the device
   |Revision|Configuration ev|
   |---|---|
-  |rev1v1|export EDGE_AI="edge-ai"|
-  |rev1v2|export EDGE_AI="edge-ai-rev1v2"|
+  |rev1v1|export EDGE_AI="edge-ai-rev1v1"|
+  |rev1v2|export EDGE_AI="edge-ai"|
 
 * The rootfs+bootlader
 ```
 sudo ./tools/kernel_flash/l4t_initrd_flash.sh --external-device nvme0n1p1 \
   -c tools/kernel_flash/flash_l4t_t234_nvme.xml \
   -p "-c bootloader/generic/cfg/flash_t234_qspi.xml" \
-  --showlogs --network usb0 ${EDGE_AI:-"edge-ai-rev1v2"} external | tee /tmp/edge-ai-rootfs-bootloader.log
+  --showlogs --network usb0 ${EDGE_AI:-"edge-ai"} external | tee /tmp/edge-ai-rootfs-bootloader.log
 ```
 * Bootloader
 ```
 sudo ./tools/kernel_flash/l4t_initrd_flash.sh \
   -c tools/kernel_flash/flash_l4t_external.xml \
   -p "-c bootloader/generic/cfg/flash_t234_qspi.xml --no-systemimg" \
-  --network usb0 ${EDGE_AI:-"edge-ai-rev1v2"} external | tee /tmp/edge-ai-bootloader.log
+  --network usb0 ${EDGE_AI:-"edge-ai"} external | tee /tmp/edge-ai-bootloader.log
 ```
 
 # Backup & Restore
