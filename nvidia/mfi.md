@@ -1,10 +1,17 @@
 # MFI
 
 * Prerequisites:
-  * mfi_edge-ai.tar.gz -- MassFlash Orin NX 16G tarball
-  * mfi_edge-ai.sh -- MassFlash deployer
+  * Compulab SW:
+    * mfi_edge-ai.tar.gz -- MassFlash Orin NX 16G tarball
+    * mfi_edge-ai.sh -- MassFlash deployer
+  * CompuLab HW:
+    * EdgeAI-ORN:Jetson™ Orin NX 16GB
+  * Connectivity:
+    * The EdgeAI-ORN device must be connected to a Linux desktop by:
+      * Recovery USB port
+      * Console USB port
 
-* Download both file to a Linux Desktop:
+* Download both file to a Linux desktop:
 * Unpack the ``mfi_edge-ai.tar.gz``
   ```
   mkdir -p /path/to/mfi-folder
