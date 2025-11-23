@@ -11,7 +11,7 @@
       * Recovery USB port
       * Console USB port
 
-* Download both file to a Linux desktop:
+* Download both file to the Linux desktop:
 * Unpack the ``mfi_edge-ai.tar.gz``
   ```
   mkdir -p /path/to/mfi-folder
