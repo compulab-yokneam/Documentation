@@ -1,7 +1,7 @@
 # MFI
 
 * Prerequisites:
-  * Compulab SW:
+  * CompuLab SW:
     * mfi_edge-ai.tar.gz -- MassFlash Orin NX 16G tarball
     * mfi_edge-ai.sh -- MassFlash deployer
   * CompuLab HW:
