@@ -3,10 +3,11 @@
 ## Boot media
 The cl-som-imx8 hardware design allows using either `mmc` or `emmc` as the device boot media.
 
-Device is a boot media if it meats this requirements:
+Device is a boot media if it meats these requirements:
 The device is able to boot up from a selected boot device in case that the correct boot loader is at 0x33K offset of that device.
 |====
-| Warning | In case that the bootloader is not found the device refuses to boot.
+| Warning | In case that the bootloader is not found the device jumps into the SDP mode.
+In this case the NXP MfgTool must be used.
 |====
 
 
