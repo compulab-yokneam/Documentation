@@ -38,7 +38,7 @@ devtool update-recipe --append ../sources/meta-modifications-layer u-boot-compul
 
 * Browse the meta-modifications-layer created content:
 ```
-tree ../sources/meta-modifications-layer/recipes-kernel/ tree ../sources/meta-modifications-layer/recipes-bsp/
+tree ../sources/meta-modifications-layer/recipes-kernel/ ../sources/meta-modifications-layer/recipes-bsp/
 ../sources/meta-modifications-layer/recipes-kernel/
 └── linux
     ├── linux-compulab
