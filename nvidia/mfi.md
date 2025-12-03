@@ -41,7 +41,7 @@
       ```
       udevadm monitor --subsystem-match tty
       ```
-    * Connect one end of the usb cavle to the host usb port, and the other type-C end to the device debug/console port.
+    * Connect one end of the usb cable to the host usb port, and the other ``type-C`` end to the device debug/console port.
     * As soon as the cable connected to the device, the lines like these show up in the ``udevadm monitor ``  window:
       ```
       KERNEL[27183.326354] add      /devices/pci0000:00/0000:00:14.0/usb1/1-4/1-4:1.0/ttyUSB1/tty/ttyUSB1 (tty)
