@@ -47,7 +47,7 @@
       KERNEL[27183.326354] add      /devices/pci0000:00/0000:00:14.0/usb1/1-4/1-4:1.0/ttyUSB1/tty/ttyUSB1 (tty)
       UDEV  [27183.416422] add      /devices/pci0000:00/0000:00:14.0/usb1/1-4/1-4:1.0/ttyUSB1/tty/ttyUSB1 (tty)
       ```
-    * Take the device reported by the ``udevadm`` (in this example it is ``ttyUSB1``) and open up a serial termenal application:
+    * Take the device reported by the ``udevadm`` (in this example it is ``ttyUSB1``) and open up a serial terminal application:
       ```
       minicom -D /dev/ttyUSB1 115200
       ```
