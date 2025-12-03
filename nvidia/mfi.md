@@ -1,17 +1,22 @@
-# MFI
+# CompuLab EdgeAI-ORN flash manual
+
+* Supported CompuLab HW:
+  * EdgeAI-ORN:Jetson™ Orin NX 16GB
+  * EdgeAI-ORN:Jetson™ Orin NX 8GB
+  * EdgeAI-ORN:Jetson™ Orin NANO 8GB
+  * EdgeAI-ORN:Jetson™ Orin NANO 4GB
 
 * Prerequisites:
+  * Linux desktop PC.
   * CompuLab SW:
-    * mfi_edge-ai.tar.gz -- MassFlash Orin NX 16G tarball
-    * mfi_edge-ai.sh -- MassFlash deployer
-  * CompuLab HW:
-    * EdgeAI-ORN:Jetson™ Orin NX 16GB
+    * Browse this [location](https://drive.google.com/drive/folders/1uiRUAJ_uJPLlE4fgNYuHuHkek04k_FBC):
+    * Download an ``mfi_edge-ai.tar.gz`` archive that matches the setup configuration.
+    * Download the ``mfi_edge-ai.sh`` file.
   * Connectivity:
     * The EdgeAI-ORN device must be connected to a Linux desktop by:
       * Recovery USB port
       * Console USB port
 
-* Download both file to the Linux desktop:
 * Unpack the ``mfi_edge-ai.tar.gz``
   ```
   mkdir -p /path/to/mfi-folder
