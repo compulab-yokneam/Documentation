@@ -18,7 +18,28 @@
 * Prerequisites:
   * Linux desktop PC.
   * CompuLab SW:
-    * Browse this [location](https://drive.google.com/drive/folders/1uiRUAJ_uJPLlE4fgNYuHuHkek04k_FBC).
+    * Browse this [location](https://drive.google.com/drive/folders/1uiRUAJ_uJPLlE4fgNYuHuHkek04k_FBC).<br>
+      Location Tree:
+    
+      ```
+      ├── mfi_edge-ai.sh
+      ├── nano_4G
+      │   └── bootloader_rootfs
+      │       └── mfi_edge-ai.tar.gz
+      ├── nano_8G
+      │   └── bootloader_rootfs
+      │       └── mfi_edge-ai.tar.gz
+      ├── nx_16G
+      │   ├── bootloader
+      │   │   └── nvidia-logo
+      │   │       └── mfi_edge-ai.tar.gz
+      │   └── bootloader_rootfs
+      │       └── mfi_edge-ai.tar.gz
+      └── nx_8G
+          └── bootloader_rootfs
+              └── mfi_edge-ai.tar.gz
+      ```
+
     * Download an ``mfi_edge-ai.tar.gz`` archive that matches the setup configuration.
     * Download the ``mfi_edge-ai.sh`` file.
   * Connectivity:
