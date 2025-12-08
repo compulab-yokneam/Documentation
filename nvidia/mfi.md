@@ -2,9 +2,9 @@
 
 * Supported CompuLab HW:
   * EdgeAI-ORN:Jetson™ Orin NX 16GB
-  * EdgeAI-ORN:Jetson™ Orin NX 8GB: rootfs_bootloader
-  * EdgeAI-ORN:Jetson™ Orin NANO 8GB: rootfs_bootloader
-  * EdgeAI-ORN:Jetson™ Orin NANO 4GB: rootfs_bootloader
+  * EdgeAI-ORN:Jetson™ Orin NX 8GB
+  * EdgeAI-ORN:Jetson™ Orin NANO 8GB
+  * EdgeAI-ORN:Jetson™ Orin NANO 4GB
 
 * Provided SW:
 
