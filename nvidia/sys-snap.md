@@ -6,3 +6,4 @@
 sudo -i
 bash <(wget -qO -  https://raw.githubusercontent.com/compulab-yokneam/Documentation/refs/heads/master/nvidia/sys-snap.sh)
 ```
+* Follow the on-screen instructions and post the created file.
