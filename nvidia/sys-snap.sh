@@ -31,11 +31,15 @@ net_dump() {
 }
 
 drm_dump() {
-	ls -al /sys/class/drm  &>${out_folder}/${FUNCNAME}.out
+	( set -x ; ls -al /sys/class/drm ; grep -ira . /sys/class/drm; set +x ) &>${out_folder}/${FUNCNAME}.out
 }
 
 pci_dump() {
 	lspci -xk &>${out_folder}/${FUNCNAME}.out
+}
+
+usb_dump() {
+	( set -x; lsusb; lsusb -t;  command usb-devices; set +x ) &>${out_folder}/${FUNCNAME}.out
 }
 
 dtb_dump() {
@@ -46,12 +50,14 @@ dtb_dump() {
 
 _sys_dump() {
 	for file in '/home/*/.bash_history /root/.bash_history';do [[ -f ${file} ]] && sys_snap_ext_list+=" ${file} " || true; done
+	for file in '/sys/class/drm/*/edid';do [[ -f ${file} ]] && sys_snap_ext_list+=" ${file} " || true; done
 	tar -chjf ${sys_snap_file} /boot /var/log /lib/modules /lib/firmware /etc ${sys_snap_ext_list} ${sys_snap_folder} 2>/dev/null
 }
 
 sys_dump() {
     declare -xA commands=()
     commands+=( ['dtb']="dtb_dump" )
+    commands+=( ['usb']="usb_dump" )
     commands+=( ['pci']="pci_dump" )
     commands+=( ['i2c']="i2c_dump" )
     commands+=( ['net']="net_dump" )
