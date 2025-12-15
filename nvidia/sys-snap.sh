@@ -64,7 +64,15 @@ sys_dump() {
         echo "Issue ${_com}"
         out_folder=${out_folder} ${commands[${_com}]}
     done
-    _sys_dump
+    _sys_dump &
+    PID=$!
+    sleep 1
+    while [ 1 ];do
+	[[ -d /proc/${PID} ]] || break
+	clear
+	ls -al ${sys_snap_file}
+	sleep 1
+    done
 }
 
 sys_dump
