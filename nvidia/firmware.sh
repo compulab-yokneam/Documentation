@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/bash
 
 [[ -n ${dry_run:-""} ]] && DR="echo" || DR=""
 restore=${restore:-"no"}
