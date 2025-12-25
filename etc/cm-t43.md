@@ -1,21 +1,28 @@
 # cm-t43 linux how to
 
-## Prerequisites
-Downlaod and install cross compiler:
-```
-wget -O - https://www.kernel.org/pub/tools/crosstool/files/bin/x86_64/15.2.0/x86_64-gcc-15.2.0-nolibc-arm-linux-gnueabi.tar.gz | sudo tar -C /opt -xzf -
-```
+
 ## Build machine:
-```
-mkdir /path/to/cm-t43-bsp && cd /path/to/cm-t43-bsp
-export CROSS_COMPILE=/opt/gcc-15.2.0-nolibc/arm-linux-gnueabi/bin/arm-linux-gnueabi-
-export ARCH=arm
-git clone git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git 
-cd linux
-git checkout -b cm-t43-dev-6.12 v6.12
-make omap2plus_defconfig
-make && make targz-pkg
-```
+* Prepare build environment:
+  * Downlaod and install cross compiler:
+    ```
+    wget -O - https://www.kernel.org/pub/tools/crosstool/files/bin/x86_64/15.2.0/x86_64-gcc-15.2.0-nolibc-arm-linux-gnueabi.tar.gz | sudo tar -C /opt -xzf -
+    ```
+  * Set ```CROSS_COMPILE``` and ```ARCH``` environment variables:
+    ```
+    export CROSS_COMPILE=/opt/gcc-15.2.0-nolibc/arm-linux-gnueabi/bin/arm-linux-gnueabi-
+    export ARCH=arm
+    ```
+* Download linux kernel source:  
+  ```
+  mkdir -p /path/to/cm-t43-bsp/linux && cd /path/to/cm-t43-bsp/linux
+  git clone git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git .
+  git checkout -b cm-t43-dev-6.12 v6.12
+  ```
+* Issue build:
+  ```  
+  make omap2plus_defconfig
+  make && make targz-pkg
+  ```
 
 ## cm-t43 linux:
 ```
