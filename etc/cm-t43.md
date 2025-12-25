@@ -1,6 +1,6 @@
 # cm-t43 linux how to
 
-## Build Machine:
+## Build machine:
 ```
 mkdir /path/to/cm-t43-bsp && cd /path/to/cm-t43-bsp
 export CROSS_COMPILE=/opt/gcc-15.2.0-nolibc/arm-linux-gnueabi/bin/arm-linux-gnueabi-
