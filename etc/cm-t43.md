@@ -12,13 +12,13 @@ make omap2plus_defconfig
 make && make targz-pkg
 ```
 
-## cm-t43 linux
+## cm-t43 linux:
 ```
 tar --keep-directory-symlink --directory=/ -xf /path/to/linux-6.12.0-arm.tar.gz
 reboot
 ```
 
-## cm-t43 u-boot
+## cm-t43 u-boot:
 ```
 load mmc 1:2 ${loadaddr} boot/vmlinuz-6.12.0
 load mmc 1:2 ${fdtaddr} boot/dtbs/6.12.0/am437x-sbc-t43.dtb
