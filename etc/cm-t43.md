@@ -1,5 +1,10 @@
 # cm-t43 linux how to
 
+## Prerequisites
+Downlaod and install cross compiler:
+```
+wget -O - https://www.kernel.org/pub/tools/crosstool/files/bin/x86_64/15.2.0/x86_64-gcc-15.2.0-nolibc-arm-linux-gnueabi.tar.gz | sudo tar -C /opt -xzf -
+```
 ## Build machine:
 ```
 mkdir /path/to/cm-t43-bsp && cd /path/to/cm-t43-bsp
