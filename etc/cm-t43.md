@@ -12,7 +12,7 @@
     export CROSS_COMPILE=/opt/gcc-15.2.0-nolibc/arm-linux-gnueabi/bin/arm-linux-gnueabi-
     export ARCH=arm
     ```
-* Download linux kernel source"
+* Download linux kernel source:
   ```
   mkdir -p /path/to/cm-t43-bsp/linux && cd /path/to/cm-t43-bsp/linux
   git clone git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git .
