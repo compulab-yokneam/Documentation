@@ -1,5 +1,5 @@
 # Linux: Set Channel via Terminal (iw) 
-To force the AX210 to a specific channel in station mode (managed mode), use the iw command.
+To force the AX210 to a specific channel in station mode (managed mode), use the iw command.<br>
 Replace wlan0 with your interface name. 
 * Check current settings:<br>
   ```iw dev wlan0 info```
