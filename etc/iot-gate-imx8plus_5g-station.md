@@ -1,7 +1,7 @@
 # iot-gate-imx8plus 5g station mode
 
 ## how to procedure
-* Use the alrready installed BalenaOS.
+* Use the allready installed BalenaOS.
 * Make any avaliable router work as a 5G ap.
 * Scan available SSID, issue:
 ```
@@ -19,7 +19,7 @@ nmcli device wifi connect test-5G-ap password <YOU_PASSWORD> name wifi_5G_conn
 ```
 nmcli connect up wifi_5G_conn
 ```
-* Make sure the an ip address were assigned to the ``wlan0`` iface:
+* Make sure that an ip address were assigned to the ``wlan0`` iface:
 ```
 ip -o addr show wlan0
 ```
