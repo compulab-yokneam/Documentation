@@ -14,7 +14,7 @@
 ## Flashing process
 
 * Issue [prepare flashing setup](https://github.com/compulab-yokneam/bin/blob/compulab-firmware/README.adoc#prepare-flashing-setup) step only.
-* As soon as the device was recognezed by the ``mfgtools``, issue this command:
+* As soon as the device was recognized by the ``mfgtools``, issue this command:
   ```
   sudo uuu -bmap -d -v -b emmc_all /tmp/bootloader/iot-gate-imx8plus/d2d4/flash.bin /tmp/iot-gate-imx8plus_debian-linux.img
   ```
