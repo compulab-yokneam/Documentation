@@ -5,6 +5,8 @@ Replace wlan0 with your interface name.
   ```iw dev wlan0 info```
 * Set to managed mode:<br>
   ```iw dev wlan0 set type managed```
+* Show the phy capabilities:<br>
+  ```iw phy0 info```
 * Connect and set frequency:<br>
   Use ``iw`` to connect to a specific frequency and channel width:
   * Example (5GHz):<br>
