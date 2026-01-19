@@ -3,7 +3,7 @@
 ## Prerequirements
 * Download and install [NXP mfgtools](https://github.com/nxp-imx/mfgtools)
 * Download the product firmware:
-  * Issue [download firmware according to the device dram options](https://github.com/compulab-yokneam/bin/blob/compulab-firmware/README.adoc#download-firmware-according-to-the-device-dram-options) step only.
+  * Issue [download the device bootloader](https://github.com/compulab-yokneam/bin/edit/compulab-firmware/README.adoc#download-the-device-bootloader) step only.
 
 * Download and unzip the device live image:
   * Download the live image archive from [here](https://www.compulab.com/wp-content/uploads/2025/09/iot-gate-imx8plus_debian-linux_2025-09-14.zip)
