@@ -3,8 +3,11 @@
 ## Prerequirements
 * Download and install [NXP mfgtools](https://github.com/nxp-imx/mfgtools)
 * Download the product firmware:
-  * Issue [download the device bootloader](https://github.com/compulab-yokneam/bin/blob/compulab-firmware/README.adoc#download-firmware-according-to-the-device-dram-options) step only.
-
+  * Method #1: Issue [download the device bootloader](https://github.com/compulab-yokneam/bin/blob/compulab-firmware/README.adoc#download-firmware-according-to-the-device-dram-options) step only.
+  * Method #2: Download a booltlader file with respect to the dram setings:
+    * [D1D8](https://github.com/compulab-yokneam/bin/raw/refs/heads/compulab-firmware/iot-gate-imx8plus/flash.bin.d1d8.xz)
+    * [D2D4](https://github.com/compulab-yokneam/bin/raw/refs/heads/compulab-firmware/iot-gate-imx8plus/flash.bin.d2d4.xz)
+ 
 * Download and unzip the device live image:
   * Download the live image archive from [here](https://www.compulab.com/wp-content/uploads/2025/09/iot-gate-imx8plus_debian-linux_2025-09-14.zip)
   * Unpack the image:
