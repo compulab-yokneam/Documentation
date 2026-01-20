@@ -1,5 +1,9 @@
 # iot-gate-imx8plus 5g station mode
 
+|NOTE|BalenaOS Development mode only|
+|---|---|
+
+
 ## how to procedure
 * Use the allready installed BalenaOS.
 * Make any avaliable router work as a 5G ap.
