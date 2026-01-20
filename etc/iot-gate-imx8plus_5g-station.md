@@ -12,8 +12,8 @@
 nmcli -f IN-USE,SSID,BSSID,FREQ,SIGNAL dev wifi
 # sample output:
 IN-USE  SSID                BSSID              FREQ      SIGNAL
-        test-2G-ap      00:CA:CA:FE:CA:DA  2412 MHz  17
-        test-5G-ap      00:CA:CA:FE:CA:CA  5220 MHz  17
+        test-2G-ap      00:DA:CA:FE:A8:A2  2412 MHz  17
+        test-5G-ap      00:DA:CA:FE:A8:A5  5220 MHz  17
 ```
 * Creat an WiFi station connection, issue:
 ```
