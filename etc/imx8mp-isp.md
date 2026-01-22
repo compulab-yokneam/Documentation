@@ -1,6 +1,14 @@
 # imx8mp isp
 
-## Build Host
+## Using the prebuild images
+   If this approach is in use:
+   * download all files from [this](https://drive.google.com/drive/folders/16LIa_SeKZwQSA5LjvhdWhY2r82misuWO) location
+   * continue with [deployment](https://github.com/compulab-yokneam/Documentation/edit/master/etc/imx8mp-isp.md#deployment)
+   * continue with [deployment](#deployment)
+
+## Build procedure for developers
+
+### Build Host
 
 * Download & sync the ucm-imx8m-plus-sbev Yocto environment
 
@@ -32,8 +40,8 @@
   ```
   bitbake -k imx-image-full
   ```
-
-  
+## Deployment
+  * Follow these [eploymet](https://github.com/compulab-yokneam/meta-bsp-imx8mp/tree/scarthgap-2.2.0?tab=readme-ov-file#deployment) instructions.
 
 ## [ucm-imx8m-plus-evaluation-kit](https://www.compulab.com/products/som-evaluation-kits/ucm-imx8m-plus-evaluation-kit/)
 
@@ -46,14 +54,6 @@
   |---|---|
   |U-Boot|setenv fdtfile sbev-ucmimx8plus-headless.dtb<br>setenv fdtofile 'sbev-ucmimx8plus-lvds.dtbo sbev-ucmimx8plus-csi1-isp0-imx219.dtbo'<br>setenv bootcmd 'run bsp_bootcmd'
   |Linux|fw_setenv fdtfile sbev-ucmimx8plus-headless.dtb<br>fw_setenv fdtofile 'sbev-ucmimx8plus-lvds.dtbo sbev-ucmimx8plus-csi1-isp0-imx219.dtbo'<br>fw_setenv bootcmd 'run bsp_bootcmd'
-
-
-    ```
-    fw_setenv fdtfile sbev-ucmimx8plus-headless.dtb
-    fw_setenv fdtofile "sbev-ucmimx8plus-lvds.dtbo sbev-ucmimx8plus-csi1-isp0-imx219.dtbo"
-    fw_setenv bootcmd "run bsp_bootcmd"
-    reboot
-    ```
 
   * Browse the registered v4l2 devices
 
