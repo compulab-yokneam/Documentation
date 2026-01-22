@@ -3,7 +3,6 @@
 ## Using the prebuild images
    If this approach is in use:
    * download all files from [this](https://drive.google.com/drive/folders/16LIa_SeKZwQSA5LjvhdWhY2r82misuWO) location
-   * continue with [deployment](https://github.com/compulab-yokneam/Documentation/edit/master/etc/imx8mp-isp.md#deployment)
    * continue with [deployment](#deployment)
 
 ## Build procedure for developers
@@ -41,7 +40,7 @@
   bitbake -k imx-image-full
   ```
 ## Deployment
-  * Follow these [eploymet](https://github.com/compulab-yokneam/meta-bsp-imx8mp/tree/scarthgap-2.2.0?tab=readme-ov-file#deployment) instructions.
+  * Follow these [deploymet](https://github.com/compulab-yokneam/meta-bsp-imx8mp/tree/scarthgap-2.2.0?tab=readme-ov-file#deployment) instructions.
 
 ## [ucm-imx8m-plus-evaluation-kit](https://www.compulab.com/products/som-evaluation-kits/ucm-imx8m-plus-evaluation-kit/)
 
