@@ -33,11 +33,21 @@
   bitbake -k imx-image-full
   ```
 
+  
+
 ## [ucm-imx8m-plus-evaluation-kit](https://www.compulab.com/products/som-evaluation-kits/ucm-imx8m-plus-evaluation-kit/)
 
 * ISI Sensors
   * Hardware setup: ucm-imx8m-plus-evaluation-kit-V2 + EB-EVCAMRPI + UC350 (IMX219 sensor)
-  * Software setup: csi1-isp0 device tree overlays:
+  * Software setup: csi1-isp0 device tree overlays.<br>
+    It is up to the user to choose the method to seting the boot environment:
+
+  |Method|Procedure|
+  |---|---|
+  |U-Boot|setenv fdtfile sbev-ucmimx8plus-headless.dtb<br>setenv fdtofile 'sbev-ucmimx8plus-lvds.dtbo sbev-ucmimx8plus-csi1-isp0-imx219.dtbo'<br>setenv bootcmd 'run bsp_bootcmd'
+  |Linux|fw_setenv fdtfile sbev-ucmimx8plus-headless.dtb<br>fw_setenv fdtofile 'sbev-ucmimx8plus-lvds.dtbo sbev-ucmimx8plus-csi1-isp0-imx219.dtbo'<br>fw_setenv bootcmd 'run bsp_bootcmd'
+
+
     ```
     fw_setenv fdtfile sbev-ucmimx8plus-headless.dtb
     fw_setenv fdtofile "sbev-ucmimx8plus-lvds.dtbo sbev-ucmimx8plus-csi1-isp0-imx219.dtbo"
