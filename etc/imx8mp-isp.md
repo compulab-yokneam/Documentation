@@ -42,8 +42,8 @@
 ## Deployment
   * Follow these [deploymet](https://github.com/compulab-yokneam/meta-bsp-imx8mp/tree/scarthgap-2.2.0?tab=readme-ov-file#deployment) instructions.
 
-## [ucm-imx8m-plus-evaluation-kit](https://www.compulab.com/products/som-evaluation-kits/ucm-imx8m-plus-evaluation-kit/)
-
+## How to proceed on the CompuLab ucm-imx8m-plus EVK V2
+   Details about the ``CompuLab ucm-imx8m-plus EVK V2`` can be found [here](https://www.compulab.com/products/som-evaluation-kits/ucm-imx8m-plus-evaluation-kit/)
 * ISI Sensors
   * Hardware setup: ucm-imx8m-plus-evaluation-kit-V2 + EB-EVCAMRPI + UC350 (IMX219 sensor)
   * Software setup: csi1-isp0 device tree overlays.<br>
