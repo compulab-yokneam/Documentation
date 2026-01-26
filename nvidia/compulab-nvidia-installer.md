@@ -48,5 +48,5 @@
 
   |Status|Next step|
   |---|---|
-  |Done OKAY|power off the device; pull the usb media off the device; turn on again.|
-  |Failed|try to figure out what the problem was, fix it and try again|
+  |Done OKAY|power off the device;<br>pull the usb media off;<br>turn the device on again.|
+  |Failed|try to figure out what the problem is;<br>fix it;<br>try again.|
