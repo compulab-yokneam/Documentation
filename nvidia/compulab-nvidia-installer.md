@@ -2,7 +2,7 @@
 
 The purpouse of this procedure is:
 * Clean up the device internal ``nvme0n1`` disk:
-* Creat this partition layout:
+* Create this partition layout:
 ```
 label: gpt
 label-id: 14DCC56A-491E-4D7D-93DD-F1170BA4A855
