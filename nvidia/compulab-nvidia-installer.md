@@ -19,18 +19,18 @@
        * no: download the image file again;
       
          |IMPORTANT|Don't go to the next step if md5sum is incorrect|
-         |---|---|
+         |---|:---|
 
  * Create a removable media:
 
    |NOTE|1) Media size must be more that 32G<br>2)/dev/sdX in the command line example is the entire block device not a partition!!!|
-   |---|---|
+   |---|:---|
 
     ```
     sudo dd if=/path/to/debian-trixie-arm64-buildd-nvidia.compulab-installer-rw-gpt-sdcard.img of=/dev/sdX oflag=dsync bs=1M status=progress
     ```
     |IMPORTANT|It is up to the user to make sure that removable media created w/out errors.<br>Make sure that the media rootfs partition is mountable and the fsck returns no errors.<br>If any of these conditions failed, then recreate the media.|
-    |---|---|
+    |---|:---|
     
 ## Target Device Procedure:
 * Power off the device.
