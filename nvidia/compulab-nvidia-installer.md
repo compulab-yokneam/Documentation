@@ -3,8 +3,8 @@
 ## What this installer does:
 * Cleans up the device selected device;
 * Creates one of these layouts:
-  * [NVidia default layout with: APP=\<rest of the free space\>](https://raw.githubusercontent.com/compulab-yokneam/compulab-l4t/refs/heads/Linux_for_Tegra/compulab.d/mfg/compulab-nvidia-installer/opt/compulab-nvidia-installer/images.d/layouts.d/01/disk.layout)
-  * [Nvidia default layout with: APP=128GiB; swap=16GiB; storage=\<rest of the free space\>](https://raw.githubusercontent.com/compulab-yokneam/compulab-l4t/refs/heads/Linux_for_Tegra/compulab.d/mfg/compulab-nvidia-installer/opt/compulab-nvidia-installer/images.d/layouts.d/02/disk.layout)
+  * NVidia default layout with: APP=\<rest of the media free space\>
+  * Nvidia default layout with: APP=\<user-defined-size\>GiB; swap=16GiB; storage=\<rest of the media free space\>
 * Deploys the CompuLab EdgeAI-ORN Ubuntu 22.04.5 LTS with JetPack 6.2
 
 ## Linux Desktop procedure:
