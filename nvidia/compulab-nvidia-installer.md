@@ -67,11 +67,15 @@
   2) Exit
   Choose device > 1
   Starting install onto the /dev/nvme0n1 ...
-  1) 01--[Nvidia__Layout;__rootfs__till__the__end__of__the__media]
-  2) 02--[Nvidia__Layout;__rootfs=128GiB,__swap=16GiB,__data__partition__till__the__end__of__the__media]
-  3) 99--[Unsupported_Layout]
-  4) Exit
+  1) layout_01--[01_Nvidia__Layout;__rootfs__till__the__end__of__the__media]
+  2) layout_02--[02_Nvidia__Layout;__rootfs=<user_defined_>GiB,__swap=16GiB,__data__partition__till__the__end__of__the__media]
+  3) Exit
   Choose layout > 2
+  1) 32
+  2) 64
+  3) 128
+  4) Exit
+  Choose rootfs size > 3
   .......
   ____                        ___  _  __    _ __   __
   |  _ \  ___  _ __   ___ _   / _ \| |/ /   / \\ \ / /
