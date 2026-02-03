@@ -21,7 +21,7 @@
          |IMPORTANT|Don't go to the next step if md5sum is incorrect|
          |---|:---|
 
- * Create a removable media:
+ * Create an installation media:
 
    |NOTE|1) Media size must be more that 32G<br>2)/dev/sdX in the command line example is the entire block device not a partition!!!|
    |---|:---|
