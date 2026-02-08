@@ -14,7 +14,7 @@
       ```
       md5sum /path/to/debian-trixie-arm64-buildd-nvidia.compulab-installer-rw-gpt-sdcard.img
       ```
-     * Make sure that the returned value is the as in the \<imagename\>.md5sum file.
+     * Make sure that the returned value as same as in the \<imagename\>.md5sum file.
        * yes: continue to the next step;
        * no: download the image file again;
       
