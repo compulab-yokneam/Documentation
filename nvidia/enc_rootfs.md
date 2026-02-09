@@ -15,6 +15,22 @@
   eof
   ```
 
+* ``/etc/initramfs-tools/hooks/crypttab.sh``
+  ```
+  cat << eof | tee /etc/initramfs-tools/hooks/crypttab.sh
+  #!/bin/sh
+
+  mkdir -p  "${DESTDIR}/cryptroot"
+  cp /etc/crypttab "${DESTDIR}/cryptroot/crypttab"
+  cp /etc/crypttab "${DESTDIR}/etc/"
+    
+  mkdir -p  "${DESTDIR}/etc/keys"
+  cp /etc/keys/root.key "${DESTDIR}/etc/keys/"
+    
+  exit 0
+  ```
+
+
 * ``/etc/crypttab``
   * How to retrieve the data
   ```
