@@ -1,5 +1,11 @@
 # enc rootfs
 
+## to begin with:
+
+[tpm 1](https://www.google.com/search?q=rootfs+encryption+with+tpm+step+by+step&sca_esv=178916f2631b52eb&sxsrf=ANbL-n5DTJaNijlvtj09Ji6aIT2GHULqvQ%3A1770905997919&ei=jeGNaZzgN8_Di-gPh_yo2Ac&biw=1385&bih=890&oq=rootfs+encryption+with+tpm+ste&gs_lp=Egxnd3Mtd2l6LXNlcnAiHnJvb3RmcyBlbmNyeXB0aW9uIHdpdGggdHBtIHN0ZSoCCAAyBRAhGKABMgUQIRigATIFECEYoAEyBRAhGKABSOIoUL8UWN4fcAF4AZABAJgB6gGgAcUFqgEFMC4zLjG4AQPIAQD4AQGYAgWgAosGwgIKEAAYsAMY1gQYR5gDAIgGAZAGCJIHBTEuMy4xoAeIELIHBTAuMy4xuAfyBcIHBzAuMS4zLjHIBySACAA&sclient=gws-wiz-serp)
+
+[tmp 2](https://www.google.com/search?q=cryptsetup+witj+tpm2&sca_esv=2cf3e72a8cc0c0c9&biw=1385&bih=890&sxsrf=ANbL-n6czi45h33it5yIs3ittP6evooBTg%3A1770906601320&ei=6eONacClE9TLi-gPt860wAU&ved=2ahUKEwjO6braltSSAxVR5AIHHUlXGL8Q0NsOegQIAxAB&uact=5&sclient=gws-wiz-serp&udm=50&fbs=ADc_l-aN0CWEZBOHjofHoaMMDiKp9lEhFAN_4ain3HSNQWw-mMGVXS0bCMe2eDZOQ2MOTwmdSduEdP1lcK-3UDyorIbYrYypmw2ykxY_-AvoMYwpWQvfCGsfTeASDCilOcxNlhUtUK32q2_Zq0ebiRzax6hfaA3Y6mqTbp5yoyrK8YMN_h43PAJWAM8W4jpi6BSwpTYpdopjSWCX6P1Jrocjwh8rrRxBXg&aep=10&ntc=1&mstk=AUtExfAFrZ39K06M8xHffNFcTIjAO9nEXTnTTjnKRnr4Fe9E-SXPTw2Is2KOHBEJwNODcC8PFHj_t4L-DZEBJ9vwsaSkJf9SuguqOlB9rSgZdZ0GId4P0pEPifvl1NEJY34h8UPqJmJ6Ffanq5bFonKUk6tMsn6hOMo5f46VJelgmZnP7KhQ3ZEWI9xRB0O5T6VayraDpa6Z8ia5QnuYOxrH3jsq2bgCJSqcNExxemfF58RxUC-J2NTThNUgEs39ypudzzPV2mHVtzTvnDWG3QoSeyQsN74Meq-t2VCYMD-KNZr1ovxLkDg0OodqD1QNYDbJcaojLoHUKO6yWQ&csuir=1&mtid=heaNaYOFOZKKkdUPmNjNsAg)
+
 ## SW to install
 * cryptsetup-initramfs
   ```
