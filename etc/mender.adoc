@@ -140,7 +140,7 @@ mender commit
 
 ## Roll Back Test
 
-The mender rool back logics:
+The mender roll back logics:
 ```
 if [ "${upgrade_available}" = "1" ]; then
     if [ "${bootcount}" != "0" ]; then
