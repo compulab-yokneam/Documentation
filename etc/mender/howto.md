@@ -50,7 +50,7 @@
       ```
       grub-mender-grubenv-set mender_boot_part 3
       ```
-  * Reboot the device, make sure that the device the root device is ``/dev/mmcblk2p3``:
+  * Reboot the device, make sure that the root device is ``/dev/mmcblk2p3``:
     ```
     findmnt / -n -o SOURCE
     ```
