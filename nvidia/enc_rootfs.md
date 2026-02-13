@@ -8,6 +8,8 @@
 
 [Systemd-cryptenroll](https://wiki.archlinux.org/title/Systemd-cryptenroll)
 
+[NVidia DiskEncryption](https://docs.nvidia.com/jetson/archives/r35.1/DeveloperGuide/text/SD/Security/DiskEncryption.html)
+
 ## SW to install
 * cryptsetup-initramfs
   ```
