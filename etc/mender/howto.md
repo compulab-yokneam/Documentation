@@ -6,8 +6,8 @@
 * Short Way<br>
   Download a ready to run Mender Image from [this location](https://drive.google.com/drive/folders/1L8VgVIp146HEkAk7j6o3_wdKVP1jo8s6).
 ## How To Deploy
-* UUU Method:
-  * development Host
+* UUU Method
+  * Linux Desktop
     ```
     sudo uuu -bmap -v -b emmc_all  imx-boot.tagged fsl-image-network-full-cmdline-iotdin-imx8p-20260210205430.sdimg
     ```
