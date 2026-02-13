@@ -16,7 +16,7 @@
     |NOTE|The target device must be in SDP 'or' in fastboot 0 mode|
     |:---|:---|
     
-## Target device first steps:
+## Target device first steps
 * Reset the device, stop in U-Boot and issue:
   ```
   env default -a; saveenv; reset
