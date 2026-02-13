@@ -1,11 +1,11 @@
-# Mender How to
+# Mender how to
 
-## How To Get a Mender image:
+## How to get a Mender image:
 * Long Way<br>
   Follow the instructions of [this manual](https://github.com/compulab-yokneam/meta-mender-compulab) and create a Yocto Mender image.
 * Short Way<br>
   Download a ready to run Mender Image from [this location](https://drive.google.com/drive/folders/1L8VgVIp146HEkAk7j6o3_wdKVP1jo8s6).
-## How To Deploy
+## How to deploy
 * UUU Method
   * Linux Desktop
     ```
@@ -16,7 +16,7 @@
     |NOTE|The target device must be in SDP 'or' in fastboot 0 mode|
     |:---|:---|
     
-## Target Device first steps:
+## Target device first steps:
 * Reset the device, stop in U-Boot and issue:
   ```
   env default -a; saveenv; reset
