@@ -9,7 +9,7 @@
 * Deploys the CompuLab EdgeAI-ORN Ubuntu 22.04.5 LTS with JetPack 6.2
 
 ## Linux Desktop procedure:
-* Download the installer files from this [location](https://drive.google.com/drive/folders/1CymTLLvaEH9gTPxypveWm6EoBwkK62z9?usp=drive_link)
+* Download the installer files from this [location](https://drive.google.com/drive/folders/1z9bl9JKxXCJfClZLC569FmqE-GrYQWcz?usp=drive_link)
   * After download validation:
     * Issue this command:
       ```
