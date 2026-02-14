@@ -67,7 +67,6 @@
   1) /dev/nvme0n1
   2) Exit
   Choose device > 1
-  Starting install onto the /dev/nvme0n1 ...
   1) layout_01--[01_Nvidia__Layout;__rootfs__till__the__end__of__the__media]
   2) layout_02--[02_Nvidia__Layout;__rootfs=<user_defined_>GiB,__swap=16GiB,__data__partition__till__the__end__of__the__media]
   3) Exit
