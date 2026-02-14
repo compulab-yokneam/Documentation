@@ -9,11 +9,11 @@
 * Deploys the CompuLab EdgeAI-ORN Ubuntu 22.04.5 LTS with JetPack 6.2
 
 ## Linux Desktop procedure:
-* Download the installer files from this [location](https://drive.google.com/drive/folders/1z9bl9JKxXCJfClZLC569FmqE-GrYQWcz?usp=drive_link)
+* Download the installer files from this [location](https://drive.google.com/drive/folders/1mChOk3cirGkZUI1v1N01qdNBofrnSJrh?usp=drive_link)
   * After download validation:
     * Issue this command:
       ```
-      md5sum /path/to/debian-trixie-arm64-buildd-nvidia.compulab-installer-rw-gpt-sdcard.img
+      md5sum /path/to/debian-trixie-arm64-buildd-nvidia.compulab-nvidia-installer-6.12.67-1.0-rw-gpt-sdcard.img
       ```
      * Make sure that the returned value as same as in the \<imagename\>.md5sum file.
        * yes: continue to the next step;
@@ -28,7 +28,7 @@
    |---|:---|
 
     ```
-    sudo dd if=/path/to/debian-trixie-arm64-buildd-nvidia.compulab-installer-rw-gpt-sdcard.img of=/dev/sdX oflag=dsync bs=1M status=progress
+    sudo dd if=/path/to/debian-trixie-arm64-buildd-nvidia.compulab-nvidia-installer-6.12.67-1.0-rw-gpt-sdcard.img of=/dev/sdX oflag=dsync bs=1M status=progress
     ```
     |IMPORTANT|It is up to the user to make sure that removable media created w/out errors.<br>Make sure that the media rootfs partition is mountable and the fsck returns no errors.<br>If any of these conditions failed, then recreate the media.|
     |---|:---|
