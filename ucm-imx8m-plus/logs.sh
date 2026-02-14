@@ -9,15 +9,15 @@ function get_credentials() {
 }
 
 function logs_status() {
-	local log_path="/var/log"                                                                                                                                                                                                                                                                                                                                                            │·········································································
-	local real_path=$(readlink -e ${log_path})                                                                                                                                                                                                                                                                                                                                           │·········································································
+	local log_path="/var/log"
+	local real_path=$(readlink -e ${log_path})
 	local logs_dev=$(findmnt ${log_path} -o SOURCE -n)
 	if [[ ${logs_dev:-"folder"} = "tmpfs" ]];then
 		sed -i 's/\(^.*\/var\/log\)/# \1/g' /etc/fstab
 		umount ${log_path} -l 2>/dev/null || true
 	fi
-	[[ ${real_path} = ${log_path} ]] && return 0 || true                                                                                                                                                                                                                                                                                                                                 │·········································································
-	unlink ${log_path}                                                                                                                                                                                                                                                                                                                                                                   │·········································································
+	[[ ${real_path} = ${log_path} ]] && return 0 || true
+	unlink ${log_path}
 	return 0
 }
 
