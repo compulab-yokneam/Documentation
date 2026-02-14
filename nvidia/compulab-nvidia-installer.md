@@ -1,10 +1,11 @@
 # CompuLab Nvidia Installer
 
 ## What this installer does:
-* Cleans up the device selected device;
+* Cleans up the selected device;
 * Creates one of these layouts:
   * NVidia default layout with: APP=\<rest of the media free space\>
   * Nvidia default layout with: APP=\<user-defined-size\>GiB; swap=16GiB; storage=\<rest of the media free space\>
+* Issues the root and the storage volumes encryption;
 * Deploys the CompuLab EdgeAI-ORN Ubuntu 22.04.5 LTS with JetPack 6.2
 
 ## Linux Desktop procedure:
@@ -71,6 +72,27 @@
   2) layout_02--[02_Nvidia__Layout;__rootfs=<user_defined_>GiB,__swap=16GiB,__data__partition__till__the__end__of__the__media]
   3) Exit
   Choose layout > 2
+  1) Yes
+  2) No
+  3) Exit
+  Issue encryption > 1
+          Help
+          -
+          The CompuLab Nvidia installer can encrypt these volumes: root,storage
+          Each encrypted volume must have its own key-phrase-file <volume_name>.key
+          in /opt/compulab-nvidia-installer/data/rootfs.d/etc/keys folder:
+                  root: /opt/compulab-nvidia-installer/data/rootfs.d/etc/keys/root.key
+                  storage: /opt/compulab-nvidia-installer/data/rootfs.d/etc/keys/storage.key
+  
+          Create key files before running the installer.
+          -
+          If the volume key-phrase-file does not exist,
+          then the installer creates a default file with the key phrase: <volume_name>_enc_volume.
+          -
+          Current status:
+                  root: key-phrase [ root_enc_volume ]
+                  storage: key-phrase [ storage_enc_volume ]
+  Press any key to continue; Crtl^C to exit ....
   1) 32
   2) 64
   3) 128
