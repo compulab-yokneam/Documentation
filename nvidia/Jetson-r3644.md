@@ -116,8 +116,8 @@ sudo ./tools/backup_restore/l4t_backup_restore.sh -b edge-ai
 sudo ./tools/backup_restore/l4t_backup_restore.sh -r edge-ai
 ```
 
-## CompuLab
-* CompuLab development snapshot: https://github.com/compulab-yokneam/edge-ai-linux/blob/master/README.md
+## CompuLab and NVidia resources
+* CompuLab development snapshot: https://github.com/compulab-yokneam/edge-ai-linux/blob/devel/README.md
 * Yet anover CompuLab resource: https://github.com/compulab-yokneam/compulab-l4t
 * Yocto NVidia: https://github.com/OE4T/tegra-demo-distro
 * Yocto CompuLab: https://github.com/compulab-yokneam/meta-tegra-compulab
