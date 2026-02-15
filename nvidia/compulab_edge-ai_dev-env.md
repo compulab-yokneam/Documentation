@@ -15,10 +15,14 @@ curl -fsSL https://github.com/compulab-yokneam/compulab-l4t/archive/refs/heads/L
 * Step #3
 ```
 source compulab-l4t.env
+```
+```
 **********************************
 * devshell       -- development shell
 * simple_shell   -- user shell
 * mfg_deployment -- flashing bootloader
 ***********************************
+```
+```
 devshell
 ```
