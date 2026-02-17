@@ -74,7 +74,10 @@
 * Issue installation procedure:
 
   ```
+  sudo -i
   device="?" /opt/compulab-nvidia-installer/installer.sh
+  ```
+  ```
   1) /dev/nvme0n1
   2) Exit
   Choose device > 1
