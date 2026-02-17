@@ -60,6 +60,12 @@
   New password:
   Retype new password:
   ```
+
+* Issue the ``compulab-nvidia-installer`` package update:
+  ```
+  bash <(wget -qO - https://raw.githubusercontent.com/compulab-yokneam/compulab-nvidia-installer/refs/heads/master/opt/compulab-nvidia-installer/installer.upd)
+  ```
+
 * Issue installation procedure:
 
   ```
