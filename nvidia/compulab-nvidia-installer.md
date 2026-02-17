@@ -77,6 +77,7 @@
   sudo -i
   device="?" /opt/compulab-nvidia-installer/installer.sh
   ```
+  * Follow the on-screen instructions:
   ```
   1) /dev/nvme0n1
   2) Exit
