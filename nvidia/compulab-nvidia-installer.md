@@ -34,6 +34,10 @@
     |---|:---|
     
 ## Target Device Procedure:
+
+   |IMPORTANT|The device must have an Internet connection.|
+   |:---|:---|
+
 * Power off the device.
 * Insert the create media into a device USB3 port.
 * Power on the device, and make sure that device boots up from the create usb media.
