@@ -1,0 +1,47 @@
+#!/bin/bash
+
+show_help() {
+cat << eof
+    Help
+    -
+    Issue the dram setting page clean up if the configuration dram size is not equal to the U-Boot reported dram size.
+    the dram setting page = i2c1@0x51
+    -
+eof
+exit 0
+}
+[[ "${1:-""}" != "?" ]] || show_help
+
+bad_setup() {
+cat << eof
+    Warning
+    -
+    The system eeprom ${SOM_EEPROM} is not found in the system.
+    -
+eof
+exit 22
+}
+
+SOM_EEPROM=/sys/devices/platform/soc@0/30800000.bus/30a30000.i2c/i2c-1/1-0050/eeprom
+[[ -f ${SOM_EEPROM} ]] || bad_setup
+CONF_DRAM=$(( $(dd if=${SOM_EEPROM} bs=1 skip=$((0x90)) count=32 2>/dev/null | tr -d '\000' | sed 's/-/\n/g' | awk -F"D" '(/^D/)&&($0=$NF)') << 10 ))
+
+som_dram_func() {
+    local som_dram=''
+    if [ -f /proc/device-tree/som.info/dram.size ];then
+        som_dram=$(cat /proc/device-tree/som.info/dram.size)
+    else
+        som_dram=$(( $(( $(( $(free -k | awk '(/^Mem/)&&($0=$2)') + $(( 512 << 10 )) )) >> 20 )) << 10 ))
+    fi
+    echo ${som_dram}
+}
+SOM_DRAM=$(som_dram_func)
+
+fix_dram_size() {
+    dd if=/dev/zero | tr '\000' '\377' | dd of=${SOM_EEPROM} bs=256 count=1 seek=1 2>/dev/null
+cat << eof
+    Reboot is required.
+eof
+}
+
+[[ ${CONF_DRAM} = ${SOM_DRAM} ]] || fix_dram_size
