@@ -39,11 +39,11 @@ eof
 }
 
 fix_dram_size() {
-    show_dram_size
     dd if=/dev/zero | tr '\000' '\377' | dd of=${SOM_EEPROM} bs=256 count=1 seek=1 2>/dev/null
 cat << eof
     Reboot is required.
 eof
 }
 
-[[ ${CFG_DRAM} = ${SOM_DRAM} ]] && show_dram_size || fix_dram_size
+show_dram_size
+[[ ${CFG_DRAM} = ${SOM_DRAM} ]] || fix_dram_size
