@@ -28,11 +28,22 @@ CONF_DRAM=$(( $(dd if=${SOM_EEPROM} bs=1 skip=$((0x90)) count=32 2>/dev/null | t
 # Read the SPL detected dram size from the i2c1@0x51@0x44
 SOM_DRAM=$(( $(dd if=${SOM_EEPROM} bs=1 skip=$((0x144)) count=1 2>/dev/null | xxd -p) << 10 ))
 
+show_dram_size() {
+cat << eof
+    Info
+    -
+    CONF_DRAM=${CONF_DRAM}
+    SOM_DRAM=${SOM_DRAM}
+    -
+eof
+}
+
 fix_dram_size() {
+    show_dram_size
     dd if=/dev/zero | tr '\000' '\377' | dd of=${SOM_EEPROM} bs=256 count=1 seek=1 2>/dev/null
 cat << eof
     Reboot is required.
 eof
 }
 
-[[ ${CONF_DRAM} = ${SOM_DRAM} ]] || fix_dram_size
+[[ ${CONF_DRAM} = ${SOM_DRAM} ]] && show_dram_size || fix_dram_size
