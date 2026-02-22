@@ -5,3 +5,4 @@ wget -qO - https://github.com/compulab-yokneam/Documentation/raw/refs/heads/mast
 cd ${work_dir}/
 ./run.me 
 cd -
+rm -rf ${work_dir}
