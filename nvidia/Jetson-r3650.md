@@ -1,7 +1,8 @@
 # Intro
 
-* NVidia Jetson Linux: [jetson-linux-r365](https://developer.nvidia.com/embedded/jetson-linux-r365)
-* Release Notes: [Jetson_Linux_Release_Notes_r36.5.pdf](https://docs.nvidia.com/jetson/archives/r36.5/ReleaseNotes/Jetson_Linux_Release_Notes_r36.5.pdf)
+* [JetPack 6.2.2 SDK](https://developer.nvidia.com/embedded/jetpack-sdk-622)
+* [NVIDIA Jetson Linux 36.5](https://developer.nvidia.com/embedded/jetson-linux-r365)
+* [Jetson Linux Release Notes r36.5](https://docs.nvidia.com/jetson/archives/r36.5/ReleaseNotes/Jetson_Linux_Release_Notes_r36.5.pdf)
 
 # Setup environment:
 * Make the WorkDir:
