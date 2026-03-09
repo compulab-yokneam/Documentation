@@ -5,6 +5,7 @@
 * [Jetson Linux Release Notes r36.5](https://docs.nvidia.com/jetson/archives/r36.5/ReleaseNotes/Jetson_Linux_Release_Notes_r36.5.pdf)
 
 # Setup environment:
+
 * Make the WorkDir:
 ```
 mkdir jetson-linux-r365 && cd  jetson-linux-r365
@@ -14,24 +15,39 @@ export WORKDIR=$(pwd)
 ```
 mkdir downloads sources tools
 ```
+
+## ToolChain:
+
 * Download the [toolchain](https://developer.nvidia.com/downloads/embedded/l4t/r36_release_v3.0/toolchain/aarch64--glibc--stable-2022.08-1.tar.bz2)
 ```
-cd ${WORKDIR}
-wget -P downloads https://developer.nvidia.com/downloads/embedded/l4t/r36_release_v3.0/toolchain/aarch64--glibc--stable-2022.08-1.tar.bz2
+wget -P ${WORKDIR}/downloads https://developer.nvidia.com/downloads/embedded/l4t/r36_release_v3.0/toolchain/aarch64--glibc--stable-2022.08-1.tar.bz2
 ```
 * Extract and setup the toolchain
 ```
 tar -xpf ${WORKDIR}/downloads/aarch64--glibc--stable-2022.08-1.tar.bz2 -C ${WORKDIR}/tools
 ```
-* Download [Driver Package (BSP)](https://developer.nvidia.com/downloads/embedded/l4t/r36_release_v4.4/release/Jetson_Linux_r36.4.4_aarch64.tbz2):
+
+## Drivers:
+* Download [Driver Package (BSP)](https://developer.nvidia.com/downloads/embedded/l4t/r36_release_v5.0/release/Jetson_Linux_r36.5.0_aarch64.tbz2):
 ```
-cd ${WORKDIR}
-wget -P downloads https://developer.nvidia.com/downloads/embedded/l4t/r36_release_v4.4/release/Jetson_Linux_r36.4.4_aarch64.tbz2
+wget -P ${WORKDIR}/downloads https://developer.nvidia.com/downloads/embedded/l4t/r36_release_v5.0/release/Jetson_Linux_r36.5.0_aarch64.tbz2
 ```
+
+* Download [Driver Package (BSP) Sources](https://developer.nvidia.com/downloads/embedded/l4t/r36_release_v5.0/sources/public_sources.tbz2)
+```
+wget -P ${WORKDIR}/downloads https://developer.nvidia.com/downloads/embedded/l4t/r36_release_v5.0/sources/public_sources.tbz2
+```
+
+* Download [Sample Root Filesystem](https://developer.nvidia.com/downloads/embedded/l4t/r36_release_v5.0/release/Tegra_Linux_Sample-Root-Filesystem_r36.5.0_aarch64.tbz2)
+```
+wget -P ${WORKDIR}/downloads https://developer.nvidia.com/downloads/embedded/l4t/r36_release_v5.0/release/Tegra_Linux_Sample-Root-Filesystem_r36.5.0_aarch64.tbz2
+```
+
+# Prepare Build Environment:
+
 * Extract the BSP archive:
 ```
-cd ${WORKDIR}
-tar -xpf downloads/Jetson_Linux_r36.4.3_aarch64.tbz2 -C sources
+tar -xpf downloads/Jetson_Linux_r36.5.0_aarch64.tbz2 -C ${WORKDIR}/sources
 export L4T_ROOT=${WORKDIR}/sources/Linux_for_Tegra
 ```
 * Go to the source folder and download all sources:
@@ -40,6 +56,7 @@ cd ${WORKDIR}/sources/Linux_for_Tegra/source
 export RELEASE_TAG=jetson_36.5
 ./source_sync.sh -t ${RELEASE_TAG}
 ```
+
 # Cross compiler environmnet
 ```
 export ARCH=arm64
