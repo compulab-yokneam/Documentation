@@ -47,12 +47,12 @@ wget -P ${WORKDIR}/downloads https://developer.nvidia.com/downloads/embedded/l4t
 
 * Extract the BSP archive:
 ```
-tar -xpf downloads/Jetson_Linux_r36.5.0_aarch64.tbz2 -C ${WORKDIR}/sources
-export L4T_ROOT=${WORKDIR}/sources/Linux_for_Tegra
+tar -xpf downloads/Jetson_Linux_r36.5.0_aarch64.tbz2 -C ${WORKDIR}
+export L4T_ROOT=${WORKDIR}/Linux_for_Tegra
 ```
 * Go to the source folder and download all sources:
 ```
-cd ${WORKDIR}/sources/Linux_for_Tegra/source
+cd ${WORKDIR}/Linux_for_Tegra/source
 export RELEASE_TAG=jetson_36.5
 ./source_sync.sh -t ${RELEASE_TAG}
 ```
@@ -65,7 +65,7 @@ export CROSS_COMPILE=${WORKDIR}/tools/aarch64--glibc--stable-2022.08-1/bin/aarch
 # Build
 * Goto to the source root and set an ev `KERNEL_HEADERS`
 ```
-cd ${WORKDIR}/sources/Linux_for_Tegra/source
+cd ${WORKDIR}/Linux_for_Tegra/source
 export KERNEL_HEADERS=${PWD}/kernel/kernel-jammy-src
 ```
 
@@ -79,13 +79,13 @@ make -j 16 dtbs
 
 * Prepare destination
 ```
-mkdir ${WORKDIR}/sources/Linux_for_Tegra/rootfs/{boot/dtbs,lib} -p
-export INSTALL_MOD_PATH=${WORKDIR}/sources/Linux_for_Tegra/rootfs/
+mkdir ${WORKDIR}/Linux_for_Tegra/rootfs/{boot/dtbs,lib} -p
+export INSTALL_MOD_PATH=${WORKDIR}/Linux_for_Tegra/rootfs/
 ```
 
 * Issue install into ``rootfs``:
 ```
-export INSTALL_MOD_PATH=${WORKDIR}/sources/Linux_for_Tegra/rootfs/
+export INSTALL_MOD_PATH=${WORKDIR}/Linux_for_Tegra/rootfs/
 sudo -E make install -C kernel
 sudo -E make modules_install
 sudo cp -a kernel-devicetree/generic-dts/dtbs/*-nv-super*.dtb ${INSTALL_MOD_PATH}/boot/dtbs/
@@ -95,13 +95,6 @@ sudo cp ${KERNEL_HEADERS}/arch/arm64/boot/Image ${INSTALL_MOD_PATH}/boot/
 * Copy the device tree files to the ``${L4T_ROOT}/kernel/dtb``:
 ```
 sudo cp -a kernel-devicetree/generic-dts/dtbs/* ${L4T_ROOT}/kernel/dtb/
-```
-
-# Rootfs mods
-* (optional) Update the ``/boot/extlinux/extlinux.conf`` file:<br>
-As of now the CompuLab customized rootfs has a servise that is in charge of updating the ``extlinux.conf`` at the very 1-st boot.
-```
-sudo sed -i "/^ *APPEND/i\      FDT /boot/dtbs/tegra234-p3768-0000+p3767-0005-nv-super-device.dtb" ${INSTALL_MOD_PATH}/boot/extlinux/extlinux.conf
 ```
 
 # Flashing the device
