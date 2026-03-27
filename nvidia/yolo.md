@@ -35,14 +35,14 @@ In your local.conf or image recipe, ensure the following are enabled to support 
       
       Example for a simple Python app: 
       ```
-         SUMMARY = "YOLO Inference App"
-         LICENSE = "MIT"
-         RDEPENDS:${PN} += "python3-ultralytics python3-opencv cuda-toolkit"
-         SRC_URI = "file://your_script.py"
-         do_install() {
-             install -d ${D}${bindir}
-             install -m 0755 ${WORKDIR}/your_script.py ${D}${bindir}
-         }
+      SUMMARY = "YOLO Inference App"
+      LICENSE = "MIT"
+      RDEPENDS:${PN} += "python3-ultralytics python3-opencv cuda-toolkit"
+      SRC_URI = "file://your_script.py"
+      do_install() {
+          install -d ${D}${bindir}
+          install -m 0755 ${WORKDIR}/your_script.py ${D}${bindir}
+      }
       ```
    
    5. Build: Run ``bitbake <your-image-name>``. [5, 27, 28, 29, 30] 
