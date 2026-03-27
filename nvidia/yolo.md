@@ -17,7 +17,7 @@ For maximum performance, use NVIDIA's DeepStream SDK, which is designed for opti
 ## Method B: Python/Ultralytics (Recommended for Prototyping)
 If you prefer using the popular Ultralytics (YOLOv8/v11) framework:
 
-* Add Dependencies: Include python3-pip, python3-opencv, and python3-pytorch in your IMAGE_INSTALL.
+* Add Dependencies: Include ``python3-pip, python3-opencv, and python3-pytorch`` in your IMAGE_INSTALL.
 * Recipe Creation: Create a recipe to install the ultralytics package. Since YOLO often requires specific Python versions (3.9–3.12), ensure your Yocto distro's Python version matches.
 * Alternative (Docker): Instead of a full Yocto recipe, you can run YOLO within a Docker container on your Yocto image. This avoids complex dependency management within the rootfs. [15, 19, 20, 21, 22] 
 
