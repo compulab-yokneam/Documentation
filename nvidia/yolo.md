@@ -50,6 +50,7 @@ In your local.conf or image recipe, ensure the following are enabled to support 
 Would you like a sample BitBake recipe for a specific YOLO version, or do you need help setting up the meta-tegra environment first?
 
 [0] [https://share.google/aimode/dpxITbUyFbS3XCjbs]
+
 [1] [https://marcopennelli.com](https://marcopennelli.com/embedded-linux-yocto-project-and-nvidia-jetson-nano-developer-kit-episode-1-369c079b7c15#:~:text=In%20this%20repository%2C%20you%20can%20find%20layers,to%20Yocto%20%28%20Yocto%20Project%20%29%20.)
 
 [2] [https://www.mdpi.com](https://www.mdpi.com/2076-3417/12/8/3734#:~:text=Section%202%20of%20this%20paper%20examines%20the,comparing%20deep%20learning%20frameworks%20in%20various%20environments.)
