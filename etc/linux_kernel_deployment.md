@@ -48,4 +48,4 @@ make -j`nproc` bindeb-pkg
 * Install procedure:
 1) Copy the created packages to the device and issue `dpkg -i /path/to/deb/folder/*.deb`
 2) Mount the device boot partition.
-3) Copy the content of the /usr/lib/linux-image-<version>/compulab/{\*.dtb,\*.dtbo} to the mounted boot partition.
+3) Copy the content of the /usr/lib/linux-image-\<version\>/compulab/{\*.dtb,\*.dtbo} to the mounted boot partition.
