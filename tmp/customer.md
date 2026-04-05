@@ -88,11 +88,14 @@ That means the layer signs more than just the initial boot image. It also signs:
 
 The deploy task copies out:
 
-- `Image.signed`
-- `Image.kgrub.signed`
-- `flash.bin.signed`
-- `fuse.out`
-- `bootaa64.efi.signed`
+|NOTE|The ``meta-compulab-hab`` branch [imx8-scarthgap-draft](https://github.com/compulab-yokneam/meta-compulab-hab/blob/imx8-scarthgap-draft) deploys one kernel Image only|
+|---|---|
+
+* `Image.signed`
+* ~~`Image.kgrub.signed`~~
+* `flash.bin.signed`
+* `fuse.out`
+* `bootaa64.efi.signed`
 
 Then this part is especially important:
 
@@ -105,12 +108,12 @@ That is a strong statement of intent: in the deploy area, the signed binaries be
 
 It also installs these into the target image:
 
-- `/boot/fuse.out`
-- `/boot/hab_auth_img.cmd`
-- `/boot/Image.signed`
-- `/boot/Image.kgrub.signed`
-- `/boot/flash.bin.signed`
-- `/boot/EFI/BOOT/bootaa64.efi.signed`
+* `/boot/fuse.out`
+* `/boot/hab_auth_img.cmd`
+* `/boot/Image.signed`
+* ~~`/boot/Image.kgrub.signed`~~
+* `/boot/flash.bin.signed`
+* `/boot/EFI/BOOT/bootaa64.efi.signed`
 
 The presence of `hab_auth_img.cmd` is a major clue. It suggests the signing flow for at least one kernel path expects a **U-Boot HAB authentication command** to be usable at runtime.
 
@@ -154,25 +157,25 @@ This file is the strongest evidence for the HAB part of the chain.
 
 It creates a HAB staging area and collects:
 
-- `u-boot.bin`
-- `u-boot.itb`
-- `u-boot.its`
-- `u-boot-nodtb.bin`
-- `u-boot-spl.bin`
-- `u-boot-spl-ddr.bin`
-- `tee.bin`
-- `bl31.bin`
-- `flash.bin`
-- `print_fit_hab.sh`
+* `u-boot.bin`
+* `u-boot.itb`
+* `u-boot.its`
+* `u-boot-nodtb.bin`
+* `u-boot-spl.bin`
+* `u-boot-spl-ddr.bin`
+* `tee.bin`
+* `bl31.bin`
+* `flash.bin`
+* `print_fit_hab.sh`
 
 This is exactly the sort of artifact set you expect for signing the i.MX8M boot container.
 
 It also runs:
 
-- `flash_evk`
-- `print_fit_hab`
+* `flash_evk`
+* `print_fit_hab`
 
-The `print_fit_hab` step is especially telling. That is typically used to derive HAB-related offsets and information for signing/authentication around FIT-contained boot artifacts.
+The ``print_fit_hab`` step is especially telling. That is typically used to derive HAB-related offsets and information for signing/authentication around FIT-contained boot artifacts.
 
 ### What this means
 This file is where the layer gathers the low-level boot pieces that the ROM/HAB flow actually cares about.
@@ -192,9 +195,9 @@ This config fragment is extremely revealing.
 
 It enables:
 
-- `CONFIG_SECURE_BOOT=y`
-- `CONFIG_IMX_HAB=y`
-- `CONFIG_IMX_SPL_FIT_FDT_SIGNATURE=y`
+* `CONFIG_SECURE_BOOT=y`
+* `CONFIG_IMX_HAB=y`
+* `CONFIG_IMX_SPL_FIT_FDT_SIGNATURE=y`
 
 It also sets several image layout and load-address related parameters.
 
@@ -223,9 +226,11 @@ By itself, this is not remarkable.
 
 What makes it meaningful is that `cst-tools.bb` later signs that kernel twice:
 
-- `hab/signed/k/Image`
-- `hab/signed/kgrub/Image`
+* `hab/signed/k/Image`
+* ~~`hab/signed/kgrub/Image`~~
 
+|NOTE|This 2-image approach was removed by [imx8-scarthgap-draft](https://github.com/compulab-yokneam/meta-compulab-hab/blob/imx8-scarthgap-draft)|
+|---|---|
 That split strongly suggests **two kernel signing/use cases**:
 
 1. a more direct HAB/U-Boot path
