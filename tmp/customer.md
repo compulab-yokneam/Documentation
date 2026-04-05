@@ -2,8 +2,11 @@
 
 ## At 1-st
 
-|IMPORTANT|2-Image approach is removed in the latest branche [imx8-scarthgap-devel](https://github.com/compulab-yokneam/meta-compulab-hab/tree/imx8-scarthgap-devel)|
-|---|---|
+|IMPORTANT|
+|---|
+
+* 2-Image approach is removed in the latest branche [imx8-scarthgap-devel](https://github.com/compulab-yokneam/meta-compulab-hab/tree/imx8-scarthgap-devel).
+* All concerns about using `Image.kgrub.signed` make no sense with using the updated meta-layer.
 
 ## Executive summary
 
