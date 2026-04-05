@@ -96,7 +96,7 @@ That means the layer signs more than just the initial boot image. It also signs:
 
 The deploy task copies out:
 
-|NOTE|The ``meta-compulab-hab`` branch [imx8-scarthgap-draft](https://github.com/compulab-yokneam/meta-compulab-hab/blob/imx8-scarthgap-draft) deploys one kernel Image only|
+|NOTE|The ``meta-compulab-hab`` branch [imx8-scarthgap-devel](https://github.com/compulab-yokneam/meta-compulab-hab/blob/imx8-scarthgap-devel) deploys one kernel Image only|
 |---|---|
 
 * `Image.signed`
@@ -237,7 +237,7 @@ What makes it meaningful is that `cst-tools.bb` later signs that kernel twice:
 * `hab/signed/k/Image`
 * ~~`hab/signed/kgrub/Image`~~
 
-|NOTE|This 2-image approach was removed by [imx8-scarthgap-draft](https://github.com/compulab-yokneam/meta-compulab-hab/blob/imx8-scarthgap-draft)|
+|NOTE|This 2-image approach was removed by [imx8-scarthgap-devel](https://github.com/compulab-yokneam/meta-compulab-hab/blob/imx8-scarthgap-devel)|
 |---|---|
 That split strongly suggests **two kernel signing/use cases**:
 
