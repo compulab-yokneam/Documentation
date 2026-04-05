@@ -77,7 +77,7 @@ It also points to the NXP HAB secure boot guide for fuse programming.
 
 That tells us the layer's primary purpose is not general bootloader customization. Its purpose is specifically **HAB signing integration**.
 |The exact quatation from the NXP Web Site|```NXP® Code Signing Tool for the High Assurance Boot library. Provides software code signing support designed for use with i.MX processors that integrate the HAB v4 and AHAB library in the internal boot ROM```
-|---|---|
+|:---|:---|
 
 
 ---
@@ -100,7 +100,7 @@ That means the layer signs more than just the initial boot image. It also signs:
 The deploy task copies out:
 
 |NOTE|The ``meta-compulab-hab`` branch [imx8-scarthgap-devel](https://github.com/compulab-yokneam/meta-compulab-hab/blob/imx8-scarthgap-devel) deploys one kernel Image only|
-|---|---|
+|:---|:---|
 
 * `Image.signed`
 * ~~`Image.kgrub.signed`~~
@@ -241,7 +241,7 @@ What makes it meaningful is that `cst-tools.bb` later signs that kernel twice:
 * ~~`hab/signed/kgrub/Image`~~
 
 |NOTE|This 2-image approach was removed by [imx8-scarthgap-devel](https://github.com/compulab-yokneam/meta-compulab-hab/blob/imx8-scarthgap-devel)|
-|---|---|
+|:---|:---|
 That split strongly suggests **two kernel signing/use cases**:
 
 1. a more direct HAB/U-Boot path
@@ -660,7 +660,7 @@ My second-pass judgment is:
 - the exact runtime verification mechanism for the kernel in the GRUB path
 
   |Answer|The U-Boot kernel verification code works as is w/out any modifications.<br>It was achieved by providing the same 0x58000000 load address for the grub and the Linux kernel image|
-  |---|---|
+  |:---|:---|
 
 So the trust story is:
 
