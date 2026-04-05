@@ -653,8 +653,11 @@ My second-pass judgment is:
 - The GRUB-loaded kernel path is carefully engineered around a fixed load address.
 
 ### Not fully proven from this layer alone
-- the exact runtime verification mechanism for GRUB
+- [the exact runtime verification mechanism for GRUB](https://github.com/compulab-yokneam/u-boot-compulab/commit/b1b9ab2546616603ba99ef84d41d2cceb009e128)
 - the exact runtime verification mechanism for the kernel in the GRUB path
+
+  |Answer|The U-Boot kernel verification code works as is w/out any modifications.<br>It was achieved by providing the same 0x58000000 load address for the grub and the Linux kernel image|
+  |---|---|
 
 So the trust story is:
 
