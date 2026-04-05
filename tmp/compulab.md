@@ -8,4 +8,4 @@
 
 * cst-tools
   * ``cst-tools`` branch to use [cst-4.0.0-devel](https://github.com/compulab-yokneam/cst-tools/blob/cst-4.0.0-devel/imx8/README.md)
-  * [hab/signed folder layout](https://github.com/compulab-yokneam/cst-tools/tree/cst-4.0.-devel/imx8#signed-files-directory-layout)
+  * [hab/signed folder layout](https://github.com/compulab-yokneam/cst-tools/blob/cst-4.0.0-devel/imx8/README.md#signed-files-directory-layout)
