@@ -240,8 +240,6 @@ What makes it meaningful is that `cst-tools.bb` later signs that kernel twice:
 * `hab/signed/k/Image`
 * ~~`hab/signed/kgrub/Image`~~
 
-|NOTE|This 2-image approach was removed by [imx8-scarthgap-devel](https://github.com/compulab-yokneam/meta-compulab-hab/blob/imx8-scarthgap-devel)|
-|:---|:---|
 That split strongly suggests **two kernel signing/use cases**:
 
 1. a more direct HAB/U-Boot path
