@@ -2,7 +2,7 @@
 
 ## At 1-st
 
-|IMPORTANT|2-Image approach is removed in the latest branches [imx8-scarthgap-devel](https://github.com/compulab-yokneam/meta-compulab-hab/tree/imx8-scarthgap-devel) and [imx8-scarthgap-draft](https://github.com/compulab-yokneam/meta-compulab-hab/tree/imx8-scarthgap-draft)|
+|IMPORTANT|2-Image approach is removed in the latest branche [imx8-scarthgap-devel](https://github.com/compulab-yokneam/meta-compulab-hab/tree/imx8-scarthgap-devel)|
 |---|---|
 
 ## Executive summary
