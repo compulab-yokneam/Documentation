@@ -1,5 +1,10 @@
 # Compulab i.MX8MP SOM: HAB Secure Boot with GRUB on top of U-Boot
 
+## At 1-st
+
+|IMPORTANT|2-Image approach is removed in the latest branches [imx8-scarthgap-devel](https://github.com/compulab-yokneam/meta-compulab-hab/tree/imx8-scarthgap-devel) and [imx8-scarthgap-draft](https://github.com/compulab-yokneam/meta-compulab-hab/tree/imx8-scarthgap-draft)|
+|---|---|
+
 ## Executive summary
 
 This layer is best understood as a **Yocto signing and packaging layer** for an i.MX8M secure-boot design whose root of trust starts with **HAB authenticating the i.MX boot container (`flash.bin`)**.
