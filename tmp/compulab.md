@@ -1,7 +1,9 @@
 # HAB
 * U-Boot
   * ``meta-compulab-hab`` branch to use [imx8-scarthgap-draft](https://github.com/compulab-yokneam/meta-compulab-hab/blob/imx8-scarthgap-draft)
-  * [U-Boot HAB Loadaddr](https://github.com/compulab-yokneam/meta-compulab-hab/blob/imx8-scarthgap-draft/recipes-bsp/u-boot/compulab/imx8m/security.cfg#L9)
+  * Load address
+    * [U-Boot HAB Loadaddr](https://github.com/compulab-yokneam/meta-compulab-hab/blob/imx8-scarthgap-draft/recipes-bsp/u-boot/compulab/imx8m/security.cfg#L9)
+    * [Grub Kerenl Image Load address](https://github.com/compulab-yokneam/meta-compulab-hab/blob/imx8-scarthgap-draft/recipes-bsp/grub/files/0002-efi-linux-Use-static-kernel-load-address.patch#L21)
   * [hab: efi: Issue authenticate_buffer() on efi image](https://github.com/compulab-yokneam/u-boot-compulab/commit/b1b9ab2546616603ba99ef84d41d2cceb009e128)
 
 * cst-tools
