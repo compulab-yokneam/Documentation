@@ -61,13 +61,16 @@ That means the runtime image is intentionally arranged to boot through the signe
 ## `README.md`
 The README says this layer exists to use Compulab's `cst-tools` inside Yocto, and the documented build results are:
 
-- `flash.bin.signed`
-- `Image.signed`
-- `fuse.out`
+* `flash.bin.signed`
+* `Image.signed`
+* `fuse.out`
 
 It also points to the NXP HAB secure boot guide for fuse programming.
 
 That tells us the layer's primary purpose is not general bootloader customization. Its purpose is specifically **HAB signing integration**.
+|The exact quatation from the NXP Web Site|```NXP® Code Signing Tool for the High Assurance Boot library. Provides software code signing support designed for use with i.MX processors that integrate the HAB v4 and AHAB library in the internal boot ROM```
+|---|---|
+
 
 ---
 
