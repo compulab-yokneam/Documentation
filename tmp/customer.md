@@ -673,16 +673,20 @@ Runtime enforcement past flash.bin: strongly suggested, not fully proven here
 
 If you want to close the remaining gaps, the next most valuable artifacts to inspect are:
 
-Q1. the U-Boot boot script / environment that launches `bootaa64.efi`
-   A1. This solutio were provided for the imx8mm SOCs only, that did not hav bootefi support.
-   As of now all CompuLab SOCs imx8mm, imx8mp have this suppor.
-Q2. the generated `hab_auth_img.cmd`
-    A2. This scipt is provided for a manual verificatio only (development purpouse only).
-Q3. the exact binary layout of `Image.kgrub.signed`
+Q1. the U-Boot boot script / environment that launches `bootaa64.efi`<br>
+    A1. This solution were provided for the imx8mm SOCs only, that did not have bootefi support.<br>
+    As of now all CompuLab SOCs imx8mm, imx8mp have this suppor.
+
+Q2. the generated `hab_auth_img.cmd`<br>
+    A2. This scipt is provided for a manual/developmet verification only.
+
+Q3. the exact binary layout of `Image.kgrub.signed`<br>
     A3. As same as the Image.signed, but it is obslolete.
-Q4. the exact binary layout of `bootaa64.efi.signed`
-    A4. Clarification is required.
-Q5. any U-Boot config related to EFI binary verification or secure EFI boot
-    A5. Requires no extra configs.
-    
+
+Q4. the exact binary layout of `bootaa64.efi.signed`<br>
+    A4. Clarification is required.<br>
+
+Q5. any U-Boot config related to EFI binary verification or secure EFI boot<br>
+    A5. Requires no extra configs.<br>
+
 Those five items would tell us exactly where the chain of trust is maintained, and where it might end.
