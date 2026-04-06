@@ -13,7 +13,6 @@ i2ctransfer -y 7 w2@0x21 0x1A 0x10
 echo "eb-edgepoe: post power cycle" > /dev/kmsg
 
 eof
-fi
 }
 
 issue_poe_reset_script() {
