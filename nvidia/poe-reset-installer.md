@@ -1,4 +1,4 @@
-# Linux Poe Reset Script
+# EB-EDGEPOE Reset Script
 
 * Get connected to the Edge-AI device.
 * Issue these command:
