@@ -8,9 +8,9 @@ create_poe_reset_script() {
 cat << eof | tee &>/dev/null ${POE_RESET_SCRIPT}
 #!/bin/bash
 
-echo "eb-edgepoe: pre power cycle"
+echo "eb-edgepoe: pre power cycle" > /dev/kmsg
 i2ctransfer -y 7 w2@0x21 0x1A 0x10
-echo "eb-edgepoe: post power cycle"
+echo "eb-edgepoe: post power cycle" > /dev/kmsg
 
 eof
 fi
