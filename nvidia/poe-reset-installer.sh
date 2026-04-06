@@ -10,7 +10,7 @@ cat << eof | tee &>/dev/null ${POE_RESET_SCRIPT}
 #!/bin/bash
 
 echo "eb-edgepoe: pre power cycle" > /dev/kmsg
-echo "eb-edgepoe: i2c [ ${POE_I2C_CMD} ]"
+echo "eb-edgepoe: i2c [ ${POE_I2C_CMD} ]" > /dev/kmsg
 ${POE_I2C_CMD}
 echo "eb-edgepoe: post power cycle" > /dev/kmsg
 
