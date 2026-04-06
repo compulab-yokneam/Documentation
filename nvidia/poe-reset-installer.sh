@@ -5,7 +5,7 @@ POE_RESET_FOLDER=$(dirname ${POE_RESET_SCRIPT})
 POE_I2C_CMD="i2ctransfer -y 7 w2@0x21 0x1A 0x10"
 
 create_poe_reset_script() {
-[[ -f ${POE_RESET_SCRIPT} ]] && return || true
+[[ -f ${POE_RESET_SCRIPT} ]] && mv ${POE_RESET_SCRIPT} ${POE_RESET_SCRIPT}_$(date +%Y%m%d_%H%M%S) || true
 cat << eof | tee &>/dev/null ${POE_RESET_SCRIPT}
 #!/bin/bash
 
