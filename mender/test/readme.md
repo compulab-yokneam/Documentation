@@ -106,6 +106,9 @@
     + load mmc 2:3 0x43000000 /boot/sb-iotgimx8-ied.dtb
     ```
 ## Mender OTA
+   |NOTE|``grub-mender-grubenv-set mender_boot_part 2`` was issued before OTA|
+   |:---|:---|
+    
   * [Linux command/log](https://github.com/compulab-yokneam/Documentation/blob/master/mender/test/mender_part_OTA_boot.cap#L1-L32)
     ```
     mender-update install /data/fsl-image-network-full-cmdline-iot-gate-imx8-20260501074730.mender
