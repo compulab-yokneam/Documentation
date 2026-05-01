@@ -1,0 +1,193 @@
+
+++ uname -r
+6.6.52-iot-gate-imx8m-4.1-gcd7f2b162c00
+++ grub-mender-grubenv-print
+bootcount=1
+mender_boot_part=2
+upgrade_available=0
+mender_boot_part_hex=2
+mender_systemd_machine_id=
+++ findmnt /
+TARGET
+  SOURCE         FSTYPE OPTIONS
+/ /dev/mmcblk2p2 ext4   rw,relatime
+++ lsblk
+NAME         MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+mmcblk2      179:0    0 14.6G  0 disk 
+|-mmcblk2p1  179:1    0   64M  0 part /boot/efi
+|-mmcblk2p2  179:2    0  1.9G  0 part /
+|-mmcblk2p3  179:3    0  1.9G  0 part 
+`-mmcblk2p4  179:4    0 10.7G  0 part /data
+mmcblk2boot0 179:32   0    4M  1 disk 
+mmcblk2boot1 179:64   0    4M  1 disk 
+++ grub-mender-grubenv-set mender_boot_part 3
+++ grub-mender-grubenv-print
+bootcount=1
+mender_boot_part=3
+upgrade_available=0
+mender_boot_part_hex=2
+mender_systemd_machine_id=
+++ reboot
+
+U-Boot SPL 2023.04-iot-gate-imx8-4.0.1-compulab+g7f36d59d8df+p0 (May 01 2026 - 08:14:10 +0000)
+power_bd71837_init
+Timing block[0] 0x1061010 integrated match
+DDRINFO(eeprom): Kingston 2048G @ 3000 MHz
+DDRINFO: start DRAM init
+DDRINFO: DRAM rate 3000MTS
+DDRINFO:ddrphy calibration done
+DDRINFO: ddrmix config done
+DDRINFO(mrr): mr5-8 [ 0xff000010 ]
+DDRINFO(eeprom): mr5-8 [ 0xff000010 ]
+Normal Boot
+Trying to boot from MMC2
+NOTICE:  Do not release JR0 to NS as it can be used by HAB
+NOTICE:  BL31: v2.10.0	(release):automotive-15.0.0_1.1.0-dirty
+NOTICE:  BL31: Built : 08:52:12, Nov  4 2024
+
+
+U-Boot 2023.04-iot-gate-imx8-4.0.1-compulab+g7f36d59d8df+p0 (May 01 2026 - 08:14:10 +0000)
+
+CPU:   i.MX8MMQ rev1.0 1800 MHz (running at 1200 MHz)
+CPU:   Commercial temperature grade (0C to 95C) at 63C
+Reset cause: POR
+Model: CompuLab IOT-GATE-iMX8
+DRAM:  2 GiB
+Suite:	unknown on 
+Core:  191 devices, 23 uclasses, devicetree: separate
+MMC:   FSL_SDHC: 1, FSL_SDHC: 2
+Loading Environment from MMC... OK
+Fail to setup video link
+In:    serial
+Out:   serial
+Err:   serial
++ mmc dev 2
+switch to partitions #0, OK
+mmc2(part 0) is current device
+board_late_init: Can't set MAC address
+FDT[det]: sb-iotgimx8-ied.dtb
+flash target is MMC:2
+Net:   phy: AR803x@0	
+Error: ethernet@30be0000 address not set.
+phy: AR803x@0	
+Error: ethernet@30be0000 address not set.
+No ethernet found.
+
+Fastboot: Normal
+Normal Boot
+Hit any key to stop autoboot:  2  1  0 
++ run bsp_bootcmd
++ echo Running BSP bootcmd ...
+Running BSP bootcmd ...
++ run usb_ul
++ usb start
+starting USB...
+Bus usb@32e40000: Port not available.
+Bus usb@32e50000: USB EHCI 1.00
+scanning bus usb@32e50000 for devices... 3 USB Device(s) found
+       scanning usb for storage devices... 0 Storage Device(s) found
++ setenv iface usb
++ setenv dev 0
++ setenv part 1
++ setenv bootargs console=ttymxc2,115200 earlycon=ec_imx6q,0x30880000,115200 net.ifnames=0 root=/dev/sda2 rootwait rw
++ run ulbootscript
++ load usb 0:1 0x40480000 boot.scr
+** Bad device specification usb 0 **
+Couldn't find partition usb 0:1
+Can't set block device
++ run ulimage
++ load usb 0:1 0x40480000 Image
+** Bad device specification usb 0 **
+Couldn't find partition usb 0:1
+Can't set block device
++ run emmc_ul
++ setenv iface mmc
++ setenv dev 2
++ setenv part 1
++ setenv bootargs console=ttymxc2,115200 earlycon=ec_imx6q,0x30880000,115200 net.ifnames=0 root=/dev/mmcblk2p2 rootwait rw
++ run ulbootscript
++ load mmc 2:1 0x40480000 boot.scr
+1328 bytes read in 1 ms (1.3 MiB/s)
++ run bootscript
++ echo Running bootscript from mmc ...
+Running bootscript from mmc ...
++ source
+## Executing script at 40480000
++ setenv xtrace yes
++ setenv grub_efi EFI/BOOT/bootaa64.efi
++ setenv boot_efi bootefi ${loadaddr} ${fdt_addr_r}
++ setenv grub_env grub-mender-grubenv/mender_grubenv1/env
++ setenv load_efi load ${devtype} ${devnum} ${loadaddr} ${grub_efi}
++ env exist fdt_file
++ setenv fdt_file sb-iotgimx8-ied.dtb
++ setenv load_env0 load ${devtype} ${devnum} ${initrd_addr} ${grub_env} && env import -t ${initrd_addr} ${filesize}
++ setenv load_env1 env exists mender_boot_part || setenv mender_boot_part 2
++ setenv load_env run load_env0; run load_env1
++ setenv load_fdt run load_env; load ${devtype} ${devnum}:${mender_boot_part} ${fdt_addr_r} /boot/${fdt_file}
++ setenv boot_cmd run load_fdt && run load_efi && run boot_efi
++ setenv bootcmd_mmc0 setenv devtype mmc; setenv devnum 0;
++ setenv bootcmd_mmc1 setenv devtype mmc; setenv devnum 1;
++ setenv bootcmd_mmc2 setenv devtype mmc; setenv devnum 2;
++ setenv bootcmd_usb0 setenv devtype usb; setenv devnum 0;
++ env exist iface
++ env exist dev
++ setenv bootdev mmc2
++ test -e mmc2
++ run bootcmd_mmc2
++ setenv devtype mmc
++ setenv devnum 2
++ run boot_cmd
++ run load_fdt
++ run load_env
++ run load_env0
++ load mmc 2 0x43800000 grub-mender-grubenv/mender_grubenv1/env
+1024 bytes read in 2 ms (500 KiB/s)
++ env import -t 0x43800000 400
++ run load_env1
++ env exists mender_boot_part
++ load mmc 2:3 0x43000000 /boot/sb-iotgimx8-ied.dtb
+58916 bytes read in 3 ms (18.7 MiB/s)
++ run load_efi
++ load mmc 2 0x40480000 EFI/BOOT/bootaa64.efi
+888832 bytes read in 20 ms (42.4 MiB/s)
++ run boot_efi
++ bootefi 0x40480000 0x43000000
+Setting to 1.8V erroresdhc_set_voltage error -5
+Card did not respond to voltage select! : -110
+No EFI system partition
+No EFI system partition
+Failed to persist EFI variables
+Slot A: empty(0)
+Slot B: empty(0)
+Slot C: empty(0)
+Booting /EFI\BOOT\bootaa64.efi
+
+Compulab BSP Release iot-gate-imx8 4.1 26.05 based on
+Compulab Release iot-gate-imx8 4.1 25 Apr 2026 based on
+NXP i.MX Release Distro 6.6-scarthgap iot-gate-imx8 ttymxc2
+
+iot-gate-imx8 login: root (automatic login)
+
+root@iot-gate-imx8:~# /data/show.sh 
+++ uname -r
+6.6.52-iot-gate-imx8m-4.1-gcd7f2b162c00
+++ grub-mender-grubenv-print
+bootcount=1
+mender_boot_part=3
+upgrade_available=0
+mender_boot_part_hex=2
+mender_systemd_machine_id=
+++ findmnt /
+TARGET
+  SOURCE         FSTYPE OPTIONS
+/ /dev/mmcblk2p3 ext4   rw,relatime
+++ lsblk
+NAME         MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+mmcblk2      179:0    0 14.6G  0 disk 
+|-mmcblk2p1  179:1    0   64M  0 part /boot/efi
+|-mmcblk2p2  179:2    0  1.9G  0 part 
+|-mmcblk2p3  179:3    0  1.9G  0 part /
+`-mmcblk2p4  179:4    0 10.7G  0 part /data
+mmcblk2boot0 179:32   0    4M  1 disk 
+mmcblk2boot1 179:64   0    4M  1 disk 
+root@iot-gate-imx8:~# 
