@@ -1,7 +1,7 @@
-# Mender Test
+# Mender test with out secure boot.
 
 ## Rootfs switch
-* 2 -> 3
+* 2 -> 2; Update and boot from the same partition; show the init state.
   * [Linux command/log](https://github.com/compulab-yokneam/Documentation/blob/master/mender/test/mender_part_02_boot.cap#L2-L30)
     ```
     grub-mender-grubenv-set mender_boot_part 2
@@ -53,7 +53,7 @@
     ```diff
     + load mmc 2:2 0x43000000 /boot/sb-iotgimx8-ied.dtb
     ```
-* 3 -> 2
+* 2 -> 3; Update and boot from the new partition.
   * [Linux command/log](https://github.com/compulab-yokneam/Documentation/blob/master/mender/test/mender_part_03_boot.cap#L2-L30)
     ```
     grub-mender-grubenv-set mender_boot_part 3
