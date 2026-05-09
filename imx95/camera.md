@@ -1,3 +1,8 @@
+* env
+```
+export LIBCAMERA_IPA_MODULE_PATH='/usr/lib/libcamera/ipa-nxp-neo-uguzzi/'
+export LIBCAMERA_PIPELINES_MATCH_LIST='nxp/neo,imx8-isi,uvc'
+```
 * imx219
 
 |Connector|Device Tree|Command to Issue|
