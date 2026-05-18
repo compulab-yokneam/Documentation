@@ -43,7 +43,7 @@ wget -P ${WORKDIR}/downloads https://developer.nvidia.com/downloads/embedded/l4t
 wget -P ${WORKDIR}/downloads https://developer.nvidia.com/downloads/embedded/l4t/r36_release_v5.0/release/Tegra_Linux_Sample-Root-Filesystem_r36.5.0_aarch64.tbz2
 ```
 
-# Prepare Build Environment:
+# Prepare Build Environment
 
 * Extract the BSP archive:
 ```
@@ -55,6 +55,14 @@ export L4T_ROOT=${WORKDIR}/Linux_for_Tegra
 cd ${WORKDIR}/Linux_for_Tegra/source
 export RELEASE_TAG=jetson_36.5
 ./source_sync.sh -t ${RELEASE_TAG}
+```
+* Extract the sample rootfs:
+```
+sudo tar -C ${WORKDIR}/Linux_for_Tegra/rootfs -xpf ${WORKDIR}/downloads/Tegra_Linux_Sample-Root-Filesystem_r36.5.0_aarch64.tbz2
+cd ${L4T_ROOT}
+sudo ./tools/l4t_flash_prerequisites.sh
+sudo ./apply_binaries.sh
+cd -
 ```
 
 # Cross compiler environmnet
@@ -98,9 +106,9 @@ sudo cp -a kernel-devicetree/generic-dts/dtbs/* ${L4T_ROOT}/kernel/dtb/
 ```
 
 # Flashing the device
-  |Revision|Configuration ev|
-  |---|---|
-  |rev1v1|export EDGE_AI="edge-ai-rev1v1"|
+  |Revision|Configuration ev| * |
+  |---|---|:---|
+  |rev1v1|export EDGE_AI="edge-ai-rev1v1"|(obsolete)|
   |rev1v2|export EDGE_AI="edge-ai"|
 
 * The rootfs+bootlader
