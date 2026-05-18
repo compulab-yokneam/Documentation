@@ -4,7 +4,7 @@
 * [NVIDIA Jetson Linux 36.5](https://developer.nvidia.com/embedded/jetson-linux-r365)
 * [Jetson Linux Release Notes r36.5](https://docs.nvidia.com/jetson/archives/r36.5/ReleaseNotes/Jetson_Linux_Release_Notes_r36.5.pdf)
 
-# Setup environment:
+# Setup environment
 
 * Make the WorkDir:
 ```
@@ -16,13 +16,13 @@ export WORKDIR=$(pwd)
 mkdir downloads sources tools
 ```
 
-## ToolChain:
+## ToolChain
 
 * Download the [toolchain](https://developer.nvidia.com/downloads/embedded/l4t/r36_release_v3.0/toolchain/aarch64--glibc--stable-2022.08-1.tar.bz2)
 ```
 wget -P ${WORKDIR}/downloads https://developer.nvidia.com/downloads/embedded/l4t/r36_release_v3.0/toolchain/aarch64--glibc--stable-2022.08-1.tar.bz2
 ```
-* Extract and setup the toolchain
+* Extract and setup the toolchain:
 ```
 tar -xpf ${WORKDIR}/downloads/aarch64--glibc--stable-2022.08-1.tar.bz2 -C ${WORKDIR}/tools
 ```
@@ -106,9 +106,8 @@ sudo cp -a kernel-devicetree/generic-dts/dtbs/* ${L4T_ROOT}/kernel/dtb/
 ```
 
 # Flashing the device
-  |Revision|Configuration ev| * |
-  |---|---|:---|
-  |rev1v1|export EDGE_AI="edge-ai-rev1v1"|(obsolete)|
+  |Revision|Configuration ev|
+  |:---|:---|
   |rev1v2|export EDGE_AI="edge-ai"|
 
 * The rootfs+bootlader
