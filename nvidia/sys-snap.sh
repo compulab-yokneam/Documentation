@@ -51,7 +51,8 @@ dtb_dump() {
 _sys_dump() {
 	for file in '/home/*/.bash_history /root/.bash_history';do [[ -f ${file} ]] && sys_snap_ext_list+=" ${file} " || true; done
 	for file in '/sys/class/drm/*/edid';do [[ -f ${file} ]] && sys_snap_ext_list+=" ${file} " || true; done
-	tar -chjf ${sys_snap_file} /boot /var/log /lib/modules /lib/firmware /etc ${sys_snap_ext_list} ${sys_snap_folder} 2>/dev/null
+	for file in '/boot /var/log /var/crash /lib/modules /lib/firmware /etc';do [[ -d ${file} ]] && sys_snap_ext_list+=" ${file} " || true; done
+	tar -chjf ${sys_snap_file} ${sys_snap_ext_list} ${sys_snap_folder} 2>/dev/null
 }
 
 sys_dump() {
