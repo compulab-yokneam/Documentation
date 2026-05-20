@@ -24,7 +24,7 @@ eof
 }
 
 function cleanup_current_env() {
-	rm ${bootp_mp}/{Image*,*.dtb*,kernel*,config*}
+	rm ${bootp_mp}/{Image*,*.dtb*,kernel*,config*} || true
 }
 
 function set_new_env() {
