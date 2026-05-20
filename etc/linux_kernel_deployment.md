@@ -29,7 +29,7 @@ make -j`nproc` tarbz2-pkg
 * Issue CompuLab linux install [script](https://github.com/compulab-yokneam/Documentation/blob/master/etc/cl-kernel-install.sh) as root:
 ```
 sudo -i
-bash <(curl -L https://raw.githubusercontent.com/compulab-yokneam/Documentation/master/etc/cl-kernel-install.sh) /tmp/linux-compulab.tar.bz2
+bash -ex <(curl -L https://raw.githubusercontent.com/compulab-yokneam/Documentation/master/etc/cl-kernel-install.sh) /tmp/linux-compulab.tar.bz2
 ```
 * Reboot the device.
 * When device is up, issue:
