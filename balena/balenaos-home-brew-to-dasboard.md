@@ -17,10 +17,11 @@
   ```
   sudo -i
   mount_point=$(mktemp --directory)
-  cd ${BUIKDDIR}/tmp/deploy/images/${MACHINE}/
+  cd ${BUILDDIR}/tmp/deploy/images/${MACHINE}/
   loop_device=$(losetup --show --find --partscan balena-image-${MACINE}.balenaos-img)
   mount ${loop_device}p1 ${mount_point}
   cp /path/to/iotdin.config.json ${mount_point}/config.json
   umount ${loop_device}p1
+  losetup --detach ${loop_device}
   rm -rf ${mount_point}
   ```
