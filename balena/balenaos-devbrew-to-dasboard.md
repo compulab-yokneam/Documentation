@@ -1,0 +1,23 @@
+# How to
+
+## BalenaOS image to the BalenaOS cloud dashboard
+
+* Open up this page: https://dashboard.balena-cloud.com/fleets
+* Issue:
+  * "Create Flee"
+  * "Add new device"
+  * "Flash"->"Download configuration file only"
+
+* On the running system:<br>
+   Copy the downloaded file, for instance "iotdin.config.json", to the BalenaOS device to /mnt/boot/config.json
+* On the build host:<br>
+  ```
+  sudo -i
+  mount_point=$(mktemp --directory)
+  cd ${BUIKDDIR}/tmp/deploy/images/${MACHINE}/
+  loop_device=$(losetup --show --find --partscan balena-image-${MACINE}.balenaos-img)
+  mount ${loop_device}p1 ${mount_point}
+  cp /path/to/iotdin.config.json ${mount_point}/config.json
+  umount ${loop_device}p1
+  rm -rf ${mount_point}
+  ```
