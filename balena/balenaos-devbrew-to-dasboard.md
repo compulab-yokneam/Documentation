@@ -2,6 +2,9 @@
 
 ## BalenaOS image to the BalenaOS cloud dashboard
 
+|The purpose of this chapter is to show<br>how to add the self created  BalenaOS image to the Balena cloud dashboard.|
+|:---|
+
 * Open up this page: https://dashboard.balena-cloud.com/fleets
 * Issue:
   * "Create Flee"
