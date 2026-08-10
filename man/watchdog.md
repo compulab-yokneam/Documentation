@@ -1,8 +1,6 @@
-Here is a concise, highly actionable technician’s guide to configuring and testing the Linux watchdog daemon. It covers catching kernel hangs, block device failures, and file system issues, followed by safe testing methods. [1, 2, 3] 
-------------------------------
 ## Technician Manual: Linux Watchdog Daemon
 The watchdog daemon acts as a safety switch. It continually performs checks and "pets" the system hardware watchdog timer device (/dev/watchdog). If any test fails, or if the operating system freezes completely, the software stops resetting the timer, causing the hardware to hard-reboot the machine to recover it. [1, 4, 5, 6, 7] 
-------------------------------
+
 ## Part 1: Configuration Guide
 All configurations must be added to the primary configuration file located at /etc/watchdog.conf. Open this file using a text editor (e.g., sudo nano /etc/watchdog.conf) and apply the settings detailed below. [1, 2, 4] 
 ## 1. Basic Setup & Kernel Hang Detection
@@ -88,7 +86,7 @@ sudo mv /var/log/messages /var/log/messages.bak
 * Customize the rules for a specific hardware manufacturer layout.
 * Draft this into a downloadable shell-script template.
 
-
+[0] [https://share.google/aimode/Jx3ZKv2ldTv0LFzok]
 [1] [https://docs.oracle.com](https://docs.oracle.com/en/operating-systems/oracle-linux/9/boot/boot-ConfigWatchdogServ.html)
 [2] [https://docs.jethome.com](https://docs.jethome.com/en/controllers/linux/howto/watchdog.html)
 [3] [https://unix.stackexchange.com](https://unix.stackexchange.com/questions/714910/what-is-a-good-way-to-test-watchdog-script-or-command-to-deliberately-overload)
