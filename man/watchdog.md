@@ -77,25 +77,25 @@ sudo killall -9 watchdog
 
 * Goal: Prove the watchdog catches file-level or structural availability issues.
 * Execution: To simulate this without actually breaking a disk, temporarily comment out or rename the file monitored by your ``/etc/watchdog.conf`` file:
-```
-sudo mv /var/log/messages /var/log/messages.bak
-```
+  ```
+  sudo mv /var/log/messages /var/log/messages.bak
+  ```
 
 * Result: Within the next 5 to 10 seconds, the watchdog daemon will notice the configured file is missing. It will intentionally stop feeding the device kernel driver, causing the system to automatically reboot. (Note: Remember to restore the filename using mv /var/log/messages.bak /var/log/messages after the reboot).
 
 ### Resources:
 [0] [https://share.google/aimode/Jx3ZKv2ldTv0LFzok]
-[1] [https://docs.oracle.com](https://docs.oracle.com/en/operating-systems/oracle-linux/9/boot/boot-ConfigWatchdogServ.html)
-[2] [https://docs.jethome.com](https://docs.jethome.com/en/controllers/linux/howto/watchdog.html)
-[3] [https://unix.stackexchange.com](https://unix.stackexchange.com/questions/714910/what-is-a-good-way-to-test-watchdog-script-or-command-to-deliberately-overload)
-[4] [https://docs.redhat.com](https://docs.redhat.com/en/documentation/red_hat_virtualization/4.0/html/virtual_machine_management_guide/sect-configuring_a_watchdog)
-[5] [https://www.kernel.org](https://www.kernel.org/doc/html/v5.9/watchdog/watchdog-api.html)
-[6] [https://www.youtube.com](https://www.youtube.com/shorts/RaBRgHrMprc)
-[7] [https://www.youtube.com](https://www.youtube.com/watch?v=4EXPep_fBho&t=220)
-[8] [https://docs.redhat.com](https://docs.redhat.com/en/documentation/red_hat_virtualization/4.1/html/virtual_machine_management_guide/sect-configuring_a_watchdog)
-[9] [https://www.systutorials.com](https://www.systutorials.com/linux-manual-page-8-watchdog/)
-[10] [https://developer.toradex.com](https://developer.toradex.com/software/linux-resources/linux-features/watchdog-linux/)
-[11] [https://unix.stackexchange.com](https://unix.stackexchange.com/questions/491814/is-it-possible-to-activate-the-watchdog-on-any-linux-machine)
-[12] [https://www.crawford-space.co.uk](https://www.crawford-space.co.uk/old_psc/watchdog/watchdog-testing.html)
-[13] [https://www.crawford-space.co.uk](https://www.crawford-space.co.uk/old_psc/watchdog/watchdog-testing.html)
-[14] [https://linux.die.net](https://linux.die.net/man/5/watchdog.conf)
+<br>[1] [https://docs.oracle.com](https://docs.oracle.com/en/operating-systems/oracle-linux/9/boot/boot-ConfigWatchdogServ.html)
+<br>[2] [https://docs.jethome.com](https://docs.jethome.com/en/controllers/linux/howto/watchdog.html)
+<br>[3] [https://unix.stackexchange.com](https://unix.stackexchange.com/questions/714910/what-is-a-good-way-to-test-watchdog-script-or-command-to-deliberately-overload)
+<br>[4] [https://docs.redhat.com](https://docs.redhat.com/en/documentation/red_hat_virtualization/4.0/html/virtual_machine_management_guide/sect-configuring_a_watchdog)
+<br>[5] [https://www.kernel.org](https://www.kernel.org/doc/html/v5.9/watchdog/watchdog-api.html)
+<br>[6] [https://www.youtube.com](https://www.youtube.com/shorts/RaBRgHrMprc)
+<br>[7] [https://www.youtube.com](https://www.youtube.com/watch?v=4EXPep_fBho&t=220)
+<br>[8] [https://docs.redhat.com](https://docs.redhat.com/en/documentation/red_hat_virtualization/4.1/html/virtual_machine_management_guide/sect-configuring_a_watchdog)
+<br>[9] [https://www.systutorials.com](https://www.systutorials.com/linux-manual-page-8-watchdog/)
+<br>[10] [https://developer.toradex.com](https://developer.toradex.com/software/linux-resources/linux-features/watchdog-linux/)
+<br>[11] [https://unix.stackexchange.com](https://unix.stackexchange.com/questions/491814/is-it-possible-to-activate-the-watchdog-on-any-linux-machine)
+<br>[12] [https://www.crawford-space.co.uk](https://www.crawford-space.co.uk/old_psc/watchdog/watchdog-testing.html)
+<br>[13] [https://www.crawford-space.co.uk](https://www.crawford-space.co.uk/old_psc/watchdog/watchdog-testing.html)
+<br>[14] [https://linux.die.net](https://linux.die.net/man/5/watchdog.conf)
