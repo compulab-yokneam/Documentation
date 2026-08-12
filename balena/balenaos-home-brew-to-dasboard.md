@@ -12,7 +12,7 @@
   * "Flash"->"Download configuration file only"
 
 * On the running system:<br>
-   Copy the downloaded file, for instance "<machine-name>.config.json", to the BalenaOS device /mnt/boot/config.json
+   Copy the downloaded file, for instance "\<machine-name\>.config.json", to the BalenaOS device /mnt/boot/config.json
 * On the build host:<br>
   ```
   sudo -i
