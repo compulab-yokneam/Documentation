@@ -13,12 +13,12 @@ DPU -> LDB/LVDS -> ITE IT6263 bridge -> HDMI Type-A connector
 
 Evidence:
 
-- [`imx95-15x15-frdm.dts`](https://github.com/nxp-imx/linux-imx/blob/lf-6.18.20-2.0.0/arch/arm64/boot/dts/freescale/imx95-15x15-frdm.dts) defines an HDMI Type-A connector connected to
+- [`imx95-15x15-frdm.dts`](https://github.com/nxp-imx/linux-imx/blob/lf-6.18.20-2.0.0/arch/arm64/boot/dts/freescale/imx95-15x15-frdm.dts#L525) defines an HDMI Type-A connector connected to
   `it6263_out`.
 - The same board enables LDB/LVDS channel 1 and connects `lvds1_out` to the
   IT6263 input.
 - The IT6263 is declared as an `ite,it6263` bridge on I2C address `0x4c`.
-- [`imx95-19x19-frdm-pro.dts`](https://github.com/nxp-imx/linux-imx/blob/lf-6.18.20-2.0.0/arch/arm64/boot/dts/freescale/imx95-19x19-frdm-pro.dts) uses the same IT6263 converter, but connects it
+- [`imx95-19x19-frdm-pro.dts`](https://github.com/nxp-imx/linux-imx/blob/lf-6.18.20-2.0.0/arch/arm64/boot/dts/freescale/imx95-19x19-frdm-pro.dts#L395-L450) uses the same IT6263 converter, but connects it
   to LDB/LVDS channel 0.
 
 Relevant files:
