@@ -87,9 +87,7 @@ tree files are present in the backup directory.
 
 ## 2. Download the kernel package
 
-Download the prebuilt kernel package from the following Google Drive folder:
-
-<https://drive.google.com/drive/folders/1Wg0IL6Mhb_WqAMi94rWBHbqjGSbExJ34>
+Download the prebuilt kernel package from the following Google Drive folder: [iotdin-imx8p/6.6.52](https://drive.google.com/drive/folders/1Wg0IL6Mhb_WqAMi94rWBHbqjGSbExJ34).
 
 Download the required `linux-compulab-*-arm64.tar.bz2` archive to the local
 computer.
