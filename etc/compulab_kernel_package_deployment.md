@@ -1,28 +1,62 @@
 # Deploying a CompuLab kernel package on a running system
 
-This procedure describes how to build the Linux `cpl-tarbz2-pkg` target,
-install the resulting archive on a running CompuLab system, and place the
-kernel `Image` and CompuLab device-tree files in the root of the boot media's
-first partition.
+This procedure describes how to install a Linux package created by the
+`cpl-tarbz2-pkg` target on a running CompuLab system. The package is first
+extracted onto the media's second partition so that extraction does not fill
+the small boot partition. The active kernel `Image` and CompuLab device-tree
+files are backed up and replaced only after extraction is complete.
 
 The examples assume that:
 
-- the first media partition is mounted at `/boot/efi`;
+- the first media partition contains the files loaded by U-Boot and is mounted
+  at `/boot/efi` only when it is being backed up or updated;
 - the second media partition is the running root filesystem mounted at `/`;
-- the target uses U-Boot to load `Image` and its device tree from the root of
-  the first partition; and
+- U-Boot loads `Image` and its device tree from the root of the first
+  partition; and
 - commands on the target are run as `root`.
 
 Device names vary between systems. Verify them before running any command that
 mounts or modifies a partition.
 
-## 1. Back up the active boot files
+## 1. Download the kernel package
 
-Make the backup before transferring or extracting the new kernel package.
-The first partition is too small to hold a second set of boot files, so this
-procedure stores the backup under `/var/backups` on the second partition.
+Download the prebuilt kernel package from the following Google Drive folder:
 
-On the target, inspect the media layout:
+<https://drive.google.com/drive/folders/1Wg0IL6Mhb_WqAMi94rWBHbqjGSbExJ34>
+
+Download the required `linux-compulab-*-arm64.tar.bz2` archive to the local
+computer.
+
+## 2. Transfer the package
+
+Copy the downloaded archive to `/var/tmp` on the running target. `/var/tmp`
+must reside on the second partition; do not copy the archive to the first
+partition.
+
+Replace the host name and archive name as appropriate:
+
+```sh
+scp /path/to/linux-compulab-*-arm64.tar.bz2 root@TARGET_HOST:/var/tmp/
+```
+
+Log in to the target:
+
+```sh
+ssh root@TARGET_HOST
+```
+
+Select the transferred archive and inspect it before extraction:
+
+```sh
+PKG="/var/tmp/linux-compulab-6.6.52-<time-stamp>-arm64.tar.bz2"
+
+test -f "$PKG"
+tar -tjf "$PKG" | less
+```
+
+## 3. Verify the partition layout and unmount partition 1
+
+Inspect the media layout:
 
 ```sh
 lsblk -o NAME,SIZE,FSTYPE,MOUNTPOINTS
@@ -37,15 +71,7 @@ For example, the expected eMMC layout may be:
 /dev/mmcblk2p2  -> /
 ```
 
-If the first partition is not mounted, mount it after confirming its device
-name. For example:
-
-```sh
-mkdir -p /boot/efi
-mount /dev/mmcblk2p1 /boot/efi
-```
-
-Confirm that `/boot/efi` is partition 1 and `/` is partition 2:
+Record the device containing partition 1 before unmounting it:
 
 ```sh
 BOOT_DEV="$(findmnt -n -o SOURCE /boot/efi)"
@@ -55,9 +81,97 @@ echo "Boot partition: $BOOT_DEV"
 echo "Root partition: $ROOT_DEV"
 ```
 
-Do not continue if the reported layout does not match the target media.
+Confirm that `BOOT_DEV` is partition 1 and `ROOT_DEV` is partition 2 of the
+same media. Do not continue if the layout is different or uncertain.
 
-Create the backup on partition 2:
+Also confirm that `/var/tmp` is stored on partition 2 and has enough free space
+for both the compressed package and the extracted package:
+
+```sh
+findmnt -T /var/tmp
+df -h /var/tmp
+```
+
+Unmount partition 1 before extracting the package:
+
+```sh
+umount /boot/efi
+mkdir -p /boot/efi
+
+findmnt -T /boot/efi
+df -h /boot/efi
+```
+
+After the unmount, `/boot/efi` must resolve to the root filesystem on partition
+2. This is what causes the packaged boot files to be extracted onto partition
+2 rather than the small first partition.
+
+## 4. Determine the packaged kernel release
+
+The archive contains the new `Image` and CompuLab device trees in a versioned
+`boot/efi` directory. Obtain that version from the archive:
+
+```sh
+KREL="$(tar -tjf "$PKG" | sed -n \
+    's#^\(\./\)\?boot/efi/\([^/]*\)/Image$#\2#p' | head -n 1)"
+
+test -n "$KREL" || {
+    echo "Unable to determine the kernel release from $PKG" >&2
+    exit 1
+}
+
+echo "Kernel release: $KREL"
+```
+
+## 5. Extract the package onto partition 2
+
+Extract the package while partition 1 remains unmounted:
+
+```sh
+STAGED_BOOT="/var/tmp/compulab-boot-$KREL"
+
+test ! -e "$STAGED_BOOT" || {
+    echo "$STAGED_BOOT already exists; move or remove it before continuing" >&2
+    exit 1
+}
+
+tar --numeric-owner -xjf "$PKG" -C /
+```
+
+The modules and other root-filesystem content are now installed on partition
+2. The boot payload is temporarily located beneath the unmounted `/boot/efi`
+mount point, which is also on partition 2. Move that payload out of the mount
+point before mounting partition 1:
+
+```sh
+test -f "/boot/efi/$KREL/Image"
+test -d "/lib/modules/$KREL"
+
+mv "/boot/efi/$KREL" "$STAGED_BOOT"
+depmod -a "$KREL"
+```
+
+Verify the staged boot files:
+
+```sh
+find "$STAGED_BOOT" -maxdepth 1 -type f \
+    \( -name 'Image' -o -name '*.dtb' -o -name '*.dtbo' \) -print
+```
+
+Do not mount partition 1 until the new `Image` and the required device trees
+are visible in `STAGED_BOOT`.
+
+## 6. Mount partition 1 and back up the active boot files
+
+Mount the verified first partition:
+
+```sh
+mount "$BOOT_DEV" /boot/efi
+findmnt /boot/efi
+```
+
+The backup must remain on partition 2 because partition 1 is too small to hold
+both the old and new boot files. Create the backup under `/var/backups`:
 
 ```sh
 BACKUP_DIR="/var/backups/compulab-boot/$(date +%Y%m%d-%H%M%S)"
@@ -74,97 +188,64 @@ find /boot/efi -maxdepth 1 -type f \
 sync
 ```
 
-Verify the backup and record its location:
+Verify that the backup is on partition 2 and contains the active kernel and
+device trees:
 
 ```sh
+findmnt -T "$BACKUP_DIR"
 df -h "$BACKUP_DIR"
 ls -lh "$BACKUP_DIR"
+test -s "$BACKUP_DIR/Image"
 echo "Boot backup: $BACKUP_DIR"
 ```
 
-Do not deploy the new package until the existing `Image` and required device
-tree files are present in the backup directory.
+Do not remove anything from partition 1 until this backup has been verified.
 
-## 2. Download the kernel package
+## 7. Free space on partition 1
 
-Download the prebuilt kernel package from the following Google Drive folder: [iotdin-imx8p/6.6.52](https://drive.google.com/drive/folders/1Wg0IL6Mhb_WqAMi94rWBHbqjGSbExJ34).
-
-Download the required `linux-compulab-*-arm64.tar.bz2` archive to the local
-computer.
-
-## 3. Transfer the package
-
-Copy the downloaded archive from the local computer to the running target.
-Replace the host name and archive name as appropriate:
+Remove only the active kernel, device trees, and overlays that were backed up.
+Do not remove bootloader or other unrelated files from partition 1.
 
 ```sh
-scp /path/to/linux-compulab-*-arm64.tar.bz2 root@TARGET_HOST:/tmp/
+rm -f /boot/efi/Image
+
+find /boot/efi -maxdepth 1 -type f \
+    \( -name '*.dtb' -o -name '*.dtbo' \) \
+    -exec rm -f -- {} +
+
+sync
+df -h /boot/efi
 ```
 
-Log in to the target:
+The old files are now recoverable from `BACKUP_DIR` on partition 2, while
+partition 1 has room for the new files.
+
+## 8. Copy the new boot files to partition 1
+
+Check that the staged payload fits in the available space:
 
 ```sh
-ssh root@TARGET_HOST
-```
+REQUIRED_KB="$(du -sk "$STAGED_BOOT" | awk '{print $1}')"
+AVAILABLE_KB="$(df -Pk /boot/efi | awk 'NR == 2 {print $4}')"
 
-Select the transferred archive and inspect it before extraction:
+echo "Required space:  $REQUIRED_KB KiB"
+echo "Available space: $AVAILABLE_KB KiB"
 
-```sh
-PKG="/tmp/linux-compulab-6.6.52-<time-stamp>-arm64.tar.bz2"
-tar -tjf "$PKG" | less
-```
-
-## 4. Determine the packaged kernel release
-
-The archive places the new `Image` and CompuLab device trees in a versioned
-directory below `/boot/efi`. Obtain that version from the archive:
-
-```sh
-KREL="$(tar -tjf "$PKG" | sed -n \
-    's#^\(\./\)\?boot/efi/\([^/]*\)/Image$#\2#p' | head -n 1)"
-
-test -n "$KREL" || {
-    echo "Unable to determine the kernel release from $PKG" >&2
+test "$REQUIRED_KB" -le "$AVAILABLE_KB" || {
+    echo "The new boot files do not fit on partition 1" >&2
     exit 1
 }
-
-echo "Kernel release: $KREL"
 ```
 
-## 5. Extract the package
-
-Ensure that partition 1 remains mounted at `/boot/efi`, then extract the
-archive into the running root filesystem on partition 2:
+Copy the kernel through a temporary filename, then copy the CompuLab device
+trees and overlays:
 
 ```sh
-findmnt /boot/efi
-tar --numeric-owner -xjf "$PKG" -C /
-depmod -a "$KREL"
-```
-
-Verify the installed files:
-
-```sh
-test -f "/boot/efi/$KREL/Image"
-test -d "/lib/modules/$KREL"
-find "/boot/efi/$KREL" -maxdepth 1 -type f \
-    \( -name 'Image' -o -name '*.dtb' -o -name '*.dtbo' \) -print
-```
-
-## 6. Activate the new kernel and device trees
-
-U-Boot expects `Image` and the selected device tree in the root of partition
-1. Copy the new kernel through a temporary filename, then install all packaged
-CompuLab device trees and overlays:
-
-```sh
-KERNEL_DIR="/boot/efi/$KREL"
-
-cp "$KERNEL_DIR/Image" /boot/efi/Image.new
+cp "$STAGED_BOOT/Image" /boot/efi/Image.new
 sync
-mv -f /boot/efi/Image.new /boot/efi/Image
+mv /boot/efi/Image.new /boot/efi/Image
 
-find "$KERNEL_DIR" -maxdepth 1 -type f \
+find "$STAGED_BOOT" -maxdepth 1 -type f \
     \( -name '*.dtb' -o -name '*.dtbo' \) \
     -exec cp -f -t /boot/efi {} +
 
@@ -177,9 +258,10 @@ Confirm that the expected files are present:
 ls -lh /boot/efi/Image
 find /boot/efi -maxdepth 1 -type f \
     \( -name '*.dtb' -o -name '*.dtbo' \) -print
+df -h /boot/efi
 ```
 
-## 7. Select the correct device tree
+## 9. Select the correct device tree
 
 The `fdtfile` U-Boot environment variable must name the device tree for the
 specific CompuLab module and carrier board. Inspect its current value before
@@ -209,7 +291,7 @@ module and carrier. CompuLab's platform how-to documentation describes the
 
 <https://mediawiki.compulab.com/w/index.php?title=UCM-iMX8M-Plus%3A_Yocto_Linux%3A_How-To_Guide>
 
-## 8. Reboot and validate
+## 10. Reboot and validate
 
 Reboot the target:
 
@@ -232,7 +314,11 @@ Check the kernel log for boot, device-tree, or module errors:
 dmesg | less
 ```
 
-## 9. Roll back
+After the new kernel has been fully validated, the staged boot directory under
+`/var/tmp` may be removed to recover space on partition 2. Retain the backup
+under `/var/backups` until rollback is no longer required.
+
+## 11. Roll back
 
 Because the backup is stored on partition 2, a system that cannot boot the new
 kernel may need to be started from recovery media. From the recovery system,
@@ -251,11 +337,18 @@ find /mnt/rootfs/var/backups/compulab-boot -mindepth 1 -maxdepth 1 \
     -type d -print
 ```
 
-Restore its kernel and device trees. Replace `BACKUP_TIMESTAMP` with the chosen
-directory name:
+Replace `BACKUP_TIMESTAMP` with the chosen directory name, clear the current
+kernel and device trees, and restore the backup:
 
 ```sh
 RECOVERY_BACKUP=/mnt/rootfs/var/backups/compulab-boot/BACKUP_TIMESTAMP
+
+test -s "$RECOVERY_BACKUP/Image"
+
+rm -f /mnt/boot/Image
+find /mnt/boot -maxdepth 1 -type f \
+    \( -name '*.dtb' -o -name '*.dtbo' \) \
+    -exec rm -f -- {} +
 
 cp -a "$RECOVERY_BACKUP/Image" /mnt/boot/Image
 find "$RECOVERY_BACKUP" -maxdepth 1 -type f \
