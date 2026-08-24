@@ -54,7 +54,106 @@ test -f "$PKG"
 tar -tjf "$PKG" | less
 ```
 
-## 3. Verify the partition layout and unmount partition 1
+## 3. Automatic installation
+
+The [`cl-kernel-install.sh`](cl-kernel-install.sh) script automates the
+partition handling, backup, cleanup, package extraction, and boot-file
+installation described in the manual procedure below. Use either this chapter
+or the manual installation chapters; do not run both procedures for the same
+package.
+
+The automation requires the following media layout:
+
+- the running root filesystem is partition 2;
+- the boot filesystem is partition 1 of the same media;
+- the root device name ends in `2`, for example `/dev/mmcblk2p2`, because the
+  script derives the boot device by replacing that final character with `1`;
+- `/var/tmp`, `/boot`, and `/lib/modules` reside on partition 2; and
+- `fw_printenv`, `findmnt`, `tar`, `gunzip`, and the other utilities used by
+  the script are installed.
+
+Verify the partition layout before running the installer:
+
+```sh
+lsblk -o NAME,SIZE,FSTYPE,MOUNTPOINTS
+findmnt /
+findmnt -T /var/tmp
+fw_printenv fdtfile image
+```
+
+For example, the expected eMMC layout may be:
+
+```text
+/dev/mmcblk2p1  -> boot filesystem
+/dev/mmcblk2p2  -> /
+```
+
+Confirm that the current `fdtfile` value names a device tree contained in the
+package. The installer uses this value to locate the device-tree directory and
+will fail if the named file is absent from the archive.
+
+Run the installer as `root`, passing it the package selected in section 2:
+
+```sh
+bash -ex <(curl -fL \
+    https://raw.githubusercontent.com/compulab-yokneam/Documentation/master/etc/cl-kernel-install.sh) \
+    "$PKG"
+```
+
+This command downloads and executes the current version of the installer from
+the CompuLab Documentation repository. On systems that require a reviewed or
+fixed script revision, download and inspect the script before executing it as
+`root`.
+
+The installer performs the following operations:
+
+1. Derives partition 1 from the device containing the partition-2 root
+   filesystem, unmounts partition 1 if necessary, and mounts it temporarily.
+2. Backs up the active kernel, device trees, and related boot files to
+   `/boot/kernel-backup.d/$(uname -r)` on partition 2.
+3. Saves the current `image` and `fdtfile` U-Boot settings and, when `mkimage`
+   is available, creates a recovery boot script on partition 1.
+4. Removes the old kernel and device-tree files from partition 1, freeing
+   space before installing their replacements.
+5. Extracts the kernel archive into the root filesystem on partition 2.
+6. Decompresses the packaged `vmlinuz` into a new `Image`, copies it and the
+   matching CompuLab device trees to partition 1, and unmounts partition 1.
+
+The automatic backup location differs from the `/var/backups` location used by
+the manual procedure. Preserve `/boot/kernel-backup.d/$(uname -r)` until the
+new kernel has been validated.
+
+Do not reboot unless the script reports that the kernel was deployed
+successfully. Then reboot the target:
+
+```sh
+reboot
+```
+
+If the system stops at the U-Boot prompt, run the command reported by the
+installer:
+
+```text
+run bsp_bootcmd
+```
+
+After Linux starts, verify the running kernel:
+
+```sh
+uname -r
+test -d "/lib/modules/$(uname -r)"
+cat /proc/device-tree/model
+```
+
+The original automation example is also available in the
+[general CompuLab kernel deployment procedure](linux_kernel_deployment.md#deploy-the-created-image).
+
+## Manual installation
+
+The remaining chapters describe the equivalent procedure using individual
+commands.
+
+## 4. Verify the partition layout and unmount partition 1
 
 Inspect the media layout:
 
@@ -106,7 +205,7 @@ After the unmount, `/boot/efi` must resolve to the root filesystem on partition
 2. This is what causes the packaged boot files to be extracted onto partition
 2 rather than the small first partition.
 
-## 4. Determine the packaged kernel release
+## 5. Determine the packaged kernel release
 
 The archive contains the new `Image` and CompuLab device trees in a versioned
 `boot/efi` directory. Obtain that version from the archive:
@@ -123,7 +222,7 @@ test -n "$KREL" || {
 echo "Kernel release: $KREL"
 ```
 
-## 5. Extract the package onto partition 2
+## 6. Extract the package onto partition 2
 
 Extract the package while partition 1 remains unmounted:
 
@@ -161,7 +260,7 @@ find "$STAGED_BOOT" -maxdepth 1 -type f \
 Do not mount partition 1 until the new `Image` and the required device trees
 are visible in `STAGED_BOOT`.
 
-## 6. Mount partition 1 and back up the active boot files
+## 7. Mount partition 1 and back up the active boot files
 
 Mount the verified first partition:
 
@@ -201,7 +300,7 @@ echo "Boot backup: $BACKUP_DIR"
 
 Do not remove anything from partition 1 until this backup has been verified.
 
-## 7. Free space on partition 1
+## 8. Free space on partition 1
 
 Remove only the active kernel, device trees, and overlays that were backed up.
 Do not remove bootloader or other unrelated files from partition 1.
@@ -220,7 +319,7 @@ df -h /boot/efi
 The old files are now recoverable from `BACKUP_DIR` on partition 2, while
 partition 1 has room for the new files.
 
-## 8. Copy the new boot files to partition 1
+## 9. Copy the new boot files to partition 1
 
 Check that the staged payload fits in the available space:
 
@@ -261,7 +360,7 @@ find /boot/efi -maxdepth 1 -type f \
 df -h /boot/efi
 ```
 
-## 9. Select the correct device tree
+## 10. Select the correct device tree
 
 The `fdtfile` U-Boot environment variable must name the device tree for the
 specific CompuLab module and carrier board. Inspect its current value before
@@ -291,7 +390,7 @@ module and carrier. CompuLab's platform how-to documentation describes the
 
 <https://mediawiki.compulab.com/w/index.php?title=UCM-iMX8M-Plus%3A_Yocto_Linux%3A_How-To_Guide>
 
-## 10. Reboot and validate
+## 11. Reboot and validate
 
 Reboot the target:
 
@@ -318,7 +417,7 @@ After the new kernel has been fully validated, the staged boot directory under
 `/var/tmp` may be removed to recover space on partition 2. Retain the backup
 under `/var/backups` until rollback is no longer required.
 
-## 11. Roll back
+## 12. Roll back a manual installation
 
 Because the backup is stored on partition 2, a system that cannot boot the new
 kernel may need to be started from recovery media. From the recovery system,
