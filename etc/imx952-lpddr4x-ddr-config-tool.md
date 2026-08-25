@@ -1,8 +1,10 @@
 # i.MX952 4 GB LPDDR4X DDR Config Tools Guide
 
-The source PDF, `200b_z11m_non-auto_lpddr4_lpddr4x.pdf`, is sufficient to start a DDR Tool configuration, but it is a Micron datasheet—not a Kingston-specific one. Before generating production timing, confirm the exact marking on the installed 4 GB device.
+The source PDF, `200b_z11m_non-auto_lpddr4_lpddr4x.pdf`, is sufficient to start a DDR Tool configuration.
 
-The 4 GB device described in the datasheet is the `MT53D1024M32D4` family. A possible complete 4266 part number is `MT53D1024M32D4DS-046 WT:D`, but `DS/DT`, speed grade, and revision must match the actual chip.
+Before generating production timing, confirm the exact marking on the installed 4 GB device.
+The 4 GB device described in the datasheet is the `MT53D1024M32D4` family.
+A possible complete 4266 part number is `MT53D1024M32D4DS-046 WT:D`, but `DS/DT`, speed grade, and revision must match the actual chip.
 
 ## DDR Tool settings
 
