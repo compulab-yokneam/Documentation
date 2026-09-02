@@ -1,0 +1,20 @@
+#!/bin/bash
+
+set -eu
+
+WORKDIR=$(mktemp -d /tmp/download-485.XXXXXX)
+
+trap 'rm -rf "$WORKDIR"' EXIT
+
+SCRIPT=https://raw.githubusercontent.com/compulab-yokneam/Documentation/refs/heads/master/nvidia/rs485/rs485.sh
+ARCHIVE=https://github.com/compulab-yokneam/Documentation/raw/refs/heads/master/nvidia/rs485/rs485.tar.bz2
+
+wget --quiet --directory-prefix ${WORKDIR} ${SCRIPT}
+wget --quiet --directory-prefix ${WORKDIR} ${ARCHIVE}
+
+SCRIPT=${WORKDIR}/$(basename ${SCRIPT})
+ARCHIVE=${WORKDIR}/$(basename ${ARCHIVE})
+
+chmod a+x ${SCRIPT}
+
+ARCHIVE=${ARCHIVE} ${SCRIPT}
