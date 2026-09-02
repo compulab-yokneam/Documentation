@@ -12,7 +12,7 @@ The NXP EVK `flash.bin` should not be used unchanged. A new image must be genera
 - ATF, OP-TEE and AHAB firmware
 - The MCUXpresso M7 application built using its DDR linker target and installed as `m7_image.bin`
 
-For an M7-only DDR boot, use:
+For an M7-only DDR boot, [use](https://github.com/nxp-imx/imx-mkimage/blob/lf-6.18.20_2.0.0/iMX95/soc.mak#L440):
 
 ```text
 make SOC=iMX95 REV=<soc-revision> OEI=YES \
@@ -20,7 +20,7 @@ make SOC=iMX95 REV=<soc-revision> OEI=YES \
      flash_lpboot_sm_m7_ddr
 ```
 
-To boot Linux on the A55 cores together with an M7 application executing from DDR, use:
+To boot Linux on the A55 cores together with an M7 application executing from DDR, [use](https://github.com/nxp-imx/imx-mkimage/blob/lf-6.18.20_2.0.0/iMX95/soc.mak#L453):
 
 ```text
 make SOC=iMX95 REV=<soc-revision> OEI=YES \
@@ -84,4 +84,6 @@ NXP references:
 
 - [MCUXpresso procedure](https://mcuxpresso.nxp.com/mcuxsdk/25.12.00/html/boards/i.MX/imx95lpd5evk19/gettingStarted/topics/run_a_demo_application.html)
 - [imx-mkimage i.MX95 targets](https://github.com/nxp-imx/imx-mkimage/blob/lf-6.18.20_2.0.0/Readme.imx95)
+
+CompuLab references:
 - [EVAL-UCM-iMX95-2.0](https://github.com/compulab-yokneam/meta-bsp-imx95/tree/walnascar-6.12.34-2.1.0-EVAL-UCM-iMX95-2.0)
