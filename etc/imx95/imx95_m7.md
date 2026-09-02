@@ -78,8 +78,6 @@ If the M7 firmware and its runtime DDR sections exceed 16 MiB, the following mus
 
 NXP EVK examples that use only CPU and memory functionality should be readily portable. Examples using board peripherals may require UCM-iMX95-specific pinmux, clock and peripheral configuration.
 
-One final caveat: with the current imx-mkimage implementation, `flash_lpboot_sm_m7` is a TCM target. It should not be run after the DDR target because it regenerates and overwrites `flash.bin`.
-
 NXP references:
 
 - [MCUXpresso procedure](https://mcuxpresso.nxp.com/mcuxsdk/25.12.00/html/boards/i.MX/imx95lpd5evk19/gettingStarted/topics/run_a_demo_application.html)
