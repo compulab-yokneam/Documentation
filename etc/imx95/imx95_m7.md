@@ -1,4 +1,4 @@
-# Response: Cortex-M7 DDR execution on UCM-iMX95
+# Cortex-M7 DDR execution on UCM-iMX95
 
 The Cortex-M7 in the i.MX95 can execute applications from external DDR, so applications are not limited to the available TCM/SRAM capacity. NXP's MCUXpresso DDR targets are therefore applicable to the UCM-iMX95 at the SoC level.
 
@@ -32,9 +32,7 @@ The resulting `flash.bin` can then be written to SD/eMMC at the 32 KiB offset us
 
 When Linux runs together with the M7, the M7 DDR area must be excluded from Linux-managed RAM. The CompuLab BSP provides this reservation in:
 
-```text
-arch/arm64/boot/dts/compulab/imx95-rpmsg.dtsi
-```
+[``arch/arm64/boot/dts/compulab/imx95-rpmsg.dtsi``](https://github.com/compulab-yokneam/linux-compulab/blob/linux-compulab_v6.12.34/arch/arm64/boot/dts/compulab/imx95-rpmsg.dtsi#L7)
 
 It contains:
 
@@ -54,11 +52,13 @@ This reserves the address range starting at `0x80000000` with a size of `0x01000
 
 This definition is included by:
 
+[``arch/arm64/boot/dts/compulab/imx95-rpmsg.dtso``](https://github.com/compulab-yokneam/linux-compulab/blob/linux-compulab_v6.12.34/arch/arm64/boot/dts/compulab/imx95-rpmsg.dtso)
+
 ```text
 arch/arm64/boot/dts/compulab/imx95-rpmsg.dtso
 ```
 
-and the kernel Makefile composes the final DTB as follows:
+and the kernel [Makefile](https://github.com/compulab-yokneam/linux-compulab/blob/linux-compulab_v6.12.34/arch/arm64/boot/dts/compulab/Makefile.ucm-imx95#L10) composes the final DTB as follows:
 
 ```make
 ucm-imx95-rpmsg-dtbs := ucm-imx95-som.dtb \
@@ -83,4 +83,5 @@ One final caveat: with the current imx-mkimage implementation, `flash_lpboot_sm_
 NXP references:
 
 - [MCUXpresso procedure](https://mcuxpresso.nxp.com/mcuxsdk/25.12.00/html/boards/i.MX/imx95lpd5evk19/gettingStarted/topics/run_a_demo_application.html)
-- [imx-mkimage i.MX95 targets](https://github.com/nxp-imx/imx-mkimage/blob/lf-6.12.49_2.2.0/iMX95/soc.mak)
+- [imx-mkimage i.MX95 targets](https://github.com/nxp-imx/imx-mkimage/blob/lf-6.18.20_2.0.0/Readme.imx95)
+- [EVAL-UCM-iMX95-2.0](https://github.com/compulab-yokneam/meta-bsp-imx95/tree/walnascar-6.12.34-2.1.0-EVAL-UCM-iMX95-2.0)
