@@ -2,7 +2,7 @@
 
 ```bash
 sudo -i
-source <(curl -L https://raw.githubusercontent.com/compulab-yokneam/Documentation/refs/heads/master/nvidia/rs485/run.me)
+source <(wget -q -O - https://raw.githubusercontent.com/compulab-yokneam/Documentation/refs/heads/master/nvidia/rs485/run.me)
 ```
 * After reboot, verify:
 
