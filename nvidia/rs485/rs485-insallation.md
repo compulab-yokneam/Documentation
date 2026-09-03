@@ -1,4 +1,4 @@
-# RS-485 tarball installation
+# rs485 standalone driver installation
 
 ```bash
 sudo -i
@@ -12,7 +12,7 @@ tr '\0' '\n' </proc/device-tree/bus@0/serial@3110000/compatible
 
 sudo modprobe serial_tegra_rs485
 dmesg | tail -50
-ls -l /dev/ttyTHSRS4853
+ls -l /dev/ttyTHS3
 ```
 
 Expected compatible:
@@ -24,5 +24,5 @@ nvidia,tegra194-hsuart-rs485
 Expected device:
 
 ```text
-/dev/ttyTHSRS4853
+/dev/ttyTHS3
 ```
