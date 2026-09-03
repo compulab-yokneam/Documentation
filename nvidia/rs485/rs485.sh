@@ -2,7 +2,7 @@
 
 set -eu
 
-[[ -n ${ARCHIVE:-""} ]] || ARCHIVE=${1:-/path/to/rs485.tar.bz2}
+[[ -n ${ARCHIVE:-""} ]] || ARCHIVE=${1:-/path/to/nvidia-rs485.tar.gz}
 
 EXTLINUX=/boot/extlinux/extlinux.conf
 KVER=$(uname -r)
@@ -16,7 +16,7 @@ test "$KVER" = "5.15.148-compulab-tegra" || {
 	exit 1
 }
 
-tar -xjf "$ARCHIVE" -C "$WORKDIR"
+tar --strip-components=2 -xzf "$ARCHIVE" -C "$WORKDIR"
 
 test -r /proc/device-tree/compatible || {
 	echo "Cannot read /proc/device-tree/compatible"
