@@ -20,6 +20,11 @@ Use 115200 baud, 8 data bits, no parity, one stop bit, and no flow control.
 Connect the adapter TX signal to the board RX signal and the adapter RX signal
 to the board TX signal. Connect GND; do not connect the adapter supply pin.
 
+> **Debugging recommendation:** Connect and monitor all three serial consoles
+> simultaneously when debugging M7 functionality. The A55, M33 System Manager,
+> and M7 logs provide complementary information needed to follow the complete
+> firmware loading and startup sequence.
+
 ## Optional: rebuilding firmware components (power users only)
 
 Most users should skip this section and use the artifacts already deployed by
