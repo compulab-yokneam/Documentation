@@ -12,27 +12,26 @@ JLinkExe -device MIMX9596_A55_0 -if JTAG -speed 1000
 
 # Launch J-Link GDB Server (Recommended)
 * Local:
-```
+```bash
 JLinkGDBServer -device iMX95_A55_0 -select USB -if JTAG -speed auto -nohalt -noreset
 ```
 * Remote:
 
-```
+```bash
 JLinkGDBServer -device iMX95_A55_0 -select IP=192.168.2.140 -if JTAG -speed auto -nohalt -noreset
 ```
 
 #  Connect GDB to the Session
 * U-Boot debugging
-```
-bash
+```bash
 gdb-multiarch u-boot  # Pass your compiled u-boot ELF file to load symbols
 (gdb) target remote localhost:2331
 (gdb) info registers
 (gdb) continue
 ```
 * Linux kernel debugging
-```
-bashgdb-multiarch vmlinux
+```bash
+gdb-multiarch vmlinux
 (gdb) target remote :2331
 (gdb) info registers
 (gdb) continue
@@ -42,6 +41,6 @@ When you hit Ctrl+C in GDB, it sends a standardized core-halt interrupt that Lin
 allowing for safe halts and stable continue commands without killing the board.
 
 # Launch J-LinkExt to get connected to M7
-```
+```bash
 JLinkExe -device MIMX9596_M7 -if JTAG -speed 1000
 ```
