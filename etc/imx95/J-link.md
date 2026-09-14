@@ -1,10 +1,11 @@
 # Prepare the imx95
+
 * Disable cpuidle; issue this command in the u-boot prompt:
 ```
 setenv boot_opt 'cpuidle.off=1 watchdog.panic_on_timeout=0'; saveenv;
 ```
 
-# Launch J-LinkExt
+# Launch J-LinkExt to get connected to A55
 ```
 JLinkExe -device MIMX9596_A55_0 -if JTAG -speed 1000
 ```
@@ -39,3 +40,8 @@ bashgdb-multiarch vmlinux
 
 When you hit Ctrl+C in GDB, it sends a standardized core-halt interrupt that Linux understands,<br>
 allowing for safe halts and stable continue commands without killing the board.
+
+# Launch J-LinkExt to get connected to M7
+```
+JLinkExe -device MIMX9596_M7 -if JTAG -speed 1000
+```
