@@ -31,6 +31,28 @@ Most users should skip this section and use the artifacts already deployed by
 BitBake. It is intended only for power users who need to rebuild OEI or System
 Manager from source.
 
+### Obtain the firmware sources with devtool
+
+From the BSP checkout root, initialize a Yocto build directory configured for
+the `ucm-imx95` machine, then use `devtool modify` to extract each recipe's
+source and apply the BSP patches:
+
+```bash
+source sources/openembedded-core/oe-init-build-env <build-directory>
+devtool modify imx-oei
+devtool modify imx-system-manager
+```
+
+The prepared source trees are available at:
+
+```text
+${BUILDDIR}/workspace/sources/imx-oei
+${BUILDDIR}/workspace/sources/imx-system-manager
+```
+
+Run each `devtool modify` command only once in a given workspace. Subsequent
+builds use the corresponding workspace source tree automatically.
+
 Configure the Arm bare-metal toolchain:
 
 ```bash
@@ -46,6 +68,7 @@ sudo ln -sfn "$(dirname "$(dirname "${SM_CROSS_COMPILE}")")" "${TOOLS}/"
 For the LPDDR5 configuration, build the DDR and TCM OEI images:
 
 ```bash
+cd "${BUILDDIR}/workspace/sources/imx-oei"
 make -j 32 board=mx95lp5 DEBUG=1 DDR_CONFIG=lpddr5_timing \
      r=B0 oei=ddr
 make -j 32 board=mx95lp5 DEBUG=1 DDR_CONFIG=lpddr5_timing \
@@ -57,6 +80,7 @@ The OEI board, timing configuration, DDR type and capacity must match the SOM.
 Build the CompuLab System Manager configuration:
 
 ```bash
+cd "${BUILDDIR}/workspace/sources/imx-system-manager"
 make -j 32 V=y M=2 config=mx95cpl cfg
 make -j 32 V=y M=2 config=mx95cpl
 ```
