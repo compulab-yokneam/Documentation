@@ -23,14 +23,14 @@ JLinkGDBServer -device iMX95_A55_0 -select IP=192.168.2.140 -if JTAG -speed auto
 
 #  Connect GDB to the Session
 * U-Boot debugging
-```bash
+```gdb
 gdb-multiarch u-boot  # Pass your compiled u-boot ELF file to load symbols
 (gdb) target remote localhost:2331
 (gdb) info registers
 (gdb) continue
 ```
 * Linux kernel debugging
-```bash
+```gdb
 gdb-multiarch vmlinux
 (gdb) target remote :2331
 (gdb) info registers
