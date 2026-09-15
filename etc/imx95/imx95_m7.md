@@ -236,11 +236,11 @@ must start and control the M7:
 
 The relevant System Manager access difference is:
 
-| Access direction | `mx95cpl` | `mx95cplrpmsg` |
-| --- | --- | --- |
-| M33 to M7 and A55 | Full | Full |
-| M7 to A55 | Suspend/resume and RPMsg | Suspend/resume and RPMsg |
-| A55 to M7 | RPMsg only | Full |
+|Access direction|`mx95cpl`|`mx95cplrpmsg`|
+|:---|:---|:---|
+|M33 to M7 and A55|Full|Full|
+|M7 to A55|Suspend/resume and RPMsg|RPMsg|
+|A55 to M7|RPMsg only|Full|
 
 Full A55-to-M7 access in `mx95cplrpmsg` allows Linux `remoteproc` to start and
 stop the M7. The RPMsg mode also applies a restricted hardware-resource layout,
