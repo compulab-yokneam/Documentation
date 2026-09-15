@@ -313,25 +313,6 @@ these items together:
 - System Manager memory permissions
 - Any adjacent RPMsg or audio reserved-memory regions
 
-### Build and deploy the complete system image
-
-After configuring the M7 firmware, System Manager mode, and Linux device tree,
-build the complete CompuLab image:
-
-```bash
-bitbake -k imx-image-full
-```
-
-The resulting compressed disk image is deployed under:
-
-```text
-${BUILDDIR}/tmp/deploy/images/ucm-imx95/imx-image-full-ucm-imx95*.wic.zst
-```
-
-Write the `.wic.zst` image to the target storage using the normal CompuLab
-deployment procedure. When deploying `flash.bin` separately, write it to
-SD/eMMC at the 32 KiB offset.
-
 ## 3. Examples of using M7
 
 ### Start a TCM firmware image from U-Boot
