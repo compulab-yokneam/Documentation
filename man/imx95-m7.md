@@ -16,7 +16,7 @@ NXP imx-system-manager has two configurations that provide different permissions
 |*|M33|M7|A55
 |---|---|---|---|
 |M33|---|full|full|
-|M7|---|---|suspemd/resume;rpmsg|
+|M7|---|---|rpmsg|
 |A55|---|full|---|
 
 
