@@ -85,7 +85,95 @@ make -j 32 V=y M=2 config=mx95cpl cfg
 make -j 32 V=y M=2 config=mx95cpl
 ```
 
+To build the RPMsg System Manager configuration manually, use
+`mx95cplrpmsg` instead:
+
+```bash
+cd "${BUILDDIR}/workspace/sources/imx-system-manager"
+make -j 32 V=y M=2 config=mx95cplrpmsg cfg
+make -j 32 V=y M=2 config=mx95cplrpmsg
+```
+
 Building ATF, OP-TEE and U-Boot is outside the scope of this page.
+
+## Using the RPMsg System Manager mode
+
+The [CompuLab BSP configuration](https://github.com/compulab-yokneam/meta-bsp-imx95/blob/wrynose-6.18.20-2.0.0-devel/README.md)
+provides two System Manager modes. The default mode uses `mx95cpl`; the RPMsg
+mode uses `mx95cplrpmsg`.
+
+The relevant access difference between the modes is:
+
+| Access direction | `mx95cpl` | `mx95cplrpmsg` |
+| --- | --- | --- |
+| M33 to M7 and A55 | Full | Full |
+| M7 to A55 | Suspend/resume and RPMsg | Suspend/resume and RPMsg |
+| A55 to M7 | RPMsg only | Full |
+
+Full A55-to-M7 access in `mx95cplrpmsg` allows Linux `remoteproc` to start and
+stop the M7. The RPMsg mode also applies a restricted hardware-resource layout,
+which is why it must be paired with the RPMsg Linux device tree.
+
+To select the RPMsg mode and a matching M7 firmware example, add the following
+to the Yocto build's `conf/local.conf`:
+
+```bitbake
+IMXBOOT_VARIANT = "rpmsg"
+M4_DEFAULT_IMAGE_MX95:mx95-generic-bsp = "imx95-19x19-evk_m7_TCM_rpmsg_lite_str_echo_rtos.bin"
+```
+
+The suggested `rpmsg_lite_str_echo_rtos` example runs on the M7 as the RPMsg
+string-echo endpoint. Precompiled M7 binaries are deployed under:
+
+```text
+${BUILDDIR}/tmp/deploy/images/ucm-imx95/mcore-demos
+```
+
+Rebuild the boot container after changing `local.conf`:
+
+```bash
+bitbake -k imx-boot
+```
+
+Boot Linux with `ucm-imx95-rpmsg.dtb`. The `mx95cplrpmsg` System Manager
+configuration and this RPMsg-aware Linux device tree must be used together;
+the default `ucm-imx95-som.dtb` does not contain the required RPMsg memory
+reservation and device configuration.
+
+Select the RPMsg device tree in U-Boot and preserve resources used by the
+running M7:
+
+```text
+=> setenv fdtfile ucm-imx95-rpmsg.dtb
+=> setenv boot_opt "${boot_opt} clk_ignore_unused pd_ignore_unused"
+=> saveenv
+=> boot
+```
+
+Omit `saveenv` when testing the settings for only the current boot.
+
+### Validate the string-echo example from Linux
+
+When `flash_all` embeds and starts the selected string-echo firmware, Linux
+attaches to the running M7. Load the RPMsg TTY driver and verify that its
+endpoint appeared:
+
+```bash
+modprobe imx_rpmsg_tty
+test -c /dev/ttyRPMSG30 || {
+    echo "RPMsg TTY endpoint was not created" >&2
+    exit 1
+}
+```
+
+Send a message to the M7:
+
+```bash
+printf '%s\n' "$(date): message from Linux" > /dev/ttyRPMSG30
+```
+
+Monitor the kernel log with `dmesg -w` to see the reply. Also monitor the M7
+serial console while running this test.
 
 ## Using imx-boot-tools
 
@@ -179,6 +267,73 @@ retention arguments without removing existing options such as
 ```
 
 Omit `saveenv` if the setting is required only for the current boot.
+
+## Loading and starting M7 firmware from Linux
+
+This flow is for Linux-controlled M7 startup. Build and boot a `flash_a55`
+container using the `mx95cplrpmsg` System Manager configuration so that the M7
+is not started before Linux. At the U-Boot prompt, prepare the M7 and select the
+RPMsg device tree:
+
+```text
+=> prepaux 1
+=> setenv fdtfile ucm-imx95-rpmsg.dtb
+=> setenv boot_opt "${boot_opt} clk_ignore_unused pd_ignore_unused"
+=> saveenv
+=> boot
+```
+
+Linux `remoteproc` loads ELF firmware, not the raw `.bin` file embedded by
+`imx-boot`. The CompuLab image includes the `imx-m7-demos` package, which
+installs the M7 ELF files under `/lib/firmware`. Verify that the required image
+is present:
+
+```bash
+test -f \
+    /lib/firmware/imx95-19x19-evk_m7_TCM_rpmsg_lite_str_echo_rtos.elf
+```
+
+Only when the file is missing, copy the matching 19x19 TCM ELF image to the
+target:
+
+```bash
+install -m 0644 <path-to-rpmsg_lite_str_echo_rtos.elf> \
+    /lib/firmware/imx95-19x19-evk_m7_TCM_rpmsg_lite_str_echo_rtos.elf
+```
+
+The `remoteprocN` index is not guaranteed, so locate the M7 instance by name
+instead of assuming `remoteproc1`:
+
+```bash
+RPROC=
+for candidate in /sys/class/remoteproc/remoteproc*; do
+    if [ "$(cat "${candidate}/name")" = "imx-rproc" ]; then
+        RPROC="${candidate}"
+        break
+    fi
+done
+test -n "${RPROC}" || {
+    echo "M7 remoteproc instance was not found" >&2
+    exit 1
+}
+```
+
+Select and start the firmware:
+
+```bash
+printf '%s' \
+    imx95-19x19-evk_m7_TCM_rpmsg_lite_str_echo_rtos.elf \
+    > "${RPROC}/firmware"
+echo start > "${RPROC}/state"
+cat "${RPROC}/state"
+```
+
+The final command should report `running`. Load `imx_rpmsg_tty` and use the
+string-echo validation procedure above. To stop firmware started by Linux, run:
+
+```bash
+echo stop > "${RPROC}/state"
+```
 
 ## Executing M7 firmware from DDR
 
